@@ -5,9 +5,6 @@
     <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1">
       <stop stop-color="#F7FBFF"/><stop offset="1" stop-color="#E8F1FF"/>
     </linearGradient>
-    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#1479FF"/><stop offset="1" stop-color="#185ADB"/>
-    </linearGradient>
   </defs>
   <rect width="1280" height="420" rx="28" fill="url(#canvas)"/>
   <g fill="none" stroke="#D7E6FC" stroke-width="1">
@@ -20,10 +17,22 @@
   <rect x="64" y="324" width="231" height="36" rx="18" fill="#FFFFFF"/>
   <circle cx="85" cy="342" r="5" fill="#1873F2"/>
   <text x="100" y="347" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#28517D">BUILT WITH FLUTTER</text>
-  <g transform="translate(933 90)">
-    <rect width="230" height="230" rx="58" fill="url(#mark)"/>
-    <path d="M49 157V90c0-19 11-30 27-30 17 0 26 12 26 30v44-44c0-18 10-30 27-30s27 12 27 30v67" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="187" cy="157" r="8" fill="#FFFFFF"/>
-    <path d="M49 190H187" stroke="#8EBEFF" stroke-width="3" stroke-linecap="round"/>
-  </g>
+  <svg x="933" y="90" width="230" height="230" viewBox="0 0 1024 1024" aria-label="Official Maaso logo">
+    <defs>
+        <filter id="starGlow" x="-35%" y="-35%" width="170%" height="170%" color-interpolation-filters="sRGB">
+          <feDropShadow in="SourceAlpha" dx="0" dy="0" stdDeviation="0" flood-opacity="0" result="orangeGlow"/>
+          <feDropShadow in="SourceAlpha" dx="0" dy="0" stdDeviation="0" flood-opacity="0" result="violetGlow"/>
+          <feDropShadow in="SourceAlpha" dx="0" dy="0" stdDeviation="0" flood-opacity="0" result="blueGlow"/>
+          <feMerge>
+            <feMergeNode in="orangeGlow"/>
+            <feMergeNode in="violetGlow"/>
+            <feMergeNode in="blueGlow"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <rect width="1024" height="1024" fill="#ffffff"/>
+      <circle cx="512" cy="512" r="350.72" fill="none" stroke="#000000" stroke-width="117.76"/>
+      <path filter="url(#starGlow)" fill="#000000" d="M512 301C527 301 537 310 541 328C556 394 590 434 656 452C674 457 683 469 683 484C683 499 674 510 656 515C590 533 556 573 541 641C537 659 527 668 512 668C497 668 487 659 483 641C468 573 434 533 368 515C350 510 341 499 341 484C341 469 350 457 368 452C434 434 468 394 483 328C487 310 497 301 512 301Z" transform="translate(-6.7 26.7) rotate(14 512 512)"/>
+  </svg>
 </svg>
