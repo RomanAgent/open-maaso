@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/media/open-maaso-hero.svg?v=official-logo" alt="open-maaso — 让 Agent 拥有声音、形象与工作空间" width="100%" />
+<img src="docs/media/open-maaso-hero.svg?v=white-frost-transparent-logo" alt="open-maaso — 让 Agent 拥有声音、形象与工作空间" width="100%" />
 
 **用 Flutter 构建具身 AI 工作空间。**
 

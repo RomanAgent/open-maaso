@@ -17,7 +17,7 @@ The generator uses only the Python standard library. It contains a table of outp
 
 The first command overwrites every path listed in the generator, including the Windows ICO. Keep custom artwork elsewhere or commit your changes before regenerating. `--check` performs an exact byte comparison against the deterministic generated outputs without changing files.
 
-The README hero uses the official Maaso logo, reproduced unchanged from `assets/brand/masso_monochrome_logo.svg` at the project owner's request. The black ring and four-point star replace the temporary open-maaso lettermark. The hero composition remains an illustration, not an application screenshot or evidence of a completed avatar/native rendering experience. The generated application placeholder set described above is separate from this official documentation logo.
+The README hero follows Maaso White Frost v2: a pure-white canvas, neutral text, a borderless muted capsule, and small reference-blue accents. It uses the official Maaso logo from `assets/brand/masso_monochrome_logo.svg` with a transparent background at the project owner's request. The original circle and star geometry are preserved; the white background rectangle and invisible filter are removed. The black ring and four-point star replace the temporary open-maaso lettermark. The hero composition remains an illustration, not an application screenshot or evidence of a completed avatar/native rendering experience. The generated application placeholder set described above is separate from this official documentation logo.
 
 ## Adding real content
 

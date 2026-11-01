@@ -1,18 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
-  <defs>
-    <filter id="starGlow" x="-35%" y="-35%" width="170%" height="170%" color-interpolation-filters="sRGB">
-      <feDropShadow in="SourceAlpha" dx="0" dy="0" stdDeviation="0" flood-opacity="0" result="orangeGlow"/>
-      <feDropShadow in="SourceAlpha" dx="0" dy="0" stdDeviation="0" flood-opacity="0" result="violetGlow"/>
-      <feDropShadow in="SourceAlpha" dx="0" dy="0" stdDeviation="0" flood-opacity="0" result="blueGlow"/>
-      <feMerge>
-        <feMergeNode in="orangeGlow"/>
-        <feMergeNode in="violetGlow"/>
-        <feMergeNode in="blueGlow"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-  </defs>
-  <rect width="1024" height="1024" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="Official Maaso logo">
   <circle cx="512" cy="512" r="350.72" fill="none" stroke="#000000" stroke-width="117.76"/>
-  <path filter="url(#starGlow)" fill="#000000" d="M512 301C527 301 537 310 541 328C556 394 590 434 656 452C674 457 683 469 683 484C683 499 674 510 656 515C590 533 556 573 541 641C537 659 527 668 512 668C497 668 487 659 483 641C468 573 434 533 368 515C350 510 341 499 341 484C341 469 350 457 368 452C434 434 468 394 483 328C487 310 497 301 512 301Z" transform="translate(-6.7 26.7) rotate(14 512 512)"/>
+  <path fill="#000000" d="M512 301C527 301 537 310 541 328C556 394 590 434 656 452C674 457 683 469 683 484C683 499 674 510 656 515C590 533 556 573 541 641C537 659 527 668 512 668C497 668 487 659 483 641C468 573 434 533 368 515C350 510 341 499 341 484C341 469 350 457 368 452C434 434 468 394 483 328C487 310 497 301 512 301Z" transform="translate(-6.7 26.7) rotate(14 512 512)"/>
 </svg>
