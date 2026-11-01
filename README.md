@@ -10,6 +10,29 @@ Voice conversations · Avatar runtime · Generated apps · Device skills
 
 </div>
 
+## See Maaso in action
+
+Meet your Agent, describe a game, and play—with companion controls close at hand.
+
+<table>
+  <tr>
+    <td align="center" width="50%"><strong>Your Agent, at home</strong><br/><a href="docs/media/showcase/home.png"><img src="docs/media/showcase/home.png" alt="Maaso Home on iPhone with its Avatar, room, and composer" width="260"/></a><br/><sub>Conversation and embodied presence in one space.</sub></td>
+    <td align="center" width="50%"><strong>Start with an idea</strong><br/><a href="docs/media/showcase/game-request.png"><img src="docs/media/showcase/game-request.png" alt="A real Maaso composer containing Create a rocket game" width="260"/></a><br/><sub>Describe the game you want to create.</sub></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><strong>Arcade shooter</strong><br/><a href="docs/media/showcase/space-shooter.png"><img src="docs/media/showcase/space-shooter.png" alt="A saved vertical space shooter running inside Maaso on iPhone" width="260"/></a><br/><sub>A real saved game, running in the player.</sub></td>
+    <td align="center" width="50%"><strong>Snake</strong><br/><a href="docs/media/showcase/gameplay.png"><img src="docs/media/showcase/gameplay.png" alt="Snake running in Maaso on iPhone with food and pause and restart controls" width="260"/></a><br/><sub>Play, pause, and restart an existing mini-game.</sub></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><strong>Play together</strong><br/><a href="docs/media/showcase/game-companion.png"><img src="docs/media/showcase/game-companion.png" alt="The real Play together companion panel opened from the arcade shooter" width="260"/></a><br/><sub>Tune voice, chat frequency, and game hints.</sub></td>
+    <td align="center" width="50%"><strong>Your game library</strong><br/><a href="docs/media/showcase/mini-games.png"><img src="docs/media/showcase/mini-games.png" alt="Existing saved mini-games shown in Maaso My Games" width="260"/></a><br/><sub>Keep your works together and open them again.</sub></td>
+  </tr>
+</table>
+
+<sub>Real iPhone captures · November 1, 2026. The creation image shows request input; the shooter and Snake are existing saved games. See the setup guide for open-source runtime prerequisites.</sub>
+
+[Capture notes and asset credits →](docs/media/showcase/README.md)
+
 ## From conversation to something you can use
 
 An agent can do more than return a message. It can speak, respond through an avatar, create an interactive app, and work with a connected device.

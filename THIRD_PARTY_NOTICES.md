@@ -41,3 +41,7 @@ The [Silero VAD upstream license](https://github.com/snakers4/silero-vad/blob/ma
 ## Excluded content
 
 Production credentials, signing material, account data, large LLM/ASR/TTS weights, character models, purchased animations, room assets and private operational records are excluded. The original commercial application's character art and Unity player exports are not licensed through this source release. Supply your own appropriately licensed assets and build your own player exports. Names of third-party products identify integrations and do not imply endorsement.
+
+## Product screenshot media
+
+The README gallery contains rendered product screenshots, separately documented in [the capture notes and credits](docs/media/showcase/README.md). Their depicted character, room and game content is not relicensed by the root MIT license. These reference PNGs do not include or grant redistribution rights to the original 3D assets.

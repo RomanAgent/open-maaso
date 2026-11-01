@@ -10,6 +10,29 @@
 
 </div>
 
+## 看看 Maaso 的实际体验
+
+Home 陪伴、自然语言创作、战机与贪吃蛇，以及游戏内的陪玩控制。
+
+<table>
+  <tr>
+    <td align="center" width="50%"><strong>Home · 与 Agent 相伴</strong><br/><a href="docs/media/showcase/home.png"><img src="docs/media/showcase/home.png" alt="iPhone 上的 Maaso Home，包含角色、房间和输入框" width="260"/></a><br/><sub>在同一个空间中承载对话与角色呈现。</sub></td>
+    <td align="center" width="50%"><strong>小游戏创作 · 从一句话开始</strong><br/><a href="docs/media/showcase/game-request.png"><img src="docs/media/showcase/game-request.png" alt="在真实 Maaso 输入框中描述火箭小游戏需求" width="260"/></a><br/><sub>通过对话描述想做的小游戏。</sub></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><strong>雷霆战机 · 纵版射击</strong><br/><a href="docs/media/showcase/space-shooter.png"><img src="docs/media/showcase/space-shooter.png" alt="雷霆战机在 Maaso iPhone 播放器中运行，飞机和弹幕可见" width="260"/></a><br/><sub>真实运行的战机小游戏，展示飞机与弹幕。</sub></td>
+    <td align="center" width="50%"><strong>贪吃蛇 · 经典玩法</strong><br/><a href="docs/media/showcase/gameplay.png"><img src="docs/media/showcase/gameplay.png" alt="Maaso iPhone 播放器中的贪吃蛇、食物与暂停重开控件" width="260"/></a><br/><sub>在播放器中游玩、暂停与重新开始。</sub></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><strong>小游戏陪玩 · Play together</strong><br/><a href="docs/media/showcase/game-companion.png"><img src="docs/media/showcase/game-companion.png" alt="从战机小游戏内打开的真实 Play together 陪玩面板" width="260"/></a><br/><sub>在游戏内设置语音、聊天频率与提示方式。</sub></td>
+    <td align="center" width="50%"><strong>我的小游戏库</strong><br/><a href="docs/media/showcase/mini-games.png"><img src="docs/media/showcase/mini-games.png" alt="Maaso 我的游戏中真实保存的小游戏列表" width="260"/></a><br/><sub>集中查看并重新打开已保存的作品。</sub></td>
+  </tr>
+</table>
+
+<sub>2026 年 11 月 1 日拍摄于已安装的 Maaso iPhone App。创作图展示请求输入，两款游戏为已有作品；开源客户端的运行前提见配置指南。</sub>
+
+[拍摄说明与素材署名 →](docs/media/showcase/README.md)
+
 ## 让对话变成可以使用的东西
 
 Agent 可以不止于回复文字。它可以开口说话，通过角色回应，生成可交互的应用，也可以连接身边的设备。
