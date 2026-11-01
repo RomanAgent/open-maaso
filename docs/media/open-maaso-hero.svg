@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" viewBox="0 0 1280 420" role="img" aria-labelledby="title desc">
+  <title id="title">open-maaso</title>
+  <desc id="desc">Give your agent a voice, a presence, and a workspace. An embodied AI workspace built with Flutter.</desc>
+  <defs>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#F7FBFF"/><stop offset="1" stop-color="#E8F1FF"/>
+    </linearGradient>
+    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#1479FF"/><stop offset="1" stop-color="#185ADB"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="420" rx="28" fill="url(#canvas)"/>
+  <g fill="none" stroke="#D7E6FC" stroke-width="1">
+    <path d="M0 310H1280M0 350H1280M0 390H1280M900 0V420M980 0V420M1060 0V420M1140 0V420M1220 0V420"/>
+  </g>
+  <text x="64" y="66" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" letter-spacing="3" fill="#2863AF">VOICE · PRESENCE · CREATION</text>
+  <text x="60" y="176" font-family="Arial, Helvetica, sans-serif" font-size="88" font-weight="700" letter-spacing="-4" fill="#0B2343">open-maaso<tspan fill="#1873F2">.</tspan></text>
+  <text x="64" y="236" font-family="Arial, Helvetica, sans-serif" font-size="27" fill="#28476C">Give your agent a voice, a presence,</text>
+  <text x="64" y="274" font-family="Arial, Helvetica, sans-serif" font-size="27" fill="#28476C">and a workspace.</text>
+  <rect x="64" y="324" width="231" height="36" rx="18" fill="#FFFFFF"/>
+  <circle cx="85" cy="342" r="5" fill="#1873F2"/>
+  <text x="100" y="347" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#28517D">BUILT WITH FLUTTER</text>
+  <g transform="translate(933 90)">
+    <rect width="230" height="230" rx="58" fill="url(#mark)"/>
+    <path d="M49 157V90c0-19 11-30 27-30 17 0 26 12 26 30v44-44c0-18 10-30 27-30s27 12 27 30v67" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="187" cy="157" r="8" fill="#FFFFFF"/>
+    <path d="M49 190H187" stroke="#8EBEFF" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>

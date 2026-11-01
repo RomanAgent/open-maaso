@@ -1,0 +1,3739 @@
+{
+  "schemaVersion": 1,
+  "scope": "Actual Dart trusted rules + Sembast checkpoint/receipt conformance. Fixed local test policies, not model or browser acceptance. Checkpoint hash is test evidence only, never a player observation.",
+  "rulesId": "cooperative-dodge.v1",
+  "rulesConfig": {
+    "tickHz": 30,
+    "roundTicks": 1800,
+    "decisionWindowTicks": 150,
+    "checkpointIntervalTicks": 30,
+    "targetPerRole": 3,
+    "teamLives": 6
+  },
+  "seed": 17,
+  "initial": {
+    "player1": {
+      "seatId": "player1",
+      "phase": "ready",
+      "turnId": "window-0",
+      "viewRevision": 0,
+      "decisionRevision": 0,
+      "viewSequence": 0,
+      "allowedView": {
+        "arena": {
+          "width": 1000,
+          "height": 1000
+        },
+        "tickHz": 30,
+        "simTick": 0,
+        "remainingTicks": 1800,
+        "phase": "ready",
+        "turnId": "window-0",
+        "windowEndTick": 150,
+        "targetPerRole": 3,
+        "teamLives": 6,
+        "teamWon": false,
+        "endReason": "",
+        "players": [
+          {
+            "seatId": "player1",
+            "x": 250,
+            "y": 900,
+            "score": 0,
+            "invulnerableTicks": 0
+          },
+          {
+            "seatId": "player2",
+            "x": 750,
+            "y": 900,
+            "score": 0,
+            "invulnerableTicks": 0
+          }
+        ],
+        "objects": [],
+        "ownInput": {
+          "policy": "idle",
+          "expiresAtTick": 0,
+          "windowId": "window-0"
+        }
+      },
+      "legalActions": [
+        {
+          "actionId": "game.start",
+          "args": {}
+        }
+      ]
+    },
+    "player2": {
+      "seatId": "player2",
+      "phase": "ready",
+      "turnId": "window-0",
+      "viewRevision": 0,
+      "decisionRevision": 0,
+      "viewSequence": 0,
+      "allowedView": {
+        "arena": {
+          "width": 1000,
+          "height": 1000
+        },
+        "tickHz": 30,
+        "simTick": 0,
+        "remainingTicks": 1800,
+        "phase": "ready",
+        "turnId": "window-0",
+        "windowEndTick": 150,
+        "targetPerRole": 3,
+        "teamLives": 6,
+        "teamWon": false,
+        "endReason": "",
+        "players": [
+          {
+            "seatId": "player1",
+            "x": 250,
+            "y": 900,
+            "score": 0,
+            "invulnerableTicks": 0
+          },
+          {
+            "seatId": "player2",
+            "x": 750,
+            "y": 900,
+            "score": 0,
+            "invulnerableTicks": 0
+          }
+        ],
+        "objects": [],
+        "ownInput": {
+          "policy": "idle",
+          "expiresAtTick": 0,
+          "windowId": "window-0"
+        }
+      },
+      "legalActions": []
+    },
+    "spectator": {
+      "seatId": "spectator",
+      "phase": "ready",
+      "turnId": "window-0",
+      "viewRevision": 0,
+      "decisionRevision": 0,
+      "viewSequence": 0,
+      "allowedView": {
+        "arena": {
+          "width": 1000,
+          "height": 1000
+        },
+        "tickHz": 30,
+        "simTick": 0,
+        "remainingTicks": 1800,
+        "phase": "ready",
+        "turnId": "window-0",
+        "windowEndTick": 150,
+        "targetPerRole": 3,
+        "teamLives": 6,
+        "teamWon": false,
+        "endReason": "",
+        "players": [
+          {
+            "seatId": "player1",
+            "x": 250,
+            "y": 900,
+            "score": 0,
+            "invulnerableTicks": 0
+          },
+          {
+            "seatId": "player2",
+            "x": 750,
+            "y": 900,
+            "score": 0,
+            "invulnerableTicks": 0
+          }
+        ],
+        "objects": [],
+        "ownInput": null
+      },
+      "legalActions": []
+    }
+  },
+  "steps": [
+    {
+      "input": {
+        "seatId": "player1",
+        "actionId": "game.start",
+        "args": {},
+        "requestId": "request-0"
+      },
+      "receipt": {
+        "requestId": "request-0",
+        "status": "applied",
+        "beforeRevision": 0,
+        "afterRevision": 1,
+        "committedViewSequence": 1,
+        "errorCode": ""
+      },
+      "views": {
+        "player1": {
+          "seatId": "player1",
+          "phase": "playing",
+          "turnId": "window-0",
+          "viewRevision": 1,
+          "decisionRevision": 1,
+          "viewSequence": 1,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 0,
+            "remainingTicks": 1800,
+            "phase": "playing",
+            "turnId": "window-0",
+            "windowEndTick": 150,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 250,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 750,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [],
+            "ownInput": {
+              "policy": "idle",
+              "expiresAtTick": 0,
+              "windowId": "window-0"
+            }
+          },
+          "legalActions": [
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "left",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "right",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "idle",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 1
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "collect",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 150
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "dodge",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 150
+              }
+            }
+          ]
+        },
+        "player2": {
+          "seatId": "player2",
+          "phase": "playing",
+          "turnId": "window-0",
+          "viewRevision": 1,
+          "decisionRevision": 1,
+          "viewSequence": 1,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 0,
+            "remainingTicks": 1800,
+            "phase": "playing",
+            "turnId": "window-0",
+            "windowEndTick": 150,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 250,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 750,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [],
+            "ownInput": {
+              "policy": "idle",
+              "expiresAtTick": 0,
+              "windowId": "window-0"
+            }
+          },
+          "legalActions": [
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "left",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "right",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "idle",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 1
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "collect",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 150
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "dodge",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 150
+              }
+            }
+          ]
+        },
+        "spectator": {
+          "seatId": "spectator",
+          "phase": "playing",
+          "turnId": "window-0",
+          "viewRevision": 1,
+          "decisionRevision": 1,
+          "viewSequence": 1,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 0,
+            "remainingTicks": 1800,
+            "phase": "playing",
+            "turnId": "window-0",
+            "windowEndTick": 150,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 250,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 750,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [],
+            "ownInput": null
+          },
+          "legalActions": []
+        }
+      },
+      "events": {
+        "player1": [
+          {
+            "seatId": "player1",
+            "viewSequence": 1,
+            "type": "game.started",
+            "decisionRevision": 1,
+            "causedByRequestId": "request-0",
+            "payload": {
+              "windowId": "window-0"
+            }
+          }
+        ],
+        "player2": [
+          {
+            "seatId": "player2",
+            "viewSequence": 1,
+            "type": "game.started",
+            "decisionRevision": 1,
+            "causedByRequestId": "request-0",
+            "payload": {
+              "windowId": "window-0"
+            }
+          }
+        ],
+        "spectator": [
+          {
+            "seatId": "spectator",
+            "viewSequence": 1,
+            "type": "game.started",
+            "decisionRevision": 1,
+            "causedByRequestId": "request-0",
+            "payload": {
+              "windowId": "window-0"
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "simTick": 0,
+        "commitRevision": 1,
+        "rulesSha256": "c3971fcec5b2f9aadbca0e9502b28721277b1e8acd6720c8aa524a2480719a6d"
+      }
+    },
+    {
+      "input": {
+        "seatId": "player1",
+        "actionId": "game.input",
+        "args": {
+          "policy": "collect",
+          "windowId": "window-0",
+          "validThroughTick": 150,
+          "durationTicks": 150
+        },
+        "requestId": "request-1"
+      },
+      "receipt": {
+        "requestId": "request-1",
+        "status": "applied",
+        "beforeRevision": 1,
+        "afterRevision": 2,
+        "committedViewSequence": 2,
+        "errorCode": ""
+      },
+      "views": {
+        "player1": {
+          "seatId": "player1",
+          "phase": "playing",
+          "turnId": "window-0",
+          "viewRevision": 2,
+          "decisionRevision": 2,
+          "viewSequence": 2,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 0,
+            "remainingTicks": 1800,
+            "phase": "playing",
+            "turnId": "window-0",
+            "windowEndTick": 150,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 250,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 750,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [],
+            "ownInput": {
+              "policy": "collect",
+              "expiresAtTick": 150,
+              "windowId": "window-0"
+            }
+          },
+          "legalActions": [
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "left",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "right",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "idle",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 1
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "collect",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 150
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "dodge",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 150
+              }
+            }
+          ]
+        },
+        "player2": {
+          "seatId": "player2",
+          "phase": "playing",
+          "turnId": "window-0",
+          "viewRevision": 1,
+          "decisionRevision": 1,
+          "viewSequence": 1,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 0,
+            "remainingTicks": 1800,
+            "phase": "playing",
+            "turnId": "window-0",
+            "windowEndTick": 150,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 250,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 750,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [],
+            "ownInput": {
+              "policy": "idle",
+              "expiresAtTick": 0,
+              "windowId": "window-0"
+            }
+          },
+          "legalActions": [
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "left",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "right",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "idle",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 1
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "collect",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 150
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "dodge",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 150
+              }
+            }
+          ]
+        },
+        "spectator": {
+          "seatId": "spectator",
+          "phase": "playing",
+          "turnId": "window-0",
+          "viewRevision": 1,
+          "decisionRevision": 1,
+          "viewSequence": 1,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 0,
+            "remainingTicks": 1800,
+            "phase": "playing",
+            "turnId": "window-0",
+            "windowEndTick": 150,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 250,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 750,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [],
+            "ownInput": null
+          },
+          "legalActions": []
+        }
+      },
+      "events": {
+        "player1": [
+          {
+            "seatId": "player1",
+            "viewSequence": 2,
+            "type": "input.accepted",
+            "decisionRevision": 2,
+            "causedByRequestId": "request-1",
+            "payload": {
+              "policy": "collect",
+              "appliedAtTick": 0,
+              "expiresAtTick": 150
+            }
+          }
+        ],
+        "player2": [],
+        "spectator": []
+      },
+      "checkpoint": {
+        "simTick": 0,
+        "commitRevision": 2,
+        "rulesSha256": "057f75d16bf75fe6a4d4a3084c52f80ddd1d3971b04dfd803c8336ae12fdb844"
+      }
+    },
+    {
+      "input": {
+        "seatId": "player2",
+        "actionId": "game.input",
+        "args": {
+          "policy": "collect",
+          "windowId": "window-0",
+          "validThroughTick": 150,
+          "durationTicks": 150
+        },
+        "requestId": "request-2"
+      },
+      "receipt": {
+        "requestId": "request-2",
+        "status": "applied",
+        "beforeRevision": 1,
+        "afterRevision": 2,
+        "committedViewSequence": 2,
+        "errorCode": ""
+      },
+      "views": {
+        "player1": {
+          "seatId": "player1",
+          "phase": "playing",
+          "turnId": "window-0",
+          "viewRevision": 2,
+          "decisionRevision": 2,
+          "viewSequence": 2,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 0,
+            "remainingTicks": 1800,
+            "phase": "playing",
+            "turnId": "window-0",
+            "windowEndTick": 150,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 250,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 750,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [],
+            "ownInput": {
+              "policy": "collect",
+              "expiresAtTick": 150,
+              "windowId": "window-0"
+            }
+          },
+          "legalActions": [
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "left",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "right",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "idle",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 1
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "collect",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 150
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "dodge",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 150
+              }
+            }
+          ]
+        },
+        "player2": {
+          "seatId": "player2",
+          "phase": "playing",
+          "turnId": "window-0",
+          "viewRevision": 2,
+          "decisionRevision": 2,
+          "viewSequence": 2,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 0,
+            "remainingTicks": 1800,
+            "phase": "playing",
+            "turnId": "window-0",
+            "windowEndTick": 150,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 250,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 750,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [],
+            "ownInput": {
+              "policy": "collect",
+              "expiresAtTick": 150,
+              "windowId": "window-0"
+            }
+          },
+          "legalActions": [
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "left",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "right",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "idle",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 1
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "collect",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 150
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "dodge",
+                "windowId": "window-0",
+                "validThroughTick": 150,
+                "durationTicks": 150
+              }
+            }
+          ]
+        },
+        "spectator": {
+          "seatId": "spectator",
+          "phase": "playing",
+          "turnId": "window-0",
+          "viewRevision": 1,
+          "decisionRevision": 1,
+          "viewSequence": 1,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 0,
+            "remainingTicks": 1800,
+            "phase": "playing",
+            "turnId": "window-0",
+            "windowEndTick": 150,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 250,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 750,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [],
+            "ownInput": null
+          },
+          "legalActions": []
+        }
+      },
+      "events": {
+        "player1": [],
+        "player2": [
+          {
+            "seatId": "player2",
+            "viewSequence": 2,
+            "type": "input.accepted",
+            "decisionRevision": 2,
+            "causedByRequestId": "request-2",
+            "payload": {
+              "policy": "collect",
+              "appliedAtTick": 0,
+              "expiresAtTick": 150
+            }
+          }
+        ],
+        "spectator": []
+      },
+      "checkpoint": {
+        "simTick": 0,
+        "commitRevision": 3,
+        "rulesSha256": "f6914bffc6c70fe815873c22f8b5a9f8399591695af7fd72bc516a3e734156e5"
+      }
+    },
+    {
+      "input": {
+        "advanceTicks": 150,
+        "actualTicks": 150
+      },
+      "views": {
+        "player1": {
+          "seatId": "player1",
+          "phase": "playing",
+          "turnId": "window-1",
+          "viewRevision": 152,
+          "decisionRevision": 3,
+          "viewSequence": 4,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 150,
+            "remainingTicks": 1650,
+            "phase": "playing",
+            "turnId": "window-1",
+            "windowEndTick": 300,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 375,
+                "y": 900,
+                "score": 1,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 250,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [
+              {
+                "id": 6,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 870
+              },
+              {
+                "id": 7,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 500,
+                "y": 510
+              },
+              {
+                "id": 8,
+                "kind": "star",
+                "ownerSeatId": "player2",
+                "x": 125,
+                "y": 330
+              },
+              {
+                "id": 9,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 150
+              }
+            ],
+            "ownInput": {
+              "policy": "idle",
+              "expiresAtTick": 150,
+              "windowId": "window-1"
+            }
+          },
+          "legalActions": [
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "left",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "right",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "idle",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 1
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "collect",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 150
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "dodge",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 150
+              }
+            }
+          ]
+        },
+        "player2": {
+          "seatId": "player2",
+          "phase": "playing",
+          "turnId": "window-1",
+          "viewRevision": 152,
+          "decisionRevision": 3,
+          "viewSequence": 4,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 150,
+            "remainingTicks": 1650,
+            "phase": "playing",
+            "turnId": "window-1",
+            "windowEndTick": 300,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 375,
+                "y": 900,
+                "score": 1,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 250,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [
+              {
+                "id": 6,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 870
+              },
+              {
+                "id": 7,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 500,
+                "y": 510
+              },
+              {
+                "id": 8,
+                "kind": "star",
+                "ownerSeatId": "player2",
+                "x": 125,
+                "y": 330
+              },
+              {
+                "id": 9,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 150
+              }
+            ],
+            "ownInput": {
+              "policy": "idle",
+              "expiresAtTick": 150,
+              "windowId": "window-1"
+            }
+          },
+          "legalActions": [
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "left",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "right",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "idle",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 1
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "collect",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 150
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "dodge",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 150
+              }
+            }
+          ]
+        },
+        "spectator": {
+          "seatId": "spectator",
+          "phase": "playing",
+          "turnId": "window-1",
+          "viewRevision": 151,
+          "decisionRevision": 2,
+          "viewSequence": 3,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 150,
+            "remainingTicks": 1650,
+            "phase": "playing",
+            "turnId": "window-1",
+            "windowEndTick": 300,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 375,
+                "y": 900,
+                "score": 1,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 250,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [
+              {
+                "id": 6,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 870
+              },
+              {
+                "id": 7,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 500,
+                "y": 510
+              },
+              {
+                "id": 8,
+                "kind": "star",
+                "ownerSeatId": "player2",
+                "x": 125,
+                "y": 330
+              },
+              {
+                "id": 9,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 150
+              }
+            ],
+            "ownInput": null
+          },
+          "legalActions": []
+        }
+      },
+      "events": {
+        "player1": [
+          {
+            "seatId": "player1",
+            "viewSequence": 3,
+            "type": "item.collected",
+            "decisionRevision": 2,
+            "causedByRequestId": null,
+            "payload": {
+              "seatId": "player1",
+              "score": 1
+            }
+          },
+          {
+            "seatId": "player1",
+            "viewSequence": 4,
+            "type": "decision.window_opened",
+            "decisionRevision": 3,
+            "causedByRequestId": null,
+            "payload": {
+              "windowId": "window-1",
+              "validThroughTick": 300
+            }
+          }
+        ],
+        "player2": [
+          {
+            "seatId": "player2",
+            "viewSequence": 3,
+            "type": "item.collected",
+            "decisionRevision": 2,
+            "causedByRequestId": null,
+            "payload": {
+              "seatId": "player1",
+              "score": 1
+            }
+          },
+          {
+            "seatId": "player2",
+            "viewSequence": 4,
+            "type": "decision.window_opened",
+            "decisionRevision": 3,
+            "causedByRequestId": null,
+            "payload": {
+              "windowId": "window-1",
+              "validThroughTick": 300
+            }
+          }
+        ],
+        "spectator": [
+          {
+            "seatId": "spectator",
+            "viewSequence": 2,
+            "type": "item.collected",
+            "decisionRevision": 1,
+            "causedByRequestId": null,
+            "payload": {
+              "seatId": "player1",
+              "score": 1
+            }
+          },
+          {
+            "seatId": "spectator",
+            "viewSequence": 3,
+            "type": "decision.window_opened",
+            "decisionRevision": 2,
+            "causedByRequestId": null,
+            "payload": {
+              "windowId": "window-1",
+              "validThroughTick": 300
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "simTick": 150,
+        "commitRevision": 9,
+        "rulesSha256": "5b1859295e1fc286c4e485ad7de62a4c63121ab489646da8ed3d6970622df564"
+      }
+    },
+    {
+      "input": {
+        "seatId": "player1",
+        "actionId": "game.input",
+        "args": {
+          "policy": "collect",
+          "windowId": "window-1",
+          "validThroughTick": 300,
+          "durationTicks": 150
+        },
+        "requestId": "request-4"
+      },
+      "receipt": {
+        "requestId": "request-4",
+        "status": "applied",
+        "beforeRevision": 3,
+        "afterRevision": 4,
+        "committedViewSequence": 5,
+        "errorCode": ""
+      },
+      "views": {
+        "player1": {
+          "seatId": "player1",
+          "phase": "playing",
+          "turnId": "window-1",
+          "viewRevision": 153,
+          "decisionRevision": 4,
+          "viewSequence": 5,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 150,
+            "remainingTicks": 1650,
+            "phase": "playing",
+            "turnId": "window-1",
+            "windowEndTick": 300,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 375,
+                "y": 900,
+                "score": 1,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 250,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [
+              {
+                "id": 6,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 870
+              },
+              {
+                "id": 7,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 500,
+                "y": 510
+              },
+              {
+                "id": 8,
+                "kind": "star",
+                "ownerSeatId": "player2",
+                "x": 125,
+                "y": 330
+              },
+              {
+                "id": 9,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 150
+              }
+            ],
+            "ownInput": {
+              "policy": "collect",
+              "expiresAtTick": 300,
+              "windowId": "window-1"
+            }
+          },
+          "legalActions": [
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "left",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "right",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "idle",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 1
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "collect",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 150
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "dodge",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 150
+              }
+            }
+          ]
+        },
+        "player2": {
+          "seatId": "player2",
+          "phase": "playing",
+          "turnId": "window-1",
+          "viewRevision": 152,
+          "decisionRevision": 3,
+          "viewSequence": 4,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 150,
+            "remainingTicks": 1650,
+            "phase": "playing",
+            "turnId": "window-1",
+            "windowEndTick": 300,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 375,
+                "y": 900,
+                "score": 1,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 250,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [
+              {
+                "id": 6,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 870
+              },
+              {
+                "id": 7,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 500,
+                "y": 510
+              },
+              {
+                "id": 8,
+                "kind": "star",
+                "ownerSeatId": "player2",
+                "x": 125,
+                "y": 330
+              },
+              {
+                "id": 9,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 150
+              }
+            ],
+            "ownInput": {
+              "policy": "idle",
+              "expiresAtTick": 150,
+              "windowId": "window-1"
+            }
+          },
+          "legalActions": [
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "left",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "right",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "idle",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 1
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "collect",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 150
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "dodge",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 150
+              }
+            }
+          ]
+        },
+        "spectator": {
+          "seatId": "spectator",
+          "phase": "playing",
+          "turnId": "window-1",
+          "viewRevision": 151,
+          "decisionRevision": 2,
+          "viewSequence": 3,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 150,
+            "remainingTicks": 1650,
+            "phase": "playing",
+            "turnId": "window-1",
+            "windowEndTick": 300,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 375,
+                "y": 900,
+                "score": 1,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 250,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [
+              {
+                "id": 6,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 870
+              },
+              {
+                "id": 7,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 500,
+                "y": 510
+              },
+              {
+                "id": 8,
+                "kind": "star",
+                "ownerSeatId": "player2",
+                "x": 125,
+                "y": 330
+              },
+              {
+                "id": 9,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 150
+              }
+            ],
+            "ownInput": null
+          },
+          "legalActions": []
+        }
+      },
+      "events": {
+        "player1": [
+          {
+            "seatId": "player1",
+            "viewSequence": 5,
+            "type": "input.accepted",
+            "decisionRevision": 4,
+            "causedByRequestId": "request-4",
+            "payload": {
+              "policy": "collect",
+              "appliedAtTick": 150,
+              "expiresAtTick": 300
+            }
+          }
+        ],
+        "player2": [],
+        "spectator": []
+      },
+      "checkpoint": {
+        "simTick": 150,
+        "commitRevision": 10,
+        "rulesSha256": "51e92432ca5be7fd8eec7e9c3e621beb635bc0e8195c7ab67b6568b7d0862890"
+      }
+    },
+    {
+      "input": {
+        "seatId": "player2",
+        "actionId": "game.input",
+        "args": {
+          "policy": "collect",
+          "windowId": "window-1",
+          "validThroughTick": 300,
+          "durationTicks": 150
+        },
+        "requestId": "request-5"
+      },
+      "receipt": {
+        "requestId": "request-5",
+        "status": "applied",
+        "beforeRevision": 3,
+        "afterRevision": 4,
+        "committedViewSequence": 5,
+        "errorCode": ""
+      },
+      "views": {
+        "player1": {
+          "seatId": "player1",
+          "phase": "playing",
+          "turnId": "window-1",
+          "viewRevision": 153,
+          "decisionRevision": 4,
+          "viewSequence": 5,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 150,
+            "remainingTicks": 1650,
+            "phase": "playing",
+            "turnId": "window-1",
+            "windowEndTick": 300,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 375,
+                "y": 900,
+                "score": 1,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 250,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [
+              {
+                "id": 6,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 870
+              },
+              {
+                "id": 7,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 500,
+                "y": 510
+              },
+              {
+                "id": 8,
+                "kind": "star",
+                "ownerSeatId": "player2",
+                "x": 125,
+                "y": 330
+              },
+              {
+                "id": 9,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 150
+              }
+            ],
+            "ownInput": {
+              "policy": "collect",
+              "expiresAtTick": 300,
+              "windowId": "window-1"
+            }
+          },
+          "legalActions": [
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "left",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "right",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "idle",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 1
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "collect",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 150
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "dodge",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 150
+              }
+            }
+          ]
+        },
+        "player2": {
+          "seatId": "player2",
+          "phase": "playing",
+          "turnId": "window-1",
+          "viewRevision": 153,
+          "decisionRevision": 4,
+          "viewSequence": 5,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 150,
+            "remainingTicks": 1650,
+            "phase": "playing",
+            "turnId": "window-1",
+            "windowEndTick": 300,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 375,
+                "y": 900,
+                "score": 1,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 250,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [
+              {
+                "id": 6,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 870
+              },
+              {
+                "id": 7,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 500,
+                "y": 510
+              },
+              {
+                "id": 8,
+                "kind": "star",
+                "ownerSeatId": "player2",
+                "x": 125,
+                "y": 330
+              },
+              {
+                "id": 9,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 150
+              }
+            ],
+            "ownInput": {
+              "policy": "collect",
+              "expiresAtTick": 300,
+              "windowId": "window-1"
+            }
+          },
+          "legalActions": [
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "left",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "right",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "idle",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 1
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "collect",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 150
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "dodge",
+                "windowId": "window-1",
+                "validThroughTick": 300,
+                "durationTicks": 150
+              }
+            }
+          ]
+        },
+        "spectator": {
+          "seatId": "spectator",
+          "phase": "playing",
+          "turnId": "window-1",
+          "viewRevision": 151,
+          "decisionRevision": 2,
+          "viewSequence": 3,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 150,
+            "remainingTicks": 1650,
+            "phase": "playing",
+            "turnId": "window-1",
+            "windowEndTick": 300,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 375,
+                "y": 900,
+                "score": 1,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 250,
+                "y": 900,
+                "score": 0,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [
+              {
+                "id": 6,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 870
+              },
+              {
+                "id": 7,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 500,
+                "y": 510
+              },
+              {
+                "id": 8,
+                "kind": "star",
+                "ownerSeatId": "player2",
+                "x": 125,
+                "y": 330
+              },
+              {
+                "id": 9,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 150
+              }
+            ],
+            "ownInput": null
+          },
+          "legalActions": []
+        }
+      },
+      "events": {
+        "player1": [],
+        "player2": [
+          {
+            "seatId": "player2",
+            "viewSequence": 5,
+            "type": "input.accepted",
+            "decisionRevision": 4,
+            "causedByRequestId": "request-5",
+            "payload": {
+              "policy": "collect",
+              "appliedAtTick": 150,
+              "expiresAtTick": 300
+            }
+          }
+        ],
+        "spectator": []
+      },
+      "checkpoint": {
+        "simTick": 150,
+        "commitRevision": 11,
+        "rulesSha256": "600d82ef6e70ee6fccb93dc65f9503e1c807d439a54d7cf856a9a86094df7367"
+      }
+    },
+    {
+      "input": {
+        "advanceTicks": 150,
+        "actualTicks": 150
+      },
+      "views": {
+        "player1": {
+          "seatId": "player1",
+          "phase": "playing",
+          "turnId": "window-2",
+          "viewRevision": 303,
+          "decisionRevision": 5,
+          "viewSequence": 8,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 300,
+            "remainingTicks": 1500,
+            "phase": "playing",
+            "turnId": "window-2",
+            "windowEndTick": 450,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 875,
+                "y": 900,
+                "score": 2,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 500,
+                "y": 900,
+                "score": 1,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [
+              {
+                "id": 16,
+                "kind": "star",
+                "ownerSeatId": "player2",
+                "x": 500,
+                "y": 690
+              },
+              {
+                "id": 17,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 690
+              },
+              {
+                "id": 18,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 375,
+                "y": 330
+              },
+              {
+                "id": 19,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 875,
+                "y": -30
+              },
+              {
+                "id": 20,
+                "kind": "star",
+                "ownerSeatId": "player1",
+                "x": 875,
+                "y": -30
+              }
+            ],
+            "ownInput": {
+              "policy": "idle",
+              "expiresAtTick": 300,
+              "windowId": "window-2"
+            }
+          },
+          "legalActions": [
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "left",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "right",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "idle",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 1
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "collect",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 150
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "dodge",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 150
+              }
+            }
+          ]
+        },
+        "player2": {
+          "seatId": "player2",
+          "phase": "playing",
+          "turnId": "window-2",
+          "viewRevision": 303,
+          "decisionRevision": 5,
+          "viewSequence": 8,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 300,
+            "remainingTicks": 1500,
+            "phase": "playing",
+            "turnId": "window-2",
+            "windowEndTick": 450,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 875,
+                "y": 900,
+                "score": 2,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 500,
+                "y": 900,
+                "score": 1,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [
+              {
+                "id": 16,
+                "kind": "star",
+                "ownerSeatId": "player2",
+                "x": 500,
+                "y": 690
+              },
+              {
+                "id": 17,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 690
+              },
+              {
+                "id": 18,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 375,
+                "y": 330
+              },
+              {
+                "id": 19,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 875,
+                "y": -30
+              },
+              {
+                "id": 20,
+                "kind": "star",
+                "ownerSeatId": "player1",
+                "x": 875,
+                "y": -30
+              }
+            ],
+            "ownInput": {
+              "policy": "idle",
+              "expiresAtTick": 300,
+              "windowId": "window-2"
+            }
+          },
+          "legalActions": [
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "left",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "right",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "idle",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 1
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "collect",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 150
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "dodge",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 150
+              }
+            }
+          ]
+        },
+        "spectator": {
+          "seatId": "spectator",
+          "phase": "playing",
+          "turnId": "window-2",
+          "viewRevision": 301,
+          "decisionRevision": 3,
+          "viewSequence": 6,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 300,
+            "remainingTicks": 1500,
+            "phase": "playing",
+            "turnId": "window-2",
+            "windowEndTick": 450,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 875,
+                "y": 900,
+                "score": 2,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 500,
+                "y": 900,
+                "score": 1,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [
+              {
+                "id": 16,
+                "kind": "star",
+                "ownerSeatId": "player2",
+                "x": 500,
+                "y": 690
+              },
+              {
+                "id": 17,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 690
+              },
+              {
+                "id": 18,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 375,
+                "y": 330
+              },
+              {
+                "id": 19,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 875,
+                "y": -30
+              },
+              {
+                "id": 20,
+                "kind": "star",
+                "ownerSeatId": "player1",
+                "x": 875,
+                "y": -30
+              }
+            ],
+            "ownInput": null
+          },
+          "legalActions": []
+        }
+      },
+      "events": {
+        "player1": [
+          {
+            "seatId": "player1",
+            "viewSequence": 6,
+            "type": "item.collected",
+            "decisionRevision": 4,
+            "causedByRequestId": null,
+            "payload": {
+              "seatId": "player2",
+              "score": 1
+            }
+          },
+          {
+            "seatId": "player1",
+            "viewSequence": 7,
+            "type": "item.collected",
+            "decisionRevision": 4,
+            "causedByRequestId": null,
+            "payload": {
+              "seatId": "player1",
+              "score": 2
+            }
+          },
+          {
+            "seatId": "player1",
+            "viewSequence": 8,
+            "type": "decision.window_opened",
+            "decisionRevision": 5,
+            "causedByRequestId": null,
+            "payload": {
+              "windowId": "window-2",
+              "validThroughTick": 450
+            }
+          }
+        ],
+        "player2": [
+          {
+            "seatId": "player2",
+            "viewSequence": 6,
+            "type": "item.collected",
+            "decisionRevision": 4,
+            "causedByRequestId": null,
+            "payload": {
+              "seatId": "player2",
+              "score": 1
+            }
+          },
+          {
+            "seatId": "player2",
+            "viewSequence": 7,
+            "type": "item.collected",
+            "decisionRevision": 4,
+            "causedByRequestId": null,
+            "payload": {
+              "seatId": "player1",
+              "score": 2
+            }
+          },
+          {
+            "seatId": "player2",
+            "viewSequence": 8,
+            "type": "decision.window_opened",
+            "decisionRevision": 5,
+            "causedByRequestId": null,
+            "payload": {
+              "windowId": "window-2",
+              "validThroughTick": 450
+            }
+          }
+        ],
+        "spectator": [
+          {
+            "seatId": "spectator",
+            "viewSequence": 4,
+            "type": "item.collected",
+            "decisionRevision": 2,
+            "causedByRequestId": null,
+            "payload": {
+              "seatId": "player2",
+              "score": 1
+            }
+          },
+          {
+            "seatId": "spectator",
+            "viewSequence": 5,
+            "type": "item.collected",
+            "decisionRevision": 2,
+            "causedByRequestId": null,
+            "payload": {
+              "seatId": "player1",
+              "score": 2
+            }
+          },
+          {
+            "seatId": "spectator",
+            "viewSequence": 6,
+            "type": "decision.window_opened",
+            "decisionRevision": 3,
+            "causedByRequestId": null,
+            "payload": {
+              "windowId": "window-2",
+              "validThroughTick": 450
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "simTick": 300,
+        "commitRevision": 17,
+        "rulesSha256": "558ce1e7bc6199ee8494ceae957eed3342013c79e12052826e8c17919aacaabb"
+      }
+    },
+    {
+      "input": {
+        "seatId": "player1",
+        "actionId": "game.input",
+        "args": {
+          "policy": "collect",
+          "windowId": "window-2",
+          "validThroughTick": 450,
+          "durationTicks": 150
+        },
+        "requestId": "request-7"
+      },
+      "receipt": {
+        "requestId": "request-7",
+        "status": "applied",
+        "beforeRevision": 5,
+        "afterRevision": 6,
+        "committedViewSequence": 9,
+        "errorCode": ""
+      },
+      "views": {
+        "player1": {
+          "seatId": "player1",
+          "phase": "playing",
+          "turnId": "window-2",
+          "viewRevision": 304,
+          "decisionRevision": 6,
+          "viewSequence": 9,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 300,
+            "remainingTicks": 1500,
+            "phase": "playing",
+            "turnId": "window-2",
+            "windowEndTick": 450,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 875,
+                "y": 900,
+                "score": 2,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 500,
+                "y": 900,
+                "score": 1,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [
+              {
+                "id": 16,
+                "kind": "star",
+                "ownerSeatId": "player2",
+                "x": 500,
+                "y": 690
+              },
+              {
+                "id": 17,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 690
+              },
+              {
+                "id": 18,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 375,
+                "y": 330
+              },
+              {
+                "id": 19,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 875,
+                "y": -30
+              },
+              {
+                "id": 20,
+                "kind": "star",
+                "ownerSeatId": "player1",
+                "x": 875,
+                "y": -30
+              }
+            ],
+            "ownInput": {
+              "policy": "collect",
+              "expiresAtTick": 450,
+              "windowId": "window-2"
+            }
+          },
+          "legalActions": [
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "left",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "right",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "idle",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 1
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "collect",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 150
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "dodge",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 150
+              }
+            }
+          ]
+        },
+        "player2": {
+          "seatId": "player2",
+          "phase": "playing",
+          "turnId": "window-2",
+          "viewRevision": 303,
+          "decisionRevision": 5,
+          "viewSequence": 8,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 300,
+            "remainingTicks": 1500,
+            "phase": "playing",
+            "turnId": "window-2",
+            "windowEndTick": 450,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 875,
+                "y": 900,
+                "score": 2,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 500,
+                "y": 900,
+                "score": 1,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [
+              {
+                "id": 16,
+                "kind": "star",
+                "ownerSeatId": "player2",
+                "x": 500,
+                "y": 690
+              },
+              {
+                "id": 17,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 690
+              },
+              {
+                "id": 18,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 375,
+                "y": 330
+              },
+              {
+                "id": 19,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 875,
+                "y": -30
+              },
+              {
+                "id": 20,
+                "kind": "star",
+                "ownerSeatId": "player1",
+                "x": 875,
+                "y": -30
+              }
+            ],
+            "ownInput": {
+              "policy": "idle",
+              "expiresAtTick": 300,
+              "windowId": "window-2"
+            }
+          },
+          "legalActions": [
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "left",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "right",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "idle",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 1
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "collect",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 150
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "dodge",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 150
+              }
+            }
+          ]
+        },
+        "spectator": {
+          "seatId": "spectator",
+          "phase": "playing",
+          "turnId": "window-2",
+          "viewRevision": 301,
+          "decisionRevision": 3,
+          "viewSequence": 6,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 300,
+            "remainingTicks": 1500,
+            "phase": "playing",
+            "turnId": "window-2",
+            "windowEndTick": 450,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 875,
+                "y": 900,
+                "score": 2,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 500,
+                "y": 900,
+                "score": 1,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [
+              {
+                "id": 16,
+                "kind": "star",
+                "ownerSeatId": "player2",
+                "x": 500,
+                "y": 690
+              },
+              {
+                "id": 17,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 690
+              },
+              {
+                "id": 18,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 375,
+                "y": 330
+              },
+              {
+                "id": 19,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 875,
+                "y": -30
+              },
+              {
+                "id": 20,
+                "kind": "star",
+                "ownerSeatId": "player1",
+                "x": 875,
+                "y": -30
+              }
+            ],
+            "ownInput": null
+          },
+          "legalActions": []
+        }
+      },
+      "events": {
+        "player1": [
+          {
+            "seatId": "player1",
+            "viewSequence": 9,
+            "type": "input.accepted",
+            "decisionRevision": 6,
+            "causedByRequestId": "request-7",
+            "payload": {
+              "policy": "collect",
+              "appliedAtTick": 300,
+              "expiresAtTick": 450
+            }
+          }
+        ],
+        "player2": [],
+        "spectator": []
+      },
+      "checkpoint": {
+        "simTick": 300,
+        "commitRevision": 18,
+        "rulesSha256": "5877428f64756a8a272b0402f061803ddda3e614590306db7873a9ef76e81463"
+      }
+    },
+    {
+      "input": {
+        "seatId": "player2",
+        "actionId": "game.input",
+        "args": {
+          "policy": "collect",
+          "windowId": "window-2",
+          "validThroughTick": 450,
+          "durationTicks": 150
+        },
+        "requestId": "request-8"
+      },
+      "receipt": {
+        "requestId": "request-8",
+        "status": "applied",
+        "beforeRevision": 5,
+        "afterRevision": 6,
+        "committedViewSequence": 9,
+        "errorCode": ""
+      },
+      "views": {
+        "player1": {
+          "seatId": "player1",
+          "phase": "playing",
+          "turnId": "window-2",
+          "viewRevision": 304,
+          "decisionRevision": 6,
+          "viewSequence": 9,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 300,
+            "remainingTicks": 1500,
+            "phase": "playing",
+            "turnId": "window-2",
+            "windowEndTick": 450,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 875,
+                "y": 900,
+                "score": 2,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 500,
+                "y": 900,
+                "score": 1,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [
+              {
+                "id": 16,
+                "kind": "star",
+                "ownerSeatId": "player2",
+                "x": 500,
+                "y": 690
+              },
+              {
+                "id": 17,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 690
+              },
+              {
+                "id": 18,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 375,
+                "y": 330
+              },
+              {
+                "id": 19,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 875,
+                "y": -30
+              },
+              {
+                "id": 20,
+                "kind": "star",
+                "ownerSeatId": "player1",
+                "x": 875,
+                "y": -30
+              }
+            ],
+            "ownInput": {
+              "policy": "collect",
+              "expiresAtTick": 450,
+              "windowId": "window-2"
+            }
+          },
+          "legalActions": [
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "left",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "right",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "idle",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 1
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "collect",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 150
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "dodge",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 150
+              }
+            }
+          ]
+        },
+        "player2": {
+          "seatId": "player2",
+          "phase": "playing",
+          "turnId": "window-2",
+          "viewRevision": 304,
+          "decisionRevision": 6,
+          "viewSequence": 9,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 300,
+            "remainingTicks": 1500,
+            "phase": "playing",
+            "turnId": "window-2",
+            "windowEndTick": 450,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 875,
+                "y": 900,
+                "score": 2,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 500,
+                "y": 900,
+                "score": 1,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [
+              {
+                "id": 16,
+                "kind": "star",
+                "ownerSeatId": "player2",
+                "x": 500,
+                "y": 690
+              },
+              {
+                "id": 17,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 690
+              },
+              {
+                "id": 18,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 375,
+                "y": 330
+              },
+              {
+                "id": 19,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 875,
+                "y": -30
+              },
+              {
+                "id": 20,
+                "kind": "star",
+                "ownerSeatId": "player1",
+                "x": 875,
+                "y": -30
+              }
+            ],
+            "ownInput": {
+              "policy": "collect",
+              "expiresAtTick": 450,
+              "windowId": "window-2"
+            }
+          },
+          "legalActions": [
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "left",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "right",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 5
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "idle",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 1
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "collect",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 150
+              }
+            },
+            {
+              "actionId": "game.input",
+              "args": {
+                "policy": "dodge",
+                "windowId": "window-2",
+                "validThroughTick": 450,
+                "durationTicks": 150
+              }
+            }
+          ]
+        },
+        "spectator": {
+          "seatId": "spectator",
+          "phase": "playing",
+          "turnId": "window-2",
+          "viewRevision": 301,
+          "decisionRevision": 3,
+          "viewSequence": 6,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 300,
+            "remainingTicks": 1500,
+            "phase": "playing",
+            "turnId": "window-2",
+            "windowEndTick": 450,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": false,
+            "endReason": "",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 875,
+                "y": 900,
+                "score": 2,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 500,
+                "y": 900,
+                "score": 1,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [
+              {
+                "id": 16,
+                "kind": "star",
+                "ownerSeatId": "player2",
+                "x": 500,
+                "y": 690
+              },
+              {
+                "id": 17,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 125,
+                "y": 690
+              },
+              {
+                "id": 18,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 375,
+                "y": 330
+              },
+              {
+                "id": 19,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 875,
+                "y": -30
+              },
+              {
+                "id": 20,
+                "kind": "star",
+                "ownerSeatId": "player1",
+                "x": 875,
+                "y": -30
+              }
+            ],
+            "ownInput": null
+          },
+          "legalActions": []
+        }
+      },
+      "events": {
+        "player1": [],
+        "player2": [
+          {
+            "seatId": "player2",
+            "viewSequence": 9,
+            "type": "input.accepted",
+            "decisionRevision": 6,
+            "causedByRequestId": "request-8",
+            "payload": {
+              "policy": "collect",
+              "appliedAtTick": 300,
+              "expiresAtTick": 450
+            }
+          }
+        ],
+        "spectator": []
+      },
+      "checkpoint": {
+        "simTick": 300,
+        "commitRevision": 19,
+        "rulesSha256": "05564ac51e95c41952f3619e60a4e37eea4dcf1cdb4af0b2c12c4f9edc3a9890"
+      }
+    },
+    {
+      "input": {
+        "advanceTicks": 150,
+        "actualTicks": 133
+      },
+      "views": {
+        "player1": {
+          "seatId": "player1",
+          "phase": "ended",
+          "turnId": "window-2",
+          "viewRevision": 437,
+          "decisionRevision": 7,
+          "viewSequence": 13,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 433,
+            "remainingTicks": 1367,
+            "phase": "ended",
+            "turnId": "window-2",
+            "windowEndTick": 450,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": true,
+            "endReason": "goal",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 525,
+                "y": 900,
+                "score": 3,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 750,
+                "y": 900,
+                "score": 3,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [
+              {
+                "id": 25,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 875,
+                "y": 924
+              },
+              {
+                "id": 26,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 875,
+                "y": 564
+              },
+              {
+                "id": 27,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 625,
+                "y": 204
+              },
+              {
+                "id": 28,
+                "kind": "star",
+                "ownerSeatId": "player1",
+                "x": 250,
+                "y": 126
+              }
+            ],
+            "ownInput": {
+              "policy": "idle",
+              "expiresAtTick": 433,
+              "windowId": "window-2"
+            }
+          },
+          "legalActions": []
+        },
+        "player2": {
+          "seatId": "player2",
+          "phase": "ended",
+          "turnId": "window-2",
+          "viewRevision": 437,
+          "decisionRevision": 7,
+          "viewSequence": 13,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 433,
+            "remainingTicks": 1367,
+            "phase": "ended",
+            "turnId": "window-2",
+            "windowEndTick": 450,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": true,
+            "endReason": "goal",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 525,
+                "y": 900,
+                "score": 3,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 750,
+                "y": 900,
+                "score": 3,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [
+              {
+                "id": 25,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 875,
+                "y": 924
+              },
+              {
+                "id": 26,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 875,
+                "y": 564
+              },
+              {
+                "id": 27,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 625,
+                "y": 204
+              },
+              {
+                "id": 28,
+                "kind": "star",
+                "ownerSeatId": "player1",
+                "x": 250,
+                "y": 126
+              }
+            ],
+            "ownInput": {
+              "policy": "idle",
+              "expiresAtTick": 433,
+              "windowId": "window-2"
+            }
+          },
+          "legalActions": []
+        },
+        "spectator": {
+          "seatId": "spectator",
+          "phase": "ended",
+          "turnId": "window-2",
+          "viewRevision": 434,
+          "decisionRevision": 4,
+          "viewSequence": 10,
+          "allowedView": {
+            "arena": {
+              "width": 1000,
+              "height": 1000
+            },
+            "tickHz": 30,
+            "simTick": 433,
+            "remainingTicks": 1367,
+            "phase": "ended",
+            "turnId": "window-2",
+            "windowEndTick": 450,
+            "targetPerRole": 3,
+            "teamLives": 6,
+            "teamWon": true,
+            "endReason": "goal",
+            "players": [
+              {
+                "seatId": "player1",
+                "x": 525,
+                "y": 900,
+                "score": 3,
+                "invulnerableTicks": 0
+              },
+              {
+                "seatId": "player2",
+                "x": 750,
+                "y": 900,
+                "score": 3,
+                "invulnerableTicks": 0
+              }
+            ],
+            "objects": [
+              {
+                "id": 25,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 875,
+                "y": 924
+              },
+              {
+                "id": 26,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 875,
+                "y": 564
+              },
+              {
+                "id": 27,
+                "kind": "hazard",
+                "ownerSeatId": null,
+                "x": 625,
+                "y": 204
+              },
+              {
+                "id": 28,
+                "kind": "star",
+                "ownerSeatId": "player1",
+                "x": 250,
+                "y": 126
+              }
+            ],
+            "ownInput": null
+          },
+          "legalActions": []
+        }
+      },
+      "events": {
+        "player1": [
+          {
+            "seatId": "player1",
+            "viewSequence": 10,
+            "type": "item.collected",
+            "decisionRevision": 6,
+            "causedByRequestId": null,
+            "payload": {
+              "seatId": "player2",
+              "score": 2
+            }
+          },
+          {
+            "seatId": "player1",
+            "viewSequence": 11,
+            "type": "item.collected",
+            "decisionRevision": 6,
+            "causedByRequestId": null,
+            "payload": {
+              "seatId": "player1",
+              "score": 3
+            }
+          },
+          {
+            "seatId": "player1",
+            "viewSequence": 12,
+            "type": "item.collected",
+            "decisionRevision": 7,
+            "causedByRequestId": null,
+            "payload": {
+              "seatId": "player2",
+              "score": 3
+            }
+          },
+          {
+            "seatId": "player1",
+            "viewSequence": 13,
+            "type": "game.ended",
+            "decisionRevision": 7,
+            "causedByRequestId": null,
+            "payload": {
+              "teamWon": true,
+              "reason": "goal",
+              "scores": {
+                "player1": 3,
+                "player2": 3
+              }
+            }
+          }
+        ],
+        "player2": [
+          {
+            "seatId": "player2",
+            "viewSequence": 10,
+            "type": "item.collected",
+            "decisionRevision": 6,
+            "causedByRequestId": null,
+            "payload": {
+              "seatId": "player2",
+              "score": 2
+            }
+          },
+          {
+            "seatId": "player2",
+            "viewSequence": 11,
+            "type": "item.collected",
+            "decisionRevision": 6,
+            "causedByRequestId": null,
+            "payload": {
+              "seatId": "player1",
+              "score": 3
+            }
+          },
+          {
+            "seatId": "player2",
+            "viewSequence": 12,
+            "type": "item.collected",
+            "decisionRevision": 7,
+            "causedByRequestId": null,
+            "payload": {
+              "seatId": "player2",
+              "score": 3
+            }
+          },
+          {
+            "seatId": "player2",
+            "viewSequence": 13,
+            "type": "game.ended",
+            "decisionRevision": 7,
+            "causedByRequestId": null,
+            "payload": {
+              "teamWon": true,
+              "reason": "goal",
+              "scores": {
+                "player1": 3,
+                "player2": 3
+              }
+            }
+          }
+        ],
+        "spectator": [
+          {
+            "seatId": "spectator",
+            "viewSequence": 7,
+            "type": "item.collected",
+            "decisionRevision": 3,
+            "causedByRequestId": null,
+            "payload": {
+              "seatId": "player2",
+              "score": 2
+            }
+          },
+          {
+            "seatId": "spectator",
+            "viewSequence": 8,
+            "type": "item.collected",
+            "decisionRevision": 3,
+            "causedByRequestId": null,
+            "payload": {
+              "seatId": "player1",
+              "score": 3
+            }
+          },
+          {
+            "seatId": "spectator",
+            "viewSequence": 9,
+            "type": "item.collected",
+            "decisionRevision": 4,
+            "causedByRequestId": null,
+            "payload": {
+              "seatId": "player2",
+              "score": 3
+            }
+          },
+          {
+            "seatId": "spectator",
+            "viewSequence": 10,
+            "type": "game.ended",
+            "decisionRevision": 4,
+            "causedByRequestId": null,
+            "payload": {
+              "teamWon": true,
+              "reason": "goal",
+              "scores": {
+                "player1": 3,
+                "player2": 3
+              }
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "simTick": 433,
+        "commitRevision": 24,
+        "rulesSha256": "2c64274552ad8198d646a2438804ddc3f15fe256581cdcc462689d48e215da59"
+      }
+    }
+  ]
+}

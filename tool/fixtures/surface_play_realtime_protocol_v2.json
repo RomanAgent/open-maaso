@@ -1,0 +1,104 @@
+{
+  "protocolVersion": 2,
+  "profile": "maaso.agent.protocol.v2",
+  "projectId": "pb_project_00000000-0000-0000-0000-000000000001",
+  "revisionId": "pb_revision_00000000-0000-0000-0000-000000000002",
+  "projectKind": "game",
+  "modes": [
+    "cooperative",
+    "spectate"
+  ],
+  "roles": [
+    "player1",
+    "player2",
+    "spectator"
+  ],
+  "play": {
+    "sdkVersion": 2,
+    "rulesId": "cooperative-dodge.v1",
+    "rulesConfig": {
+      "tickHz": 30,
+      "roundTicks": 1800,
+      "decisionWindowTicks": 150,
+      "checkpointIntervalTicks": 30,
+      "targetPerRole": 3,
+      "teamLives": 6
+    }
+  },
+  "actions": [
+    {
+      "id": "game.start",
+      "roles": [
+        "player1"
+      ],
+      "argsSchema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "precondition": "playerOneAndReadyMatch",
+      "effect": "localGameState"
+    },
+    {
+      "id": "game.input",
+      "roles": [
+        "player1",
+        "player2"
+      ],
+      "argsSchema": {
+        "type": "object",
+        "properties": {
+          "policy": {
+            "type": "string",
+            "enum": [
+              "left",
+              "right",
+              "idle",
+              "collect",
+              "dodge"
+            ],
+            "maxLength": 7
+          },
+          "windowId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "validThroughTick": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1800
+          },
+          "durationTicks": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 150
+          }
+        },
+        "required": [
+          "policy",
+          "windowId",
+          "validThroughTick",
+          "durationTicks"
+        ],
+        "additionalProperties": false
+      },
+      "precondition": "currentWindowAndActiveMatch",
+      "effect": "localGameState"
+    }
+  ],
+  "events": [
+    "game.started",
+    "input.accepted",
+    "decision.window_opened",
+    "item.collected",
+    "player.hit",
+    "game.ended"
+  ],
+  "capabilities": {
+    "turnBased": false,
+    "realtime": true,
+    "checkpoint": true
+  }
+}

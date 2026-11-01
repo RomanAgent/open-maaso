@@ -1,0 +1,7 @@
+{
+    "name": "Maaso.VrmBridge.Editor",
+    "rootNamespace": "Maaso.Avatar.Editor",
+    "references": ["UniGLTF", "UniGLTF.Editor", "UniGLTF.Utils", "VRM10"],
+    "includePlatforms": ["Editor"],
+    "autoReferenced": true
+}

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 2,
+  "profile": "maaso.project.preflight.v2",
+  "projectId": "offline-checklist",
+  "revisionId": "revision-1",
+  "protocolVersion": 2,
+  "entryPoint": "index.html",
+  "files": [
+    {
+      "path": "agent.md",
+      "byteLength": 930,
+      "sha256": "f55e77f71eb58e47454345df1fb67e95b96553898238c6882ed8e3efeabefb63"
+    },
+    {
+      "path": "agent.protocol.json",
+      "byteLength": 416,
+      "sha256": "a43fe52f94879d7891bba87117318624c8d269ab6e2312d459f707d91928dacd"
+    },
+    {
+      "path": "index.html",
+      "byteLength": 904,
+      "sha256": "88aee613f531356f427a407a195bef3011f1a158593e787d0b2f1c38130a619c"
+    },
+    {
+      "path": "pages/details.html",
+      "byteLength": 724,
+      "sha256": "9d9c6d14787197d93dbdd2c7c5296b8841492bd97618efed42320484b0087e52"
+    },
+    {
+      "path": "styles.css",
+      "byteLength": 1269,
+      "sha256": "bfaf10cdca26cc03796d6942811237c8d3d15d04029439b0bb813d73156aa7ae"
+    }
+  ]
+}

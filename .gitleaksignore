@@ -1,0 +1,4 @@
+# Intentionally no fingerprint suppressions.
+# Reviewed non-secret exceptions live in .gitleaks.toml and require BOTH the
+# exact file path and the documented value/line format. No library or test
+# directory is excluded. See docs/security-scan.md.

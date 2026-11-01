@@ -1,0 +1,7 @@
+{
+    "name": "Maaso.VrmBridge.Editor.Tests",
+    "references": ["Maaso.VrmBridge.Editor", "UniGLTF"],
+    "includePlatforms": ["Editor"],
+    "optionalUnityReferences": ["TestAssemblies"],
+    "autoReferenced": false
+}

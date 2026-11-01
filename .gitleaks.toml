@@ -1,0 +1,53 @@
+title = "open-maaso: default detection with reviewed non-secret exceptions"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "generic-api-key"
+
+  [[rules.allowlists]]
+  description = "SHA256 file digests in the two vendored upstream provenance manifests"
+  condition = "AND"
+  paths = ['''(^|/)third_party/webview_flutter_(android|wkwebview)/UPSTREAM_SOURCE\.json$''']
+  regexTarget = "line"
+  regexes = ['''^\s*"[^"\r\n]+": "[0-9a-f]{64}",?\s*$''']
+
+  [[rules.allowlists]]
+  description = "Reviewed CocoaPods checksum, not an API key"
+  condition = "AND"
+  paths = ['''(^|/)ios/Podfile\.lock$''']
+  regexTarget = "line"
+  regexes = ['''^\s*VolcApiEngine: 899572c73a52d6c92eabce2c6da8c3c22ba131df\s*$''']
+
+  [[rules.allowlists]]
+  description = "Public Qwen model option identifier, not an authorization key"
+  condition = "AND"
+  paths = ['''(^|/)lib/src/core/services/local_llm_service\.dart$''']
+  regexTarget = "line"
+  regexes = ['''^\s*key: 'qwen3\.5-2b-q4km',\s*$''']
+
+  [[rules.allowlists]]
+  description = "Exact deterministic avatar outbox idempotency fixtures"
+  condition = "AND"
+  paths = ['''(^|/)test/avatar_selection_outbox_test\.dart$''']
+  regexTarget = "line"
+  regexes = ['''^\s*compensationKey: 'avatar_comp_(reconstruct_1|idempotent_1|compensate_1|wrong_prior_1|fence_1|receipt_mismatch_1|replacement_1|foreign_1|final_fence_1)',\s*$''']
+
+  [[rules.allowlists]]
+  description = "Exact deterministic avatar coordinator assertions and fixture"
+  condition = "AND"
+  paths = ['''(^|/)test/avatar_selection_coordinator_test\.dart$''']
+  regexTarget = "line"
+  regexes = [
+    '''^\s*expect\(request\.idempotencyKey, 'avatar_comp_compensate_1'\);\s*$''',
+    '''^\s*expect\(durable\?\.compensationKey, 'avatar_comp_comp_ambiguous_1'\);\s*$''',
+    '''^\s*compensationKey: 'avatar_comp_stale_applied_1',\s*$'''
+  ]
+
+  [[rules.allowlists]]
+  description = "Exact fabricated marker proving TTS does not log utterance text"
+  condition = "AND"
+  paths = ['''(^|/)test/maaso_tts_utterance_test\.dart$''']
+  regexTarget = "line"
+  regexes = ['''^\s*const secret = 'LEASE_SECRET_92841';\s*$''']

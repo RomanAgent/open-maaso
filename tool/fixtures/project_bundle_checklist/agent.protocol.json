@@ -1,0 +1,14 @@
+{
+  "protocolVersion": 2,
+  "profile": "maaso.project.preflight.v2",
+  "projectId": "offline-checklist",
+  "revisionId": "revision-1",
+  "routes": [
+    {"id": "home", "path": "index.html", "parentId": null},
+    {"id": "details", "path": "pages/details.html", "parentId": "home"}
+  ],
+  "actions": [
+    {"id": "app.navigate.home", "routeId": "home"},
+    {"id": "app.navigate.details", "routeId": "details"}
+  ]
+}

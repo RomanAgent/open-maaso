@@ -1,0 +1,85 @@
+<!doctype html><meta charset="utf-8"><title>Invocation browser probe</title>
+<iframe id="work" src="/document.html"></iframe><pre id="receipt">pending</pre>
+<script>
+(async () => {
+  const checks = [], frame = document.querySelector('#work');
+  const check = (name, passed) => { checks.push({name, passed: !!passed}); if (!passed) throw Error(name); };
+  const wait = async (read, timeout = 5000) => {
+    const start = performance.now();
+    while (performance.now() - start < timeout) {
+      const value = read(); if (value) return value;
+      await new Promise(resolve => setTimeout(resolve, 20));
+    }
+    throw Error('probe_timeout');
+  };
+  try {
+    const api = await wait(() => frame.contentWindow.__maasoInvocationHost);
+    await wait(() => JSON.parse(api.describe()).ready);
+    const w = frame.contentWindow, d = frame.contentDocument;
+    const dispatch = command => api.dispatch(w.JSON.parse(JSON.stringify(command)));
+    check('full_document_body_preserved', d.body.dataset.probe === 'kept');
+    check('declared_actions_handshake', JSON.parse(api.describe()).actions.length === 6);
+    check('no_native_js_channel', typeof w.MaasoInvocationBridge === 'undefined');
+    const invoke = async (actionId, args = {}, requestId = crypto.randomUUID()) => {
+      const command = {requestId, actionId, args,
+        expectedStateVersion: JSON.parse(api.describe()).stateVersion, inputImages: []};
+      dispatch(command);
+      return await wait(() => JSON.parse(api.receipt(requestId)));
+    };
+    let result = await invoke('dom.read');
+    check('external_classic_and_module_executed', result.result.classic === 'classic loaded' && result.result.module === 'module loaded');
+    check('external_css_applied', result.result.color === 'rgb(12, 34, 56)');
+    check('fresh_browser_storage', result.result.stored === null);
+    result = await invoke('dom.configure', {text: 'configured by invocation'}, 'configure-once');
+    check('async_fetch_and_result', result.status === 'completed' && result.result.remote === 'remote loaded');
+    check('real_dom_updated', d.querySelector('#value').textContent === 'configured by invocation');
+    check('browser_storage_available', w.localStorage.getItem('invocation-value') === 'configured by invocation');
+    const version = JSON.parse(api.describe()).stateVersion;
+    dispatch({requestId: 'configure-once', actionId: 'dom.configure', args: {text: 'must not replay'}, expectedStateVersion: version});
+    check('duplicate_request_not_replayed', JSON.parse(api.describe()).stateVersion === version && d.querySelector('#value').textContent === 'configured by invocation');
+    let rejected = false;
+    try { dispatch({requestId: 'stale', actionId: 'dom.read', args: {}, expectedStateVersion: version - 1}); } catch (_) { rejected = true; }
+    check('stale_state_rejected', rejected);
+    rejected = false;
+    try { dispatch({requestId: 'unknown', actionId: 'undeclared', args: {}, expectedStateVersion: version}); } catch (_) { rejected = true; }
+    check('undeclared_action_rejected', rejected);
+    result = await invoke('dom.empty');
+    check('undefined_result_keeps_real_page_update', result.status === 'completed' && result.result === null && d.querySelector('#value').textContent === 'visible only');
+    result = await invoke('dom.image');
+    const output = result.outputs[0], image = new Image();
+    image.src = 'data:' + output.mime + ';base64,' + output.base64;
+    await image.decode();
+    const canvas = document.createElement('canvas'); canvas.width = 2; canvas.height = 2;
+    const context = canvas.getContext('2d'); context.drawImage(image, 0, 0);
+    const pixel = context.getImageData(0, 0, 1, 1).data;
+    check('canvas_output_decodes_to_real_pixels', image.width === 2 && image.height === 2 && pixel[0] === 255 && pixel[1] === 0 && pixel[3] === 255);
+    result = await invoke('dom.delay');
+    check('async_receipt_correlated', result.status === 'completed' && result.result.async === true);
+    result = await invoke('dom.tooLarge');
+    check('oversized_result_rejected', result.status === 'failed');
+    api.release();
+    rejected = false;
+    try { dispatch({requestId: 'released', actionId: 'dom.read', args: {}, expectedStateVersion: JSON.parse(api.describe()).stateVersion}); } catch (_) { rejected = true; }
+    check('release_revokes_agent_dispatch', rejected);
+    d.querySelector('#manual').click();
+    check('released_page_retains_user_controls', d.querySelector('#value').textContent === 'manual control');
+    const delayed = document.createElement('iframe');
+    const delayedLoad = new Promise(resolve => { delayed.onload = resolve; });
+    delayed.src = '/delayed-document.html'; document.body.append(delayed);
+    await delayedLoad;
+    const delayedApi = delayed.contentWindow.__maasoInvocationHost;
+    check('loaded_page_waits_for_actual_handler', JSON.parse(delayedApi.describe()).ready === false);
+    await wait(() => JSON.parse(delayedApi.describe()).ready);
+    delayedApi.dispatch(delayed.contentWindow.JSON.parse(JSON.stringify({
+      requestId: 'delayed-handler', actionId: 'dom.configure', args: {text: 'legacy onAgent'},
+      expectedStateVersion: 0, inputImages: [],
+    })));
+    const delayedResult = await wait(() => JSON.parse(delayedApi.receipt('delayed-handler')));
+    check('late_legacy_onAgent_is_callable', delayedResult.status === 'completed' && delayedResult.result.text === 'legacy onAgent');
+    document.querySelector('#receipt').textContent = JSON.stringify({passed: true, checks});
+  } catch (error) {
+    document.querySelector('#receipt').textContent = JSON.stringify({passed: false, checks, error: String(error)});
+  }
+  await fetch('/receipt', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: document.querySelector('#receipt').textContent});
+})();
+</script>

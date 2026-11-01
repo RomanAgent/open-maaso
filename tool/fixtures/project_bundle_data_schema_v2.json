@@ -1,0 +1,543 @@
+{
+  "fixtureVersion": 1,
+  "valid": [
+    {
+      "name": "no-declaration",
+      "projectFields": {},
+      "expectedSchemaDigest": null
+    },
+    {
+      "name": "bounded-state",
+      "projectFields": {
+        "dataSchemaVersion": 1,
+        "dataSchema": {
+          "type": "object",
+          "properties": {
+            "oldName": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          "required": [
+            "oldName"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "expectedSchemaDigest": "2abc58940cc599ba9aff009d8693275fd8f1e3c5443475c9fd78df585e5848d4"
+    },
+    {
+      "name": "rename",
+      "projectFields": {
+        "dataSchemaVersion": 2,
+        "dataSchema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "additionalProperties": false
+        },
+        "dataMigration": {
+          "fromSchemaDigest": "2abc58940cc599ba9aff009d8693275fd8f1e3c5443475c9fd78df585e5848d4",
+          "steps": [
+            {
+              "op": "rename",
+              "from": "oldName",
+              "to": "name"
+            }
+          ]
+        }
+      },
+      "expectedSchemaDigest": "a0f384a9dd5d0385229c2aece8ff9cb0bcb41353500c090bbe6781a68f66fba5"
+    },
+    {
+      "name": "explicit-compatible-empty-migration",
+      "projectFields": {
+        "dataSchemaVersion": 2,
+        "dataSchema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "additionalProperties": false
+        },
+        "dataMigration": {
+          "fromSchemaDigest": "2db4aea2b30fb8b33c00a0103a664e4224583b3808f3fccdb6750f92bf126b9a",
+          "steps": []
+        }
+      },
+      "expectedSchemaDigest": "a0f384a9dd5d0385229c2aece8ff9cb0bcb41353500c090bbe6781a68f66fba5"
+    },
+    {
+      "name": "default-declared-key",
+      "projectFields": {
+        "dataSchemaVersion": 2,
+        "dataSchema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "additionalProperties": false
+        },
+        "dataMigration": {
+          "fromSchemaDigest": "2db4aea2b30fb8b33c00a0103a664e4224583b3808f3fccdb6750f92bf126b9a",
+          "steps": [
+            {
+              "op": "default",
+              "key": "name",
+              "value": "Untitled"
+            }
+          ]
+        }
+      },
+      "expectedSchemaDigest": "a0f384a9dd5d0385229c2aece8ff9cb0bcb41353500c090bbe6781a68f66fba5"
+    }
+  ],
+  "invalid": [
+    {
+      "name": "version-only",
+      "projectFields": {
+        "dataSchemaVersion": 1
+      }
+    },
+    {
+      "name": "schema-only",
+      "projectFields": {
+        "dataSchema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "name": "zero-version",
+      "projectFields": {
+        "dataSchemaVersion": 0,
+        "dataSchema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "name": "version-overflow",
+      "projectFields": {
+        "dataSchemaVersion": 1000001,
+        "dataSchema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "name": "fractional-version",
+      "projectFields": {
+        "dataSchemaVersion": 1.5,
+        "dataSchema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "name": "unbounded-schema",
+      "projectFields": {
+        "dataSchemaVersion": 1,
+        "dataSchema": {
+          "type": "object",
+          "properties": {},
+          "required": [],
+          "additionalProperties": true
+        }
+      }
+    },
+    {
+      "name": "arbitrary-code",
+      "projectFields": {
+        "dataSchemaVersion": 2,
+        "dataSchema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "additionalProperties": false
+        },
+        "dataMigration": {
+          "fromSchemaDigest": "2db4aea2b30fb8b33c00a0103a664e4224583b3808f3fccdb6750f92bf126b9a",
+          "steps": [
+            {
+              "op": "eval",
+              "source": "x()"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "rename-same-key",
+      "projectFields": {
+        "dataSchemaVersion": 2,
+        "dataSchema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "additionalProperties": false
+        },
+        "dataMigration": {
+          "fromSchemaDigest": "2db4aea2b30fb8b33c00a0103a664e4224583b3808f3fccdb6750f92bf126b9a",
+          "steps": [
+            {
+              "op": "rename",
+              "from": "name",
+              "to": "name"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "default-wrong-type",
+      "projectFields": {
+        "dataSchemaVersion": 2,
+        "dataSchema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "additionalProperties": false
+        },
+        "dataMigration": {
+          "fromSchemaDigest": "2db4aea2b30fb8b33c00a0103a664e4224583b3808f3fccdb6750f92bf126b9a",
+          "steps": [
+            {
+              "op": "default",
+              "key": "name",
+              "value": 9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "default-undeclared",
+      "projectFields": {
+        "dataSchemaVersion": 2,
+        "dataSchema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "additionalProperties": false
+        },
+        "dataMigration": {
+          "fromSchemaDigest": "2db4aea2b30fb8b33c00a0103a664e4224583b3808f3fccdb6750f92bf126b9a",
+          "steps": [
+            {
+              "op": "default",
+              "key": "unknown",
+              "value": "x"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "extra-step-field",
+      "projectFields": {
+        "dataSchemaVersion": 2,
+        "dataSchema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "additionalProperties": false
+        },
+        "dataMigration": {
+          "fromSchemaDigest": "2db4aea2b30fb8b33c00a0103a664e4224583b3808f3fccdb6750f92bf126b9a",
+          "steps": [
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x",
+              "extra": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "too-many-steps",
+      "projectFields": {
+        "dataSchemaVersion": 2,
+        "dataSchema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "additionalProperties": false
+        },
+        "dataMigration": {
+          "fromSchemaDigest": "2db4aea2b30fb8b33c00a0103a664e4224583b3808f3fccdb6750f92bf126b9a",
+          "steps": [
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            },
+            {
+              "op": "default",
+              "key": "name",
+              "value": "x"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

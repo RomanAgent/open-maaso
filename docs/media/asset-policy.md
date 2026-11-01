@@ -1,0 +1,26 @@
+# Public-release asset policy
+
+This source release uses original geometric placeholders in place of the original application's branded images, room pictures, launcher artwork, splash images, and generic model-store fallback image. The replacement set consists of a blue circular mark with a white square, or a neutral white-to-blue background. It contains no original character pixels, room artwork, purchased content, or model renders.
+
+The existing filenames and pixel dimensions are retained so application and native asset references remain valid. Compatibility names such as `home_room.png`, `login_doorway.png`, and `assets/model_store/agent.png` describe their historical code locations; the public placeholder files do not contain a room, a doorway, or a character. The model-store image is an abstract fallback icon, not a model cover or evidence of a full-body render.
+
+## Recreate the placeholders
+
+Run from the repository root with Python 3.10 or newer:
+
+```bash
+python3 tool/generate_placeholder_assets.py
+python3 tool/generate_placeholder_assets.py --check
+```
+
+The generator uses only the Python standard library. It contains a table of output paths and dimensions and draws the pixels from geometric formulas. It does not fetch network resources, load an original image, require a font, or depend on a private checkout. The Windows ICO contains multiple sizes of the same newly generated mark.
+
+The first command overwrites every path listed in the generator, including the Windows ICO. Keep custom artwork elsewhere or commit your changes before regenerating. `--check` performs an exact byte comparison against the deterministic generated outputs without changing files.
+
+The README hero is a separate, newly authored SVG under `docs/media/`. It is not a screenshot of the application and does not represent a completed avatar or native rendering experience.
+
+## Adding real content
+
+Supply artwork and models with documented rights to use and redistribute. Preserve attribution and any third-party terms. Character model covers must be actual full-body renders showing the complete head, hands, and feet; do not present an abstract placeholder or a cropped diagnostic as a model cover.
+
+Original licensed characters, room assets, and generated Unity players are intentionally outside this public release. The MIT license for project-owned source does not grant rights to those excluded materials or to independently obtained third-party content. See [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md).

@@ -1,0 +1,7 @@
+{
+  "MAASO_TEST_BASE_URL": "https://api-dev.example.com",
+  "MAASO_PRODUCTION_BASE_URL": "https://api.example.com",
+  "MAASO_AGENT_BASE_URL": "https://rtc-api.example.com",
+  "MAASO_TEST_MEDIA_CDN_HOSTS": "assets-dev.example.com",
+  "MAASO_PRODUCTION_MEDIA_CDN_HOSTS": "assets.example.com"
+}

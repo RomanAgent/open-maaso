@@ -1,0 +1,47 @@
+name: Public source checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-safety:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check source publication boundaries
+        run: |
+          python3 -m unittest discover -s tool -p test_check_public_export.py
+          python3 tool/check_public_export.py
+          python3 tool/generate_placeholder_assets.py --check
+          git diff --check
+      - name: Scan complete public Git history
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION=8.30.1
+          ARCHIVE="gitleaks_${VERSION}_linux_x64.tar.gz"
+          TOOL_DIR="$(mktemp -d)"
+          trap 'rm -rf "$TOOL_DIR"' EXIT
+          curl --fail --location --silent --show-error             "https://github.com/gitleaks/gitleaks/releases/download/v${VERSION}/${ARCHIVE}"             --output "$TOOL_DIR/$ARCHIVE"
+          curl --fail --location --silent --show-error             "https://github.com/gitleaks/gitleaks/releases/download/v${VERSION}/gitleaks_${VERSION}_checksums.txt"             --output "$TOOL_DIR/checksums.txt"
+          (cd "$TOOL_DIR" && grep " $ARCHIVE$" checksums.txt | sha256sum --check -)
+          tar -xzf "$TOOL_DIR/$ARCHIVE" -C "$TOOL_DIR" gitleaks
+          "$TOOL_DIR/gitleaks" git --redact=100 --log-opts=--all .
+  focused-flutter-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install source toolchain from Flutter upstream
+        run: |
+          git clone --depth 1 --branch 3.47.2 https://github.com/flutter/flutter.git "$RUNNER_TEMP/flutter"
+          echo "$RUNNER_TEMP/flutter/bin" >> "$GITHUB_PATH"
+      - name: Resolve packages
+        run: flutter pub get
+      - name: Check runtime and configuration boundaries
+        run: |
+          flutter test test/app_environment_service_test.dart test/open_source_environment_test.dart test/realtime_agent_config_test.dart test/agent_action_protocol_test.dart test/turn_policy_test.dart test/turn_policy_wiring_test.dart test/router_destinations_test.dart test/navigation_capabilities_test.dart test/app_navigate_skill_test.dart
+          flutter analyze lib/src/core/services/app_environment_service.dart test/open_source_environment_test.dart

@@ -1,0 +1,128 @@
+{
+  "createRequest": {
+    "requestId": "create_project_0001",
+    "agentId": "self",
+    "projectKind": "applet",
+    "requirements": "制作一个离线清单，包含首页和详情页。",
+    "locale": "zh"
+  },
+  "createReceipt": {
+    "requestId": "create_project_0001",
+    "taskId": "pb_task_00000000-0000-0000-0000-000000000001",
+    "runId": "pb_run_00000000-0000-0000-0000-000000000002",
+    "attempt": 1,
+    "acceptedTaskSequence": 1
+  },
+  "snapshot": {
+    "schemaVersion": 1,
+    "kind": "project_build",
+    "taskId": "pb_task_00000000-0000-0000-0000-000000000001",
+    "runId": "pb_run_00000000-0000-0000-0000-000000000002",
+    "attempt": 1,
+    "agentId": "self",
+    "projectKind": "applet",
+    "projectId": "pb_project_00000000-0000-0000-0000-000000000003",
+    "status": "failed",
+    "statusVersion": 3,
+    "requirementRevision": 1,
+    "snapshotSequence": 3,
+    "snapshotTaskSequence": 3,
+    "createdAt": "2026-09-28T06:00:00Z",
+    "updatedAt": "2026-09-28T06:00:02Z",
+    "errorCode": "worker_failed"
+  },
+  "eventsPage": {
+    "events": [
+      {
+        "taskSequence": 1,
+        "sequence": 1,
+        "taskId": "pb_task_00000000-0000-0000-0000-000000000001",
+        "runId": "pb_run_00000000-0000-0000-0000-000000000002",
+        "type": "task.created",
+        "at": "2026-09-28T06:00:00Z",
+        "snapshot": {
+          "schemaVersion": 1,
+          "kind": "project_build",
+          "taskId": "pb_task_00000000-0000-0000-0000-000000000001",
+          "runId": "pb_run_00000000-0000-0000-0000-000000000002",
+          "attempt": 1,
+          "agentId": "self",
+          "projectKind": "applet",
+          "projectId": "pb_project_00000000-0000-0000-0000-000000000003",
+          "status": "queued",
+          "statusVersion": 1,
+          "requirementRevision": 1,
+          "snapshotSequence": 1,
+          "snapshotTaskSequence": 1,
+          "createdAt": "2026-09-28T06:00:00Z",
+          "updatedAt": "2026-09-28T06:00:00Z",
+          "errorCode": ""
+        }
+      },
+      {
+        "taskSequence": 2,
+        "sequence": 2,
+        "taskId": "pb_task_00000000-0000-0000-0000-000000000001",
+        "runId": "pb_run_00000000-0000-0000-0000-000000000002",
+        "type": "run.claimed",
+        "at": "2026-09-28T06:00:01Z",
+        "snapshot": {
+          "schemaVersion": 1,
+          "kind": "project_build",
+          "taskId": "pb_task_00000000-0000-0000-0000-000000000001",
+          "runId": "pb_run_00000000-0000-0000-0000-000000000002",
+          "attempt": 1,
+          "agentId": "self",
+          "projectKind": "applet",
+          "projectId": "pb_project_00000000-0000-0000-0000-000000000003",
+          "status": "running",
+          "statusVersion": 2,
+          "requirementRevision": 1,
+          "snapshotSequence": 2,
+          "snapshotTaskSequence": 2,
+          "createdAt": "2026-09-28T06:00:00Z",
+          "updatedAt": "2026-09-28T06:00:01Z",
+          "errorCode": ""
+        }
+      },
+      {
+        "taskSequence": 3,
+        "sequence": 3,
+        "taskId": "pb_task_00000000-0000-0000-0000-000000000001",
+        "runId": "pb_run_00000000-0000-0000-0000-000000000002",
+        "type": "run.failed",
+        "at": "2026-09-28T06:00:02Z",
+        "snapshot": {
+          "schemaVersion": 1,
+          "kind": "project_build",
+          "taskId": "pb_task_00000000-0000-0000-0000-000000000001",
+          "runId": "pb_run_00000000-0000-0000-0000-000000000002",
+          "attempt": 1,
+          "agentId": "self",
+          "projectKind": "applet",
+          "projectId": "pb_project_00000000-0000-0000-0000-000000000003",
+          "status": "failed",
+          "statusVersion": 3,
+          "requirementRevision": 1,
+          "snapshotSequence": 3,
+          "snapshotTaskSequence": 3,
+          "createdAt": "2026-09-28T06:00:00Z",
+          "updatedAt": "2026-09-28T06:00:02Z",
+          "errorCode": "worker_failed"
+        }
+      }
+    ],
+    "nextTaskSequence": 3,
+    "hasMore": false
+  },
+  "cancelCommand": {
+    "requestId": "cancel_project_0001",
+    "expectedRunId": "pb_run_00000000-0000-0000-0000-000000000002",
+    "expectedStatusVersion": 2
+  },
+  "retryCommand": {
+    "requestId": "retry_project_0001",
+    "expectedRunId": "pb_run_00000000-0000-0000-0000-000000000002",
+    "expectedStatusVersion": 3
+  }
+}

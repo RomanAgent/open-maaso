@@ -1,0 +1,72 @@
+{
+  "fixtureVersion": 1,
+  "scope": "Test-only SDK action declarations; not an installable, verified or catalog-published project bundle",
+  "protocol": {
+    "projectId": "wp0-declared-actions",
+    "revisionId": "fixture-revision-1",
+    "projectKind": "applet",
+    "actions": [
+      {
+        "id": "text.compose",
+        "argsSchema": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string", "maxLength": 32 },
+            "lines": {
+              "type": "array",
+              "items": { "type": "string", "maxLength": 64 },
+              "minItems": 1,
+              "maxItems": 8
+            },
+            "uppercase": { "type": "boolean" }
+          },
+          "required": ["title", "lines", "uppercase"],
+          "additionalProperties": false
+        }
+      },
+      {
+        "id": "ledger.summarize",
+        "argsSchema": {
+          "type": "object",
+          "properties": {
+            "entries": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "label": { "type": "string", "maxLength": 24 },
+                  "value": { "type": "integer", "minimum": -100, "maximum": 100 }
+                },
+                "required": ["label", "value"],
+                "additionalProperties": false
+              },
+              "minItems": 1,
+              "maxItems": 8
+            },
+            "includeLabels": { "type": "boolean" }
+          },
+          "required": ["entries", "includeLabels"],
+          "additionalProperties": false
+        }
+      },
+      {
+        "id": "canvas.sample",
+        "argsSchema": {
+          "type": "object",
+          "properties": {
+            "width": { "type": "integer", "minimum": 1, "maximum": 4 },
+            "height": { "type": "integer", "minimum": 1, "maximum": 4 },
+            "rgba": {
+              "type": "array",
+              "items": { "type": "integer", "minimum": 0, "maximum": 255 },
+              "minItems": 4,
+              "maxItems": 64
+            }
+          },
+          "required": ["width", "height", "rgba"],
+          "additionalProperties": false
+        }
+      }
+    ]
+  }
+}

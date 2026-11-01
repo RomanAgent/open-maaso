@@ -1,0 +1,31 @@
+{
+  "title": "植物防线：花园守卫战",
+  "summary": "一款离线可玩的横版塔防小游戏，灵感来自经典花园守卫生玩法。玩家在 5 行草坪上收集阳光、种植向日葵与豌豆射手，阻止僵尸进入房屋；包含多种植物、僵尸、波次、暂停、重开、胜负结算和本地简单策略。",
+  "skillInstructions": "点击阳光收集资源；选择植物卡片后点击草坪种植。向日葵生产阳光，豌豆射手攻击同行僵尸，坚果阻挡敌人，寒冰射手减速，樱桃炸弹造成范围爆炸，土豆地雷需要启动时间。合理安排植物，守住全部波次即可获胜。",
+  "interfaces": "共享接口：index.html 提供 #app 根节点；style.css 定义布局、HUD、卡片、草坪、植物、僵尸、子弹、阳光、弹窗与响应式样式；game.js 使用自包含 IIFE，读取 #app，内部模块包含 CONFIG、STATE、createPublicState()、startGame()、togglePause()、restartGame()、selectCard()、collectSun()、plantAt()、spawnZombie()、updateGame()、render()、showOverlay()、Surface.emit()。全局仅依赖宿主安全提供的 Surface；无网络、存储、远程资源或动态脚本。",
+  "files": [
+    {
+      "id": "index",
+      "kind": "html",
+      "purpose": "单页游戏结构：标题栏、阳光计数、植物卡片栏、波次与进度、5×9 草坪画布/DOM 网格、暂停和重开按钮、开始/暂停/失败/胜利遮罩、操作说明区域。",
+      "dependsOn": [
+        "styles",
+        "game"
+      ]
+    },
+    {
+      "id": "styles",
+      "kind": "css",
+      "purpose": "完整视觉样式：白霜磨砂风外壳、48px 触控目标、无边框磨砂按钮、草坪行列、植物卡片、冷却遮罩、僵尸、子弹、阳光、爆炸、提示弹窗、移动端自适应。",
+      "dependsOn": []
+    },
+    {
+      "id": "game",
+      "kind": "js",
+      "purpose": "完整游戏逻辑：状态机、输入、阳光经济、种植与冷却、植物行为、僵尸生成与行进、攻击、减速、爆炸、地雷、波次推进、碰撞、胜负判定、暂停/重开、动画循环、公开游戏事件 Surface.emit。",
+      "dependsOn": [
+        "styles"
+      ]
+    }
+  ]
+}

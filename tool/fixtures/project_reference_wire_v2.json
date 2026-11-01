@@ -1,0 +1,53 @@
+{
+  "createReceipt": {
+    "requestId": "reference_create_0001",
+    "taskId": "pb_task_06763b68-d384-4398-809f-b587d387e84a",
+    "runId": "pb_run_78a43c5b-abcf-4d33-a640-1d0c287aa656",
+    "attempt": 1,
+    "acceptedTaskSequence": 1
+  },
+  "createRequest": {
+    "referenceInputs": [
+      {
+        "referenceId": "ref_dc5e160b-6f5f-4cda-8bed-4b6126369c56",
+        "sha256": "4736c9ea4daf8067eaf7b204eca8c8f37e755acbfdc3e74ed25ebfbd6716d065"
+      }
+    ],
+    "requestId": "reference_create_0001",
+    "agentId": "self",
+    "projectKind": "applet",
+    "requirements": "Build an offline two-page counter.",
+    "locale": "en"
+  },
+  "fixtureOnly": true,
+  "fixturePurpose": "Synthetic receipt/upload/digest parser fixture, not a real model capability or billing receipt.",
+  "referenceDescriptors": [
+    {
+      "referenceId": "ref_dc5e160b-6f5f-4cda-8bed-4b6126369c56",
+      "originalSha256": "4736c9ea4daf8067eaf7b204eca8c8f37e755acbfdc3e74ed25ebfbd6716d065",
+      "sha256": "4736c9ea4daf8067eaf7b204eca8c8f37e755acbfdc3e74ed25ebfbd6716d065",
+      "byteLength": 84,
+      "mediaType": "image/png",
+      "width": 8,
+      "height": 6
+    }
+  ],
+  "requirementDigest": "34948a4b156075442516e8df88e64c58c48e6645f16629b88f68e3e7b2cb119a",
+  "unsupportedErrorCode": "vision_unsupported",
+  "uploadReceipt": {
+    "schemaVersion": 2,
+    "referenceId": "ref_dc5e160b-6f5f-4cda-8bed-4b6126369c56",
+    "originalSha256": "4736c9ea4daf8067eaf7b204eca8c8f37e755acbfdc3e74ed25ebfbd6716d065",
+    "sha256": "4736c9ea4daf8067eaf7b204eca8c8f37e755acbfdc3e74ed25ebfbd6716d065",
+    "byteLength": 84,
+    "mediaType": "image/png",
+    "width": 8,
+    "height": 6,
+    "expiresAt": "2026-10-01T00:00:00Z"
+  },
+  "uploadRequest": {
+    "requestId": "reference_upload_0001",
+    "mediaType": "image/png",
+    "contentBase64": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAYAAAD+Bd/7AAAAG0lEQVR4nGJiIACoqOBSANd/QorJswIQAAD//8VpAjZ1VoExAAAAAElFTkSuQmCC"
+  }
+}

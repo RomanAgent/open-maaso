@@ -1,0 +1,57 @@
+{
+  "createReceipt": {
+    "requestId": "reference_create_0001",
+    "taskId": "pb_task_06763b68-d384-4398-809f-b587d387e84a",
+    "runId": "pb_run_78a43c5b-abcf-4d33-a640-1d0c287aa656",
+    "attempt": 1,
+    "acceptedTaskSequence": 1
+  },
+  "createRequest": {
+    "referenceInputs": [
+      {
+        "referenceId": "ref_dc5e160b-6f5f-4cda-8bed-4b6126369c56",
+        "sha256": "4736c9ea4daf8067eaf7b204eca8c8f37e755acbfdc3e74ed25ebfbd6716d065",
+        "purpose": "layout"
+      }
+    ],
+    "requestId": "reference_create_0001",
+    "agentId": "self",
+    "projectKind": "applet",
+    "requirements": "Build an offline two-page counter.",
+    "locale": "en"
+  },
+  "fixtureOnly": true,
+  "fixturePurpose": "Synthetic reference purpose/receipt/digest parser fixture. No real vision capability, model consumption or billing assertion.",
+  "referenceDescriptors": [
+    {
+      "referenceId": "ref_dc5e160b-6f5f-4cda-8bed-4b6126369c56",
+      "originalSha256": "4736c9ea4daf8067eaf7b204eca8c8f37e755acbfdc3e74ed25ebfbd6716d065",
+      "sha256": "4736c9ea4daf8067eaf7b204eca8c8f37e755acbfdc3e74ed25ebfbd6716d065",
+      "byteLength": 84,
+      "mediaType": "image/png",
+      "width": 8,
+      "height": 6,
+      "purpose": "layout"
+    }
+  ],
+  "requirementDigest": "46585c038bfc8e066b3ceaef2ad42bcaeea14524f6379f905831864bdb07fc9d",
+  "unsupportedErrorCode": "vision_unsupported",
+  "uploadReceipt": {
+    "schemaVersion": 2,
+    "referenceId": "ref_dc5e160b-6f5f-4cda-8bed-4b6126369c56",
+    "originalSha256": "4736c9ea4daf8067eaf7b204eca8c8f37e755acbfdc3e74ed25ebfbd6716d065",
+    "sha256": "4736c9ea4daf8067eaf7b204eca8c8f37e755acbfdc3e74ed25ebfbd6716d065",
+    "byteLength": 84,
+    "mediaType": "image/png",
+    "width": 8,
+    "height": 6,
+    "expiresAt": "2026-10-01T00:00:00Z",
+    "purpose": "layout"
+  },
+  "uploadRequest": {
+    "requestId": "reference_upload_0001",
+    "mediaType": "image/png",
+    "contentBase64": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAYAAAD+Bd/7AAAAG0lEQVR4nGJiIACoqOBSANd/QorJswIQAAD//8VpAjZ1VoExAAAAAElFTkSuQmCC",
+    "purpose": "layout"
+  }
+}

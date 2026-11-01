@@ -1,0 +1,172 @@
+source 'https://github.com/volcengine/volcengine-specs.git'
+source 'https://cdn.cocoapods.org/'
+
+# Minimum required by google_mlkit_commons / ML Kit pods.
+platform :ios, '16.4'
+
+# CocoaPods analytics sends network stats synchronously affecting flutter build latency.
+ENV['COCOAPODS_DISABLE_STATS'] = 'true'
+
+project 'Runner', {
+  'Debug' => :debug,
+  'Profile' => :release,
+  'Release' => :release,
+}
+
+def flutter_root
+  generated_xcode_build_settings_path = File.expand_path(File.join('..', 'Flutter', 'Generated.xcconfig'), __FILE__)
+  unless File.exist?(generated_xcode_build_settings_path)
+    raise "#{generated_xcode_build_settings_path} must exist. If you're running pod install manually, make sure flutter pub get is executed first"
+  end
+
+  File.foreach(generated_xcode_build_settings_path) do |line|
+    matches = line.match(/FLUTTER_ROOT\=(.*)/)
+    return matches[1].strip if matches
+  end
+  raise "FLUTTER_ROOT not found in #{generated_xcode_build_settings_path}. Try deleting Generated.xcconfig, then run flutter pub get"
+end
+
+require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelper'), flutter_root)
+require File.expand_path('../tool/ios/ios_native_dependency_prep', __dir__)
+require File.expand_path('../tool/ios/store_release_swiftpm_prep', __dir__)
+
+maaso_repo_root = File.realpath(File.expand_path('..', __dir__))
+
+flutter_ios_podfile_setup
+MaasoIosSwiftpmPrep.prepare!(repo_root: maaso_repo_root)
+
+target 'Runner' do
+  use_frameworks!
+
+  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+  MaasoIosNativeDependencyPrep.prepare!(repo_root: maaso_repo_root)
+
+  # Firebase and ML Kit share Google support libraries. Flutter 3.44 otherwise
+  # resolves Firebase with SwiftPM while ML Kit remains in CocoaPods, loading
+  # two independent copies of those Objective-C classes. Keep both families in
+  # CocoaPods; llamadart remains available through the generated Swift package.
+  pod 'firebase_core', path: '.symlinks/plugins/firebase_core/ios'
+  pod 'firebase_messaging', path: '.symlinks/plugins/firebase_messaging/ios'
+  # CocoaPods supplies the foreground-only compile flag; the plugin's SwiftPM
+  # manifest does not expose BYPASS_PERMISSION_LOCATION_ALWAYS.
+  pod 'geolocator_apple', path: '.symlinks/plugins/geolocator_apple/darwin'
+
+  target 'RunnerTests' do
+    inherit! :search_paths
+  end
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    flutter_additional_ios_build_settings(target)
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '16.4'
+      if target.name == 'geolocator_apple'
+        definitions = config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] || ['$(inherited)']
+        definitions = [definitions] unless definitions.is_a?(Array)
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] =
+          (definitions + ['BYPASS_PERMISSION_LOCATION_ALWAYS=1']).uniq
+      end
+    end
+  end
+
+  xcframework_targets = %w[sherpa_onnx_ios VolcApiEngine VolcEngineRTC].map do |name|
+    installer.pods_project.targets.find { |target| target.name == name }
+  end.compact
+  xcframework_targets.each_cons(2) do |prerequisite, target|
+    target.add_dependency(prerequisite)
+  end
+  xcframework_targets.each do |target|
+    target.shell_script_build_phases
+      .select { |phase| phase.name == '[CP] Copy XCFrameworks' }
+      .each { |phase| phase.remove_from_project }
+  end
+end
+
+post_integrate do |installer|
+  installer.aggregate_targets.each do |aggregate_target|
+    project_updated = false
+    aggregate_target.user_targets.each do |user_target|
+      runner_pod_phases = user_target.shell_script_build_phases.select do |phase|
+        ['[CP] Embed Pods Frameworks', '[CP] Copy Pods Resources'].include?(phase.name)
+      end
+      thin_binary = user_target.shell_script_build_phases.find do |phase|
+        phase.name == 'Thin Binary'
+      end
+      unless runner_pod_phases.empty? || thin_binary.nil?
+        marker = '# MAASO_COCOAPODS_EMBED_V2'
+        unless thin_binary.shell_script.include?(marker)
+          base_thin_binary_script = thin_binary.shell_script.sub(
+            /\n# MAASO_COCOAPODS_EMBED(?:_V[0-9]+)?\n.*\z/m,
+            '',
+          )
+          thin_binary.shell_script = <<~SCRIPT
+            #{base_thin_binary_script}
+            #{marker}
+            export COCOAPODS_PARALLEL_CODE_SIGN=false
+            MAASO_RELEASE_TEMP_ROOT="${MAASO_RELEASE_SECURE_TEMP_DIR:-}"
+            if [ -z "$MAASO_RELEASE_TEMP_ROOT" ]; then
+              umask 077
+              MAASO_POD_SCRIPT_CACHE="$(/usr/bin/mktemp -d /private/tmp/maaso-local-build.XXXXXXXX)" || exit 1
+            else
+              if [ -L "$MAASO_RELEASE_TEMP_ROOT" ] || [ ! -d "$MAASO_RELEASE_TEMP_ROOT" ]; then
+                echo "error: Missing private Maaso release directory." >&2
+                exit 1
+              fi
+              if [ "$(/usr/bin/stat -f '%u:%Lp' "$MAASO_RELEASE_TEMP_ROOT")" != "$(/usr/bin/id -u):700" ]; then
+                echo "error: Unsafe Maaso release directory ownership or permissions." >&2
+                exit 1
+              fi
+              MAASO_POD_SCRIPT_CACHE="${MAASO_RELEASE_TEMP_ROOT}/cocoapods.$$"
+              /bin/mkdir -m 0700 "$MAASO_POD_SCRIPT_CACHE" || exit 1
+            fi
+            if [ -L "$MAASO_POD_SCRIPT_CACHE" ] || [ ! -d "$MAASO_POD_SCRIPT_CACHE" ] || [ "$(/usr/bin/stat -f '%u:%Lp' "$MAASO_POD_SCRIPT_CACHE")" != "$(/usr/bin/id -u):700" ]; then
+              echo "error: Unsafe Maaso CocoaPods script directory." >&2
+              exit 1
+            fi
+            maaso_cleanup_pod_script_cache() {
+              if [ -d "$MAASO_POD_SCRIPT_CACHE" ] && [ ! -L "$MAASO_POD_SCRIPT_CACHE" ]; then
+                /bin/rm -rf "$MAASO_POD_SCRIPT_CACHE"
+              fi
+            }
+            trap maaso_cleanup_pod_script_cache EXIT
+            trap 'exit 129' HUP
+            trap 'exit 130' INT
+            trap 'exit 143' TERM
+            MAASO_POD_SUPPORT_DIR="${PODS_ROOT}/Target Support Files/Pods-Runner"
+            if [ -L "$MAASO_POD_SUPPORT_DIR" ] || [ ! -d "$MAASO_POD_SUPPORT_DIR" ]; then
+              echo "error: CocoaPods support directory is unavailable or unsafe." >&2
+              exit 1
+            fi
+            for MAASO_POD_SCRIPT_NAME in Pods-Runner-frameworks.sh Pods-Runner-resources.sh; do
+              MAASO_POD_SCRIPT_SOURCE="$MAASO_POD_SUPPORT_DIR/$MAASO_POD_SCRIPT_NAME"
+              MAASO_POD_SCRIPT_DESTINATION="$MAASO_POD_SCRIPT_CACHE/$MAASO_POD_SCRIPT_NAME"
+              if [ -L "$MAASO_POD_SCRIPT_SOURCE" ] || [ ! -f "$MAASO_POD_SCRIPT_SOURCE" ]; then
+                echo "error: CocoaPods generated script is unavailable or unsafe." >&2
+                exit 1
+              fi
+              MAASO_POD_SCRIPT_SOURCE_SHA="$(/usr/bin/shasum -a 256 "$MAASO_POD_SCRIPT_SOURCE" | /usr/bin/awk '{print $1}')"
+              /bin/cp -p -P "$MAASO_POD_SCRIPT_SOURCE" "$MAASO_POD_SCRIPT_DESTINATION" || exit 1
+              if [ -L "$MAASO_POD_SCRIPT_DESTINATION" ] || [ ! -f "$MAASO_POD_SCRIPT_DESTINATION" ]; then
+                echo "error: CocoaPods script copy is unavailable or unsafe." >&2
+                exit 1
+              fi
+              /bin/chmod 0700 "$MAASO_POD_SCRIPT_DESTINATION" || exit 1
+              MAASO_POD_SCRIPT_DESTINATION_SHA="$(/usr/bin/shasum -a 256 "$MAASO_POD_SCRIPT_DESTINATION" | /usr/bin/awk '{print $1}')"
+              if [ -z "$MAASO_POD_SCRIPT_SOURCE_SHA" ] || [ "$MAASO_POD_SCRIPT_SOURCE_SHA" != "$MAASO_POD_SCRIPT_DESTINATION_SHA" ]; then
+                echo "error: CocoaPods script copy changed before execution." >&2
+                exit 1
+              fi
+              /bin/sh "$MAASO_POD_SCRIPT_DESTINATION" || exit 1
+            done
+            maaso_cleanup_pod_script_cache
+            trap - EXIT HUP INT TERM
+          SCRIPT
+        end
+        runner_pod_phases.each(&:remove_from_project)
+        project_updated = true
+      end
+    end
+    aggregate_target.user_project.save if project_updated
+  end
+end

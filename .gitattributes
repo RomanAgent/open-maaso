@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.png binary
+*.ico binary
+*.ttf binary
+*.onnx binary
+
+# Preserve upstream notices and Unity importer metadata byte-for-byte.
+third_party/** whitespace=-blank-at-eol,-blank-at-eof
+*.meta whitespace=-blank-at-eol

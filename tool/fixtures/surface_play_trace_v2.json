@@ -1,0 +1,5136 @@
+{
+  "schemaVersion": 1,
+  "scope": "trusted host rules and durable receipt conformance; not model behavior or visual QA",
+  "cases": [
+    {
+      "rulesId": "gomoku.v1",
+      "rulesConfig": {
+        "boardSize": 5,
+        "winLength": 3
+      },
+      "seed": 17,
+      "initial": {
+        "player1": {
+          "seatId": "player1",
+          "phase": "playing",
+          "turnId": "move-0",
+          "viewRevision": 0,
+          "decisionRevision": 0,
+          "viewSequence": 0,
+          "allowedView": {
+            "boardSize": 5,
+            "winLength": 3,
+            "board": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "activeSeat": "player1",
+            "phase": "playing",
+            "turnId": "move-0",
+            "winner": 0
+          },
+          "legalActions": [
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 0,
+                "y": 0
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 1,
+                "y": 0
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 2,
+                "y": 0
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 3,
+                "y": 0
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 4,
+                "y": 0
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 0,
+                "y": 1
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 1,
+                "y": 1
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 2,
+                "y": 1
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 3,
+                "y": 1
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 4,
+                "y": 1
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 0,
+                "y": 2
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 1,
+                "y": 2
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 2,
+                "y": 2
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 3,
+                "y": 2
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 4,
+                "y": 2
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 0,
+                "y": 3
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 1,
+                "y": 3
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 2,
+                "y": 3
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 3,
+                "y": 3
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 4,
+                "y": 3
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 0,
+                "y": 4
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 1,
+                "y": 4
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 2,
+                "y": 4
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 3,
+                "y": 4
+              }
+            },
+            {
+              "actionId": "game.place",
+              "args": {
+                "x": 4,
+                "y": 4
+              }
+            }
+          ]
+        },
+        "player2": {
+          "seatId": "player2",
+          "phase": "playing",
+          "turnId": "move-0",
+          "viewRevision": 0,
+          "decisionRevision": 0,
+          "viewSequence": 0,
+          "allowedView": {
+            "boardSize": 5,
+            "winLength": 3,
+            "board": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "activeSeat": "player1",
+            "phase": "playing",
+            "turnId": "move-0",
+            "winner": 0
+          },
+          "legalActions": []
+        },
+        "spectator": {
+          "seatId": "spectator",
+          "phase": "playing",
+          "turnId": "move-0",
+          "viewRevision": 0,
+          "decisionRevision": 0,
+          "viewSequence": 0,
+          "allowedView": {
+            "boardSize": 5,
+            "winLength": 3,
+            "board": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "activeSeat": "player1",
+            "phase": "playing",
+            "turnId": "move-0",
+            "winner": 0
+          },
+          "legalActions": []
+        }
+      },
+      "steps": [
+        {
+          "input": {
+            "seatId": "player1",
+            "args": {
+              "x": 0,
+              "y": 0
+            },
+            "requestId": "move-1",
+            "actionId": "game.place"
+          },
+          "receipt": {
+            "requestId": "move-1",
+            "status": "applied",
+            "beforeRevision": 0,
+            "afterRevision": 1,
+            "committedViewSequence": 2,
+            "errorCode": ""
+          },
+          "views": {
+            "player1": {
+              "seatId": "player1",
+              "phase": "playing",
+              "turnId": "move-1",
+              "viewRevision": 1,
+              "decisionRevision": 1,
+              "viewSequence": 2,
+              "allowedView": {
+                "boardSize": 5,
+                "winLength": 3,
+                "board": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "activeSeat": "player2",
+                "phase": "playing",
+                "turnId": "move-1",
+                "winner": 0
+              },
+              "legalActions": []
+            },
+            "player2": {
+              "seatId": "player2",
+              "phase": "playing",
+              "turnId": "move-1",
+              "viewRevision": 1,
+              "decisionRevision": 1,
+              "viewSequence": 2,
+              "allowedView": {
+                "boardSize": 5,
+                "winLength": 3,
+                "board": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "activeSeat": "player2",
+                "phase": "playing",
+                "turnId": "move-1",
+                "winner": 0
+              },
+              "legalActions": [
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 1,
+                    "y": 0
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 0
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 0
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 0
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 0,
+                    "y": 1
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 1,
+                    "y": 1
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 1
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 1
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 1
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 0,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 1,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 0,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 1,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 0,
+                    "y": 4
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 1,
+                    "y": 4
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 4
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 4
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 4
+                  }
+                }
+              ]
+            },
+            "spectator": {
+              "seatId": "spectator",
+              "phase": "playing",
+              "turnId": "move-1",
+              "viewRevision": 1,
+              "decisionRevision": 1,
+              "viewSequence": 2,
+              "allowedView": {
+                "boardSize": 5,
+                "winLength": 3,
+                "board": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "activeSeat": "player2",
+                "phase": "playing",
+                "turnId": "move-1",
+                "winner": 0
+              },
+              "legalActions": []
+            }
+          },
+          "events": {
+            "player1": [
+              {
+                "seatId": "player1",
+                "viewSequence": 1,
+                "type": "move.accepted",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 2,
+                "type": "turn.changed",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player2"
+                }
+              }
+            ],
+            "player2": [
+              {
+                "seatId": "player2",
+                "viewSequence": 1,
+                "type": "move.accepted",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 2,
+                "type": "turn.changed",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player2"
+                }
+              }
+            ],
+            "spectator": [
+              {
+                "seatId": "spectator",
+                "viewSequence": 1,
+                "type": "move.accepted",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 2,
+                "type": "turn.changed",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player2"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "input": {
+            "seatId": "player1",
+            "repeatOf": "move-1",
+            "requestId": "move-1",
+            "actionId": "game.place"
+          },
+          "receipt": {
+            "requestId": "move-1",
+            "status": "duplicate",
+            "beforeRevision": 0,
+            "afterRevision": 1,
+            "committedViewSequence": 2,
+            "errorCode": ""
+          },
+          "views": {
+            "player1": {
+              "seatId": "player1",
+              "phase": "playing",
+              "turnId": "move-1",
+              "viewRevision": 1,
+              "decisionRevision": 1,
+              "viewSequence": 2,
+              "allowedView": {
+                "boardSize": 5,
+                "winLength": 3,
+                "board": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "activeSeat": "player2",
+                "phase": "playing",
+                "turnId": "move-1",
+                "winner": 0
+              },
+              "legalActions": []
+            },
+            "player2": {
+              "seatId": "player2",
+              "phase": "playing",
+              "turnId": "move-1",
+              "viewRevision": 1,
+              "decisionRevision": 1,
+              "viewSequence": 2,
+              "allowedView": {
+                "boardSize": 5,
+                "winLength": 3,
+                "board": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "activeSeat": "player2",
+                "phase": "playing",
+                "turnId": "move-1",
+                "winner": 0
+              },
+              "legalActions": [
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 1,
+                    "y": 0
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 0
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 0
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 0
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 0,
+                    "y": 1
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 1,
+                    "y": 1
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 1
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 1
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 1
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 0,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 1,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 0,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 1,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 0,
+                    "y": 4
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 1,
+                    "y": 4
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 4
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 4
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 4
+                  }
+                }
+              ]
+            },
+            "spectator": {
+              "seatId": "spectator",
+              "phase": "playing",
+              "turnId": "move-1",
+              "viewRevision": 1,
+              "decisionRevision": 1,
+              "viewSequence": 2,
+              "allowedView": {
+                "boardSize": 5,
+                "winLength": 3,
+                "board": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "activeSeat": "player2",
+                "phase": "playing",
+                "turnId": "move-1",
+                "winner": 0
+              },
+              "legalActions": []
+            }
+          },
+          "events": {
+            "player1": [
+              {
+                "seatId": "player1",
+                "viewSequence": 1,
+                "type": "move.accepted",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 2,
+                "type": "turn.changed",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player2"
+                }
+              }
+            ],
+            "player2": [
+              {
+                "seatId": "player2",
+                "viewSequence": 1,
+                "type": "move.accepted",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 2,
+                "type": "turn.changed",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player2"
+                }
+              }
+            ],
+            "spectator": [
+              {
+                "seatId": "spectator",
+                "viewSequence": 1,
+                "type": "move.accepted",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 2,
+                "type": "turn.changed",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player2"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "input": {
+            "seatId": "player2",
+            "args": {
+              "x": 0,
+              "y": 1
+            },
+            "requestId": "move-3",
+            "actionId": "game.place"
+          },
+          "receipt": {
+            "requestId": "move-3",
+            "status": "applied",
+            "beforeRevision": 1,
+            "afterRevision": 2,
+            "committedViewSequence": 4,
+            "errorCode": ""
+          },
+          "views": {
+            "player1": {
+              "seatId": "player1",
+              "phase": "playing",
+              "turnId": "move-2",
+              "viewRevision": 2,
+              "decisionRevision": 2,
+              "viewSequence": 4,
+              "allowedView": {
+                "boardSize": 5,
+                "winLength": 3,
+                "board": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  2,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "activeSeat": "player1",
+                "phase": "playing",
+                "turnId": "move-2",
+                "winner": 0
+              },
+              "legalActions": [
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 1,
+                    "y": 0
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 0
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 0
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 0
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 1,
+                    "y": 1
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 1
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 1
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 1
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 0,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 1,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 0,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 1,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 0,
+                    "y": 4
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 1,
+                    "y": 4
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 4
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 4
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 4
+                  }
+                }
+              ]
+            },
+            "player2": {
+              "seatId": "player2",
+              "phase": "playing",
+              "turnId": "move-2",
+              "viewRevision": 2,
+              "decisionRevision": 2,
+              "viewSequence": 4,
+              "allowedView": {
+                "boardSize": 5,
+                "winLength": 3,
+                "board": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  2,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "activeSeat": "player1",
+                "phase": "playing",
+                "turnId": "move-2",
+                "winner": 0
+              },
+              "legalActions": []
+            },
+            "spectator": {
+              "seatId": "spectator",
+              "phase": "playing",
+              "turnId": "move-2",
+              "viewRevision": 2,
+              "decisionRevision": 2,
+              "viewSequence": 4,
+              "allowedView": {
+                "boardSize": 5,
+                "winLength": 3,
+                "board": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  2,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "activeSeat": "player1",
+                "phase": "playing",
+                "turnId": "move-2",
+                "winner": 0
+              },
+              "legalActions": []
+            }
+          },
+          "events": {
+            "player1": [
+              {
+                "seatId": "player1",
+                "viewSequence": 1,
+                "type": "move.accepted",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 2,
+                "type": "turn.changed",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player2"
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 3,
+                "type": "move.accepted",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "x": 0,
+                  "y": 1
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 4,
+                "type": "turn.changed",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player1"
+                }
+              }
+            ],
+            "player2": [
+              {
+                "seatId": "player2",
+                "viewSequence": 1,
+                "type": "move.accepted",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 2,
+                "type": "turn.changed",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player2"
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 3,
+                "type": "move.accepted",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "x": 0,
+                  "y": 1
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 4,
+                "type": "turn.changed",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player1"
+                }
+              }
+            ],
+            "spectator": [
+              {
+                "seatId": "spectator",
+                "viewSequence": 1,
+                "type": "move.accepted",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 2,
+                "type": "turn.changed",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player2"
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 3,
+                "type": "move.accepted",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "x": 0,
+                  "y": 1
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 4,
+                "type": "turn.changed",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player1"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "input": {
+            "seatId": "player1",
+            "args": {
+              "x": 1,
+              "y": 0
+            },
+            "requestId": "move-4",
+            "actionId": "game.place"
+          },
+          "receipt": {
+            "requestId": "move-4",
+            "status": "applied",
+            "beforeRevision": 2,
+            "afterRevision": 3,
+            "committedViewSequence": 6,
+            "errorCode": ""
+          },
+          "views": {
+            "player1": {
+              "seatId": "player1",
+              "phase": "playing",
+              "turnId": "move-3",
+              "viewRevision": 3,
+              "decisionRevision": 3,
+              "viewSequence": 6,
+              "allowedView": {
+                "boardSize": 5,
+                "winLength": 3,
+                "board": [
+                  1,
+                  1,
+                  0,
+                  0,
+                  0,
+                  2,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "activeSeat": "player2",
+                "phase": "playing",
+                "turnId": "move-3",
+                "winner": 0
+              },
+              "legalActions": []
+            },
+            "player2": {
+              "seatId": "player2",
+              "phase": "playing",
+              "turnId": "move-3",
+              "viewRevision": 3,
+              "decisionRevision": 3,
+              "viewSequence": 6,
+              "allowedView": {
+                "boardSize": 5,
+                "winLength": 3,
+                "board": [
+                  1,
+                  1,
+                  0,
+                  0,
+                  0,
+                  2,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "activeSeat": "player2",
+                "phase": "playing",
+                "turnId": "move-3",
+                "winner": 0
+              },
+              "legalActions": [
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 0
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 0
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 0
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 1,
+                    "y": 1
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 1
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 1
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 1
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 0,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 1,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 0,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 1,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 0,
+                    "y": 4
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 1,
+                    "y": 4
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 4
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 4
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 4
+                  }
+                }
+              ]
+            },
+            "spectator": {
+              "seatId": "spectator",
+              "phase": "playing",
+              "turnId": "move-3",
+              "viewRevision": 3,
+              "decisionRevision": 3,
+              "viewSequence": 6,
+              "allowedView": {
+                "boardSize": 5,
+                "winLength": 3,
+                "board": [
+                  1,
+                  1,
+                  0,
+                  0,
+                  0,
+                  2,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "activeSeat": "player2",
+                "phase": "playing",
+                "turnId": "move-3",
+                "winner": 0
+              },
+              "legalActions": []
+            }
+          },
+          "events": {
+            "player1": [
+              {
+                "seatId": "player1",
+                "viewSequence": 1,
+                "type": "move.accepted",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 2,
+                "type": "turn.changed",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player2"
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 3,
+                "type": "move.accepted",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "x": 0,
+                  "y": 1
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 4,
+                "type": "turn.changed",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player1"
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 5,
+                "type": "move.accepted",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 1,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 6,
+                "type": "turn.changed",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player2"
+                }
+              }
+            ],
+            "player2": [
+              {
+                "seatId": "player2",
+                "viewSequence": 1,
+                "type": "move.accepted",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 2,
+                "type": "turn.changed",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player2"
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 3,
+                "type": "move.accepted",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "x": 0,
+                  "y": 1
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 4,
+                "type": "turn.changed",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player1"
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 5,
+                "type": "move.accepted",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 1,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 6,
+                "type": "turn.changed",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player2"
+                }
+              }
+            ],
+            "spectator": [
+              {
+                "seatId": "spectator",
+                "viewSequence": 1,
+                "type": "move.accepted",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 2,
+                "type": "turn.changed",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player2"
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 3,
+                "type": "move.accepted",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "x": 0,
+                  "y": 1
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 4,
+                "type": "turn.changed",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player1"
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 5,
+                "type": "move.accepted",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 1,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 6,
+                "type": "turn.changed",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player2"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "input": {
+            "seatId": "player2",
+            "args": {
+              "x": 1,
+              "y": 1
+            },
+            "requestId": "move-5",
+            "actionId": "game.place"
+          },
+          "receipt": {
+            "requestId": "move-5",
+            "status": "applied",
+            "beforeRevision": 3,
+            "afterRevision": 4,
+            "committedViewSequence": 8,
+            "errorCode": ""
+          },
+          "views": {
+            "player1": {
+              "seatId": "player1",
+              "phase": "playing",
+              "turnId": "move-4",
+              "viewRevision": 4,
+              "decisionRevision": 4,
+              "viewSequence": 8,
+              "allowedView": {
+                "boardSize": 5,
+                "winLength": 3,
+                "board": [
+                  1,
+                  1,
+                  0,
+                  0,
+                  0,
+                  2,
+                  2,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "activeSeat": "player1",
+                "phase": "playing",
+                "turnId": "move-4",
+                "winner": 0
+              },
+              "legalActions": [
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 0
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 0
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 0
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 1
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 1
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 1
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 0,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 1,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 2
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 0,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 1,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 3
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 0,
+                    "y": 4
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 1,
+                    "y": 4
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 2,
+                    "y": 4
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 3,
+                    "y": 4
+                  }
+                },
+                {
+                  "actionId": "game.place",
+                  "args": {
+                    "x": 4,
+                    "y": 4
+                  }
+                }
+              ]
+            },
+            "player2": {
+              "seatId": "player2",
+              "phase": "playing",
+              "turnId": "move-4",
+              "viewRevision": 4,
+              "decisionRevision": 4,
+              "viewSequence": 8,
+              "allowedView": {
+                "boardSize": 5,
+                "winLength": 3,
+                "board": [
+                  1,
+                  1,
+                  0,
+                  0,
+                  0,
+                  2,
+                  2,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "activeSeat": "player1",
+                "phase": "playing",
+                "turnId": "move-4",
+                "winner": 0
+              },
+              "legalActions": []
+            },
+            "spectator": {
+              "seatId": "spectator",
+              "phase": "playing",
+              "turnId": "move-4",
+              "viewRevision": 4,
+              "decisionRevision": 4,
+              "viewSequence": 8,
+              "allowedView": {
+                "boardSize": 5,
+                "winLength": 3,
+                "board": [
+                  1,
+                  1,
+                  0,
+                  0,
+                  0,
+                  2,
+                  2,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "activeSeat": "player1",
+                "phase": "playing",
+                "turnId": "move-4",
+                "winner": 0
+              },
+              "legalActions": []
+            }
+          },
+          "events": {
+            "player1": [
+              {
+                "seatId": "player1",
+                "viewSequence": 1,
+                "type": "move.accepted",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 2,
+                "type": "turn.changed",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player2"
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 3,
+                "type": "move.accepted",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "x": 0,
+                  "y": 1
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 4,
+                "type": "turn.changed",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player1"
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 5,
+                "type": "move.accepted",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 1,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 6,
+                "type": "turn.changed",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player2"
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 7,
+                "type": "move.accepted",
+                "decisionRevision": 4,
+                "causedByRequestId": "move-5",
+                "payload": {
+                  "seatId": "player2",
+                  "x": 1,
+                  "y": 1
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 8,
+                "type": "turn.changed",
+                "decisionRevision": 4,
+                "causedByRequestId": "move-5",
+                "payload": {
+                  "seatId": "player1"
+                }
+              }
+            ],
+            "player2": [
+              {
+                "seatId": "player2",
+                "viewSequence": 1,
+                "type": "move.accepted",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 2,
+                "type": "turn.changed",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player2"
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 3,
+                "type": "move.accepted",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "x": 0,
+                  "y": 1
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 4,
+                "type": "turn.changed",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player1"
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 5,
+                "type": "move.accepted",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 1,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 6,
+                "type": "turn.changed",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player2"
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 7,
+                "type": "move.accepted",
+                "decisionRevision": 4,
+                "causedByRequestId": "move-5",
+                "payload": {
+                  "seatId": "player2",
+                  "x": 1,
+                  "y": 1
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 8,
+                "type": "turn.changed",
+                "decisionRevision": 4,
+                "causedByRequestId": "move-5",
+                "payload": {
+                  "seatId": "player1"
+                }
+              }
+            ],
+            "spectator": [
+              {
+                "seatId": "spectator",
+                "viewSequence": 1,
+                "type": "move.accepted",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 2,
+                "type": "turn.changed",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player2"
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 3,
+                "type": "move.accepted",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "x": 0,
+                  "y": 1
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 4,
+                "type": "turn.changed",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player1"
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 5,
+                "type": "move.accepted",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 1,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 6,
+                "type": "turn.changed",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player2"
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 7,
+                "type": "move.accepted",
+                "decisionRevision": 4,
+                "causedByRequestId": "move-5",
+                "payload": {
+                  "seatId": "player2",
+                  "x": 1,
+                  "y": 1
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 8,
+                "type": "turn.changed",
+                "decisionRevision": 4,
+                "causedByRequestId": "move-5",
+                "payload": {
+                  "seatId": "player1"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "input": {
+            "seatId": "player1",
+            "args": {
+              "x": 2,
+              "y": 0
+            },
+            "requestId": "move-6",
+            "actionId": "game.place"
+          },
+          "receipt": {
+            "requestId": "move-6",
+            "status": "applied",
+            "beforeRevision": 4,
+            "afterRevision": 5,
+            "committedViewSequence": 10,
+            "errorCode": ""
+          },
+          "views": {
+            "player1": {
+              "seatId": "player1",
+              "phase": "ended",
+              "turnId": "move-5",
+              "viewRevision": 5,
+              "decisionRevision": 5,
+              "viewSequence": 10,
+              "allowedView": {
+                "boardSize": 5,
+                "winLength": 3,
+                "board": [
+                  1,
+                  1,
+                  1,
+                  0,
+                  0,
+                  2,
+                  2,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "activeSeat": null,
+                "phase": "ended",
+                "turnId": "move-5",
+                "winner": 1
+              },
+              "legalActions": []
+            },
+            "player2": {
+              "seatId": "player2",
+              "phase": "ended",
+              "turnId": "move-5",
+              "viewRevision": 5,
+              "decisionRevision": 5,
+              "viewSequence": 10,
+              "allowedView": {
+                "boardSize": 5,
+                "winLength": 3,
+                "board": [
+                  1,
+                  1,
+                  1,
+                  0,
+                  0,
+                  2,
+                  2,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "activeSeat": null,
+                "phase": "ended",
+                "turnId": "move-5",
+                "winner": 1
+              },
+              "legalActions": []
+            },
+            "spectator": {
+              "seatId": "spectator",
+              "phase": "ended",
+              "turnId": "move-5",
+              "viewRevision": 5,
+              "decisionRevision": 5,
+              "viewSequence": 10,
+              "allowedView": {
+                "boardSize": 5,
+                "winLength": 3,
+                "board": [
+                  1,
+                  1,
+                  1,
+                  0,
+                  0,
+                  2,
+                  2,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "activeSeat": null,
+                "phase": "ended",
+                "turnId": "move-5",
+                "winner": 1
+              },
+              "legalActions": []
+            }
+          },
+          "events": {
+            "player1": [
+              {
+                "seatId": "player1",
+                "viewSequence": 1,
+                "type": "move.accepted",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 2,
+                "type": "turn.changed",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player2"
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 3,
+                "type": "move.accepted",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "x": 0,
+                  "y": 1
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 4,
+                "type": "turn.changed",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player1"
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 5,
+                "type": "move.accepted",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 1,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 6,
+                "type": "turn.changed",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player2"
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 7,
+                "type": "move.accepted",
+                "decisionRevision": 4,
+                "causedByRequestId": "move-5",
+                "payload": {
+                  "seatId": "player2",
+                  "x": 1,
+                  "y": 1
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 8,
+                "type": "turn.changed",
+                "decisionRevision": 4,
+                "causedByRequestId": "move-5",
+                "payload": {
+                  "seatId": "player1"
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 9,
+                "type": "move.accepted",
+                "decisionRevision": 5,
+                "causedByRequestId": "move-6",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 2,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 10,
+                "type": "game.ended",
+                "decisionRevision": 5,
+                "causedByRequestId": "move-6",
+                "payload": {
+                  "winner": 1
+                }
+              }
+            ],
+            "player2": [
+              {
+                "seatId": "player2",
+                "viewSequence": 1,
+                "type": "move.accepted",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 2,
+                "type": "turn.changed",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player2"
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 3,
+                "type": "move.accepted",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "x": 0,
+                  "y": 1
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 4,
+                "type": "turn.changed",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player1"
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 5,
+                "type": "move.accepted",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 1,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 6,
+                "type": "turn.changed",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player2"
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 7,
+                "type": "move.accepted",
+                "decisionRevision": 4,
+                "causedByRequestId": "move-5",
+                "payload": {
+                  "seatId": "player2",
+                  "x": 1,
+                  "y": 1
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 8,
+                "type": "turn.changed",
+                "decisionRevision": 4,
+                "causedByRequestId": "move-5",
+                "payload": {
+                  "seatId": "player1"
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 9,
+                "type": "move.accepted",
+                "decisionRevision": 5,
+                "causedByRequestId": "move-6",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 2,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 10,
+                "type": "game.ended",
+                "decisionRevision": 5,
+                "causedByRequestId": "move-6",
+                "payload": {
+                  "winner": 1
+                }
+              }
+            ],
+            "spectator": [
+              {
+                "seatId": "spectator",
+                "viewSequence": 1,
+                "type": "move.accepted",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 2,
+                "type": "turn.changed",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player2"
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 3,
+                "type": "move.accepted",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "x": 0,
+                  "y": 1
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 4,
+                "type": "turn.changed",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player1"
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 5,
+                "type": "move.accepted",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 1,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 6,
+                "type": "turn.changed",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player2"
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 7,
+                "type": "move.accepted",
+                "decisionRevision": 4,
+                "causedByRequestId": "move-5",
+                "payload": {
+                  "seatId": "player2",
+                  "x": 1,
+                  "y": 1
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 8,
+                "type": "turn.changed",
+                "decisionRevision": 4,
+                "causedByRequestId": "move-5",
+                "payload": {
+                  "seatId": "player1"
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 9,
+                "type": "move.accepted",
+                "decisionRevision": 5,
+                "causedByRequestId": "move-6",
+                "payload": {
+                  "seatId": "player1",
+                  "x": 2,
+                  "y": 0
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 10,
+                "type": "game.ended",
+                "decisionRevision": 5,
+                "causedByRequestId": "move-6",
+                "payload": {
+                  "winner": 1
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "rulesId": "cooperative-switches.v1",
+      "rulesConfig": {
+        "switchesPerRole": 2,
+        "goalMask": 15
+      },
+      "seed": 17,
+      "initial": {
+        "player1": {
+          "seatId": "player1",
+          "phase": "playing",
+          "turnId": "move-0",
+          "viewRevision": 0,
+          "decisionRevision": 0,
+          "viewSequence": 0,
+          "allowedView": {
+            "switches": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "goalMask": 15,
+            "ownedSwitches": [
+              0,
+              1
+            ],
+            "phase": "playing",
+            "turnId": "move-0",
+            "teamWon": false
+          },
+          "legalActions": [
+            {
+              "actionId": "game.toggle",
+              "args": {
+                "switch": 0
+              }
+            },
+            {
+              "actionId": "game.toggle",
+              "args": {
+                "switch": 1
+              }
+            }
+          ]
+        },
+        "player2": {
+          "seatId": "player2",
+          "phase": "playing",
+          "turnId": "move-0",
+          "viewRevision": 0,
+          "decisionRevision": 0,
+          "viewSequence": 0,
+          "allowedView": {
+            "switches": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "goalMask": 15,
+            "ownedSwitches": [
+              2,
+              3
+            ],
+            "phase": "playing",
+            "turnId": "move-0",
+            "teamWon": false
+          },
+          "legalActions": [
+            {
+              "actionId": "game.toggle",
+              "args": {
+                "switch": 2
+              }
+            },
+            {
+              "actionId": "game.toggle",
+              "args": {
+                "switch": 3
+              }
+            }
+          ]
+        },
+        "spectator": {
+          "seatId": "spectator",
+          "phase": "playing",
+          "turnId": "move-0",
+          "viewRevision": 0,
+          "decisionRevision": 0,
+          "viewSequence": 0,
+          "allowedView": {
+            "switches": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "goalMask": 15,
+            "ownedSwitches": [],
+            "phase": "playing",
+            "turnId": "move-0",
+            "teamWon": false
+          },
+          "legalActions": []
+        }
+      },
+      "steps": [
+        {
+          "input": {
+            "seatId": "player1",
+            "args": {
+              "switch": 0
+            },
+            "requestId": "move-1",
+            "actionId": "game.toggle"
+          },
+          "receipt": {
+            "requestId": "move-1",
+            "status": "applied",
+            "beforeRevision": 0,
+            "afterRevision": 1,
+            "committedViewSequence": 1,
+            "errorCode": ""
+          },
+          "views": {
+            "player1": {
+              "seatId": "player1",
+              "phase": "playing",
+              "turnId": "move-1",
+              "viewRevision": 1,
+              "decisionRevision": 1,
+              "viewSequence": 1,
+              "allowedView": {
+                "switches": [
+                  true,
+                  false,
+                  false,
+                  false
+                ],
+                "goalMask": 15,
+                "ownedSwitches": [
+                  0,
+                  1
+                ],
+                "phase": "playing",
+                "turnId": "move-1",
+                "teamWon": false
+              },
+              "legalActions": [
+                {
+                  "actionId": "game.toggle",
+                  "args": {
+                    "switch": 0
+                  }
+                },
+                {
+                  "actionId": "game.toggle",
+                  "args": {
+                    "switch": 1
+                  }
+                }
+              ]
+            },
+            "player2": {
+              "seatId": "player2",
+              "phase": "playing",
+              "turnId": "move-1",
+              "viewRevision": 1,
+              "decisionRevision": 1,
+              "viewSequence": 1,
+              "allowedView": {
+                "switches": [
+                  true,
+                  false,
+                  false,
+                  false
+                ],
+                "goalMask": 15,
+                "ownedSwitches": [
+                  2,
+                  3
+                ],
+                "phase": "playing",
+                "turnId": "move-1",
+                "teamWon": false
+              },
+              "legalActions": [
+                {
+                  "actionId": "game.toggle",
+                  "args": {
+                    "switch": 2
+                  }
+                },
+                {
+                  "actionId": "game.toggle",
+                  "args": {
+                    "switch": 3
+                  }
+                }
+              ]
+            },
+            "spectator": {
+              "seatId": "spectator",
+              "phase": "playing",
+              "turnId": "move-1",
+              "viewRevision": 1,
+              "decisionRevision": 1,
+              "viewSequence": 1,
+              "allowedView": {
+                "switches": [
+                  true,
+                  false,
+                  false,
+                  false
+                ],
+                "goalMask": 15,
+                "ownedSwitches": [],
+                "phase": "playing",
+                "turnId": "move-1",
+                "teamWon": false
+              },
+              "legalActions": []
+            }
+          },
+          "events": {
+            "player1": [
+              {
+                "seatId": "player1",
+                "viewSequence": 1,
+                "type": "switch.toggled",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              }
+            ],
+            "player2": [
+              {
+                "seatId": "player2",
+                "viewSequence": 1,
+                "type": "switch.toggled",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              }
+            ],
+            "spectator": [
+              {
+                "seatId": "spectator",
+                "viewSequence": 1,
+                "type": "switch.toggled",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              }
+            ]
+          }
+        },
+        {
+          "input": {
+            "seatId": "player1",
+            "args": {
+              "switch": 0
+            },
+            "requestId": "move-2",
+            "actionId": "game.toggle"
+          },
+          "receipt": {
+            "requestId": "move-2",
+            "status": "applied",
+            "beforeRevision": 1,
+            "afterRevision": 2,
+            "committedViewSequence": 2,
+            "errorCode": ""
+          },
+          "views": {
+            "player1": {
+              "seatId": "player1",
+              "phase": "playing",
+              "turnId": "move-2",
+              "viewRevision": 2,
+              "decisionRevision": 2,
+              "viewSequence": 2,
+              "allowedView": {
+                "switches": [
+                  false,
+                  false,
+                  false,
+                  false
+                ],
+                "goalMask": 15,
+                "ownedSwitches": [
+                  0,
+                  1
+                ],
+                "phase": "playing",
+                "turnId": "move-2",
+                "teamWon": false
+              },
+              "legalActions": [
+                {
+                  "actionId": "game.toggle",
+                  "args": {
+                    "switch": 0
+                  }
+                },
+                {
+                  "actionId": "game.toggle",
+                  "args": {
+                    "switch": 1
+                  }
+                }
+              ]
+            },
+            "player2": {
+              "seatId": "player2",
+              "phase": "playing",
+              "turnId": "move-2",
+              "viewRevision": 2,
+              "decisionRevision": 2,
+              "viewSequence": 2,
+              "allowedView": {
+                "switches": [
+                  false,
+                  false,
+                  false,
+                  false
+                ],
+                "goalMask": 15,
+                "ownedSwitches": [
+                  2,
+                  3
+                ],
+                "phase": "playing",
+                "turnId": "move-2",
+                "teamWon": false
+              },
+              "legalActions": [
+                {
+                  "actionId": "game.toggle",
+                  "args": {
+                    "switch": 2
+                  }
+                },
+                {
+                  "actionId": "game.toggle",
+                  "args": {
+                    "switch": 3
+                  }
+                }
+              ]
+            },
+            "spectator": {
+              "seatId": "spectator",
+              "phase": "playing",
+              "turnId": "move-2",
+              "viewRevision": 2,
+              "decisionRevision": 2,
+              "viewSequence": 2,
+              "allowedView": {
+                "switches": [
+                  false,
+                  false,
+                  false,
+                  false
+                ],
+                "goalMask": 15,
+                "ownedSwitches": [],
+                "phase": "playing",
+                "turnId": "move-2",
+                "teamWon": false
+              },
+              "legalActions": []
+            }
+          },
+          "events": {
+            "player1": [
+              {
+                "seatId": "player1",
+                "viewSequence": 1,
+                "type": "switch.toggled",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 2,
+                "type": "switch.toggled",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-2",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": false
+                }
+              }
+            ],
+            "player2": [
+              {
+                "seatId": "player2",
+                "viewSequence": 1,
+                "type": "switch.toggled",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 2,
+                "type": "switch.toggled",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-2",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": false
+                }
+              }
+            ],
+            "spectator": [
+              {
+                "seatId": "spectator",
+                "viewSequence": 1,
+                "type": "switch.toggled",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 2,
+                "type": "switch.toggled",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-2",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": false
+                }
+              }
+            ]
+          }
+        },
+        {
+          "input": {
+            "seatId": "player2",
+            "args": {
+              "switch": 2
+            },
+            "requestId": "move-3",
+            "actionId": "game.toggle"
+          },
+          "receipt": {
+            "requestId": "move-3",
+            "status": "applied",
+            "beforeRevision": 2,
+            "afterRevision": 3,
+            "committedViewSequence": 3,
+            "errorCode": ""
+          },
+          "views": {
+            "player1": {
+              "seatId": "player1",
+              "phase": "playing",
+              "turnId": "move-3",
+              "viewRevision": 3,
+              "decisionRevision": 3,
+              "viewSequence": 3,
+              "allowedView": {
+                "switches": [
+                  false,
+                  false,
+                  true,
+                  false
+                ],
+                "goalMask": 15,
+                "ownedSwitches": [
+                  0,
+                  1
+                ],
+                "phase": "playing",
+                "turnId": "move-3",
+                "teamWon": false
+              },
+              "legalActions": [
+                {
+                  "actionId": "game.toggle",
+                  "args": {
+                    "switch": 0
+                  }
+                },
+                {
+                  "actionId": "game.toggle",
+                  "args": {
+                    "switch": 1
+                  }
+                }
+              ]
+            },
+            "player2": {
+              "seatId": "player2",
+              "phase": "playing",
+              "turnId": "move-3",
+              "viewRevision": 3,
+              "decisionRevision": 3,
+              "viewSequence": 3,
+              "allowedView": {
+                "switches": [
+                  false,
+                  false,
+                  true,
+                  false
+                ],
+                "goalMask": 15,
+                "ownedSwitches": [
+                  2,
+                  3
+                ],
+                "phase": "playing",
+                "turnId": "move-3",
+                "teamWon": false
+              },
+              "legalActions": [
+                {
+                  "actionId": "game.toggle",
+                  "args": {
+                    "switch": 2
+                  }
+                },
+                {
+                  "actionId": "game.toggle",
+                  "args": {
+                    "switch": 3
+                  }
+                }
+              ]
+            },
+            "spectator": {
+              "seatId": "spectator",
+              "phase": "playing",
+              "turnId": "move-3",
+              "viewRevision": 3,
+              "decisionRevision": 3,
+              "viewSequence": 3,
+              "allowedView": {
+                "switches": [
+                  false,
+                  false,
+                  true,
+                  false
+                ],
+                "goalMask": 15,
+                "ownedSwitches": [],
+                "phase": "playing",
+                "turnId": "move-3",
+                "teamWon": false
+              },
+              "legalActions": []
+            }
+          },
+          "events": {
+            "player1": [
+              {
+                "seatId": "player1",
+                "viewSequence": 1,
+                "type": "switch.toggled",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 2,
+                "type": "switch.toggled",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-2",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": false
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 3,
+                "type": "switch.toggled",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "switch": 2,
+                  "enabled": true
+                }
+              }
+            ],
+            "player2": [
+              {
+                "seatId": "player2",
+                "viewSequence": 1,
+                "type": "switch.toggled",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 2,
+                "type": "switch.toggled",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-2",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": false
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 3,
+                "type": "switch.toggled",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "switch": 2,
+                  "enabled": true
+                }
+              }
+            ],
+            "spectator": [
+              {
+                "seatId": "spectator",
+                "viewSequence": 1,
+                "type": "switch.toggled",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 2,
+                "type": "switch.toggled",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-2",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": false
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 3,
+                "type": "switch.toggled",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "switch": 2,
+                  "enabled": true
+                }
+              }
+            ]
+          }
+        },
+        {
+          "input": {
+            "seatId": "player1",
+            "args": {
+              "switch": 0
+            },
+            "requestId": "move-4",
+            "actionId": "game.toggle"
+          },
+          "receipt": {
+            "requestId": "move-4",
+            "status": "applied",
+            "beforeRevision": 3,
+            "afterRevision": 4,
+            "committedViewSequence": 4,
+            "errorCode": ""
+          },
+          "views": {
+            "player1": {
+              "seatId": "player1",
+              "phase": "playing",
+              "turnId": "move-4",
+              "viewRevision": 4,
+              "decisionRevision": 4,
+              "viewSequence": 4,
+              "allowedView": {
+                "switches": [
+                  true,
+                  false,
+                  true,
+                  false
+                ],
+                "goalMask": 15,
+                "ownedSwitches": [
+                  0,
+                  1
+                ],
+                "phase": "playing",
+                "turnId": "move-4",
+                "teamWon": false
+              },
+              "legalActions": [
+                {
+                  "actionId": "game.toggle",
+                  "args": {
+                    "switch": 0
+                  }
+                },
+                {
+                  "actionId": "game.toggle",
+                  "args": {
+                    "switch": 1
+                  }
+                }
+              ]
+            },
+            "player2": {
+              "seatId": "player2",
+              "phase": "playing",
+              "turnId": "move-4",
+              "viewRevision": 4,
+              "decisionRevision": 4,
+              "viewSequence": 4,
+              "allowedView": {
+                "switches": [
+                  true,
+                  false,
+                  true,
+                  false
+                ],
+                "goalMask": 15,
+                "ownedSwitches": [
+                  2,
+                  3
+                ],
+                "phase": "playing",
+                "turnId": "move-4",
+                "teamWon": false
+              },
+              "legalActions": [
+                {
+                  "actionId": "game.toggle",
+                  "args": {
+                    "switch": 2
+                  }
+                },
+                {
+                  "actionId": "game.toggle",
+                  "args": {
+                    "switch": 3
+                  }
+                }
+              ]
+            },
+            "spectator": {
+              "seatId": "spectator",
+              "phase": "playing",
+              "turnId": "move-4",
+              "viewRevision": 4,
+              "decisionRevision": 4,
+              "viewSequence": 4,
+              "allowedView": {
+                "switches": [
+                  true,
+                  false,
+                  true,
+                  false
+                ],
+                "goalMask": 15,
+                "ownedSwitches": [],
+                "phase": "playing",
+                "turnId": "move-4",
+                "teamWon": false
+              },
+              "legalActions": []
+            }
+          },
+          "events": {
+            "player1": [
+              {
+                "seatId": "player1",
+                "viewSequence": 1,
+                "type": "switch.toggled",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 2,
+                "type": "switch.toggled",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-2",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": false
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 3,
+                "type": "switch.toggled",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "switch": 2,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 4,
+                "type": "switch.toggled",
+                "decisionRevision": 4,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              }
+            ],
+            "player2": [
+              {
+                "seatId": "player2",
+                "viewSequence": 1,
+                "type": "switch.toggled",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 2,
+                "type": "switch.toggled",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-2",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": false
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 3,
+                "type": "switch.toggled",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "switch": 2,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 4,
+                "type": "switch.toggled",
+                "decisionRevision": 4,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              }
+            ],
+            "spectator": [
+              {
+                "seatId": "spectator",
+                "viewSequence": 1,
+                "type": "switch.toggled",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 2,
+                "type": "switch.toggled",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-2",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": false
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 3,
+                "type": "switch.toggled",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "switch": 2,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 4,
+                "type": "switch.toggled",
+                "decisionRevision": 4,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              }
+            ]
+          }
+        },
+        {
+          "input": {
+            "seatId": "player1",
+            "args": {
+              "switch": 1
+            },
+            "requestId": "move-5",
+            "actionId": "game.toggle"
+          },
+          "receipt": {
+            "requestId": "move-5",
+            "status": "applied",
+            "beforeRevision": 4,
+            "afterRevision": 5,
+            "committedViewSequence": 5,
+            "errorCode": ""
+          },
+          "views": {
+            "player1": {
+              "seatId": "player1",
+              "phase": "playing",
+              "turnId": "move-5",
+              "viewRevision": 5,
+              "decisionRevision": 5,
+              "viewSequence": 5,
+              "allowedView": {
+                "switches": [
+                  true,
+                  true,
+                  true,
+                  false
+                ],
+                "goalMask": 15,
+                "ownedSwitches": [
+                  0,
+                  1
+                ],
+                "phase": "playing",
+                "turnId": "move-5",
+                "teamWon": false
+              },
+              "legalActions": [
+                {
+                  "actionId": "game.toggle",
+                  "args": {
+                    "switch": 0
+                  }
+                },
+                {
+                  "actionId": "game.toggle",
+                  "args": {
+                    "switch": 1
+                  }
+                }
+              ]
+            },
+            "player2": {
+              "seatId": "player2",
+              "phase": "playing",
+              "turnId": "move-5",
+              "viewRevision": 5,
+              "decisionRevision": 5,
+              "viewSequence": 5,
+              "allowedView": {
+                "switches": [
+                  true,
+                  true,
+                  true,
+                  false
+                ],
+                "goalMask": 15,
+                "ownedSwitches": [
+                  2,
+                  3
+                ],
+                "phase": "playing",
+                "turnId": "move-5",
+                "teamWon": false
+              },
+              "legalActions": [
+                {
+                  "actionId": "game.toggle",
+                  "args": {
+                    "switch": 2
+                  }
+                },
+                {
+                  "actionId": "game.toggle",
+                  "args": {
+                    "switch": 3
+                  }
+                }
+              ]
+            },
+            "spectator": {
+              "seatId": "spectator",
+              "phase": "playing",
+              "turnId": "move-5",
+              "viewRevision": 5,
+              "decisionRevision": 5,
+              "viewSequence": 5,
+              "allowedView": {
+                "switches": [
+                  true,
+                  true,
+                  true,
+                  false
+                ],
+                "goalMask": 15,
+                "ownedSwitches": [],
+                "phase": "playing",
+                "turnId": "move-5",
+                "teamWon": false
+              },
+              "legalActions": []
+            }
+          },
+          "events": {
+            "player1": [
+              {
+                "seatId": "player1",
+                "viewSequence": 1,
+                "type": "switch.toggled",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 2,
+                "type": "switch.toggled",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-2",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": false
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 3,
+                "type": "switch.toggled",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "switch": 2,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 4,
+                "type": "switch.toggled",
+                "decisionRevision": 4,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 5,
+                "type": "switch.toggled",
+                "decisionRevision": 5,
+                "causedByRequestId": "move-5",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 1,
+                  "enabled": true
+                }
+              }
+            ],
+            "player2": [
+              {
+                "seatId": "player2",
+                "viewSequence": 1,
+                "type": "switch.toggled",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 2,
+                "type": "switch.toggled",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-2",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": false
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 3,
+                "type": "switch.toggled",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "switch": 2,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 4,
+                "type": "switch.toggled",
+                "decisionRevision": 4,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 5,
+                "type": "switch.toggled",
+                "decisionRevision": 5,
+                "causedByRequestId": "move-5",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 1,
+                  "enabled": true
+                }
+              }
+            ],
+            "spectator": [
+              {
+                "seatId": "spectator",
+                "viewSequence": 1,
+                "type": "switch.toggled",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 2,
+                "type": "switch.toggled",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-2",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": false
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 3,
+                "type": "switch.toggled",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "switch": 2,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 4,
+                "type": "switch.toggled",
+                "decisionRevision": 4,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 5,
+                "type": "switch.toggled",
+                "decisionRevision": 5,
+                "causedByRequestId": "move-5",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 1,
+                  "enabled": true
+                }
+              }
+            ]
+          }
+        },
+        {
+          "input": {
+            "seatId": "player2",
+            "args": {
+              "switch": 3
+            },
+            "requestId": "move-6",
+            "actionId": "game.toggle"
+          },
+          "receipt": {
+            "requestId": "move-6",
+            "status": "applied",
+            "beforeRevision": 5,
+            "afterRevision": 6,
+            "committedViewSequence": 7,
+            "errorCode": ""
+          },
+          "views": {
+            "player1": {
+              "seatId": "player1",
+              "phase": "ended",
+              "turnId": "move-6",
+              "viewRevision": 6,
+              "decisionRevision": 6,
+              "viewSequence": 7,
+              "allowedView": {
+                "switches": [
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                "goalMask": 15,
+                "ownedSwitches": [
+                  0,
+                  1
+                ],
+                "phase": "ended",
+                "turnId": "move-6",
+                "teamWon": true
+              },
+              "legalActions": []
+            },
+            "player2": {
+              "seatId": "player2",
+              "phase": "ended",
+              "turnId": "move-6",
+              "viewRevision": 6,
+              "decisionRevision": 6,
+              "viewSequence": 7,
+              "allowedView": {
+                "switches": [
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                "goalMask": 15,
+                "ownedSwitches": [
+                  2,
+                  3
+                ],
+                "phase": "ended",
+                "turnId": "move-6",
+                "teamWon": true
+              },
+              "legalActions": []
+            },
+            "spectator": {
+              "seatId": "spectator",
+              "phase": "ended",
+              "turnId": "move-6",
+              "viewRevision": 6,
+              "decisionRevision": 6,
+              "viewSequence": 7,
+              "allowedView": {
+                "switches": [
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                "goalMask": 15,
+                "ownedSwitches": [],
+                "phase": "ended",
+                "turnId": "move-6",
+                "teamWon": true
+              },
+              "legalActions": []
+            }
+          },
+          "events": {
+            "player1": [
+              {
+                "seatId": "player1",
+                "viewSequence": 1,
+                "type": "switch.toggled",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 2,
+                "type": "switch.toggled",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-2",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": false
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 3,
+                "type": "switch.toggled",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "switch": 2,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 4,
+                "type": "switch.toggled",
+                "decisionRevision": 4,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 5,
+                "type": "switch.toggled",
+                "decisionRevision": 5,
+                "causedByRequestId": "move-5",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 1,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 6,
+                "type": "switch.toggled",
+                "decisionRevision": 6,
+                "causedByRequestId": "move-6",
+                "payload": {
+                  "seatId": "player2",
+                  "switch": 3,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 7,
+                "type": "game.ended",
+                "decisionRevision": 6,
+                "causedByRequestId": "move-6",
+                "payload": {
+                  "winner": "team"
+                }
+              }
+            ],
+            "player2": [
+              {
+                "seatId": "player2",
+                "viewSequence": 1,
+                "type": "switch.toggled",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 2,
+                "type": "switch.toggled",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-2",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": false
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 3,
+                "type": "switch.toggled",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "switch": 2,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 4,
+                "type": "switch.toggled",
+                "decisionRevision": 4,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 5,
+                "type": "switch.toggled",
+                "decisionRevision": 5,
+                "causedByRequestId": "move-5",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 1,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 6,
+                "type": "switch.toggled",
+                "decisionRevision": 6,
+                "causedByRequestId": "move-6",
+                "payload": {
+                  "seatId": "player2",
+                  "switch": 3,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 7,
+                "type": "game.ended",
+                "decisionRevision": 6,
+                "causedByRequestId": "move-6",
+                "payload": {
+                  "winner": "team"
+                }
+              }
+            ],
+            "spectator": [
+              {
+                "seatId": "spectator",
+                "viewSequence": 1,
+                "type": "switch.toggled",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 2,
+                "type": "switch.toggled",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-2",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": false
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 3,
+                "type": "switch.toggled",
+                "decisionRevision": 3,
+                "causedByRequestId": "move-3",
+                "payload": {
+                  "seatId": "player2",
+                  "switch": 2,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 4,
+                "type": "switch.toggled",
+                "decisionRevision": 4,
+                "causedByRequestId": "move-4",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 0,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 5,
+                "type": "switch.toggled",
+                "decisionRevision": 5,
+                "causedByRequestId": "move-5",
+                "payload": {
+                  "seatId": "player1",
+                  "switch": 1,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 6,
+                "type": "switch.toggled",
+                "decisionRevision": 6,
+                "causedByRequestId": "move-6",
+                "payload": {
+                  "seatId": "player2",
+                  "switch": 3,
+                  "enabled": true
+                }
+              },
+              {
+                "seatId": "spectator",
+                "viewSequence": 7,
+                "type": "game.ended",
+                "decisionRevision": 6,
+                "causedByRequestId": "move-6",
+                "payload": {
+                  "winner": "team"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "rulesId": "private-cards.v1",
+      "rulesConfig": {
+        "cardsPerRole": 3
+      },
+      "seed": 17,
+      "initial": {
+        "player1": {
+          "seatId": "player1",
+          "phase": "choosing",
+          "turnId": "choice-1",
+          "viewRevision": 0,
+          "decisionRevision": 0,
+          "viewSequence": 0,
+          "allowedView": {
+            "hand": [
+              1,
+              2,
+              0
+            ],
+            "chosenCard": null,
+            "phase": "choosing",
+            "turnId": "choice-1"
+          },
+          "legalActions": [
+            {
+              "actionId": "game.choose",
+              "args": {
+                "card": 0
+              }
+            },
+            {
+              "actionId": "game.choose",
+              "args": {
+                "card": 1
+              }
+            },
+            {
+              "actionId": "game.choose",
+              "args": {
+                "card": 2
+              }
+            }
+          ]
+        },
+        "player2": {
+          "seatId": "player2",
+          "phase": "choosing",
+          "turnId": "choice-1",
+          "viewRevision": 0,
+          "decisionRevision": 0,
+          "viewSequence": 0,
+          "allowedView": {
+            "hand": [
+              0,
+              2,
+              1
+            ],
+            "chosenCard": null,
+            "phase": "choosing",
+            "turnId": "choice-1"
+          },
+          "legalActions": [
+            {
+              "actionId": "game.choose",
+              "args": {
+                "card": 0
+              }
+            },
+            {
+              "actionId": "game.choose",
+              "args": {
+                "card": 1
+              }
+            },
+            {
+              "actionId": "game.choose",
+              "args": {
+                "card": 2
+              }
+            }
+          ]
+        },
+        "spectator": {
+          "seatId": "spectator",
+          "phase": "choosing",
+          "turnId": "choice-1",
+          "viewRevision": 0,
+          "decisionRevision": 0,
+          "viewSequence": 0,
+          "allowedView": {
+            "hand": null,
+            "chosenCard": null,
+            "phase": "choosing",
+            "turnId": "choice-1"
+          },
+          "legalActions": []
+        }
+      },
+      "steps": [
+        {
+          "input": {
+            "seatId": "player1",
+            "args": {
+              "card": 0
+            },
+            "requestId": "move-1",
+            "actionId": "game.choose"
+          },
+          "receipt": {
+            "requestId": "move-1",
+            "status": "applied",
+            "beforeRevision": 0,
+            "afterRevision": 1,
+            "committedViewSequence": 1,
+            "errorCode": ""
+          },
+          "views": {
+            "player1": {
+              "seatId": "player1",
+              "phase": "waiting",
+              "turnId": "choice-1",
+              "viewRevision": 1,
+              "decisionRevision": 1,
+              "viewSequence": 1,
+              "allowedView": {
+                "hand": [
+                  1,
+                  2,
+                  0
+                ],
+                "chosenCard": 0,
+                "phase": "waiting",
+                "turnId": "choice-1"
+              },
+              "legalActions": []
+            },
+            "player2": {
+              "seatId": "player2",
+              "phase": "choosing",
+              "turnId": "choice-1",
+              "viewRevision": 0,
+              "decisionRevision": 0,
+              "viewSequence": 0,
+              "allowedView": {
+                "hand": [
+                  0,
+                  2,
+                  1
+                ],
+                "chosenCard": null,
+                "phase": "choosing",
+                "turnId": "choice-1"
+              },
+              "legalActions": [
+                {
+                  "actionId": "game.choose",
+                  "args": {
+                    "card": 0
+                  }
+                },
+                {
+                  "actionId": "game.choose",
+                  "args": {
+                    "card": 1
+                  }
+                },
+                {
+                  "actionId": "game.choose",
+                  "args": {
+                    "card": 2
+                  }
+                }
+              ]
+            },
+            "spectator": {
+              "seatId": "spectator",
+              "phase": "choosing",
+              "turnId": "choice-1",
+              "viewRevision": 0,
+              "decisionRevision": 0,
+              "viewSequence": 0,
+              "allowedView": {
+                "hand": null,
+                "chosenCard": null,
+                "phase": "choosing",
+                "turnId": "choice-1"
+              },
+              "legalActions": []
+            }
+          },
+          "events": {
+            "player1": [
+              {
+                "seatId": "player1",
+                "viewSequence": 1,
+                "type": "card.selected",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "card": 0
+                }
+              }
+            ],
+            "player2": [],
+            "spectator": []
+          }
+        },
+        {
+          "input": {
+            "seatId": "player2",
+            "args": {
+              "card": 1
+            },
+            "requestId": "move-2",
+            "actionId": "game.choose"
+          },
+          "receipt": {
+            "requestId": "move-2",
+            "status": "applied",
+            "beforeRevision": 0,
+            "afterRevision": 1,
+            "committedViewSequence": 2,
+            "errorCode": ""
+          },
+          "views": {
+            "player1": {
+              "seatId": "player1",
+              "phase": "ended",
+              "turnId": "result-1",
+              "viewRevision": 2,
+              "decisionRevision": 2,
+              "viewSequence": 2,
+              "allowedView": {
+                "hand": [
+                  1,
+                  2,
+                  0
+                ],
+                "chosenCard": 0,
+                "phase": "ended",
+                "turnId": "result-1",
+                "reveal": {
+                  "player1": 1,
+                  "player2": 2,
+                  "winner": 2
+                }
+              },
+              "legalActions": []
+            },
+            "player2": {
+              "seatId": "player2",
+              "phase": "ended",
+              "turnId": "result-1",
+              "viewRevision": 1,
+              "decisionRevision": 1,
+              "viewSequence": 2,
+              "allowedView": {
+                "hand": [
+                  0,
+                  2,
+                  1
+                ],
+                "chosenCard": 1,
+                "phase": "ended",
+                "turnId": "result-1",
+                "reveal": {
+                  "player1": 1,
+                  "player2": 2,
+                  "winner": 2
+                }
+              },
+              "legalActions": []
+            },
+            "spectator": {
+              "seatId": "spectator",
+              "phase": "ended",
+              "turnId": "result-1",
+              "viewRevision": 1,
+              "decisionRevision": 1,
+              "viewSequence": 1,
+              "allowedView": {
+                "hand": null,
+                "chosenCard": null,
+                "phase": "ended",
+                "turnId": "result-1",
+                "reveal": {
+                  "player1": 1,
+                  "player2": 2,
+                  "winner": 2
+                }
+              },
+              "legalActions": []
+            }
+          },
+          "events": {
+            "player1": [
+              {
+                "seatId": "player1",
+                "viewSequence": 1,
+                "type": "card.selected",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-1",
+                "payload": {
+                  "card": 0
+                }
+              },
+              {
+                "seatId": "player1",
+                "viewSequence": 2,
+                "type": "game.ended",
+                "decisionRevision": 2,
+                "causedByRequestId": "move-2",
+                "payload": {
+                  "player1": 1,
+                  "player2": 2,
+                  "winner": 2
+                }
+              }
+            ],
+            "player2": [
+              {
+                "seatId": "player2",
+                "viewSequence": 1,
+                "type": "card.selected",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-2",
+                "payload": {
+                  "card": 1
+                }
+              },
+              {
+                "seatId": "player2",
+                "viewSequence": 2,
+                "type": "game.ended",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-2",
+                "payload": {
+                  "player1": 1,
+                  "player2": 2,
+                  "winner": 2
+                }
+              }
+            ],
+            "spectator": [
+              {
+                "seatId": "spectator",
+                "viewSequence": 1,
+                "type": "game.ended",
+                "decisionRevision": 1,
+                "causedByRequestId": "move-2",
+                "payload": {
+                  "player1": 1,
+                  "player2": 2,
+                  "winner": 2
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

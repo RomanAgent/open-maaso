@@ -1,0 +1,1 @@
+"NSLocationWhenInUseUsageDescription" = "查询本地天气或附近信息时，Maaso 会获取当前位置，只将城市用于聊天，不在后台持续定位。";

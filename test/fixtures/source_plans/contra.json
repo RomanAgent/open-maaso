@@ -1,0 +1,29 @@
+{
+  "title": "魂斗罗：钢铁突围",
+  "summary": "离线横版跑枪射击小游戏，包含开始界面、剧情简报、三关推进、平台跳跃、八方向瞄准、敌兵/炮台/精英、武器升级、Boss、生命、分数、结算与重开。",
+  "skillInstructions": "键盘：A/D或←/→移动，W/↑跳跃，S/↓卧倒，J射击，K跳跃，L手雷；移动端使用屏幕左下方向键与右下动作键。吃到S散弹、R连发、M机枪可强化火力，避开敌人、子弹和深坑。",
+  "interfaces": "index.html 挂载 #app；styles.css 提供全屏布局、HUD、菜单、触控按钮；game.js 为单一经典脚本模块，使用 Canvas 2D 实现 loop、输入、物理、碰撞、关卡、敌人、Boss、渲染、音效和 Surface.emit。共享全局对象名 ContraGame，公开状态字段 phase,score,lives,health,weapon,level,levelName,bossHealth,progress；事件类型 start.level,player.shoot,enemy.destroyed,powerup.collected,player.hit,player.death,boss.destroyed,game.over,game.win。",
+  "files": [
+    {
+      "id": "index.html",
+      "kind": "html",
+      "purpose": "全屏游戏容器、画布、HUD、开始/暂停/结算界面和移动端触控区",
+      "dependsOn": [
+        "styles.css",
+        "game.js"
+      ]
+    },
+    {
+      "id": "styles.css",
+      "kind": "css",
+      "purpose": "Maaso White Frost v2风格的无边界磨砂控件、48px触控目标、响应式全屏布局和像素战场视觉",
+      "dependsOn": []
+    },
+    {
+      "id": "game.js",
+      "kind": "js",
+      "purpose": "完整游戏循环、关卡数据、角色控制、敌人AI、子弹碰撞、武器道具、Boss战、音效、状态广播、暂停与重开",
+      "dependsOn": []
+    }
+  ]
+}

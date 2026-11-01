@@ -1,0 +1,392 @@
+{
+  "fixtureOnly": true,
+  "fixturePurpose": "Synthetic public-node parser/replay fixture, not tool execution or model generation evidence. Node deltas do not repeat snapshots.",
+  "createRequest": {
+    "requestId": "create_v2_fixture",
+    "agentId": "self",
+    "projectKind": "applet",
+    "requirements": "Build an offline task list.",
+    "locale": "en"
+  },
+  "createReceipt": {
+    "requestId": "create_v2_fixture",
+    "taskId": "pb_task_00000000-0000-0000-0000-000000000005",
+    "runId": "pb_run_00000000-0000-0000-0000-000000000006",
+    "attempt": 1,
+    "acceptedTaskSequence": 1
+  },
+  "eventsPage": {
+    "events": [
+      {
+        "taskSequence": 1,
+        "sequence": 1,
+        "taskId": "pb_task_00000000-0000-0000-0000-000000000005",
+        "runId": "pb_run_00000000-0000-0000-0000-000000000006",
+        "type": "task.created",
+        "at": "2026-09-28T08:00:00Z",
+        "snapshot": {
+          "schemaVersion": 2,
+          "kind": "project_build",
+          "taskId": "pb_task_00000000-0000-0000-0000-000000000005",
+          "runId": "pb_run_00000000-0000-0000-0000-000000000006",
+          "attempt": 1,
+          "agentId": "self",
+          "projectKind": "applet",
+          "projectId": "pb_project_00000000-0000-0000-0000-000000000001",
+          "status": "queued",
+          "statusVersion": 1,
+          "requirementRevision": 1,
+          "snapshotSequence": 1,
+          "snapshotTaskSequence": 1,
+          "createdAt": "2026-09-28T08:00:00Z",
+          "updatedAt": "2026-09-28T08:00:00Z",
+          "errorCode": ""
+        }
+      },
+      {
+        "taskSequence": 2,
+        "sequence": 2,
+        "taskId": "pb_task_00000000-0000-0000-0000-000000000005",
+        "runId": "pb_run_00000000-0000-0000-0000-000000000006",
+        "type": "run.claimed",
+        "at": "2026-09-28T08:00:01Z",
+        "snapshot": {
+          "schemaVersion": 2,
+          "kind": "project_build",
+          "taskId": "pb_task_00000000-0000-0000-0000-000000000005",
+          "runId": "pb_run_00000000-0000-0000-0000-000000000006",
+          "attempt": 1,
+          "agentId": "self",
+          "projectKind": "applet",
+          "projectId": "pb_project_00000000-0000-0000-0000-000000000001",
+          "status": "running",
+          "statusVersion": 2,
+          "requirementRevision": 1,
+          "snapshotSequence": 2,
+          "snapshotTaskSequence": 2,
+          "createdAt": "2026-09-28T08:00:00Z",
+          "updatedAt": "2026-09-28T08:00:01Z",
+          "errorCode": ""
+        }
+      },
+      {
+        "taskSequence": 3,
+        "sequence": 3,
+        "taskId": "pb_task_00000000-0000-0000-0000-000000000005",
+        "runId": "pb_run_00000000-0000-0000-0000-000000000006",
+        "type": "run.node_changed",
+        "at": "2026-09-28T08:00:02Z",
+        "attempt": 1,
+        "statusVersion": 3,
+        "node": {
+          "nodeId": "build",
+          "parentId": null,
+          "dependencyIds": [],
+          "revision": 1,
+          "status": "queued",
+          "kind": "generation",
+          "title": "Build project",
+          "summary": "",
+          "details": "",
+          "evidence": []
+        }
+      },
+      {
+        "taskSequence": 4,
+        "sequence": 4,
+        "taskId": "pb_task_00000000-0000-0000-0000-000000000005",
+        "runId": "pb_run_00000000-0000-0000-0000-000000000006",
+        "type": "run.node_changed",
+        "at": "2026-09-28T08:00:03Z",
+        "attempt": 1,
+        "statusVersion": 4,
+        "node": {
+          "nodeId": "build",
+          "parentId": null,
+          "dependencyIds": [],
+          "revision": 2,
+          "status": "running",
+          "kind": "generation",
+          "title": "Build project",
+          "summary": "",
+          "details": "",
+          "evidence": []
+        }
+      },
+      {
+        "taskSequence": 5,
+        "sequence": 5,
+        "taskId": "pb_task_00000000-0000-0000-0000-000000000005",
+        "runId": "pb_run_00000000-0000-0000-0000-000000000006",
+        "type": "run.node_changed",
+        "at": "2026-09-28T08:00:04Z",
+        "attempt": 1,
+        "statusVersion": 5,
+        "node": {
+          "nodeId": "compile",
+          "parentId": "build",
+          "dependencyIds": [],
+          "revision": 1,
+          "status": "queued",
+          "kind": "validation",
+          "title": "Compile offline project",
+          "summary": "",
+          "details": "",
+          "evidence": []
+        }
+      },
+      {
+        "taskSequence": 6,
+        "sequence": 6,
+        "taskId": "pb_task_00000000-0000-0000-0000-000000000005",
+        "runId": "pb_run_00000000-0000-0000-0000-000000000006",
+        "type": "run.node_changed",
+        "at": "2026-09-28T08:00:05Z",
+        "attempt": 1,
+        "statusVersion": 6,
+        "node": {
+          "nodeId": "compile",
+          "parentId": "build",
+          "dependencyIds": [],
+          "revision": 2,
+          "status": "running",
+          "kind": "validation",
+          "title": "Compile offline project",
+          "summary": "",
+          "details": "",
+          "evidence": []
+        }
+      },
+      {
+        "taskSequence": 7,
+        "sequence": 7,
+        "taskId": "pb_task_00000000-0000-0000-0000-000000000005",
+        "runId": "pb_run_00000000-0000-0000-0000-000000000006",
+        "type": "run.node_changed",
+        "at": "2026-09-28T08:00:06Z",
+        "attempt": 1,
+        "statusVersion": 7,
+        "node": {
+          "nodeId": "compile",
+          "parentId": "build",
+          "dependencyIds": [],
+          "revision": 3,
+          "status": "succeeded",
+          "kind": "validation",
+          "title": "Compile offline project",
+          "summary": "Compilation checks finished.",
+          "details": "",
+          "evidence": [
+            {
+              "kind": "validation",
+              "outcome": "passed",
+              "label": "Compile checks",
+              "count": 4,
+              "reference": "compile_fixture"
+            }
+          ]
+        }
+      },
+      {
+        "taskSequence": 8,
+        "sequence": 8,
+        "taskId": "pb_task_00000000-0000-0000-0000-000000000005",
+        "runId": "pb_run_00000000-0000-0000-0000-000000000006",
+        "type": "run.node_changed",
+        "at": "2026-09-28T08:00:07Z",
+        "attempt": 1,
+        "statusVersion": 8,
+        "node": {
+          "nodeId": "build",
+          "parentId": null,
+          "dependencyIds": [],
+          "revision": 3,
+          "status": "succeeded",
+          "kind": "generation",
+          "title": "Build project",
+          "summary": "Candidate package produced.",
+          "details": "",
+          "evidence": [
+            {
+              "kind": "artifact",
+              "outcome": "completed",
+              "label": "Project files",
+              "count": 8
+            }
+          ]
+        }
+      },
+      {
+        "taskSequence": 9,
+        "sequence": 9,
+        "taskId": "pb_task_00000000-0000-0000-0000-000000000005",
+        "runId": "pb_run_00000000-0000-0000-0000-000000000006",
+        "type": "run.preview_ready",
+        "at": "2026-09-28T08:00:08Z",
+        "snapshot": {
+          "schemaVersion": 2,
+          "kind": "project_build",
+          "taskId": "pb_task_00000000-0000-0000-0000-000000000005",
+          "runId": "pb_run_00000000-0000-0000-0000-000000000006",
+          "attempt": 1,
+          "agentId": "self",
+          "projectKind": "applet",
+          "projectId": "pb_project_00000000-0000-0000-0000-000000000001",
+          "status": "preview_ready",
+          "statusVersion": 9,
+          "requirementRevision": 1,
+          "snapshotSequence": 9,
+          "snapshotTaskSequence": 9,
+          "createdAt": "2026-09-28T08:00:00Z",
+          "updatedAt": "2026-09-28T08:00:08Z",
+          "errorCode": "",
+          "candidate": {
+            "candidateId": "pb_candidate_00000000-0000-0000-0000-000000000004",
+            "candidateDigest": "dd480f2ad3913261b52bd12bfda74bfde97d7aeb220e622ac7351dca890f0d2f",
+            "reportDigest": "1bcd939c7530cdad00d9ef6315e80cc399767387d52b230d518f11195bc3f755",
+            "revisionId": "pb_revision_00000000-0000-0000-0000-000000000002",
+            "baseRevision": null,
+            "baseHeadVersion": null
+          }
+        }
+      },
+      {
+        "taskSequence": 10,
+        "sequence": 10,
+        "taskId": "pb_task_00000000-0000-0000-0000-000000000005",
+        "runId": "pb_run_00000000-0000-0000-0000-000000000006",
+        "type": "run.completed",
+        "at": "2026-09-28T08:00:09Z",
+        "snapshot": {
+          "schemaVersion": 2,
+          "kind": "project_build",
+          "taskId": "pb_task_00000000-0000-0000-0000-000000000005",
+          "runId": "pb_run_00000000-0000-0000-0000-000000000006",
+          "attempt": 1,
+          "agentId": "self",
+          "projectKind": "applet",
+          "projectId": "pb_project_00000000-0000-0000-0000-000000000001",
+          "status": "completed",
+          "statusVersion": 10,
+          "requirementRevision": 1,
+          "snapshotSequence": 10,
+          "snapshotTaskSequence": 10,
+          "createdAt": "2026-09-28T08:00:00Z",
+          "updatedAt": "2026-09-28T08:00:09Z",
+          "errorCode": "",
+          "candidate": {
+            "candidateId": "pb_candidate_00000000-0000-0000-0000-000000000004",
+            "candidateDigest": "dd480f2ad3913261b52bd12bfda74bfde97d7aeb220e622ac7351dca890f0d2f",
+            "reportDigest": "1bcd939c7530cdad00d9ef6315e80cc399767387d52b230d518f11195bc3f755",
+            "revisionId": "pb_revision_00000000-0000-0000-0000-000000000002",
+            "baseRevision": null,
+            "baseHeadVersion": null
+          },
+          "savedRevision": {
+            "projectId": "pb_project_00000000-0000-0000-0000-000000000001",
+            "revisionId": "pb_revision_00000000-0000-0000-0000-000000000002",
+            "candidateDigest": "dd480f2ad3913261b52bd12bfda74bfde97d7aeb220e622ac7351dca890f0d2f",
+            "reportDigest": "1bcd939c7530cdad00d9ef6315e80cc399767387d52b230d518f11195bc3f755",
+            "headVersion": 1
+          }
+        }
+      }
+    ],
+    "nextTaskSequence": 10,
+    "hasMore": false
+  },
+  "snapshot": {
+    "schemaVersion": 2,
+    "kind": "project_build",
+    "taskId": "pb_task_00000000-0000-0000-0000-000000000005",
+    "runId": "pb_run_00000000-0000-0000-0000-000000000006",
+    "attempt": 1,
+    "agentId": "self",
+    "projectKind": "applet",
+    "projectId": "pb_project_00000000-0000-0000-0000-000000000001",
+    "status": "completed",
+    "statusVersion": 10,
+    "requirementRevision": 1,
+    "snapshotSequence": 10,
+    "snapshotTaskSequence": 10,
+    "createdAt": "2026-09-28T08:00:00Z",
+    "updatedAt": "2026-09-28T08:00:09Z",
+    "errorCode": "",
+    "candidate": {
+      "candidateId": "pb_candidate_00000000-0000-0000-0000-000000000004",
+      "candidateDigest": "dd480f2ad3913261b52bd12bfda74bfde97d7aeb220e622ac7351dca890f0d2f",
+      "reportDigest": "1bcd939c7530cdad00d9ef6315e80cc399767387d52b230d518f11195bc3f755",
+      "revisionId": "pb_revision_00000000-0000-0000-0000-000000000002",
+      "baseRevision": null,
+      "baseHeadVersion": null
+    },
+    "savedRevision": {
+      "projectId": "pb_project_00000000-0000-0000-0000-000000000001",
+      "revisionId": "pb_revision_00000000-0000-0000-0000-000000000002",
+      "candidateDigest": "dd480f2ad3913261b52bd12bfda74bfde97d7aeb220e622ac7351dca890f0d2f",
+      "reportDigest": "1bcd939c7530cdad00d9ef6315e80cc399767387d52b230d518f11195bc3f755",
+      "headVersion": 1
+    }
+  },
+  "expectedNodes": [
+    {
+      "nodeId": "build",
+      "parentId": null,
+      "dependencyIds": [],
+      "revision": 3,
+      "status": "succeeded",
+      "kind": "generation",
+      "title": "Build project",
+      "summary": "Candidate package produced.",
+      "details": "",
+      "evidence": [
+        {
+          "kind": "artifact",
+          "outcome": "completed",
+          "label": "Project files",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "nodeId": "compile",
+      "parentId": "build",
+      "dependencyIds": [],
+      "revision": 3,
+      "status": "succeeded",
+      "kind": "validation",
+      "title": "Compile offline project",
+      "summary": "Compilation checks finished.",
+      "details": "",
+      "evidence": [
+        {
+          "kind": "validation",
+          "outcome": "passed",
+          "label": "Compile checks",
+          "count": 4,
+          "reference": "compile_fixture"
+        }
+      ]
+    }
+  ],
+  "acceptRequest": {
+    "requestId": "accept_v2_fixture",
+    "expectedRunId": "pb_run_00000000-0000-0000-0000-000000000006",
+    "expectedStatusVersion": 9,
+    "candidateDigest": "dd480f2ad3913261b52bd12bfda74bfde97d7aeb220e622ac7351dca890f0d2f",
+    "baseRevision": null,
+    "expectedHeadVersion": 0
+  },
+  "acceptReceipt": {
+    "requestId": "accept_v2_fixture",
+    "taskId": "pb_task_00000000-0000-0000-0000-000000000005",
+    "runId": "pb_run_00000000-0000-0000-0000-000000000006",
+    "attempt": 1,
+    "acceptedTaskSequence": 10,
+    "savedProjectId": "pb_project_00000000-0000-0000-0000-000000000001",
+    "savedRevisionId": "pb_revision_00000000-0000-0000-0000-000000000002",
+    "candidateDigest": "dd480f2ad3913261b52bd12bfda74bfde97d7aeb220e622ac7351dca890f0d2f",
+    "reportDigest": "1bcd939c7530cdad00d9ef6315e80cc399767387d52b230d518f11195bc3f755",
+    "savedHeadVersion": 1
+  }
+}
