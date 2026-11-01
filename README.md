@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/media/open-maaso-hero.svg" alt="open-maaso — Give your agent a voice, a presence, and a workspace." width="100%" />
+<img src="docs/media/open-maaso-hero.svg?v=official-logo" alt="open-maaso — Give your agent a voice, a presence, and a workspace." width="100%" />
 
 **An embodied AI workspace, built with Flutter.**
 
