@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:maaso/src/core/network/backend_client.dart';
 import 'package:maaso/src/core/foundation/app_framework.dart';
 import 'package:maaso/src/core/services/app_environment_service.dart';
 import 'package:maaso/src/core/services/auth_session_service.dart';
@@ -150,7 +151,7 @@ class AssetStoreService {
     Uri Function()? baseUri,
     Future<String> Function()? token,
     String Function()? scope,
-  }) : _client = client ?? http.Client(),
+  }) : _client = client ?? createMaasoBackendClient(),
        _ownsClient = client == null,
        _baseUri =
            baseUri ?? (() => appServices.find<AppEnvironmentService>().baseUri),

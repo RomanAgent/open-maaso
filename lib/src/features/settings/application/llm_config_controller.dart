@@ -28,6 +28,7 @@ class LLMConfigController extends AppController {
   LLMConfigController({
     SecureStorageService? storage,
     AccountStorageScopeService? storageScopes,
+    this.localEdition = false,
   }) : _storage = storage ?? appServices.find<SecureStorageService>(),
        _injectedStorageScopes = storageScopes;
 
@@ -40,6 +41,8 @@ class LLMConfigController extends AppController {
     GlobalConstant.keyLlmCloudEnabled,
   ];
 
+  /// Local edition saves credentials without background provider probes.
+  final bool localEdition;
   final SecureStorageService _storage;
   final AccountStorageScopeService? _injectedStorageScopes;
 
@@ -51,7 +54,19 @@ class LLMConfigController extends AppController {
   final model = LLMDefaults.model.obs;
   final cloudEnabled = false.obs;
 
-  bool get cloudUsable => cloudEnabled.value && apiKey.value.trim().isNotEmpty;
+  bool get cloudUsable =>
+      cloudEnabled.value &&
+      (apiKey.value.trim().isNotEmpty ||
+          (localEdition && _isLocalEndpoint(baseUrl.value)));
+
+  bool get usesLocalEndpoint =>
+      localEdition && cloudEnabled.value && _isLocalEndpoint(baseUrl.value);
+
+  static bool _isLocalEndpoint(String url) {
+    final uri = Uri.tryParse(url);
+    return uri != null &&
+        const {'localhost', '127.0.0.1', '::1'}.contains(uri.host);
+  }
 
   LLMConfigAccountSession? _activeSession;
   LLMConfigAccountSession? _retiringSession;
@@ -169,6 +184,7 @@ class LLMConfigController extends AppController {
     required LLMConfigAccountSession session,
   }) {
     _requireActive(session);
+    if (localEdition) return;
     final health = appServices.maybeFind<CloudLLMHealthService>();
     if (health == null) return;
     final wasActive = _hasActiveHealthBinding(health);
@@ -250,7 +266,8 @@ class LLMConfigController extends AppController {
     await _writeCompatibilityProjectionStrict(snapshot);
     if (!_isActive(session)) return;
 
-    if (snapshot.cloudEnabled &&
+    if (!localEdition &&
+        snapshot.cloudEnabled &&
         snapshot.apiKey.trim().isNotEmpty &&
         appServices.isRegistered<LocalLLMService>()) {
       Log.i('🧠 [LocalLLM] cloud key saved — warming local filler prompt');
@@ -351,6 +368,7 @@ class LLMConfigController extends AppController {
     LLMConfigAccountSession session,
     _LLMConfigSnapshot snapshot,
   ) {
+    if (localEdition) return;
     final health = appServices.maybeFind<CloudLLMHealthService>();
     if (health == null) return;
     final wasActive = _hasActiveHealthBinding(health);

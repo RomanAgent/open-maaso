@@ -124,7 +124,9 @@ unity_project_ref = runner_project.files.find do |file|
 end
 
 unless unity_project_ref
-  unity_project_ref = runner_project.main_group.new_file(unity_project_relative_path)
+  # Xcodeproj opens new subprojects relative to the process cwd. Resolve the
+  # real export first; store the portable relative path below.
+  unity_project_ref = runner_project.main_group.new_file(unity_project_path.to_s)
   unity_project_ref.last_known_file_type = 'wrapper.pb-project'
   unity_project_ref.name = 'Unity-iPhone.xcodeproj'
 end

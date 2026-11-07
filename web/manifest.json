@@ -1,11 +1,11 @@
 {
-    "name": "Maaso",
-    "short_name": "Maaso",
+    "name": "Open Maaso",
+    "short_name": "Open Maaso",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#FFFFFF",
     "theme_color": "#3B6DE4",
-    "description": "Your AI companion across app, desktop, and web.",
+    "description": "Local conversations, games, and applets.",
     "prefer_related_applications": false,
     "icons": [
         {

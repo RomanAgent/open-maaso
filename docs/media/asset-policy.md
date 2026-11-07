@@ -1,23 +1,29 @@
 # Public-release asset policy
 
-This source release uses original geometric placeholders in place of the original application's branded images, room pictures, launcher artwork, splash images, and generic model-store fallback image. The replacement set consists of a blue circular mark with a white square, or a neutral white-to-blue background. These generated placeholder files contain no original character pixels, room artwork, purchased content, or model renders.
+The native launcher and splash assets use the official monochrome Maaso mark,
+with its original black ring/star geometry and transparent logo background.
+`assets/brand/official-launcher-assets.json` records the reviewed paths and
+SHA-256 hashes. These brand assets contain no character or room artwork.
 
-The existing filenames and pixel dimensions are retained so application and native asset references remain valid. Compatibility names such as `home_room.png`, `login_doorway.png`, and `assets/model_store/agent.png` describe their historical code locations; the public placeholder files do not contain a room, a doorway, or a character. The model-store image is an abstract fallback icon, not a model cover or evidence of a full-body render.
+Only three legacy fallback files are generated placeholders:
+`assets/brand/home_room.png`, `assets/brand/login_doorway.png` and
+`assets/model_store/agent.png`. Their compatibility filenames are retained;
+they do not depict a room, doorway or character and are not model covers.
+The active free-VRM cover is `assets/brand/offline_avatar_preview.png`, a real
+full-body Unity render showing the head, hands and feet.
 
-## Recreate the placeholders
-
-Run from the repository root with Python 3.10 or newer:
+## Check the assets
 
 ```bash
-python3 tool/generate_placeholder_assets.py
 python3 tool/generate_placeholder_assets.py --check
 ```
 
-The generator uses only the Python standard library. It contains a table of output paths and dimensions and draws the pixels from geometric formulas. It does not fetch network resources, load an original image, require a font, or depend on a private checkout. The Windows ICO contains multiple sizes of the same newly generated mark.
+The standard-library generator recreates only the three legacy placeholders.
+`--check` also verifies the official launcher/splash manifest. It does not
+regenerate or overwrite official icon artwork, the actual model cover, or the
+free model. Custom brand changes require updating the reviewed manifest.
 
-The first command overwrites every path listed in the generator, including the Windows ICO. Keep custom artwork elsewhere or commit your changes before regenerating. `--check` performs an exact byte comparison against the deterministic generated outputs without changing files.
-
-The README hero follows Maaso White Frost v2: a pure-white canvas, neutral text, a borderless muted capsule, and small reference-blue accents. It uses the official Maaso logo from `assets/brand/masso_monochrome_logo.svg` with a transparent background at the project owner's request. The original circle and star geometry are preserved; the white background rectangle and invisible filter are removed. The black ring and four-point star replace the temporary open-maaso lettermark. The hero composition remains an illustration, not an application screenshot or evidence of a completed avatar/native rendering experience. The generated application placeholder set described above is separate from this official documentation logo.
+The README hero follows Maaso White Frost v2: a pure-white canvas, neutral text, a borderless muted capsule, and small reference-blue accents. It uses the official Maaso logo from `assets/brand/masso_monochrome_logo.svg` with a transparent background at the project owner's request. The original circle and star geometry are preserved; the white background rectangle and invisible filter are removed. The black ring and four-point star replace the temporary open-maaso lettermark. The hero composition remains an illustration, not an application screenshot or evidence of a completed avatar/native rendering experience. The native launcher/splash set uses the same official mark.
 
 ## Product screenshots
 

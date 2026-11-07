@@ -10,6 +10,9 @@ import 'package:maaso/src/core/services/auth_session_service.dart';
 import 'package:maaso/src/core/services/locale_config_service.dart';
 import 'package:maaso/src/core/services/server_request_failure_log.dart';
 import 'package:maaso/src/features/applets/domain/applet_catalog_models.dart';
+import 'package:maaso/src/core/services/db_service.dart';
+import 'package:maaso/src/features/applets/data/applet_local_ownership.dart';
+import 'package:maaso/src/offline/original_ui_local_catalog.dart';
 
 enum AppletCatalogSort {
   recommended('recommended'),
@@ -112,11 +115,30 @@ class AppletCatalogService extends AppService
     AppEnvironmentService? environment,
     AuthSessionService? auth,
     LocaleConfigService? locale,
+    this.localEdition = false,
+    DBService? localDatabase,
   }) : _http = httpClient ?? http.Client(),
        _ownsClient = httpClient == null,
        _environment = environment ?? appServices.find<AppEnvironmentService>(),
        _auth = auth ?? appServices.find<AuthSessionService>(),
-       _locale = locale ?? appServices.find<LocaleConfigService>();
+       _locale = locale ?? appServices.find<LocaleConfigService>(),
+       _localDatabase = localDatabase;
+
+  final bool localEdition;
+  final DBService? _localDatabase;
+  OriginalUiLocalCatalog? _localCatalog;
+  DBService? _localBoundDatabase;
+  OriginalUiLocalCatalog get _local {
+    final database = _localDatabase ?? appServices.find<DBService>();
+    if (!identical(database, _localBoundDatabase)) {
+      _localBoundDatabase = database;
+      _localCatalog = OriginalUiLocalCatalog(
+        database: database,
+        scopeKey: AppletLocalOwnership.currentScopeKey,
+      );
+    }
+    return _localCatalog!;
+  }
 
   final http.Client _http;
   final bool _ownsClient;
@@ -149,6 +171,19 @@ class AppletCatalogService extends AppService
     final normalizedQuery = query.replaceAll(RegExp(r'\s+'), ' ').trim();
     if (normalizedQuery.isEmpty || normalizedQuery.runes.length > 80) {
       throw const FormatException('invalid_applet_query');
+    }
+    if (localEdition) {
+      final page = await _local.browse(
+        query: normalizedQuery,
+        type: type,
+        cursor: cursor,
+        limit: limit,
+      );
+      latestQuery.value = normalizedQuery;
+      latestType.value = type;
+      latestContextKey.value = requestContextKey;
+      latestPage.value = page;
+      return page;
     }
     final normalizedCursor = cursor?.trim() ?? '';
     if (normalizedCursor.length > 512) {
@@ -189,6 +224,14 @@ class AppletCatalogService extends AppService
     String? cursor,
     int limit = 12,
   }) async {
+    if (localEdition) {
+      return _local.browse(
+        type: type,
+        sort: sort.wireValue,
+        cursor: cursor,
+        limit: limit,
+      );
+    }
     final normalizedCursor = cursor?.trim() ?? '';
     if (normalizedCursor.length > 512) {
       throw const FormatException('invalid_applet_cursor');
@@ -231,6 +274,16 @@ class AppletCatalogService extends AppService
             !const {'game', 'travel', 'tools'}.contains(category)) ||
         (cursor?.length ?? 0) > 512) {
       throw const FormatException('invalid_applet_query');
+    }
+    if (localEdition) {
+      return _local.browse(
+        query: normalized,
+        type: type,
+        category: category,
+        cursor: cursor,
+        limit: limit,
+        sort: 'rating',
+      );
     }
     final context = requestContextKey;
     final uri = _environment.baseUri
@@ -427,6 +480,7 @@ class AppletCatalogService extends AppService
     if (expectedContextKey != requestContextKey) {
       throw StateError('applet_request_context_changed');
     }
+    if (localEdition) return;
     final identity = appServices.maybeFind<IdentityService>();
     if (identity == null) return;
     // A restored name opens the app, but public writes still need the current
@@ -491,6 +545,7 @@ class AppletCatalogService extends AppService
   );
 
   Future<AppletQuotaSnapshot> quota() async {
+    if (localEdition) return _local.quota();
     final expectedContext = requestContextKey;
     final uri = _environment.baseUri.resolve('v1/applets/quota');
     final data = await _get(uri, expectedContext: expectedContext);
@@ -501,6 +556,7 @@ class AppletCatalogService extends AppService
   }
 
   Future<AppletInventoryPage> mine() async {
+    if (localEdition) return _local.mine();
     final expectedContext = requestContextKey;
     if (_missingMineContextKey != null &&
         _missingMineContextKey != expectedContext) {
@@ -585,6 +641,13 @@ class AppletCatalogService extends AppService
   }) async {
     if (expectedContext != requestContextKey) {
       throw StateError('applet_request_context_changed');
+    }
+    if (localEdition) {
+      final result = await _local.request(method, uri, body);
+      if (expectedContext != requestContextKey) {
+        throw StateError('applet_request_context_changed');
+      }
+      return result;
     }
     final token = await _accessToken(expectedContext);
     if (expectedContext != requestContextKey) {

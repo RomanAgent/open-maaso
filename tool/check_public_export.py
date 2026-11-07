@@ -15,11 +15,13 @@ import subprocess
 import sys
 
 
-# This licensed VAD is the one deliberately bundled model. Changing its bytes
+# Only these reviewed model bytes are deliberately bundled. Changing an entry
 # requires reviewing its provenance and updating THIRD_PARTY_NOTICES.md.
 LICENSED_MODELS = {
     "assets/sherpa_models/silero-vad-v5/silero_vad.onnx":
         "9e2449e1087496d8d4caba907f23e0bd3f78d91fa552479bb9c23ac09cbb1fd6",
+    "unity/masso_avatar/Assets/MaasoAvatar/Models/Default/OpenMaaso.vrm":
+        "12c2b97e95e700783a6a550dc0eee2d7880aeedccef9ae67bc4c5a2f0f2631a2",
 }
 MODEL_SUFFIXES = {
     ".vrm", ".fbx", ".blend", ".blend1", ".glb", ".gltf", ".gguf",

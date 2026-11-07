@@ -326,6 +326,8 @@ class WebKitWebViewController extends PlatformWebViewController {
   final Map<String, WebKitJavaScriptChannelParams> _javaScriptChannelParams =
       <String, WebKitJavaScriptChannelParams>{};
 
+  String? _offlineDocumentStartScript;
+
   bool _zoomEnabled = true;
   WebKitNavigationDelegate? _currentNavigationDelegate;
 
@@ -351,6 +353,35 @@ class WebKitWebViewController extends PlatformWebViewController {
   /// `FLTWebViewFlutterPlugin:webViewForIdentifier:withPluginRegistry`.
   int get webViewIdentifier =>
       PigeonInstanceManager.instance.getIdentifier(_webView.nativeWebView)!;
+
+  /// Installs a host-owned offline policy before any authored code in every
+  /// frame. Call before the first navigation. Only fresh ephemeral controllers
+  /// support this opt-in path; ordinary players are unchanged.
+  Future<void> addOfflineDocumentStartScript(String source) async {
+    if (!_webKitParams.useNonPersistentDataStore) {
+      throw StateError('offline_requires_ephemeral_store');
+    }
+    if (source.trim().isEmpty || source.length > 32768) {
+      throw ArgumentError('Invalid bounded offline document-start script');
+    }
+    final previous = _offlineDocumentStartScript;
+    if (previous != null) {
+      if (previous != source) throw StateError('offline_policy_is_immutable');
+      return;
+    }
+    final controller = await _webView.configuration.getUserContentController();
+    await _addOfflineScript(controller, source);
+    _offlineDocumentStartScript = source;
+  }
+
+  Future<void> _addOfflineScript(WKUserContentController controller, String source) =>
+      controller.addUserScript(
+        WKUserScript(
+          source: source,
+          injectionTime: UserScriptInjectionTime.atDocumentStart,
+          isForMainFrameOnly: false,
+        ),
+      );
 
   /// Whether horizontal swipe gestures trigger page navigation.
   Future<void> setAllowsBackForwardNavigationGestures(bool enabled) {
@@ -804,7 +835,14 @@ class WebKitWebViewController extends PlatformWebViewController {
   Future<void> _resetUserScripts({String? removedJavaScriptChannel}) async {
     final WKUserContentController controller = await _webView.configuration
         .getUserContentController();
-    unawaited(controller.removeAllUserScripts());
+    final offlineScript = _offlineDocumentStartScript;
+    if (offlineScript == null) {
+      unawaited(controller.removeAllUserScripts());
+    } else {
+      // Await removal before restoring the mandatory policy; never race it.
+      await controller.removeAllUserScripts();
+      await _addOfflineScript(controller, offlineScript);
+    }
     // TODO(bparrishMines): This can be replaced with
     // `removeAllScriptMessageHandlers` once Dart supports runtime version
     // checking. (e.g. The equivalent to @availability in Objective-C.)

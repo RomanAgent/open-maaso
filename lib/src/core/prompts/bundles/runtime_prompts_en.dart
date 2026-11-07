@@ -558,6 +558,10 @@ Treat this as guided Applet production with FreeformSurface: establish a concise
       'Too many requests. Please try again in a moment.',
   'runtime.fallback.local_empty':
       'I blanked for a second. Please say that again.',
+  'runtime.fallback.local_edition_unconfigured':
+      'Local features are ready. To chat with AI or generate works, configure and enable a model API key in Settings, or enter a local Ollama endpoint.',
+  'runtime.fallback.local_edition_offline':
+      'The model service is unavailable. Your local works and data are still available. Try again when connected, or configure a local model endpoint in Settings.',
   'runtime.fallback.no_brain':
       'I cannot reach a cloud model, and my local model is not ready yet. Add a cloud key or enable the local model in Settings.',
 };

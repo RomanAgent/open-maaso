@@ -25,6 +25,9 @@ import 'package:maaso/src/core/services/sherpa_model_registry.dart';
 /// Reactive surface (one [SherpaDownloadStatus] per model id) lets the
 /// Settings UI render progress / errors without polling.
 class SherpaModelDownloadService extends AppService {
+  SherpaModelDownloadService({this.allowNetwork = true});
+
+  final bool allowNetwork;
   final Dio _dio = Dio(
     BaseOptions(
       connectTimeout: const Duration(seconds: 15),
@@ -96,11 +99,14 @@ class SherpaModelDownloadService extends AppService {
             Log.i('✅ [SherpaDL] ${model.id} loaded from bundled assets');
             return modelDir;
           }
-          Log.w(
-            '📦 [SherpaDL] ${model.id} bundled-asset copy failed; '
-            'falling through to cloud download',
-          );
+          Log.w('📦 [SherpaDL] ${model.id} bundled-asset copy failed');
         }
+      }
+
+      if (!allowNetwork) {
+        throw StateError(
+          'The required model is not available in the app bundle.',
+        );
       }
 
       // 2) Direct-files fast path.  When the model declares an explicit

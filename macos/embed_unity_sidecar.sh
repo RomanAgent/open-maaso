@@ -5,6 +5,15 @@ set -eu
 source_app="${SRCROOT}/../unity/masso_avatar/Builds/macOS/MaasoAvatar.app"
 helpers_dir="${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/Helpers"
 destination_app="${helpers_dir}/MaasoAvatar.app"
+# Offline builds do not embed an avatar player unless explicitly requested.
+# Remove only this generated helper from a previous opt-in build, never exports.
+if [ "${OPEN_MAASO_EMBED_UNITY:-0}" != "1" ]; then
+  if [ -e "${destination_app}" ] || [ -L "${destination_app}" ]; then
+    /bin/rm -rf -- "${destination_app}"
+  fi
+  exit 0
+fi
+
 source_executable="${source_app}/Contents/MacOS/MaasoAvatar"
 source_data="${source_app}/Contents/Resources/Data"
 protocol_fingerprint="${source_data}/maaso-sidecar-protocol.sha256"

@@ -3560,6 +3560,7 @@ class AgentRuntime {
           appServices.isRegistered<SurfaceRuntime>() &&
           appServices.find<SurfaceRuntime>().isVisible.value,
       online:
+          _usesLocalModelEndpoint ||
           !appServices.isRegistered<ConnectivityService>() ||
           appServices.find<ConnectivityService>().isOnline.value,
       cloudAvailable:
@@ -3833,7 +3834,14 @@ class AgentRuntime {
         // neither spoken nor shown (voice-first UI).
         // Distinguish "local is up but produced nothing this turn" (a cold
         // first inference — ask the user to retry) from "no brain at all".
-        final msg = _pipelineMode == AgentPipelineMode.proxyDefault
+        final msg = _usesLocalEdition
+            ? AgentPromptCatalog.text(
+                cloudBlockReason == 'cloud_not_configured'
+                    ? 'runtime.fallback.local_edition_unconfigured'
+                    : 'runtime.fallback.local_edition_offline',
+                locale: turnContext.locale,
+              )
+            : _pipelineMode == AgentPipelineMode.proxyDefault
             ? _hostedAgentUnavailableMessage(
                 cloudBlockReason,
                 locale: turnContext.locale,
@@ -7684,11 +7692,22 @@ One-message example: {"actions":[{"type":"reply.utterance","text":"可以呀。"
         '';
   }
 
+  bool get _usesLocalEdition =>
+      appServices.maybeFind<LLMConfigController>()?.localEdition == true;
+
+  bool get _usesLocalModelEndpoint =>
+      appServices.maybeFind<LLMConfigController>()?.usesLocalEndpoint == true;
+
   String? _cloudMainPathBlockReason() {
     if (_pipelineMode == AgentPipelineMode.localFull) {
       return 'local_mode';
     }
-    if (appServices.isRegistered<ConnectivityService>() &&
+    if (_usesLocalEdition &&
+        !appServices.find<LLMConfigController>().cloudUsable) {
+      return 'cloud_not_configured';
+    }
+    if (!_usesLocalModelEndpoint &&
+        appServices.isRegistered<ConnectivityService>() &&
         !appServices.find<ConnectivityService>().isOnline.value) {
       return 'offline';
     }

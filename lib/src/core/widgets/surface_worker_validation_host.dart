@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:maaso/src/offline/local_surface_host.dart';
 
 import 'package:flutter/foundation.dart'
     show TargetPlatform, defaultTargetPlatform;
@@ -80,7 +81,7 @@ class _SurfaceWorkerValidationSessionState
   void initState() {
     super.initState();
     _tracePhase('mount');
-    _controller = WebViewController();
+    _controller = createLocalSurfaceController();
     unawaited(_configureAndLoad());
   }
 
@@ -89,6 +90,7 @@ class _SurfaceWorkerValidationSessionState
 
   Future<void> _configureAndLoad() async {
     try {
+      await configureLocalSurfaceController(_controller);
       if (_isWebApp) {
         _webAppDocumentBaseUrl = SurfaceWebAppHost.documentBaseUrl(
           widget.runtime.activeProject.value!,
@@ -146,7 +148,11 @@ class _SurfaceWorkerValidationSessionState
       _tracePhase('load');
       try {
         await _controller.loadHtmlString(
-          widget.request.document,
+          localSurfaceDocument(
+            widget.request.document,
+            const {},
+            enableStorage: false,
+          ),
           baseUrl: _webAppDocumentBaseUrl,
         );
       } finally {
@@ -181,6 +187,7 @@ class _SurfaceWorkerValidationSessionState
           .loadHtmlString(_blankDocument)
           .timeout(_cleanupStepTimeout);
     } catch (_) {}
+    await disposeLocalSurfaceController(_controller);
     if (widget.gate.releaseValidationHost(widget.request.session)) {
       _tracePhase('release');
     }

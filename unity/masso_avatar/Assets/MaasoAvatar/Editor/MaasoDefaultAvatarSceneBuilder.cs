@@ -2,9 +2,12 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using Maaso.Avatar;
 using UniVRM10;
 using UnityEditor;
+using UnityEditor.Animations;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -22,10 +25,12 @@ namespace Maaso.Avatar.Editor
         public const string ScenePath =
             "Assets/MaasoAvatar/Scenes/Companion.unity";
         public const string DefaultVrmPath =
-            "Assets/MaasoAvatar/Models/Default/Joy.vrm";
+            "Assets/MaasoAvatar/Models/Default/OpenMaaso.vrm";
         public const string ControllerPath =
             "Assets/MaasoAvatar/Animations/Humanoid/MaasoHumanoid.controller";
         public const string DefaultAvatarName = "MaasoDefaultAvatar";
+        private const string ReviewedVrmSha256 =
+            "12c2b97e95e700783a6a550dc0eee2d7880aeedccef9ae67bc4c5a2f0f2631a2";
 
         [MenuItem("Maaso/Avatar/Rebuild Default VRM Scene", false, 5)]
         public static void RebuildScene()
@@ -37,6 +42,8 @@ namespace Maaso.Avatar.Editor
                     DefaultVrmPath);
             }
 
+            RequireReviewedModel();
+            PlayerSettings.colorSpace = ColorSpace.Linear;
             EnsureAssetFolder("Assets/MaasoAvatar/Scenes");
             AssetDatabase.ImportAsset(
                 DefaultVrmPath,
@@ -45,24 +52,17 @@ namespace Maaso.Avatar.Editor
 
             GameObject avatarAsset =
                 AssetDatabase.LoadAssetAtPath<GameObject>(DefaultVrmPath);
-            RuntimeAnimatorController controller =
-                AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(
-                    ControllerPath);
             if (avatarAsset == null)
             {
                 throw new InvalidOperationException(
                     "UniVRM did not import the bundled model as a GameObject.");
-            }
-            if (controller == null)
-            {
-                throw new InvalidOperationException(
-                    "Maaso Humanoid controller is missing: " + ControllerPath);
             }
 
             Scene scene = EditorSceneManager.NewScene(
                 NewSceneSetup.EmptyScene,
                 NewSceneMode.Single);
             ConfigureRenderSettings();
+            CreateOfflineFloor();
 
             GameObject avatar = PrefabUtility.InstantiatePrefab(avatarAsset) as GameObject;
             if (avatar == null)
@@ -81,7 +81,7 @@ namespace Maaso.Avatar.Editor
                 throw new InvalidOperationException(
                     "Bundled default VRM must expose a valid Humanoid instance.");
             }
-            animator.runtimeAnimatorController = controller;
+            animator.runtimeAnimatorController = EnsureOfflineController(animator);
             animator.applyRootMotion = false;
             vrm.LookAtTarget = null;
             vrm.LookAtTargetType =
@@ -103,6 +103,9 @@ namespace Maaso.Avatar.Editor
             SetObjectReference(receiver, "avatarRoot", avatar.transform);
             SetObjectReference(receiver, "bundledVrmInstance", vrm);
             SetObjectReference(receiver, "worldLighting", lighting);
+            var offlineReceiver = new SerializedObject(receiver);
+            offlineReceiver.FindProperty("designedIdleStateName").stringValue = "Idle";
+            offlineReceiver.ApplyModifiedPropertiesWithoutUndo();
 
             EditorSceneManager.SaveScene(scene, ScenePath);
             UpdateBuildSettings();
@@ -110,6 +113,12 @@ namespace Maaso.Avatar.Editor
             AssetDatabase.Refresh();
             ValidateScene();
             Debug.Log("[MaasoAvatar] Rebuilt bundled VRM scene: " + ScenePath);
+        }
+
+        public static void RebuildAndExportIOS()
+        {
+            RebuildScene();
+            MaasoUnityLibraryExporter.ExportIOS();
         }
 
         public static void RebuildSceneFromCommandLine()
@@ -165,6 +174,84 @@ namespace Maaso.Avatar.Editor
             }
         }
 
+        // Original, self-contained idle. No commercial motion assets or room
+        // content are required by the public offline scene.
+        private static void RequireReviewedModel()
+        {
+            using (var hash = SHA256.Create())
+            using (var stream = File.OpenRead(DefaultVrmPath))
+            {
+                var hex = new StringBuilder(64);
+                foreach (byte value in hash.ComputeHash(stream)) hex.Append(value.ToString("x2"));
+                if (!string.Equals(hex.ToString(), ReviewedVrmSha256, StringComparison.Ordinal))
+                    throw new InvalidDataException("The default VRM differs from its reviewed redistribution source.");
+            }
+        }
+
+        private static RuntimeAnimatorController EnsureOfflineController(Animator animator)
+        {
+            EnsureAssetFolder("Assets/MaasoAvatar/Animations/Humanoid");
+            string clipPath = "Assets/MaasoAvatar/Animations/Humanoid/OfflineIdle.anim";
+            AnimationClip clip = AssetDatabase.LoadAssetAtPath<AnimationClip>(clipPath);
+            bool newClip = clip == null;
+            if (newClip) clip = new AnimationClip { name = "OfflineIdle", frameRate = 30f };
+            {
+                HumanPose pose = new HumanPose();
+                using (var poseHandler = new HumanPoseHandler(animator.avatar, animator.transform))
+                    poseHandler.GetHumanPose(ref pose);
+                string[] axes = { "x", "y", "z" };
+                for (int axis = 0; axis < 3; axis++)
+                    AnimationUtility.SetEditorCurve(clip,
+                        EditorCurveBinding.FloatCurve("", typeof(Animator), "RootT." + axes[axis]),
+                        AnimationCurve.Constant(0f, 4f, pose.bodyPosition[axis]));
+                string[] rotationAxes = { "x", "y", "z", "w" };
+                for (int axis = 0; axis < 4; axis++)
+                    AnimationUtility.SetEditorCurve(clip,
+                        EditorCurveBinding.FloatCurve("", typeof(Animator), "RootQ." + rotationAxes[axis]),
+                        AnimationCurve.Constant(0f, 4f, pose.bodyRotation[axis]));
+                foreach (string muscle in new[] { "Left Arm Down-Up", "Right Arm Down-Up" })
+                    AnimationUtility.SetEditorCurve(clip,
+                        EditorCurveBinding.FloatCurve("", typeof(Animator), muscle),
+                        AnimationCurve.Constant(0f, 4f, -0.75f));
+                AnimationUtility.SetEditorCurve(clip,
+                    EditorCurveBinding.FloatCurve("", typeof(Animator), "Chest Front-Back"),
+                    new AnimationCurve(new Keyframe(0f, 0f), new Keyframe(2f, 0.025f), new Keyframe(4f, 0f)));
+                var settings = AnimationUtility.GetAnimationClipSettings(clip);
+                settings.loopTime = true;
+                AnimationUtility.SetAnimationClipSettings(clip, settings);
+                if (newClip) AssetDatabase.CreateAsset(clip, clipPath);
+                else EditorUtility.SetDirty(clip);
+            }
+            AnimatorController controller = AssetDatabase.LoadAssetAtPath<AnimatorController>(ControllerPath);
+            if (controller == null)
+            {
+                controller = AnimatorController.CreateAnimatorControllerAtPath(ControllerPath);
+                AnimatorState idle = controller.layers[0].stateMachine.AddState("Idle");
+                idle.motion = clip;
+                controller.layers[0].stateMachine.defaultState = idle;
+            }
+            return controller;
+        }
+
+        private static void CreateOfflineFloor()
+        {
+            GameObject floor = GameObject.CreatePrimitive(PrimitiveType.Plane);
+            floor.name = "OfflineWhiteFloor";
+            floor.transform.position = new Vector3(0f, -0.015f, 0f);
+            floor.transform.localScale = Vector3.one * 2f;
+            EnsureAssetFolder("Assets/MaasoAvatar/Materials");
+            const string materialPath = "Assets/MaasoAvatar/Materials/OfflineWhiteFloor.mat";
+            Material material = AssetDatabase.LoadAssetAtPath<Material>(materialPath);
+            if (material == null)
+            {
+                material = new Material(Shader.Find("Standard"));
+                material.color = new Color(0.96f, 0.965f, 0.972f, 1f);
+                material.SetFloat("_Glossiness", 0f);
+                AssetDatabase.CreateAsset(material, materialPath);
+            }
+            floor.GetComponent<Renderer>().sharedMaterial = material;
+        }
+
         private static Camera CreateMainCamera()
         {
             var cameraObject = new GameObject("Main Camera");
@@ -175,7 +262,7 @@ namespace Maaso.Avatar.Editor
             cameraObject.AddComponent<AudioListener>();
             Camera camera = cameraObject.AddComponent<Camera>();
             camera.clearFlags = CameraClearFlags.SolidColor;
-            camera.backgroundColor = new Color(1f, 0.9843137f, 0.9490196f, 1f);
+            camera.backgroundColor = Color.white;
             camera.fieldOfView = 37.5f;
             camera.nearClipPlane = 0.3f;
             camera.farClipPlane = 1000f;
@@ -193,8 +280,8 @@ namespace Maaso.Avatar.Editor
                 Quaternion.Euler(50f, -30f, 0f));
             Light light = lightObject.AddComponent<Light>();
             light.type = LightType.Directional;
-            light.color = new Color(1f, 0.95686275f, 0.8392157f, 1f);
-            light.intensity = 1f;
+            light.color = Color.white;
+            light.intensity = 0.65f;
             light.shadows = LightShadows.Soft;
             RenderSettings.sun = light;
             return light;
@@ -204,9 +291,9 @@ namespace Maaso.Avatar.Editor
         {
             RenderSettings.fog = false;
             RenderSettings.ambientMode = AmbientMode.Trilight;
-            RenderSettings.ambientSkyColor = new Color(0.212f, 0.227f, 0.259f);
-            RenderSettings.ambientEquatorColor = new Color(0.114f, 0.125f, 0.133f);
-            RenderSettings.ambientGroundColor = new Color(0.047f, 0.043f, 0.035f);
+            RenderSettings.ambientSkyColor = new Color(0.20f, 0.20f, 0.20f);
+            RenderSettings.ambientEquatorColor = new Color(0.18f, 0.18f, 0.18f);
+            RenderSettings.ambientGroundColor = new Color(0.15f, 0.15f, 0.15f);
             RenderSettings.ambientIntensity = 1f;
         }
 
@@ -228,16 +315,10 @@ namespace Maaso.Avatar.Editor
 
         private static void UpdateBuildSettings()
         {
-            EditorBuildSettingsScene[] existing = EditorBuildSettings.scenes;
-            EditorBuildSettingsScene[] retained = existing
-                .Where(entry => entry.path != ScenePath)
-                .ToArray();
             EditorBuildSettings.scenes = new[]
-                {
-                    new EditorBuildSettingsScene(ScenePath, true),
-                }
-                .Concat(retained)
-                .ToArray();
+            {
+                new EditorBuildSettingsScene(ScenePath, true),
+            };
         }
 
         private static void EnsureAssetFolder(string path)

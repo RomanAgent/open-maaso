@@ -16,5 +16,10 @@ Start with README.md, docs/architecture.md and docs/open-source-scope.md.
 - Run public-export and Gitleaks checks before publishing; never commit local credentials.
 - Do not add proprietary characters, scenes, model weights, or Unity exports without verified redistribution rights.
 
-The public edition has backend and asset prerequisites. Do not report source presence as
-platform build validation or claim a standalone mode that has not been implemented.
+The default entry is the original MaasoApp/router in lib/main.dart. Local
+edition flags adapt its existing service graph; never replace the original
+pages with a simplified app. Read docs/offline-edition.md and preserve page
+layouts, navigation and interactions. The original Settings model panel is the
+API-key entry. Keep credentials in account-scoped secure storage and retain
+runtime cancellation, account mount and teardown fences. The free VRM has its
+own license. Native compilation and device acceptance are separate gates.

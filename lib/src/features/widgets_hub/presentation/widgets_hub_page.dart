@@ -30,6 +30,7 @@ import 'package:maaso/src/features/home/application/home_draft_intent.dart';
 
 import 'package:flutter/material.dart';
 import 'package:maaso/src/features/widgets_hub/data/game_document_loader.dart';
+import 'package:maaso/src/offline/original_ui_local_catalog.dart';
 import 'package:maaso/src/features/widgets_hub/presentation/game_frost_chrome.dart';
 import 'package:maaso/src/features/widgets_hub/presentation/game_comment_feedback.dart';
 import 'package:maaso/src/features/widgets_hub/presentation/game_screenshot_preview.dart';
@@ -3570,6 +3571,26 @@ Future<void> _sharePublicGame(
   WidgetsHubController controller,
   AppletCatalogItem item,
 ) async {
+  if (appServices.maybeFind<AppletCatalogService>()?.localEdition == true &&
+      OriginalUiLocalCatalog.isLocalUrl(item.shareUrl)) {
+    final owner = appServices.find<DBService>();
+    final scope = AppletLocalOwnership.currentScopeKey();
+    final local = await OriginalUiLocalCatalog(
+      database: owner,
+      scopeKey: AppletLocalOwnership.currentScopeKey,
+    ).findWidget(item.id);
+    if (local == null ||
+        !context.mounted ||
+        scope != AppletLocalOwnership.currentScopeKey() ||
+        !identical(owner, appServices.maybeFind<DBService>())) {
+      return;
+    }
+    final shared = await appServices
+        .find<AgentGameCloudService>()
+        .publishAndShare(local, origin: _globalRect(context));
+    if (shared) await controller.recordGameShare(item);
+    return;
+  }
   final shared = await _openGameSystemShare(
     title: item.title,
     text: '${item.title}\n${item.shareUrl}',
@@ -4426,6 +4447,11 @@ class _CloudAppletTileState extends State<_CloudAppletTile> {
 }
 
 void _openCatalogItem(AppletCatalogItem item) {
+  if (appServices.maybeFind<AppletCatalogService>()?.localEdition == true &&
+      OriginalUiLocalCatalog.isLocalUrl(item.shareUrl)) {
+    unawaited(_openLocalCatalogItem(item));
+    return;
+  }
   if (item.type == AppletCatalogType.game) {
     _pushGamePage('public:${item.id}', () => _PublicAppletPage(item: item));
     return;
@@ -4434,6 +4460,31 @@ void _openCatalogItem(AppletCatalogItem item) {
     () => _PublicAppletPage(item: item),
     transition: AppTransition.cupertino,
   );
+}
+
+Future<void> _openLocalCatalogItem(AppletCatalogItem item) async {
+  final owner = appServices.find<DBService>();
+  final scope = AppletLocalOwnership.currentScopeKey();
+  final repository = OriginalUiLocalCatalog(
+    database: owner,
+    scopeKey: AppletLocalOwnership.currentScopeKey,
+  );
+  AgentWidget? widget;
+  try {
+    widget = await repository.findWidget(item.id);
+  } on StateError {
+    if (scope != AppletLocalOwnership.currentScopeKey() ||
+        !identical(owner, appServices.maybeFind<DBService>())) {
+      return;
+    }
+    rethrow;
+  }
+  if (widget == null ||
+      scope != AppletLocalOwnership.currentScopeKey() ||
+      !identical(owner, appServices.maybeFind<DBService>())) {
+    return;
+  }
+  await openAgentWidget(widget);
 }
 
 class _PublicAppletPage extends StatefulWidget {

@@ -5,11 +5,13 @@ using UnityEditor.Build;
 
 public sealed class AvatarRetiredAssetBuildGuardTests
 {
+    private const string OpenSourceAvatar = "Assets/MaasoAvatar/Models/Default/OpenMaaso.vrm";
     private const string Joy = "Assets/MaasoAvatar/Models/Default/Joy.vrm";
     private static Type Guard { get { return Type.GetType("Maaso.Avatar.Editor.AvatarRetiredAssetBuildGuard, Assembly-CSharp-Editor", true); } }
     private static object Call(string name, params object[] args) => Guard.GetMethod(name, BindingFlags.Static | BindingFlags.NonPublic).Invoke(null, args);
     private static T Field<T>(object audit, string name) => (T)audit.GetType().GetField(name).GetValue(audit);
 
+    [TestCase(Joy)]
     [TestCase("Assets/MaasoAvatar/Models/Matt/Matt.fbx")]
     [TestCase("Assets/MaasoAvatar/Models/Matt/Generated/Std_Skin_Head.mat")]
     [TestCase("Assets\\MaasoAvatar\\Resources\\MaleCompanion.prefab")]
@@ -24,7 +26,7 @@ public sealed class AvatarRetiredAssetBuildGuardTests
     [TestCase("Assets/Rukha93/ModularAnimeCharacter/Assets/Meshes/M_bot.004_skinnyjeans.fbx")]
     public void RejectsExactRetiredOfficialAssetPaths(string path) => Assert.That(Call("IsRetiredSourcePath", path), Is.True);
 
-    [TestCase(Joy)]
+    [TestCase(OpenSourceAvatar)]
     [TestCase("Assets/UserModels/Male.prefab")]
     [TestCase("Assets/UserModels/Matt/Matt.fbx")]
     [TestCase("Assets/MaasoAvatar/Models/Matthew/model.fbx")]
@@ -42,16 +44,17 @@ public sealed class AvatarRetiredAssetBuildGuardTests
     public void AuditDigestIsDeterministicAndRecordsOnlyCompactBuildEvidence()
     {
         const string shared = "Assets/MaasoAvatar/Animations/Humanoid/MaasoHumanoid.controller";
-        object first = Call("CreateAudit", new[] { shared, Joy, Joy }, "iOS", "build-guid");
-        object second = Call("CreateAudit", new[] { Joy, shared }, "iOS", "build-guid");
+        object first = Call("CreateAudit", new[] { shared, OpenSourceAvatar, OpenSourceAvatar }, "iOS", "build-guid");
+        object second = Call("CreateAudit", new[] { OpenSourceAvatar, shared }, "iOS", "build-guid");
         Assert.That(Field<int>(first, "sourcePathCount"), Is.EqualTo(2));
         Assert.That(Field<string>(first, "sourcePathListSha256"), Is.EqualTo(Field<string>(second, "sourcePathListSha256")));
         Assert.That(Field<string>(first, "sourcePathListSha256").Length, Is.EqualTo(64));
         Assert.That(Field<string>(first, "target"), Is.EqualTo("iOS"));
         Assert.That(Field<string>(first, "buildGuid"), Is.EqualTo("build-guid"));
         Assert.That(Field<int>(first, "retiredSourceCount"), Is.Zero);
-        Assert.That(Field<bool>(first, "retainedJoySourceFound"), Is.True);
-        Assert.That(Field<string[]>(first, "retainedJoyEvidencePaths"), Is.EqualTo(new[] { Joy }));
+        Assert.That(Field<bool>(first, "retainedJoySourceFound"), Is.False);
+        Assert.That(Field<bool>(first, "retainedOpenSourceAvatarFound"), Is.True);
+        Assert.That(Field<string[]>(first, "retainedOpenSourceAvatarEvidencePaths"), Is.EqualTo(new[] { OpenSourceAvatar }));
         Assert.DoesNotThrow(() => Call("RequireAllowed", first));
     }
 
@@ -59,7 +62,9 @@ public sealed class AvatarRetiredAssetBuildGuardTests
     public void RetiredAndMissingEvidenceFailTheBuild()
     {
         foreach (string[] paths in new[] {
-            new[] { Joy, "Assets/MaasoAvatar/Resources/MaleCompanion.prefab" },
+            new[] { OpenSourceAvatar, "Assets/MaasoAvatar/Resources/MaleCompanion.prefab" },
+            new[] { OpenSourceAvatar, Joy },
+            new[] { Joy },
             Array.Empty<string>(),
             new[] { "Assets/Shared/SomeShader.shader" },
         })

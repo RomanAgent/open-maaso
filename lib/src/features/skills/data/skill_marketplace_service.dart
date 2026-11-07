@@ -11,18 +11,29 @@ import 'package:maaso/src/core/services/app_environment_service.dart';
 import 'package:maaso/src/core/services/auth_session_service.dart';
 import 'package:maaso/src/core/services/locale_config_service.dart';
 import 'package:maaso/src/core/services/server_request_failure_log.dart';
+import 'package:maaso/src/core/services/db_service.dart';
+import 'package:maaso/src/offline/local_skill_marketplace_repository.dart';
 
 class SkillMarketplaceService extends AppService
     implements SkillMasteryGateway {
-  SkillMarketplaceService({http.Client? httpClient})
-    : _httpClient = httpClient ?? http.Client(),
-      _ownsClient = httpClient == null;
+  SkillMarketplaceService({
+    http.Client? httpClient,
+    bool localEdition = false,
+    DBService? localDatabase,
+  }) : _httpClient = httpClient ?? http.Client(),
+       _ownsClient = httpClient == null,
+       _local = localEdition
+           ? LocalSkillMarketplaceRepository(
+               localDatabase ?? appServices.find<DBService>(),
+             )
+           : null;
 
   final AppEnvironmentService _environment = appServices
       .find<AppEnvironmentService>();
   final AuthSessionService _auth = appServices.find<AuthSessionService>();
   final http.Client _httpClient;
   final bool _ownsClient;
+  final LocalSkillMarketplaceRepository? _local;
 
   final catalog = <MarketplaceSkill>[].obs;
   final rankings = <MarketplaceSkill>[].obs;
@@ -290,6 +301,13 @@ class SkillMarketplaceService extends AppService
     required String versionName,
     String coverAssetUrl = '',
   }) async {
+    if (_local != null) {
+      return _local.importPackage(
+        package,
+        visibility: visibility,
+        versionName: versionName,
+      );
+    }
     final length = await package.length();
     final digest = await sha256.bind(package.openRead()).single;
     final session = await createUpload(
@@ -550,6 +568,7 @@ class SkillMarketplaceService extends AppService
     isLoading.value = true;
     error.value = null;
     try {
+      if (_local != null) return await _local.request(uri, method, body);
       final token = await _accessToken();
       final headers = <String, String>{
         'Authorization': 'Bearer $token',

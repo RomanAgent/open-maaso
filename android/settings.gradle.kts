@@ -37,7 +37,16 @@ val unityAvatarGradleProperties =
             unityAvatarGradlePropertiesFile.inputStream().use { load(it) }
         }
     }
-if (unityAvatarLibraryDir.exists()) {
+val embedUnityAvatar = providers.gradleProperty("openMaasoEmbedUnity").orNull != "false"
+if (embedUnityAvatar) {
+    if (!file("${unityAvatarLibraryDir.path}/build.gradle").isFile) {
+        throw GradleException(
+            "Open Maaso requires its local free-avatar Unity export. " +
+                "Export Android with MaasoUnityLibraryExporter.ExportAndroid " +
+                "as described in docs/offline-platforms.md. " +
+                "For development without the 3D avatar only, use -PopenMaasoEmbedUnity=false.",
+        )
+    }
     include(":unityLibrary")
     project(":unityLibrary").projectDir = unityAvatarLibraryDir
 }

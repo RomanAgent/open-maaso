@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:maaso/src/core/network/backend_client.dart';
 import '../domain/economy_models.dart';
 import '../domain/store_payment_models.dart';
 import '../domain/economy_market_info.dart';
@@ -32,7 +33,7 @@ final class StorePaymentHttpClient
   }) : _base = baseUri,
        _account = accountId,
        _token = accessToken,
-       _client = client ?? http.Client(),
+       _client = client ?? createMaasoBackendClient(),
        _owns = client == null;
   final Uri Function() _base;
   final String Function() _account;

@@ -4,6 +4,7 @@ import CoreLocation
 import Darwin
 import Speech
 import UIKit
+import UserNotifications
 import WebKit
 import webview_flutter_wkwebview
 
@@ -594,9 +595,31 @@ private final class MaasoUnityPassthroughView: UIView {
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
+    excludeLocalDataFromCloudBackup()
+    // Local notification foreground/tap callbacks flow through Flutter's
+    // lifecycle delegate. This does not request notification permission or APNs.
+    UNUserNotificationCenter.current().delegate = self
     // UIScene creates the implicit engine during scene connection. Register
     // plugins in its ready callback below using that engine's registry.
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+  }
+
+  private func excludeLocalDataFromCloudBackup() {
+    // The offline database and saved works live below Application Support.
+    // Set the directory policy before Dart opens or creates those files.
+    do {
+      var directory = try FileManager.default.url(
+        for: .applicationSupportDirectory,
+        in: .userDomainMask,
+        appropriateFor: nil,
+        create: true
+      )
+      var values = URLResourceValues()
+      values.isExcludedFromBackup = true
+      try directory.setResourceValues(values)
+    } catch {
+      NSLog("[OpenMaaso] Could not exclude local app data from system backups")
+    }
   }
 
   func didInitializeImplicitFlutterEngine(_ engineBridge: FlutterImplicitEngineBridge) {

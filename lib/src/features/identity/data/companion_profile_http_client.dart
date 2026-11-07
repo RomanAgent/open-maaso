@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:maaso/src/core/network/backend_client.dart';
 import '../domain/companion_profile.dart';
 
 final class CompanionProfileHttpClient implements CompanionProfileGateway {
@@ -12,7 +13,7 @@ final class CompanionProfileHttpClient implements CompanionProfileGateway {
   }) : _baseUri = baseUri,
        _accountId = accountId,
        _accessToken = accessToken,
-       _client = client ?? http.Client(),
+       _client = client ?? createMaasoBackendClient(),
        _ownsClient = client == null;
   final Uri Function() _baseUri;
   final String Function() _accountId;

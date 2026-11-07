@@ -22,6 +22,7 @@ import 'package:maaso/src/features/agent/application/sherpa_tts_engine.dart';
 import 'package:maaso/src/features/agent/data/bridge/tts_engine.dart';
 import 'package:maaso/src/core/theme/color_constant.dart';
 import 'package:maaso/src/features/settings/application/agent_settings_controller.dart';
+import 'package:maaso/src/features/settings/application/llm_config_controller.dart';
 import 'package:maaso/src/features/settings/presentation/location_settings_row.dart';
 import 'package:maaso/src/core/widgets/ui/glass/app_glass.dart';
 import 'package:maaso/src/core/widgets/ui/secondary/app_secondary.dart';
@@ -120,6 +121,11 @@ class AgentSettingsPage extends AppView<AgentSettingsController> {
               .isRegistered<DesktopCompanionPreferencesService>()) ...[
             const SizedBox(height: 24),
             const DesktopCompanionPresentationSettingsSection(),
+          ],
+          if (appServices.maybeFind<LLMConfigController>()?.localEdition ==
+              true) ...[
+            const SizedBox(height: 24),
+            const _ModelConfigSection(),
           ],
           const _CapabilityAdvancedFeaturesEntry(),
           const SizedBox(height: 24),
@@ -1928,8 +1934,11 @@ class _ModelConfigSection extends StatelessWidget {
           AppReactiveBuilder(() {
             final names = [
               for (final p in controller.providers) p.name,
-              if (controller.selectedProviderName.value ==
-                  AgentSettingsController.customProviderName)
+              if (!controller.providers.any(
+                    (p) => p.name == AgentSettingsController.customProviderName,
+                  ) &&
+                  controller.selectedProviderName.value ==
+                      AgentSettingsController.customProviderName)
                 AgentSettingsController.customProviderName,
             ];
             return _LabeledDropdown<String>(

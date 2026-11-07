@@ -1,6 +1,7 @@
 #if UNITY_EDITOR
 using System;
 using System.IO;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using UnityEditor;
@@ -19,7 +20,23 @@ namespace Maaso.Editor
         public const string MeshPath = "Assets/MaasoWorld/Resources/MaasoDeskWorkMesh.asset";
         public const string ReceiptPath = "Assets/MaasoWorld/Resources/MaasoDeskWorkMeshReceipt.json";
         public int callbackOrder => -100;
-        public void OnPreprocessBuild(BuildReport report) => Build();
+        public void OnPreprocessBuild(BuildReport report)
+        {
+            var dependencies = EditorBuildSettings.scenes.Where(scene => scene.enabled)
+                .SelectMany(scene => AssetDatabase.GetDependencies(scene.path, true));
+            if (RequiresDeskMesh(dependencies, File.Exists(MeshPath), File.Exists(ReceiptPath)))
+                Build();
+            else
+                Debug.Log("[DeskWorkMesh] Active scenes contain no coastal desk; no resource is generated.");
+        }
+
+        internal static bool RequiresDeskMesh(IEnumerable<string> dependencies, bool hasMesh, bool hasReceipt)
+        {
+            return hasMesh || hasReceipt || (dependencies ?? Enumerable.Empty<string>()).Any(path =>
+                string.Equals(path, SourcePath, StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(path, MeshPath, StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(path, ReceiptPath, StringComparison.OrdinalIgnoreCase));
+        }
 
         [Serializable]
         private sealed class Receipt

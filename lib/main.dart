@@ -1,3 +1,8 @@
+import 'package:maaso/src/offline/local_edition_policy.dart';
+import 'package:maaso/src/offline/local_test_auth_client.dart';
+import 'package:maaso/src/offline/local_original_backend.dart';
+import 'package:maaso/src/offline/local_mount_credentials.dart';
+import 'package:maaso/src/core/network/backend_client.dart';
 import 'package:maaso/src/features/widgets_hub/application/game_companion_context.dart';
 import 'package:maaso/src/features/widgets_hub/application/game_companion_adapter.dart';
 import 'package:maaso/src/features/widgets_hub/application/game_companion_rule_runtime.dart';
@@ -310,13 +315,14 @@ Future<Object?> _tryAcquireApplicationRuntimeInstance(
 }
 
 Future<void> _bootstrapApplication(Stopwatch coldStartStopwatch) async {
-  final runtimeAuthorityCompileMaximum =
-      AccountRuntimeAuthorityMode.parseCompileMaximum(
-        const String.fromEnvironment(
-          'MAASO_RUNTIME_AUTHORITY_MODE',
-          defaultValue: 'enforce',
-        ),
-      );
+  final runtimeAuthorityCompileMaximum = kOpenMaasoLocalEdition
+      ? AccountRuntimeAuthorityMode.off
+      : AccountRuntimeAuthorityMode.parseCompileMaximum(
+          const String.fromEnvironment(
+            'MAASO_RUNTIME_AUTHORITY_MODE',
+            defaultValue: 'enforce',
+          ),
+        );
   final productionMetrics = appServices.put(
     AgentProductionMetricsService(),
     permanent: true,
@@ -390,6 +396,26 @@ Future<void> _bootstrapApplication(Stopwatch coldStartStopwatch) async {
   // AgentRuntime prompt are constructed.
   await appServices.putAsync(() => LocaleConfigService().init());
   await appServices.putAsync(() => AppEnvironmentService().init());
+  if (kOpenMaasoLocalEdition) {
+    appServices.put(
+      MaasoBackendClientFactory(() {
+        final scopes = appServices.maybeFind<AccountStorageScopeService>();
+        final captured = scopes?.activeMount;
+        final environment = appServices.find<AppEnvironmentService>();
+        final environmentKey = environment.environment.value.key;
+        return LocalOriginalBackend(
+          database: () => appServices.find<DBService>().raw,
+          isCurrent: () =>
+              environment.environment.value.key == environmentKey &&
+              (captured == null ||
+                  (identical(scopes?.activeMount, captured) &&
+                      scopes!.isCurrent(captured))),
+          origins: {environment.baseUri.origin},
+        );
+      }),
+      permanent: true,
+    );
+  }
   final installationIdentity = await appServices.putAsync(
     () => AppInstallationIdentityService().init(),
     permanent: true,
@@ -400,10 +426,16 @@ Future<void> _bootstrapApplication(Stopwatch coldStartStopwatch) async {
       environmentBaseUrl: appServices.find<AppEnvironmentService>().baseUrl,
     ),
   );
-  await appServices.putAsync(() => MaasoAgentModeService().init());
+  await appServices.putAsync(
+    () => MaasoAgentModeService(localEdition: kOpenMaasoLocalEdition).init(),
+  );
   // Credentials stay unpublished until AccountSessionLifecycleService has
   // mounted the matching account graph.
-  final authSession = appServices.put(AuthSessionService());
+  final authSession = appServices.put(
+    AuthSessionService(
+      httpClient: kOpenMaasoLocalEdition ? LocalTestAuthClient() : null,
+    ),
+  );
   final deviceLeaseTransport = appServices.put(
     AccountDeviceLeaseTransport(
       accessTokenProvider: (environment, accountUuid) async {
@@ -438,8 +470,11 @@ Future<void> _bootstrapApplication(Stopwatch coldStartStopwatch) async {
     AppForegroundService(),
     permanent: true,
   );
-  final firebase = await appServices.putAsync(
-    () => FirebaseBootstrapService().init(),
+  final firebase = await appServices.putAsync<FirebaseBootstrapService>(
+    () async {
+      final service = FirebaseBootstrapService();
+      return kOpenMaasoLocalEdition ? service : await service.init();
+    },
     permanent: true,
   );
   final notificationPreferences = await appServices.putAsync(
@@ -493,13 +528,22 @@ Future<void> _bootstrapApplication(Stopwatch coldStartStopwatch) async {
   // BYOK config stays globally registered for reactive consumers, but no
   // account data is loaded while signed out. Unknown pre-scope keys are
   // quarantined before any direct-cloud producer can inspect them.
-  final llmConfig = appServices.put(LLMConfigController());
+  final llmConfig = appServices.put(
+    LLMConfigController(localEdition: kOpenMaasoLocalEdition),
+  );
   await llmConfig.quarantineLegacyConfig();
 
-  await appServices.putAsync(() => EmbeddingService().init(), permanent: true);
+  await appServices.putAsync(
+    () => EmbeddingService(
+      backend: kOpenMaasoLocalEdition ? LocalKeywordEmbeddingBackend() : null,
+    ).init(),
+    permanent: true,
+  );
   _registerDefaultVadServices();
   await appServices.putAsync(
-    () => AgentPipelineRuntimeService().init(),
+    () => AgentPipelineRuntimeService(
+      localEdition: kOpenMaasoLocalEdition,
+    ).init(),
     permanent: true,
   );
 
@@ -536,7 +580,10 @@ Future<void> _bootstrapApplication(Stopwatch coldStartStopwatch) async {
   );
   appServices.put(VisionService(), permanent: true);
   appServices.put(TtsLipSyncDriver(), permanent: true);
-  appServices.put(LLMProxyService(), permanent: true);
+  appServices.put(
+    LLMProxyService(localEdition: kOpenMaasoLocalEdition),
+    permanent: true,
+  );
 
   appServices.put(
     AgentUiControlService(
@@ -643,13 +690,17 @@ Future<void> _bootstrapApplication(Stopwatch coldStartStopwatch) async {
       auth: authSession,
       environment: appServices.find<AppEnvironmentService>(),
       storageScopes: storageScopes,
-      deviceLeaseCoordinator: deviceLeaseCoordinator,
-      authorityPolicyGateway: deviceLeaseTransport,
-      runtimeDiscovery: runtimeDiscovery,
+      deviceLeaseCoordinator: kOpenMaasoLocalEdition
+          ? null
+          : deviceLeaseCoordinator,
+      authorityPolicyGateway: kOpenMaasoLocalEdition
+          ? null
+          : deviceLeaseTransport,
+      runtimeDiscovery: kOpenMaasoLocalEdition ? null : runtimeDiscovery,
       authorityCompileMaximum: runtimeAuthorityCompileMaximum,
       // Agent execution remains single-device even when the account-wide
       // visual preference allows companion devices to show the same Avatar.
-      requireExclusiveDeviceLease: true,
+      requireExclusiveDeviceLease: !kOpenMaasoLocalEdition,
       fenceRuntime: producerFence.fenceAndDrain,
       activateRuntimeBoundary: (mount) {
         capabilitySnapshot.activateAccount(
@@ -665,14 +716,20 @@ Future<void> _bootstrapApplication(Stopwatch coldStartStopwatch) async {
       deviceLabel: _deviceLeaseDeviceLabel,
       devicePlatform: _deviceLeasePlatform,
       appVersion: const String.fromEnvironment('MAASO_APP_VERSION'),
-      mountCompanionRuntime: (mount) =>
-          _mountAccountRuntime(mount: mount, storageScopes: storageScopes),
-      mountRuntime: (mount) => _mountAgentExecution(
-        mount: mount,
-        storageScopes: storageScopes,
-        realtimeAgentConfig: realtimeAgentConfig,
-        producerFence: producerFence,
-      ),
+      mountCompanionRuntime: kOpenMaasoLocalEdition
+          ? null
+          : (mount) => _mountAccountRuntime(
+              mount: mount,
+              storageScopes: storageScopes,
+            ),
+      mountRuntime: (mount) => kOpenMaasoLocalEdition
+          ? _mountAccountRuntime(mount: mount, storageScopes: storageScopes)
+          : _mountAgentExecution(
+              mount: mount,
+              storageScopes: storageScopes,
+              realtimeAgentConfig: realtimeAgentConfig,
+              producerFence: producerFence,
+            ),
     ),
     permanent: true,
   );
@@ -793,7 +850,7 @@ Future<void> _bootstrapApplication(Stopwatch coldStartStopwatch) async {
   _schedulePostFrameBootTasks();
   WidgetsBinding.instance.addPostFrameCallback((_) {
     firebaseNotificationBridge.activateForegroundBridge();
-    handoff.start();
+    if (!kOpenMaasoLocalEdition) handoff.start();
   });
 
   runApp(
@@ -888,6 +945,14 @@ Future<AccountRuntimeLease> _mountAccountRuntime({
       requireMountCurrent();
       final environment = appServices.find<AppEnvironmentService>();
       final auth = appServices.find<AuthSessionService>();
+      if (kOpenMaasoLocalEdition) {
+        return localMountAccessToken(
+          auth: auth,
+          candidate: authCandidate,
+          mount: mount,
+          scopes: storageScopes,
+        );
+      }
       if (environment.environment.value.key != accountScope.environmentKey) {
         throw StateError('Account environment changed.');
       }
@@ -1307,9 +1372,14 @@ Future<AccountRuntimeLease> _mountAccountRuntime({
       ),
     );
 
-    putOwned(AgentGameCloudService());
-    putOwned(AppletCatalogService());
-    final marketplaceService = putOwned(SkillMarketplaceService());
+    putOwned(AgentGameCloudService(localEdition: kOpenMaasoLocalEdition));
+    putOwned(AppletCatalogService(localEdition: kOpenMaasoLocalEdition));
+    final marketplaceService = putOwned(
+      SkillMarketplaceService(
+        localEdition: kOpenMaasoLocalEdition,
+        localDatabase: mountedDatabase,
+      ),
+    );
     final skillTrainingService = putOwned(
       SkillTrainingService(
         database: mountedDatabase,
@@ -1325,6 +1395,7 @@ Future<AccountRuntimeLease> _mountAccountRuntime({
     );
     final avatarCatalog = putOwned(
       AvatarModelCatalogService(
+        localEdition: kOpenMaasoLocalEdition,
         accountSession: authCandidate.session,
         accountMount: mount,
         agentScope: agentScope,
@@ -1457,7 +1528,12 @@ Future<AccountRuntimeLease> _mountAccountRuntime({
     requireMountCurrent();
     relationship.bindConversationMemory(conversationMemory);
     putOwned(IntentWaveService());
-    putOwned(RemoteSkillCatalogService());
+    putOwned(
+      RemoteSkillCatalogService(
+        localEdition: kOpenMaasoLocalEdition,
+        registry: installedSkills,
+      ),
+    );
     putOwned(GeneEncoderService());
     putOwned(GeneInheritanceService());
     putOwned(SurvivalMonitorService());
@@ -1657,7 +1733,22 @@ Future<AccountRuntimeLease> _mountAccountRuntime({
     final avatarConfig = putOwned(
       AvatarConfigService(
         storageKeyPrefix: agentScope.storageNamespace,
-        selectionCoordinator: avatarSelectionCoordinator,
+        selectionCoordinator: kOpenMaasoLocalEdition
+            ? null
+            : avatarSelectionCoordinator,
+        initialCatalog: kOpenMaasoLocalEdition
+            ? [
+                AvatarOption(
+                  id: 'agent',
+                  name: 'Agent',
+                  backend: AvatarBackendKind.unity,
+                  modelUrl: 'unity://masso/avatar_agent',
+                  config: AvatarConfigService.builtInCatalog.first.config,
+                  previewAssetPath: 'assets/brand/offline_avatar_preview.png',
+                  isDefault: true,
+                ),
+              ]
+            : null,
         selectionAssetOptions: avatarCatalog.selectionAssetOptions,
       ).init(),
     );
@@ -1799,6 +1890,7 @@ Future<AccountRuntimeLease> _mountAccountRuntime({
           storageScopes.isCurrent(mount) ? accountScope.accountUuid : '',
       accessToken: () async {
         requireMountCurrent();
+        if (kOpenMaasoLocalEdition) return accountDataToken();
         final auth = appServices.find<AuthSessionService>();
         if (!(auth.session.value?.isValid ?? false)) {
           await auth.restoreOrRefresh();
@@ -1854,6 +1946,7 @@ Future<AccountRuntimeLease> _mountAccountRuntime({
     // Restore only this account's local setup before choosing the first route.
     // Network confirmation is deferred until a public operation needs it.
     await identityService.restore();
+    if (kOpenMaasoLocalEdition) await identityService.load();
     requireMountCurrent();
     final restoredIdentityNames = identityService.setupNames;
     if (restoredIdentityNames != null) {
@@ -1861,6 +1954,12 @@ Future<AccountRuntimeLease> _mountAccountRuntime({
     }
     Future<String> publicAccountToken() async {
       requireMountCurrent();
+      if (kOpenMaasoLocalEdition) {
+        if (!identityService.completed) {
+          throw StateError('Local identity is unavailable.');
+        }
+        return accountDataToken();
+      }
       final environment = appServices.find<AppEnvironmentService>();
       if (environment.environment.value.key != accountScope.environmentKey) {
         throw StateError('Public account context changed.');
@@ -1930,7 +2029,11 @@ Future<AccountRuntimeLease> _mountAccountRuntime({
       ),
     );
     await companionProfiles.restore();
-    companionProfiles.startSync();
+    if (kOpenMaasoLocalEdition) {
+      await companionProfiles.refresh();
+    } else {
+      companionProfiles.startSync();
+    }
     requireMountCurrent();
     final chatMedia = putOwned(
       ChatMediaService(
@@ -2114,34 +2217,38 @@ Future<AccountRuntimeLease> _mountAccountRuntime({
       EmotionSensorService(storageKeyPrefix: agentScope.storageNamespace),
     );
 
-    final liveSync = putOwned(
-      LiveCompanionSyncService(
-        environment: MaasoEnvironment.fromKey(accountScope.environmentKey),
-        accountUuid: accountScope.accountUuid,
-        database: mountedDatabase,
-        gateway: LiveCompanionSyncTransport(
+    if (!kOpenMaasoLocalEdition) {
+      final liveSync = putOwned(
+        LiveCompanionSyncService(
           environment: MaasoEnvironment.fromKey(accountScope.environmentKey),
           accountUuid: accountScope.accountUuid,
-          isCurrent: () => storageScopes.isCurrent(mount),
-          accessToken: (environment, accountUuid) async {
-            requireMountCurrent();
-            final candidate = appServices.find<AuthSessionService>().candidate;
-            if (candidate == null ||
-                candidate.environment != environment ||
-                candidate.session.accountUuid.trim() != accountUuid ||
-                !candidate.session.isValid) {
-              return null;
-            }
-            return candidate.session.accessToken;
-          },
+          database: mountedDatabase,
+          gateway: LiveCompanionSyncTransport(
+            environment: MaasoEnvironment.fromKey(accountScope.environmentKey),
+            accountUuid: accountScope.accountUuid,
+            isCurrent: () => storageScopes.isCurrent(mount),
+            accessToken: (environment, accountUuid) async {
+              requireMountCurrent();
+              final candidate = appServices
+                  .find<AuthSessionService>()
+                  .candidate;
+              if (candidate == null ||
+                  candidate.environment != environment ||
+                  candidate.session.accountUuid.trim() != accountUuid ||
+                  !candidate.session.isValid) {
+                return null;
+              }
+              return candidate.session.accessToken;
+            },
+          ),
+          authority: appServices.find<AccountDeviceLeaseCoordinator>(),
+          media: appServices.find<ChatMediaService>(),
+          memoryLedger: appServices.find<MemoryLedgerService>(),
+          accountIsCurrent: () => storageScopes.isCurrent(mount),
         ),
-        authority: appServices.find<AccountDeviceLeaseCoordinator>(),
-        media: appServices.find<ChatMediaService>(),
-        memoryLedger: appServices.find<MemoryLedgerService>(),
-        accountIsCurrent: () => storageScopes.isCurrent(mount),
-      ),
-    );
-    liveSync.start();
+      );
+      liveSync.start();
+    }
     // Every mounted device owns its local presentation, including companions
     // that never acquire the execution lease. Reconcile after first paint and
     // keep the work in the account drain, independent of owner-only boot tasks.
@@ -3047,7 +3154,9 @@ void _registerDefaultVadServices() {
   initializeSherpaBindings();
 
   if (!appServices.isRegistered<SherpaModelDownloadService>()) {
-    appServices.put(SherpaModelDownloadService());
+    appServices.put(
+      SherpaModelDownloadService(allowNetwork: !kOpenMaasoLocalEdition),
+    );
   }
   if (!appServices.isRegistered<VadService>()) {
     appServices.put(VadService());
@@ -3314,6 +3423,13 @@ Future<void> _runPostFrameBootTasks() async {
 Future<void> _restorePersistedReviewedAvatar({
   AccountStorageScopeMount? mount,
 }) async {
+  if (kOpenMaasoLocalEdition) {
+    if (mount != null) {
+      appServices.find<AccountStorageScopeService>().requireCurrent(mount);
+    }
+    await appServices.maybeFind<AvatarConfigService>()?.applyInitial();
+    return;
+  }
   final catalog = appServices.maybeFind<AvatarModelCatalogService>();
   final config = appServices.maybeFind<AvatarConfigService>();
   final coordinator = appServices.maybeFind<AvatarSelectionCoordinator>();

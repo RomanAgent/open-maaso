@@ -199,11 +199,17 @@ flutter:
   uses-material-design: true
 
   fonts:
+    - family: MaasoOfflineSans
+      fonts:
+        - asset: assets/fonts/NotoSansSC/NotoSansSC-Variable.ttf
     - family: MaasoOrbitron
       fonts:
         - asset: assets/fonts/Orbitron/Orbitron-Variable.ttf
 
   assets:
+    - assets/brand/maaso_offline_logo.png
+    - assets/brand/offline_avatar_preview.png
+    - assets/fonts/NotoSansSC/OFL.txt
     - assets/game_companion/observer_v1.js
     - assets/project_runtime/maaso_project_sdk_v2.js
     # Runtime artwork only; launcher/splash masters remain build-tool inputs.

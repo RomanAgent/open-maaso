@@ -185,7 +185,14 @@ void main() {
     expect(coordinatorInit, greaterThan(outboxInit));
     expect(avatarConfigInit, greaterThan(coordinatorInit));
     expect(agentSpaceInit, greaterThan(avatarConfigInit));
-    expect(main, contains('selectionCoordinator: avatarSelectionCoordinator'));
+    expect(
+      main,
+      matches(
+        RegExp(
+          r'selectionCoordinator:\s*kOpenMaasoLocalEdition\s*\? null\s*: avatarSelectionCoordinator',
+        ),
+      ),
+    );
     expect(main, contains('selectionAssetOptions: avatarCatalog'));
     expect(main, contains('await avatarConfig.ensureSelectedDisplayReady()'));
     expect(main, contains('if (!avatarConfig.selectionDisplayCurrent)'));
@@ -856,16 +863,13 @@ void main() {
         final material = tester.widget<Material>(
           find.descendant(of: card, matching: find.byType(Material)).first,
         );
-        expect(
-          material.color,
-          AppSecondaryPalette.resolve(brightness).selectedSurface,
-        );
+        expect(material.color, AppSecondaryPalette.resolve(brightness).surface);
         expect(material.color!.a, 1);
         expect(material.clipBehavior, Clip.antiAlias);
         expect(material.shape, isA<RoundedRectangleBorder>());
         expect(
           find.descendant(of: card, matching: find.byType(InkWell)),
-          findsOneWidget,
+          findsNWidgets(2),
         );
         expect(tester.takeException(), isNull);
         await tester.pumpWidget(const SizedBox.shrink());

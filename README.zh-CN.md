@@ -2,17 +2,67 @@
 
 <img src="docs/media/open-maaso-hero.svg?v=white-frost-transparent-logo" alt="open-maaso — 让 Agent 拥有声音、形象与工作空间" width="100%" />
 
-**用 Flutter 构建具身 AI 工作空间。**
+**默认在本机运行的陪伴工作空间。**
 
-语音对话 · Avatar 运行时 · 生成式应用 · 设备技能
+本地登录 · 本机数据 · 系统语音 · 离线小游戏与小程序
 
-[English](README.md) · [开始开发](docs/getting-started.md) · [架构](docs/architecture.md) · [参与贡献](CONTRIBUTING.md)
+[English](README.md) · [开始使用](docs/getting-started.md) · [离线架构](docs/offline-edition.md) · [参与贡献](CONTRIBUTING.md)
 
 </div>
 
-## 看看 Maaso 的实际体验
+## 原版界面，本地运行
 
-Home 陪伴、自然语言创作、战机与贪吃蛇，以及游戏内的陪玩控制。
+**沿用原版 Maaso 的应用入口、路由、页面布局与交互。** Home、对话、小游戏、小程序、陪玩、商店、个人工坊、资料、记忆和设置继续使用原页面。默认角色替换为免费的 Pixiv VRM；在原设置页开放模型配置区，填写自己的 API Key。
+
+本地登录与数据保存不需要 Maaso 后台。原服务通过本地适配器处理账号、资料、作品、目录与技能，对话和记忆继续使用原账号隔离的 Sembast 数据库。
+
+| 测试账号 | 内容 |
+| --- | --- |
+| 用户名 | `test` |
+| 密码 | `test123456` |
+
+原登录输入框已预填。这是本地演示身份，不能替代设备的数据保护。
+
+## 产品能力
+
+| 体验 | 实现 |
+| --- | --- |
+| Home 与对话 | 原版页面、HomeController 和串行 AgentRuntime 回合 |
+| 人物 | 免费 Pixiv VRM，复用原 UnityAvatarRuntime |
+| 模型配置 | 原设置页配置区，12 类厂商，Key 保存于安全存储 |
+| 语音 | 系统已安装的本地 TTS，无云 TTS 和自动模型下载 |
+| 小游戏与小程序 | 原列表、创作入口、播放器和陪玩控件；作品保存在本机 |
+| 商店与工坊 | 原页面，本地目录、提示词技能与作品记录 |
+| 资料与记忆 | 原资料、记忆和账号隔离的数据服务 |
+| 硬件 | 原 BLE 小程序和共享设备连接服务 |
+| 会员 | 原 Free 与不可购买状态，不模拟付费交易 |
+
+未启用模型时，应用给出本地配置说明。项目未内置离线大模型；可选模型调用需要能够连接到配置的端点。尚无本地实现的云端操作会明确返回不可用。具体边界见[本地适配说明](docs/offline-edition.md)。
+
+## 配置自己的大模型
+
+进入**设置 → 模型配置**，可选择 OpenAI、Anthropic Claude、Google Gemini、DeepSeek、通义千问、豆包、Kimi、智谱 GLM、硅基流动、Groq、Ollama 或自定义 OpenAI 兼容端点。确认地址与模型，填写 Key 并启用调用；保存配置不会自动发起健康探测。
+
+API Key 保存在设备安全存储，不写入对话、作品或 Git。远端地址使用 HTTPS；本机模型服务可使用回环 HTTP。手机上的 `127.0.0.1` 指手机自身，模型可用性取决于你的厂商账号。
+
+## 快速开始
+
+记录的工具链为 **Flutter 3.47.2 / Dart 3.13.2**，原生人物使用 **Unity 6000.5.2f1**。开发依赖的安装阶段可能需要联网。
+
+```bash
+git clone https://github.com/RomanAgent/open-maaso.git
+cd open-maaso
+flutter pub get
+flutter test test/local_test_auth_client_test.dart test/local_original_backend_test.dart \
+  test/local_skill_marketplace_test.dart test/original_ui_local_catalog_test.dart \
+  test/local_edition_model_integration_test.dart
+```
+
+按[使用指南](docs/getting-started.md)与[原生打包说明](docs/offline-platforms.md)准备 Unity 导出及签名，再执行 `flutter run -d <device-id>`。默认入口是**原版 `MaasoApp`**，`MAASO_OFFLINE_EDITION=true` 选择本地服务适配器。
+
+## Maaso 历史产品实拍 · 2026-11-01
+
+下面是较早 Maaso 参考构建的真实 iPhone 截图，展示原有人物、房间与游戏控制。它们是历史产品示例，**不代表新版离线入口的实机验收结果**。离线人物采用独立声明的免费 Pixiv 模型。
 
 <table>
   <tr>
@@ -29,126 +79,18 @@ Home 陪伴、自然语言创作、战机与贪吃蛇，以及游戏内的陪玩
   </tr>
 </table>
 
-<sub>2026 年 11 月 1 日拍摄于已安装的 Maaso iPhone App。创作图展示请求输入，两款游戏为已有作品；开源客户端的运行前提见配置指南。</sub>
+<sub>创作图展示请求输入，战机和贪吃蛇是已有作品；陪玩图展示设置面板，没有记录完整语音或自主操作过程。</sub>
 
 [拍摄说明与素材署名 →](docs/media/showcase/README.md)
 
-## 让对话变成可以使用的东西
+## 验证与下一步验收
 
-Agent 可以不止于回复文字。它可以开口说话，通过角色回应，生成可交互的应用，也可以连接身边的设备。
+本地持久化、模型协议边界、凭据隔离、离线语音选择和回合取消均有聚焦自动化测试。上面的测试命令不代表所有原生平台或付费模型账号都已实测。
 
-**open-maaso** 把这些体验放进同一个应用运行时。它是 Maaso 的开源客户端源码版本，面向希望研究具身助手、对话交互和 Agent 生成软件的开发者。
+待验收项包括：包含本地 Unity 场景的干净原生构建、签名移动端 Release 安装和无调试器冷启动、真实设备系统 TTS 与通知送达、兼容 BLE 硬件、使用自有 Key 的在线模型调用，以及原生播放器的网络与状态行为。尚未声称完整复刻旧版全部能力。具体边界见[离线版说明](docs/offline-edition.md)；较早的[验证记录](docs/verification.md)对应最初源码导出。
 
-> **当前发布范围：** 本仓库提供客户端源码与测试。主应用需要兼容后端提供账号认证和服务 API；不包含后端部署、生产凭据、受限角色与房间素材、大型 LLM/ASR/TTS 模型权重或生成后的 Unity 播放器；小型 Silero VAD 模型随上游声明一同保留。这是开发者源码发布，克隆仓库并不等于获得完整在线服务或可直接运行的角色演示。
+## 许可证与贡献
 
-## 一个运行时，多种行动方式
+自有源码采用 [MIT 许可证](LICENSE)。随附 Pixiv 人物使用 **VRM Public License 1.0 及文件内嵌许可设置**，独立于 MIT。第三方依赖和原生 SDK 保留各自条款，包括 BLE 包的商业条件与 FFmpeg 的 LGPL 义务；分发构建产物前请阅读 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 
-| 能力 | 代码提供的基础 | 源码入口 |
-| --- | --- | --- |
-| **对话 Agent** | 串行回合、路由策略、结构化动作与模型服务接入 | [`agent_runtime.dart`](lib/src/features/agent/application/agent_runtime.dart) |
-| **语音交互** | 麦克风采集、播放门控、语音片段、TTS 队列和打断处理 | [`core/services`](lib/src/core/services) |
-| **具身呈现** | 与渲染器解耦的 Avatar 合约，以及 Unity 桥接 | [`avatar`](lib/src/features/agent/application/avatar) |
-| **生成式软件** | 可持久化交互界面、浏览器小游戏与小应用、受限调用 | [`surface`](lib/src/features/agent/application/surface) |
-| **设备技能** | 统一 BLE 传输与设备协议封装 | [`skills`](lib/src/features/agent/application/skills) |
-| **本地连续性** | Sembast 存储、账号生命周期与恢复流程 | [`core/services`](lib/src/core/services) |
-
-这些模块围绕同一条交互链协作：语音与角色状态跟随回合生命周期；生成作品可以在对话结束后继续保留；设备操作通过原生能力边界和确认机制执行。
-
-## 为能够实际行动的 Agent 而设计
-
-**结构化执行。** 模型通过包含 `reply` 和 `actions` 的 JSON 合约输出。解析、策略和执行分层处理，模型回复进入运行时校验，不直接获得原生权限。
-
-**开放的生成式应用画布。** Web 游戏和小应用使用普通 HTML、CSS 与 JavaScript，可采用自己的风格、外部库和网络资源，并在浏览器隔离边界内运行。保存源码不等于已缓存所有远程依赖。
-
-**可扩展的具身层。** UI 面向 `ActiveAvatarRuntime`，Unity 行为收敛在 `AvatarRuntime` 后。TTS 负责口型，角色拥有明确的生命周期与桥接合约。
-
-**明确的本地与云端选择。** 默认使用云服务。可选本地 LLM、ASR 和神经 TTS 仅限桌面平台，并需要相应模型与配置。自带 LLM API Key 不会绕过主应用的后端登录要求。
-
-## 架构速览
-
-```mermaid
-flowchart TD
-    User[文字 · 麦克风 · 已选作品] --> Home[Flutter UI / HomeController]
-    Home --> Runtime[AgentRuntime · 单回合执行]
-    Runtime --> Policy[回合策略 · 路由 · 确认]
-    Policy --> Models[云端模型 / 可选桌面本地模型]
-    Models --> Envelope[JSON reply + actions]
-    Envelope --> Execute[动作执行器 / 技能目录]
-    Execute --> Voice[TTS / 播放 / 打断]
-    Execute --> Avatar[AvatarRuntime / Unity 桥接]
-    Execute --> Surface[持久化作品 / 隔离浏览器]
-    Execute --> Device[BLE 传输 / 设备协议]
-    Runtime <--> Store[Sembast / 账号范围状态]
-    Home <--> Backend[兼容后端 / 认证 / 服务]
-```
-
-[查看运行时与扩展边界 →](docs/architecture.md)
-
-## 从源码开始
-
-源码环境使用 **Flutter 3.47.2 / Dart 3.13.2**。项目声明 Dart `^3.11.5`，原生依赖可能有额外工具链要求。
-
-```bash
-git clone https://github.com/RomanAgent/open-maaso.git
-cd open-maaso
-flutter pub get
-
-# 验证动作协议与回合策略，无需启动应用。
-flutter test test/agent_action_protocol_test.dart \
-  test/turn_policy_test.dart \
-  test/turn_policy_wiring_test.dart
-```
-
-运行主应用前，需要准备自己的兼容后端、平台工具和必要素材，并配置服务地址：
-
-```bash
-flutter run -d <device-id> \
-  --dart-define=MAASO_TEST_BASE_URL=https://api-dev.example.com \
-  --dart-define=MAASO_PRODUCTION_BASE_URL=https://api.example.com
-```
-
-示例域名是占位符。`--dart-define` 的内容会编译进客户端，只应存放公开配置，不能用于保存服务端密钥。
-
-**iOS 需要先生成独立 Unity 导出工程才能构建。** macOS Release 与 Profile 构建必须提供 Unity sidecar；Debug 在未设置 `MAASO_REQUIRE_UNITY_SIDECAR=1` 时允许缺少 sidecar，此时角色不可用。Android 仅在本地存在导出工程时接入 Unity；没有导出工程也不代表拥有完整角色体验。选择目标平台前，请先阅读[配置指南](docs/getting-started.md)。
-
-## 平台与发布边界
-
-| 范围 | 当前源码状态 |
-| --- | --- |
-| Android | 包含 Flutter 和原生宿主代码，Unity 接入有条件启用；仍需 SDK、服务配置与设备验证 |
-| iOS | 包含 Flutter 和原生宿主代码；需要 Xcode、CocoaPods、签名与生成后的 Unity iOS 工程 |
-| macOS | 包含桌面宿主和本地模型路径；Release/Profile 必须提供 Unity sidecar，Debug 在默认构建设置下允许缺少它 |
-| Windows / Linux | 包含桌面宿主和可选本地模型路径；原生依赖及渲染器需分别验证 |
-| Web | 存在浏览器专用实现；尚未建立完整应用与插件的能力对齐验收 |
-| 账号与云服务 | 需要兼容后端；后端实现与托管服务不在此次发布范围内 |
-| 角色与场景 | 原始受限素材已排除；需自行提供具有使用及再分发权利的内容 |
-
-有平台代码不等于已完成平台验收。实际完成的检查以本次导出的[验证记录](docs/verification.md)为准。
-
-## 从一个清晰的扩展点开始
-
-- 通过现有技能目录和共享服务添加技能。
-- 制作生成式应用或游戏，并声明有界的可调用接口。
-- 通过统一 BLE 传输与设备封装接入硬件。
-- 沿 Avatar 运行时合约扩展角色行为。
-- 为协议、生命周期或平台边界补充聚焦测试。
-
-修改运行时所有权、原生权限或服务初始化前，请阅读 [CONTRIBUTING.md](CONTRIBUTING.md)。
-
-## 接下来的公开版本里程碑
-
-可复现的后端接入说明、可再分发的示例角色与场景、干净克隆后的原生构建验证，以及更简单的首次配置流程。这些仍是待完成的工作，不作为此次源码发布已经具备的能力宣传。
-
-欢迎通过 [Issues](https://github.com/RomanAgent/open-maaso/issues) 提出具体问题和贡献方向。
-
-## 许可证与安全
-
-项目自有源码采用 [MIT 许可证](LICENSE)。第三方包、原生 SDK、字体、模型权重和素材保留各自条款，不会因仓库使用 MIT 而自动变更授权。特别是锁定的 `flutter_blue_plus` 具有独立商业授权要求，FFmpeg 依赖具有 LGPL 义务。分发构建产物前，请先查看 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
-
-本次源码发布排除了凭据、签名材料、用户数据及原项目 Git 历史。请在版本控制之外保存自己的密钥；发现疑似泄露时按 [SECURITY.md](SECURITY.md) 处理。
-
-<div align="center">
-
-**让 Agent 拥有声音、形象与工作空间。**
-
-</div>
+密钥和签名材料保存在 Git 之外。开发和反馈请遵循 [SECURITY.md](SECURITY.md)、[CONTRIBUTING.md](CONTRIBUTING.md)，并通过 [Issues](https://github.com/RomanAgent/open-maaso/issues) 提交可复现问题。

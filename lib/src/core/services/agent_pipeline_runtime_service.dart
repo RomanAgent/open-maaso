@@ -36,10 +36,13 @@ final class AgentPipelineAccountSession {
 }
 
 class AgentPipelineRuntimeService extends AppService {
-  AgentPipelineRuntimeService({AppPlatformCapabilities? platformCapabilities})
-    : _platformCapabilities =
-          platformCapabilities ?? AppPlatformCapabilities.current();
+  AgentPipelineRuntimeService({
+    AppPlatformCapabilities? platformCapabilities,
+    this.localEdition = false,
+  }) : _platformCapabilities =
+           platformCapabilities ?? AppPlatformCapabilities.current();
 
+  final bool localEdition;
   final AppPlatformCapabilities _platformCapabilities;
   int _generation = 0;
   bool _fenced = false;
@@ -181,6 +184,7 @@ class AgentPipelineRuntimeService extends AppService {
   }
 
   Future<bool> localTtsEnabled() async {
+    if (localEdition) return false;
     final prefs = await SharedPreferences.getInstance();
     if (!_platformCapabilities.supportsOnDeviceSpeechModels) {
       if (prefs.getBool(SherpaNeuralTts.enabledPrefsKey) == true) {
@@ -223,7 +227,7 @@ class AgentPipelineRuntimeService extends AppService {
     }
 
     if (!_isAdmitted(receipt)) return;
-    if (mode.usesLocalLlm && await _localLlmEnabled()) {
+    if (!localEdition && mode.usesLocalLlm && await _localLlmEnabled()) {
       if (!_isAdmitted(receipt)) return;
       if (!appServices.isRegistered<LocalLLMService>()) {
         final service = await LocalLLMService(
@@ -241,12 +245,14 @@ class AgentPipelineRuntimeService extends AppService {
       }
     }
 
-    if (mode.usesLocalTts && await localTtsEnabled()) {
+    if (!localEdition && mode.usesLocalTts && await localTtsEnabled()) {
       if (!_isAdmitted(receipt)) return;
       if (!await _registerLocalTtsModelServices(receipt)) return;
     }
 
-    if (mode.usesDirectCloudLlm && await _directCloudEnabled()) {
+    if (!localEdition &&
+        mode.usesDirectCloudLlm &&
+        await _directCloudEnabled()) {
       if (!_isAdmitted(receipt)) return;
       if (!appServices.isRegistered<CloudLLMHealthService>()) {
         appServices.put(CloudLLMHealthService());
@@ -304,6 +310,7 @@ class AgentPipelineRuntimeService extends AppService {
     _AgentPipelineOperationReceipt receipt,
   ) async {
     if (!_isAdmitted(receipt)) return null;
+    if (localEdition) return _SystemFallbackTtsEngine();
     mode = mode.effectiveFor(_platformCapabilities);
     switch (mode) {
       case AgentPipelineMode.localFull:

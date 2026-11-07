@@ -1,7 +1,9 @@
 """Boundary tests for public-export checks; all token material is synthetic."""
 
 import hashlib
+import json
 from pathlib import Path
+import struct
 import subprocess
 import tempfile
 import unittest
@@ -12,6 +14,36 @@ from check_public_export import (
 
 
 class PublicExportTests(unittest.TestCase):
+    def test_official_avatar_has_exact_reviewed_bytes_and_redistribution_metadata(self):
+        name = "unity/masso_avatar/Assets/MaasoAvatar/Models/Default/OpenMaaso.vrm"
+        root = Path(__file__).resolve().parents[1]
+        data = (root / name).read_bytes()
+        self.assertIsNone(forbidden_path(name))
+        self.assertEqual(content_findings(name, data), [])
+        self.assertEqual(
+            content_findings(name, data[:-1] + bytes([data[-1] ^ 1])),
+            [(name, 0, "licensed-model-checksum")],
+        )
+        self.assertIsNotNone(forbidden_path("assets/unreviewed-avatar.vrm"))
+        magic, version, total = struct.unpack_from("<4sII", data)
+        self.assertEqual((magic, version, total), (b"glTF", 2, len(data)))
+        length, chunk_kind = struct.unpack_from("<II", data, 12)
+        self.assertEqual(chunk_kind, 0x4E4F534A)
+        document = json.loads(data[20:20 + length])
+        model = document["extensions"]["VRMC_vrm"]
+        self.assertEqual(model["specVersion"], "1.0")
+        meta = model["meta"]
+        self.assertEqual(meta["authors"], ["pixiv Inc."])
+        self.assertEqual(meta["licenseUrl"], "https://vrm.dev/licenses/1.0/")
+        self.assertTrue(meta["allowRedistribution"])
+        self.assertEqual(meta["avatarPermission"], "everyone")
+        self.assertEqual(meta["commercialUsage"], "corporation")
+        self.assertEqual(meta["modification"], "allowModificationRedistribution")
+        self.assertFalse(meta["allowAntisocialOrHateUsage"])
+        self.assertIn("hips", model["humanoid"]["humanBones"])
+        self.assertFalse(any(item.get("uri") for item in document.get("buffers", [])))
+        self.assertFalse(any(item.get("uri") for item in document.get("images", [])))
+
     def test_private_inputs_and_unreviewed_models_are_rejected(self):
         for name in (
             ".store-release-secrets/account.json", "build/log.txt",

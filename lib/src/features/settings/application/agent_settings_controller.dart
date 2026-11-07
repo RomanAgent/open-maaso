@@ -22,6 +22,7 @@ import 'package:maaso/src/core/services/theme_service.dart';
 class AgentSettingsController extends AppController {
   final AgentCoreController _core = appServices.find<AgentCoreController>();
   final LLMConfigController _llm = appServices.find<LLMConfigController>();
+  bool get localEdition => _llm.localEdition;
   late final LLMConfigAccountSession _llmSession;
   final LocaleConfigService _localeSvc = appServices
       .find<LocaleConfigService>();
@@ -101,7 +102,29 @@ class AgentSettingsController extends AppController {
       "gemini-2.0-flash",
     ),
     ProviderPreset("DeepSeek", "https://api.deepseek.com/v1", "deepseek-chat"),
-    ProviderPreset("Ollama (Local)", "http://localhost:11434/v1", "llama3"),
+    ProviderPreset(
+      "通义千问 / Qwen",
+      "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "qwen-plus",
+    ),
+    ProviderPreset(
+      "Kimi / Moonshot",
+      "https://api.moonshot.cn/v1",
+      "kimi-k3.1-pro",
+    ),
+    ProviderPreset("智谱 GLM", "https://open.bigmodel.cn/api/paas/v4", "glm-5.3"),
+    ProviderPreset(
+      "SiliconFlow",
+      "https://api.siliconflow.cn/v1",
+      "Qwen/Qwen3-8B",
+    ),
+    ProviderPreset(
+      "Groq",
+      "https://api.groq.com/openai/v1",
+      "openai/gpt-oss-120b",
+    ),
+    ProviderPreset("Ollama (Local)", "http://127.0.0.1:11434/v1", "qwen3:8b"),
+    ProviderPreset(customProviderName, "", ""),
   ];
 
   final providers = providerPresets;
@@ -253,6 +276,7 @@ class AgentSettingsController extends AppController {
     }
     if (effectiveMode == AgentPipelineMode.directCloud &&
         cloudEnabled.value &&
+        !localEdition &&
         !appServices.isRegistered<CloudLLMHealthService>()) {
       appServices.put(CloudLLMHealthService());
     }
@@ -383,7 +407,8 @@ class AgentSettingsController extends AppController {
     _cloudDebounce?.cancel();
     if (!_llm.isAccountSessionActive(_llmSession)) return;
     try {
-      if (cloudEnabled.value &&
+      if (!localEdition &&
+          cloudEnabled.value &&
           !appServices.isRegistered<CloudLLMHealthService>()) {
         appServices.put(CloudLLMHealthService());
       }

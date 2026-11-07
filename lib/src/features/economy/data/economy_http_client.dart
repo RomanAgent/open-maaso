@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:maaso/src/core/network/backend_client.dart';
 import '../domain/economy_models.dart';
 import 'economy_market_gateway.dart';
 import '../domain/economy_market_info.dart';
@@ -44,7 +45,7 @@ final class EconomyHttpClient
   }) : _baseUri = baseUri,
        _accountId = accountId,
        _accessToken = accessToken,
-       _client = client ?? http.Client(),
+       _client = client ?? createMaasoBackendClient(),
        _ownsClient = client == null;
   final Uri Function() _baseUri;
   final String Function() _accountId;

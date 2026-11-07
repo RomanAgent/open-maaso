@@ -29,7 +29,7 @@ void main() {
         expect(request.method, 'GET');
         expect(
           request.url.toString(),
-          'https://api-test.futurpals.com.cn/v1/avatar-models'
+          '${MaasoEnvironment.test.baseUrl}/v1/avatar-models'
           '?platformAssets=true&platform=android&builtinCatalogVersion=$avatarBuiltinCatalogVersion',
         );
         expect(request.headers['authorization'], 'Bearer access-token');
@@ -146,7 +146,7 @@ void main() {
       MockClient((request) async {
         expect(
           request.url.toString(),
-          'https://api-test.futurpals.com.cn/v1/avatar-models'
+          '${MaasoEnvironment.test.baseUrl}/v1/avatar-models'
           '?platformAssets=false&builtinCatalogVersion=$avatarBuiltinCatalogVersion',
         );
         return _catalogResponseWithProfile(_incompatibleCapabilityProfile);
@@ -205,7 +205,7 @@ void main() {
       MockClient((request) async {
         expect(
           request.url.toString(),
-          'https://api-test.futurpals.com.cn/v1/avatar-models'
+          '${MaasoEnvironment.test.baseUrl}/v1/avatar-models'
           '?platformAssets=true&platform=android&builtinCatalogVersion=$avatarBuiltinCatalogVersion',
         );
         return http.Response(
@@ -306,7 +306,7 @@ void main() {
         expect(request.method, 'GET');
         expect(
           request.url.toString(),
-          'https://api-test.futurpals.com.cn/'
+          '${MaasoEnvironment.test.baseUrl}/'
           'v1/avatar-models/selections/current'
           '?agentId=self&platformAssets=true&platform=ios',
         );
@@ -376,7 +376,7 @@ void main() {
       MockClient((request) async {
         expect(
           request.url.toString(),
-          'https://api-test.futurpals.com.cn/'
+          '${MaasoEnvironment.test.baseUrl}/'
           'v1/avatar-models/selections/current'
           '?agentId=self&platformAssets=false',
         );
@@ -492,7 +492,7 @@ void main() {
         expect(httpRequest.method, 'POST');
         expect(
           httpRequest.url.toString(),
-          'https://api-test.futurpals.com.cn/'
+          '${MaasoEnvironment.test.baseUrl}/'
           'v1/avatar-models/selections/commit',
         );
         expect(httpRequest.headers['authorization'], 'Bearer access-token');
@@ -554,7 +554,10 @@ void main() {
   test('bound production environment owns the request base URI', () async {
     final service = await _createCatalog(
       MockClient((request) async {
-        expect(request.url.host, 'api.futurpals.com');
+        expect(
+          request.url.host,
+          Uri.parse(MaasoEnvironment.production.baseUrl).host,
+        );
         return _avatarSelectionCurrentResponse();
       }),
       boundEnvironment: MaasoEnvironment.production,

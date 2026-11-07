@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/foundation.dart';
 import 'package:maaso/src/core/foundation/app_framework.dart';
 import 'package:http/http.dart' as http;
+import 'package:maaso/src/core/network/backend_client.dart';
 import '../data/deletion_receipt_store.dart';
 import '../domain/deletion_models.dart';
 
@@ -18,7 +19,7 @@ final class AccountDeletionService extends AppService with ChangeNotifier {
     http.Client? client,
   }) : _baseUri = baseUri,
        _accountId = accountId,
-       _client = client ?? http.Client(),
+       _client = client ?? createMaasoBackendClient(),
        _ownsClient = client == null;
   final Uri Function() _baseUri;
   final String Function() _accountId;

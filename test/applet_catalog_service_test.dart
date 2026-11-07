@@ -30,7 +30,7 @@ void main() {
   test('startup registers locale before the localized Applet client', () {
     final source = File('lib/main.dart').readAsStringSync();
     final locale = source.indexOf('LocaleConfigService().init()');
-    final applets = source.indexOf('AppletCatalogService()');
+    final applets = source.indexOf('AppletCatalogService(');
 
     expect(locale, greaterThanOrEqualTo(0));
     expect(applets, greaterThan(locale));

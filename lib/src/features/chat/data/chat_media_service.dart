@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:crypto/crypto.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:maaso/src/core/network/backend_client.dart';
 import 'package:image/image.dart' as image;
 import 'package:sembast/sembast.dart';
 import 'package:maaso/src/core/foundation/app_framework.dart';
@@ -151,7 +152,7 @@ final class ChatMediaService extends AppService {
        _baseUri = baseUri,
        _token = accessToken,
        _authorize = authorize,
-       _client = client ?? http.Client();
+       _client = client ?? createMaasoBackendClient();
   final Database _db;
   final bool Function() _current;
   final Uri _baseUri;

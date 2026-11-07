@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:http/http.dart' as http;
+import 'package:maaso/src/core/network/backend_client.dart';
 import '../domain/project_build_contract.dart';
 
 class ProjectBuildRequestException extends StateError {
@@ -27,7 +28,7 @@ final class HttpProjectBuildGateway {
        _contextKey = contextKey,
        _accessToken = accessToken,
        _isCurrent = isCurrent,
-       _http = client ?? http.Client(),
+       _http = client ?? createMaasoBackendClient(),
        _ownsClient = client == null;
 
   final Uri Function() _baseUri;

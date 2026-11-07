@@ -64,6 +64,17 @@ public class WebViewProxyApi extends PigeonApiWebView {
           WebViewCompat.setProfile(this, profileName);
           getSettings().setJavaScriptCanOpenWindowsAutomatically(false);
           getSettings().setSupportMultipleWindows(false);
+          if (isOfflineProfile(profileName)) {
+            if (!WebViewFeature.isFeatureSupported(WebViewFeature.DOCUMENT_START_SCRIPT)) {
+              throw new IllegalStateException("offline_document_start_unavailable");
+            }
+            getSettings().setBlockNetworkLoads(true);
+            getSettings().setBlockNetworkImage(true);
+            getSettings().setAllowFileAccess(false);
+            getSettings().setAllowContentAccess(false);
+            WebViewCompat.addDocumentStartJavaScript(
+                this, OFFLINE_DOCUMENT_START_SCRIPT, java.util.Collections.singleton("*"));
+          }
         }
         currentWebViewClient = new WebViewClient();
         currentWebChromeClient = new WebChromeClientProxyApi.SecureWebChromeClient();
@@ -174,6 +185,63 @@ public class WebViewProxyApi extends PigeonApiWebView {
     }
   }
 
+  // Explicit offline profiles have stricter transport policy than invocations.
+  private static boolean isOfflineProfile(String name) {
+    return name.matches("maaso_offline_[a-f0-9]{32}");
+  }
+
+  private static boolean isPrivateProfile(String name) {
+    return name.matches("maaso_(?:invocation|offline)_[a-f0-9]{32}");
+  }
+
+  private static final String OFFLINE_DOCUMENT_START_SCRIPT =
+      "(function() {\n"
+      + "  'use strict';\n"
+      + "  const define = Object.defineProperty;\n"
+      + "  const own = Object.getOwnPropertyDescriptor;\n"
+      + "  const parent = Object.getPrototypeOf;\n"
+      + "  const call = Reflect.apply;\n"
+      + "  const seen = new WeakSet();\n"
+      + "  const blocked = ['RTCPeerConnection','webkitRTCPeerConnection','mozRTCPeerConnection','RTCDataChannel','WebTransport','RTCIceGatherer','RTCIceTransport','RTCDtlsTransport','RTCSctpTransport','RTCRtpSender','RTCRtpReceiver'];\n"
+      + "  function seal(target, name) {\n"
+      + "    try { define(target, name, {value:undefined,writable:false,configurable:false}); } catch (_) {}\n"
+      + "  }\n"
+      + "  function guardFrameGetter(proto, name, isDocument) {\n"
+      + "    if (!proto) return;\n"
+      + "    const descriptor = own(proto, name);\n"
+      + "    if (!descriptor || !descriptor.get || !descriptor.configurable) return;\n"
+      + "    const getter = descriptor.get;\n"
+      + "    try {\n"
+      + "      define(proto, name, {enumerable:descriptor.enumerable,configurable:false,get:function() {\n"
+      + "        const value = call(getter, this, []);\n"
+      + "        try { protect(isDocument ? value && value.defaultView : value); } catch (_) {}\n"
+      + "        return value;\n"
+      + "      }});\n"
+      + "    } catch (_) {}\n"
+      + "  }\n"
+      + "  function protect(frame) {\n"
+      + "    if (!frame || seen.has(frame)) return;\n"
+      + "    seen.add(frame);\n"
+      + "    for (const name of blocked) {\n"
+      + "      let target = frame;\n"
+      + "      while (target) {\n"
+      + "        try { if (own(target, name)) seal(target, name); target = parent(target); }\n"
+      + "        catch (_) { break; }\n"
+      + "      }\n"
+      + "      seal(frame, name);\n"
+      + "    }\n"
+      + "    try {\n"
+      + "      for (const type of [frame.HTMLIFrameElement,frame.HTMLFrameElement]) {\n"
+      + "        if (!type) continue;\n"
+      + "        guardFrameGetter(type.prototype, 'contentWindow', false);\n"
+      + "        guardFrameGetter(type.prototype, 'contentDocument', true);\n"
+      + "      }\n"
+      + "      if (frame.Document) guardFrameGetter(frame.Document.prototype, 'defaultView', false);\n"
+      + "    } catch (_) {}\n"
+      + "  }\n"
+      + "  protect(window);\n"
+      + "})();\n";
+
   private static boolean invocationProfilesRecovered;
   private static final String INVOCATION_LEDGER = "maaso_invocation_profile_ledger_v1";
 
@@ -186,7 +254,7 @@ public class WebViewProxyApi extends PigeonApiWebView {
     invocationProfilesRecovered = true;
     Set<String> pending = new HashSet<>(invocationLedger(context).getStringSet("profiles", new HashSet<>()));
     for (String name : pending) {
-      if (name.matches("maaso_invocation_[a-f0-9]{32}")) deleteInvocationProfile(context, name);
+      if (isPrivateProfile(name)) deleteInvocationProfile(context, name);
     }
   }
 
@@ -215,8 +283,10 @@ public class WebViewProxyApi extends PigeonApiWebView {
   @NonNull
   @Override
   public WebView withProfile(@NonNull String profileName) {
-    if (!profileName.matches("maaso_invocation_[a-f0-9]{32}") ||
-        !WebViewFeature.isFeatureSupported(WebViewFeature.MULTI_PROFILE)) {
+    if (!isPrivateProfile(profileName) ||
+        !WebViewFeature.isFeatureSupported(WebViewFeature.MULTI_PROFILE) ||
+        (isOfflineProfile(profileName) &&
+            !WebViewFeature.isFeatureSupported(WebViewFeature.DOCUMENT_START_SCRIPT))) {
       throw new IllegalStateException("invocation_profile_unavailable");
     }
     final Context context = getPigeonRegistrar().getContext();

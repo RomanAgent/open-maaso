@@ -1,5 +1,7 @@
 # Open-source scope
 
+> **Architecture reference.** The default entry now retains these original Maaso pages and services with local-edition adapters. See [offline-edition.md](offline-edition.md) for active boundaries; cloud requirements below apply to the optional legacy configuration.
+
 open-maaso is a source release of the Maaso Flutter client and its integration layers. It provides a codebase for studying and extending a companion agent: conversation orchestration, structured actions, voice, memory, generated browser works, application navigation, avatar bridges and device adapters.
 
 It is not a release of the production backend, commercial avatar artwork, deployed accounts, or prebuilt application packages.

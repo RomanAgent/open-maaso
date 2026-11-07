@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
 import 'package:http/http.dart' as http;
+import 'package:maaso/src/core/network/backend_client.dart';
 import 'package:maaso/src/core/foundation/app_framework.dart';
 import 'package:maaso/src/features/privacy/domain/privacy_models.dart';
 import 'package:maaso/src/features/widgets_hub/application/game_frame_processor.dart';
@@ -44,7 +45,7 @@ class GamePerceptionGateway extends AppService {
        _accessToken = accessToken,
        _authorize = authorize,
        _isCurrent = isCurrent,
-       _client = client ?? http.Client(),
+       _client = client ?? createMaasoBackendClient(),
        _ownsClient = client == null,
        _now = now ?? DateTime.now {
     if (minimumDispatchInterval < Duration.zero) {

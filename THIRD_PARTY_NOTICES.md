@@ -9,6 +9,7 @@ The root [MIT license](LICENSE) covers original open-maaso code and documentatio
 | `third_party/webview_flutter_android` | BSD-3-Clause; the Flutter Authors | `LICENSE`, `AUTHORS`, `UPSTREAM_SOURCE.json`, `MAASO_PATCH.md` in the component directory |
 | `third_party/webview_flutter_wkwebview` | BSD-3-Clause; the Flutter Authors | `LICENSE`, `AUTHORS`, `UPSTREAM_SOURCE.json`, `MAASO_PATCH.md` in the component directory |
 | Orbitron font, if present under `assets/fonts/Orbitron` | SIL Open Font License 1.1; the Orbitron Project Authors; reserved font name Orbitron | `assets/fonts/Orbitron/OFL.txt` |
+| `unity/masso_avatar/Assets/MaasoAvatar/Models/Default/OpenMaaso.vrm` | VRM Public License 1.0 and its embedded settings; (c) 2022 pixiv Inc. | `OPEN_MAASO_AVATAR_NOTICE.md` and `OpenMaaso.provenance.json` beside the model |
 
 The WebView forks preserve their upstream license and document local invocation-isolation modifications. Replacing them with unmodified package releases removes required integration APIs.
 
@@ -36,11 +37,17 @@ The Unity integration includes local C# import/playback code referring to Open A
 
 ## Bundled Silero VAD
 
-The [Silero VAD upstream license](https://github.com/snakers4/silero-vad/blob/master/LICENSE) identifies MIT licensing and credits the Silero Team. The sherpa-onnx runtime's Apache license is a separate license. The bundled 643854-byte VAD artifact was byte-for-byte verified against the official sherpa-onnx release download. Its SHA-256, source URL, verification date and the Silero MIT license are retained under `assets/sherpa_models/silero-vad-v5/`. This small detector is the only bundled model; large LLM/ASR/TTS weights are excluded.
+The [Silero VAD upstream license](https://github.com/snakers4/silero-vad/blob/master/LICENSE) identifies MIT licensing and credits the Silero Team. The sherpa-onnx runtime's Apache license is a separate license. The bundled 643854-byte VAD artifact was byte-for-byte verified against the official sherpa-onnx release download. Its SHA-256, source URL, verification date and the Silero MIT license are retained under `assets/sherpa_models/silero-vad-v5/`. This small detector is the only bundled speech model; large LLM/ASR/TTS weights are excluded.
+
+## Bundled offline human avatar
+
+`OpenMaaso.vrm` is the unmodified **VRM1_Constraint_Twist_Sample v1.0.1**, authored by pixiv Inc. It was obtained directly from [pixiv's official three-vrm sample repository at a pinned commit](https://github.com/pixiv/three-vrm/blob/3caf7a21ee68f0d5dfa363ab3d577450bbf60136/packages/three-vrm/examples/models/VRM1_Constraint_Twist_Sample.vrm). The exact model is covered by the [VRM Public License 1.0](https://vrm.dev/licenses/1.0/) and its preserved embedded settings, not by the project's MIT license.
+
+The embedded settings permit use by everyone, commercial use including corporations, redistribution, modification and redistribution of modifications. Antisocial or hateful usage is not permitted. Attribution is retained even though credit notation is marked unnecessary. The model is self-contained, with no external buffer or image URIs. Its exact SHA-256 is `12c2b97e95e700783a6a550dc0eee2d7880aeedccef9ae67bc4c5a2f0f2631a2`; provenance and the complete embedded settings are kept beside the file.
 
 ## Excluded content
 
-Production credentials, signing material, account data, large LLM/ASR/TTS weights, character models, purchased animations, room assets and private operational records are excluded. The original commercial application's character art and Unity player exports are not licensed through this source release. Supply your own appropriately licensed assets and build your own player exports. Names of third-party products identify integrations and do not imply endorsement.
+Production credentials, signing material, account data, large LLM/ASR/TTS weights, the original paid character models, purchased animations, original room assets and private operational records are excluded. The original commercial application's character art and Unity player exports are not licensed through this source release. The reviewed free avatar above is the explicit exception to the character-source exclusion. Names of third-party products identify integrations and do not imply endorsement.
 
 ## Product screenshot media
 

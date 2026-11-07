@@ -51,10 +51,13 @@ extension AgentPipelineModePlatformPolicy on AgentPipelineMode {
 }
 
 class MaasoAgentModeService extends AppService {
-  MaasoAgentModeService({AppPlatformCapabilities? platformCapabilities})
-    : _platformCapabilities =
-          platformCapabilities ?? AppPlatformCapabilities.current();
+  MaasoAgentModeService({
+    AppPlatformCapabilities? platformCapabilities,
+    this.localEdition = false,
+  }) : _platformCapabilities =
+           platformCapabilities ?? AppPlatformCapabilities.current();
 
+  final bool localEdition;
   final AppPlatformCapabilities _platformCapabilities;
   final SecureStorageService _storage = appServices
       .find<SecureStorageService>();
@@ -65,6 +68,10 @@ class MaasoAgentModeService extends AppService {
   final volcRealtimeChatOnly = false.obs;
 
   Future<MaasoAgentModeService> init() async {
+    if (localEdition) {
+      _applyMode(AgentPipelineMode.directCloud);
+      return this;
+    }
     final stored = await _storage.read(GlobalConstant.keyAgentPipelineMode);
     var next = AgentPipelineMode.fromKey(stored);
     if (stored == null) {
@@ -83,7 +90,9 @@ class MaasoAgentModeService extends AppService {
   }
 
   Future<void> setPipelineMode(AgentPipelineMode value) async {
-    final effective = value.effectiveFor(_platformCapabilities);
+    final effective = localEdition
+        ? AgentPipelineMode.directCloud
+        : value.effectiveFor(_platformCapabilities);
     _applyMode(effective);
     await _storage.write(GlobalConstant.keyAgentPipelineMode, effective.key);
     await _storage.writeBool(

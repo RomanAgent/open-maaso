@@ -1,5 +1,7 @@
 # Architecture
 
+> **Architecture reference.** The default entry now retains these original Maaso pages and services with local-edition adapters. See [offline-edition.md](offline-edition.md) for active boundaries; cloud requirements below apply to the optional legacy configuration.
+
 open-maaso is a Flutter client built around one serialized agent turn. This document describes the retained client architecture; it does not imply that the backend or licensed rendering content is distributed with this repository.
 
 ## The main turn

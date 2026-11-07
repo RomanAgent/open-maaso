@@ -5,6 +5,7 @@ import 'dart:typed_data';
 
 import 'package:crypto/crypto.dart';
 import 'package:http/http.dart' as http;
+import 'package:maaso/src/core/network/backend_client.dart';
 import 'package:image/image.dart' as image;
 import 'package:maaso/src/core/foundation/app_framework.dart';
 import 'package:maaso/src/core/security/trusted_media_asset_policy.dart';
@@ -68,7 +69,7 @@ class HttpImageGenerationGateway extends AppService
     bool? available,
     Duration requestTimeout = const Duration(seconds: 20),
     Duration downloadTimeout = const Duration(seconds: 30),
-  }) : _http = httpClient ?? http.Client(),
+  }) : _http = httpClient ?? createMaasoBackendClient(),
        _ownsClient = httpClient == null,
        _environment = environment ?? appServices.find<AppEnvironmentService>(),
        _auth = auth ?? appServices.find<AuthSessionService>(),

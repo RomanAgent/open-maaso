@@ -19,6 +19,9 @@ import 'package:maaso/src/core/services/bundled_avatar_contract.dart';
 import 'package:maaso/src/core/services/persistence/account_storage_scope_service.dart';
 import 'package:maaso/src/core/services/server_request_failure_log.dart';
 import 'package:maaso/src/features/agent/application/avatar/avatar_capability_profile.dart';
+import 'package:maaso/src/core/services/db_service.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:sembast/sembast.dart';
 
 /// A server-reviewed, Unity-compatible avatar descriptor.
 ///
@@ -521,6 +524,7 @@ class AvatarModelCatalogService extends AppService
     http.Client? httpClient,
     TargetPlatform? targetPlatform,
     Duration selectionRequestTimeout = const Duration(seconds: 15),
+    this.localEdition = false,
   }) : _accountUuid = accountSession.accountUuid,
        _accountMount = accountMount,
        _storageScopes = storageScopes,
@@ -586,6 +590,8 @@ class AvatarModelCatalogService extends AppService
   final bool _ownsClient;
   final TargetPlatform _targetPlatform;
   final Duration _selectionRequestTimeout;
+  final bool localEdition;
+  static final _localImports = intMapStoreFactory.store('local_avatar_imports');
   Worker? _sessionWorker;
   late String _recoveryAccessToken;
   bool _closed = false;
@@ -605,6 +611,13 @@ class AvatarModelCatalogService extends AppService
 
   @override
   Future<List<ApprovedAvatarModel>> listApprovedModels() async {
+    if (localEdition) {
+      _requirePublishedAvatarAccount();
+      // The bundled free VRM remains an ordinary built-in AvatarOption. It
+      // does not acquire a remote ID or an account-server selection lease.
+      models.clear();
+      return const [];
+    }
     final assetOptions = _avatarAssetOptions(_targetPlatform);
     final platform = assetOptions.platform;
     final exposesDesktopDiagnostics =
@@ -775,6 +788,27 @@ class AvatarModelCatalogService extends AppService
 
   @override
   Future<List<OwnAvatarUpload>> listMyUploads() async {
+    if (localEdition) {
+      _requirePublishedAvatarAccount();
+      final rows = await _localImports.find(appServices.find<DBService>().raw);
+      _requirePublishedAvatarAccount();
+      final uploads = rows
+          .map(
+            (row) => OwnAvatarUpload(
+              id: row.key,
+              displayName: row.value['displayName'] as String,
+              fileName: row.value['fileName'] as String,
+              status: AvatarUploadStatus.approved,
+              statusMessage: '已保存在此设备；当前角色使用内置免费 VRM。',
+              modelId: null,
+              createdAt: DateTime.parse(row.value['createdAt'] as String),
+              updatedAt: DateTime.parse(row.value['createdAt'] as String),
+            ),
+          )
+          .toList();
+      myUploads.assignAll(uploads);
+      return uploads;
+    }
     final data = await _request(
       _baseUri.resolve('v1/avatar-models/mine'),
       method: 'GET',
@@ -813,6 +847,11 @@ class AvatarModelCatalogService extends AppService
     final contentLength = await file.length();
     if (contentLength <= 0 || contentLength > _maxAvatarBundleBytes) {
       throw StateError('The VRM model must be between 1 byte and 50 MB');
+    }
+
+    if (localEdition) {
+      _requirePublishedAvatarAccount();
+      return _importLocalVrm(file, normalizedDisplayName, cover);
     }
 
     isUploading.value = true;
@@ -877,6 +916,112 @@ class AvatarModelCatalogService extends AppService
       rethrow;
     } finally {
       isUploading.value = false;
+    }
+  }
+
+  Future<OwnAvatarUpload> _importLocalVrm(
+    File file,
+    String displayName,
+    AvatarModelUploadCover cover,
+  ) async {
+    isUploading.value = true;
+    uploadError.value = null;
+    final createdFiles = <File>[];
+    var importCommitted = false;
+    try {
+      final handle = await file.open();
+      late Uint8List bytes;
+      try {
+        bytes = await handle.read(_maxAvatarBundleBytes + 1);
+      } finally {
+        await handle.close();
+      }
+      _validateLocalVrm(bytes);
+      _requirePublishedAvatarAccount();
+      final hash = sha256.convert(bytes).toString();
+      final support = await getApplicationSupportDirectory();
+      final directory = Directory(
+        path.join(
+          support.path,
+          'open-maaso',
+          'avatars',
+          _accountScopeDigest,
+          hash,
+        ),
+      );
+      await directory.create(recursive: true);
+      final model = File(path.join(directory.path, 'model.vrm'));
+      final coverFile = File(
+        path.join(
+          directory.path,
+          'cover-${cover.sha256Hex}.${cover.contentType == 'image/png' ? 'png' : 'jpg'}',
+        ),
+      );
+      if (!await model.exists()) {
+        await model.writeAsBytes(bytes, flush: true);
+        createdFiles.add(model);
+      }
+      if (!await coverFile.exists()) {
+        await coverFile.writeAsBytes(cover.bytes, flush: true);
+        createdFiles.add(coverFile);
+      }
+      _requirePublishedAvatarAccount();
+      final createdAt = DateTime.now().toUtc();
+      final id = await _localImports.add(appServices.find<DBService>().raw, {
+        'displayName': displayName,
+        'fileName': path.basename(file.path),
+        'createdAt': createdAt.toIso8601String(),
+        'modelPath': model.path,
+        'coverPath': coverFile.path,
+        'sha256': hash,
+        'coverSha256': cover.sha256Hex,
+      });
+      importCommitted = true;
+      final uploads = await listMyUploads();
+      return uploads.singleWhere((upload) => upload.id == id);
+    } catch (exception) {
+      uploadError.value = exception.toString().replaceFirst('Bad state: ', '');
+      if (!importCommitted) {
+        for (final file in createdFiles) {
+          if (await file.exists()) await file.delete();
+        }
+      }
+      rethrow;
+    } finally {
+      isUploading.value = false;
+    }
+  }
+
+  static void _validateLocalVrm(Uint8List bytes) {
+    if (bytes.length < 20 || bytes.length > _maxAvatarBundleBytes) {
+      throw StateError('Invalid VRM file size');
+    }
+    final header = ByteData.sublistView(bytes);
+    if (header.getUint32(0, Endian.little) != 0x46546c67 ||
+        header.getUint32(4, Endian.little) != 2 ||
+        header.getUint32(8, Endian.little) != bytes.length ||
+        header.getUint32(16, Endian.little) != 0x4e4f534a) {
+      throw StateError('Only VRM 1.0 GLB files can be imported');
+    }
+    final jsonLength = header.getUint32(12, Endian.little);
+    if (jsonLength > 8 * 1024 * 1024 || 20 + jsonLength > bytes.length) {
+      throw StateError('Invalid VRM metadata');
+    }
+    final metadata = jsonDecode(
+      utf8.decode(bytes.sublist(20, 20 + jsonLength)),
+    );
+    if (metadata is! Map ||
+        metadata['extensions'] is! Map ||
+        (metadata['extensions'] as Map)['VRMC_vrm'] is! Map) {
+      throw StateError('Only VRM 1.0 models can be imported');
+    }
+    for (final key in const ['buffers', 'images']) {
+      for (final item in metadata[key] as List? ?? const []) {
+        final uri = item is Map ? item['uri'] : null;
+        if (uri != null && (uri is! String || !uri.startsWith('data:'))) {
+          throw StateError('Local VRM imports must embed their resources');
+        }
+      }
     }
   }
 

@@ -304,7 +304,11 @@ void main() {
       expect(source, contains('storageKeyPrefix: agentScope.storageNamespace'));
       expect(
         source,
-        contains('selectionCoordinator: avatarSelectionCoordinator'),
+        matches(
+          RegExp(
+            r'selectionCoordinator: kOpenMaasoLocalEdition\s*\? null\s*: avatarSelectionCoordinator',
+          ),
+        ),
       );
       expect(source, contains('AvatarConfigService.builtInCatalog.first'));
     },
@@ -329,13 +333,17 @@ void main() {
         source,
         matches(
           RegExp(
-            r'mountCompanionRuntime: \(mount\) =>\s*_mountAccountRuntime\(',
+            r'mountCompanionRuntime: kOpenMaasoLocalEdition\s*\? null\s*: \(mount\) =>\s*_mountAccountRuntime\(',
           ),
         ),
       );
       expect(
         source,
-        contains('mountRuntime: (mount) => _mountAgentExecution('),
+        matches(
+          RegExp(
+            r'mountRuntime: \(mount\) => kOpenMaasoLocalEdition\s*\? _mountAccountRuntime\([\s\S]*?: _mountAgentExecution\(',
+          ),
+        ),
       );
       expect(base, contains('DBService().init(scope: accountScope)'));
       expect(base, contains('AgentRuntimeRegistry('));

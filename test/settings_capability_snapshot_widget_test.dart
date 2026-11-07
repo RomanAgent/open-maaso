@@ -96,6 +96,38 @@ void main() {
     },
   );
 
+  testWidgets(
+    'local edition adds API configuration to the original mobile settings',
+    (tester) async {
+      _useTallViewport(tester);
+      appServices.put(_snapshotService(AppHostPlatform.ios));
+      await _installSettingsDependencies(
+        databasePath: 'settings-local-model-entry.db',
+        localEdition: true,
+      );
+      await tester.pumpWidget(const MaterialApp(home: AgentSettingsPage()));
+      await tester.pump();
+      expect(find.byKey(const ValueKey('settings-list')), findsOneWidget);
+      expect(find.byType(HomePresentationSettingsSection), findsOneWidget);
+      expect(find.byKey(const ValueKey('settings-privacy')), findsOneWidget);
+      expect(find.text('Open advanced features'), findsNothing);
+      expect(find.text('settings.api_key'.tr), findsOneWidget);
+      final providers = tester.widget<DropdownButton<String>>(
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is DropdownButton<String> &&
+              widget.value == 'Volcano Engine (Doubao)',
+        ),
+      );
+      expect(providers.items, hasLength(12));
+      expect(providers.items!.map((item) => item.value), contains('Anthropic'));
+      expect(providers.items!.map((item) => item.value), contains('Gemini'));
+      expect(providers.items!.map((item) => item.value), contains('Custom'));
+      expect(appServices.isRegistered<SherpaModelDownloadService>(), isFalse);
+      await tester.pumpWidget(const SizedBox.shrink());
+    },
+  );
+
   testWidgets('real advanced deep link redirects on web and opens on desktop', (
     tester,
   ) async {
@@ -165,6 +197,7 @@ AppCapabilitySnapshotService _snapshotService(AppHostPlatform platform) {
 
 Future<void> _installSettingsDependencies({
   required String databasePath,
+  bool localEdition = false,
 }) async {
   final database = await DBService().init(
     factory: databaseFactoryMemory,
@@ -195,7 +228,11 @@ Future<void> _installSettingsDependencies({
     ),
   );
   final llm = appServices.put<LLMConfigController>(
-    LLMConfigController(storage: storage, storageScopes: storageScopes),
+    LLMConfigController(
+      storage: storage,
+      storageScopes: storageScopes,
+      localEdition: localEdition,
+    ),
   );
   await llm.activateAccount(mount);
   appServices.put(await LocaleConfigService().init());

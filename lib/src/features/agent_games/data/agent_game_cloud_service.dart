@@ -22,6 +22,7 @@ import 'package:maaso/src/features/applets/data/applet_local_ownership.dart';
 import 'package:maaso/src/features/applets/data/applet_catalog_service.dart';
 import 'package:maaso/src/features/applets/domain/applet_catalog_models.dart';
 import 'package:maaso/src/features/applets/data/applet_presentation_state.dart';
+import 'package:maaso/src/offline/original_ui_local_catalog.dart';
 
 final RegExp _clientSurfaceIdPattern = RegExp(
   r'^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$',
@@ -216,6 +217,7 @@ class AgentGameCloudService extends AppService {
     AgentGameShareGateway? shareGateway,
     DateTime Function()? now,
     Duration requestTimeout = const Duration(seconds: 15),
+    this.localEdition = false,
   }) : _database = database ?? appServices.find<DBService>(),
        _http = httpClient ?? http.Client(),
        _ownsClient = httpClient == null,
@@ -239,6 +241,13 @@ class AgentGameCloudService extends AppService {
   final AgentGameShareGateway _shareGateway;
   final DateTime Function() _now;
   final Duration _requestTimeout;
+  final bool localEdition;
+  OriginalUiLocalCatalog? _localCatalog;
+  OriginalUiLocalCatalog get _local => _localCatalog ??= OriginalUiLocalCatalog(
+    database: _database,
+    scopeKey: _currentScopeKey,
+    now: _now,
+  );
   final Map<String, Future<void>> _mutationTails = <String, Future<void>>{};
   final Set<String> _deletingMutationKeys = <String>{};
   Worker? _authSessionWorker;
@@ -591,6 +600,7 @@ class AgentGameCloudService extends AppService {
     String scope, {
     int maximumBytes = 3 * 1024 * 1024,
   }) async {
+    if (localEdition) return _local.readGame(uri, scope);
     final token = await _accessToken(scope);
     final response = await _http
         .get(uri, headers: {'Authorization': 'Bearer $token'})
@@ -902,7 +912,7 @@ class AgentGameCloudService extends AppService {
         publishedSha != returnedSha) {
       throw StateError('Agent game publish state does not match the revision');
     }
-    final shareUrl = _publicShareUrl(data['shareUrl']);
+    final shareUrl = localEdition ? '' : _publicShareUrl(data['shareUrl']);
     final published = AgentGameCloudMetadata(
       gameId: returnedGameId,
       revisionNo: returnedRevisionNo,
@@ -1091,9 +1101,26 @@ class AgentGameCloudService extends AppService {
     }
     return _shareGateway.share(
       title: 'agent_games.share_title'.tr,
-      text: '${widget.title}\n${published.shareUrl}',
+      text: localEdition
+          ? _localSourceExport(widget)
+          : '${widget.title}\n${published.shareUrl}',
       origin: origin,
     );
+  }
+
+  String _localSourceExport(AgentWidget widget) {
+    final snapshot = _snapshot(widget);
+    if (snapshot.surface['rendering'] != 'webApp') {
+      return const JsonEncoder.withIndent('  ').convert({
+        'schemaVersion': 1,
+        'title': widget.title,
+        'surface': snapshot.surface,
+      });
+    }
+    final source = snapshot.surface;
+    return '${source['html'] ?? ''}\n'
+        '<style>${source['css'] ?? ''}</style>\n'
+        '<script>${source['js'] ?? ''}</script>';
   }
 
   Future<void> _markDeletePending(
@@ -1259,7 +1286,7 @@ class AgentGameCloudService extends AppService {
         if (publishedRevisionNo <= 0 || publishedSourceSha256.isEmpty) {
           throw StateError('Agent game response is missing published state');
         }
-        shareUrl = _publicShareUrl(data['shareUrl']);
+        shareUrl = localEdition ? '' : _publicShareUrl(data['shareUrl']);
       } else {
         publishedRevisionNo = 0;
         publishedSourceSha256 = '';
@@ -1533,6 +1560,17 @@ class AgentGameCloudService extends AppService {
     required String scopeKey,
     bool mapPublicationUnavailable = false,
   }) async {
+    if (localEdition) {
+      final result = await _local.mutateGame(
+        uri,
+        body,
+        expectedScope: scopeKey,
+      );
+      if (_currentScopeKey() != scopeKey) {
+        throw StateError('applet_request_context_changed');
+      }
+      return result;
+    }
     final token = await _accessToken(scopeKey);
     late final http.Response response;
     try {

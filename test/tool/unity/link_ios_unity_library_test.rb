@@ -42,6 +42,19 @@ class LinkIosUnityLibraryTest < Minitest::Test
     end
   end
 
+  def test_links_a_fresh_checkout_without_a_preexisting_unity_reference
+    @runner.files.select { |file| file.path.to_s.end_with?('Unity-iPhone.xcodeproj') }
+           .each(&:remove_from_project)
+    @runner.save
+
+    target = run_linker
+    project = Xcodeproj::Project.open(@runner_path.to_s)
+    reference = project.files.find { |file| file.path == '../unity/masso_avatar/Builds/iOS/Unity-iPhone.xcodeproj' }
+    refute_nil reference
+    assert_equal '<group>', reference.source_tree
+    assert target.dependencies.any? { |dependency| dependency.name == 'UnityFramework' }
+  end
+
   def teardown
     FileUtils.remove_entry(@root)
   end

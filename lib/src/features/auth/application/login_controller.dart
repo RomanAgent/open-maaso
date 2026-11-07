@@ -12,6 +12,8 @@ import 'package:maaso/src/core/services/app_environment_service.dart';
 import 'package:maaso/src/core/services/auth_session_service.dart';
 import 'package:maaso/src/core/services/realtime_agent_config.dart';
 import 'package:maaso/src/features/agent/data/utils/logger.dart';
+import 'package:maaso/src/offline/local_edition_policy.dart';
+import 'package:maaso/src/offline/local_test_auth_client.dart';
 
 class LoginController extends AppController {
   final AppEnvironmentService _environment = appServices
@@ -44,8 +46,12 @@ class LoginController extends AppController {
   @override
   void onInit() {
     super.onInit();
-    email = TextEditingController();
-    password = TextEditingController();
+    email = TextEditingController(
+      text: kOpenMaasoLocalEdition ? LocalTestAuthClient.username : null,
+    );
+    password = TextEditingController(
+      text: kOpenMaasoLocalEdition ? LocalTestAuthClient.password : null,
+    );
     code = TextEditingController();
     selectedEnvironment = _environment.environment.value.obs;
     isLoading = _auth.isLoading;

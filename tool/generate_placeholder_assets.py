@@ -7,6 +7,8 @@ No source images, external assets, fonts, network, or third-party modules are us
 from __future__ import annotations
 
 import argparse
+import hashlib
+import json
 from functools import lru_cache
 from pathlib import Path
 import struct
@@ -179,8 +181,11 @@ def main() -> int:
     parser.add_argument("--check", action="store_true", help="Check every output matches the deterministic generated placeholder.")
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
-    expected = [(path, make_png(width, height, style)) for path, width, height, style in OUTPUTS]
-    expected.append(("windows/runner/resources/app_icon.ico", make_ico()))
+    expected = [(path, make_png(width, height, style)) for path, width, height, style in OUTPUTS if path in {'assets/brand/home_room.png', 'assets/brand/login_doorway.png', 'assets/model_store/agent.png'}]
+    manifest = root / 'assets/brand/official-launcher-assets.json'
+    official = json.loads(manifest.read_text())
+    if 'windows/runner/resources/app_icon.ico' not in official:
+        expected.append(("windows/runner/resources/app_icon.ico", make_ico()))
     failures = []
     for path, payload in expected:
         output = root / path
@@ -190,6 +195,11 @@ def main() -> int:
         else:
             output.parent.mkdir(parents=True, exist_ok=True)
             output.write_bytes(payload)
+    if args.check:
+        for path, digest in official.items():
+            asset = root / path
+            if not asset.is_file() or hashlib.sha256(asset.read_bytes()).hexdigest() != digest:
+                failures.append(path)
     if failures:
         for path in failures:
             print("Placeholder differs or is missing:", path)

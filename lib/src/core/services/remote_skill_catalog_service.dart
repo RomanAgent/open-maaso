@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:maaso/src/features/agent/data/utils/logger.dart';
 import 'package:maaso/src/core/foundation/app_framework.dart';
+import 'package:maaso/src/features/skills/data/installed_skill_registry.dart';
 
 class RemoteSkillSpec {
   final String id;
@@ -32,6 +33,15 @@ class RemoteSkillSpec {
 }
 
 class RemoteSkillCatalogService extends AppService {
+  RemoteSkillCatalogService({
+    this.localEdition = false,
+    InstalledSkillRegistry? registry,
+    this.agentId = 'self',
+  }) : _registry = registry;
+
+  final bool localEdition;
+  final String agentId;
+  final InstalledSkillRegistry? _registry;
   static const _catalogUrl = 'https://api.maaso.ai/v1/skills/catalog';
 
   final RxList<RemoteSkillSpec> availableSkills = <RemoteSkillSpec>[].obs;
@@ -42,6 +52,28 @@ class RemoteSkillCatalogService extends AppService {
   Future<List<RemoteSkillSpec>> fetchCatalog() async {
     isLoading.value = true;
     try {
+      if (localEdition) {
+        final registry =
+            _registry ?? appServices.maybeFind<InstalledSkillRegistry>();
+        final cards =
+            await registry?.installedForAgent(agentId) ??
+            const <InstalledSkillCard>[];
+        final specs = [
+          for (final card in cards)
+            RemoteSkillSpec(
+              id: card.skill.skillVersionId.toString(),
+              name: card.skill.title,
+              description: card.skill.summary,
+              version: card.skill.versionName,
+              metadata: {
+                'source': 'local',
+                'instruction': card.skill.instruction,
+              },
+            ),
+        ];
+        availableSkills.assignAll(specs);
+        return specs;
+      }
       final client = HttpClient();
       final request = await client.getUrl(Uri.parse(_catalogUrl));
       final response = await request.close();
@@ -68,6 +100,10 @@ class RemoteSkillCatalogService extends AppService {
     if (spec == null) {
       Log.w('📦 [RemoteSkillCatalog] skill not found in catalog: $skillId');
       return false;
+    }
+
+    if (localEdition) {
+      return true; // The local catalog contains installed cards only.
     }
 
     Log.i(

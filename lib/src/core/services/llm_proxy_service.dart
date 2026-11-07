@@ -8,6 +8,8 @@ import 'package:maaso/src/features/agent/data/agent_core.dart';
 import 'package:maaso/src/core/foundation/app_framework.dart';
 import 'package:maaso/src/core/theme/color_constant.dart';
 import 'package:maaso/src/core/services/cloud_llm_health_service.dart';
+import 'package:maaso/src/core/services/direct_vendor_llm_client.dart';
+import 'package:maaso/src/offline/offline_model_client.dart';
 import 'package:maaso/src/core/services/auth_session_service.dart';
 import 'package:maaso/src/core/services/hosted_llm_failure.dart';
 import 'package:maaso/src/core/services/locale_config_service.dart';
@@ -56,8 +58,10 @@ Map<String, dynamic> cloudExtraBodyFor(String baseUrl, String model) {
 class LLMProxyService extends AppService {
   LLMProxyService({
     FutureOr<void> Function(LLMClient client)? cachedClientCloser,
+    this.localEdition = false,
   }) : _cachedClientCloser = cachedClientCloser ?? _closeDefaultCachedClient;
 
+  final bool localEdition;
   final SecureStorageService _storage = appServices
       .find<SecureStorageService>();
   final FutureOr<void> Function(LLMClient client) _cachedClientCloser;
@@ -94,6 +98,21 @@ class LLMProxyService extends AppService {
     final privacy = appServices.maybeFind<PrivacyService>();
     final operation = _ensureClientForGeneration(generation).then((client) {
       if (client == null) return null;
+      if (localEdition) {
+        final key = _cacheKey;
+        return privacyGuardedLLMClient(client, () async {
+          if (!_canResolveClient(generation) || key == null) {
+            throw const PrivacyException('PRIVACY_CONTEXT_CHANGED');
+          }
+          final config = await LLMDirectCloudConfig.readFrom(_storage);
+          if (!_canResolveClient(generation) ||
+              config == null ||
+              !config.enabled ||
+              _directCacheKey(config) != key) {
+            throw const PrivacyException('PRIVACY_CONTEXT_CHANGED');
+          }
+        });
+      }
       return privacyGuardedLLMClient(client, () async {
         void requireCurrent() {
           if (!_canResolveClient(generation) ||
@@ -146,8 +165,9 @@ class LLMProxyService extends AppService {
     }
   }
 
-  AgentPipelineMode get _pipelineMode =>
-      appServices.isRegistered<MaasoAgentModeService>()
+  AgentPipelineMode get _pipelineMode => localEdition
+      ? AgentPipelineMode.directCloud
+      : appServices.isRegistered<MaasoAgentModeService>()
       ? appServices.find<MaasoAgentModeService>().pipelineMode.value
       : AgentPipelineMode.defaultMode;
 
@@ -158,25 +178,33 @@ class LLMProxyService extends AppService {
     }
 
     final apiKey = config.apiKey;
-    if (apiKey.isEmpty || !_canResolveClient(generation)) {
+    final vendorConfig = localEdition ? directVendorConfig(config) : null;
+    final localEndpoint =
+        vendorConfig != null &&
+        OfflineProviderConfig.isLoopback(vendorConfig.endpoint);
+    if ((apiKey.isEmpty && !localEndpoint) || !_canResolveClient(generation)) {
       return null;
     }
     final baseUrl = config.baseUrl;
     final model = config.model;
 
-    final key =
-        'direct-cloud|${_fingerprint('$apiKey\u0000$baseUrl\u0000$model')}';
+    final key = _directCacheKey(config);
     if (key == _cacheKey && _cached != null) return _cached;
 
-    final client = OpenAIProvider(
-      apiKey: apiKey,
-      baseUrl: baseUrl,
-      model: model,
-      extraBody: cloudExtraBodyFor(baseUrl, model),
-      httpClient: appServices
-          .maybeFind<DailyTokenUsageService>()
-          ?.createClient(),
-    );
+    final LLMClient client =
+        vendorConfig != null &&
+            vendorConfig.provider.protocol !=
+                OfflineModelProtocol.openAiCompatible
+        ? DirectVendorLLMClient(config: config)
+        : OpenAIProvider(
+            apiKey: apiKey,
+            baseUrl: baseUrl,
+            model: model,
+            extraBody: cloudExtraBodyFor(baseUrl, model),
+            httpClient: appServices
+                .maybeFind<DailyTokenUsageService>()
+                ?.createClient(),
+          );
     _cacheKey = key;
     _cached = client;
     return client;
@@ -339,11 +367,15 @@ class LLMProxyService extends AppService {
   bool _canResolveClient(int generation) =>
       !_accountDrainActive && generation == _cacheGeneration;
 
+  static String _directCacheKey(LLMDirectCloudConfig config) =>
+      'direct-cloud|${_fingerprint('${config.apiKey}\u0000${config.baseUrl}\u0000${config.model}')}';
+
   static String _fingerprint(String value) =>
       sha256.convert(utf8.encode(value)).toString();
 
   static void _closeDefaultCachedClient(LLMClient client) {
     if (client is MaasoThinProxyLLMClient) client.close();
+    if (client is DirectVendorLLMClient) client.close();
   }
 
   /// Direct LLM round-trip — bypasses the agent kernel (no skills/sandbox).
@@ -439,8 +471,9 @@ class LiveLLMClient
         key != null &&
         _proxy._cacheKey == key &&
         identical(_proxy._cached, transport) &&
-        privacy?.isCurrent == true &&
-        identical(privacy, appServices.maybeFind<PrivacyService>());
+        (_proxy.localEdition ||
+            (privacy?.isCurrent == true &&
+                identical(privacy, appServices.maybeFind<PrivacyService>())));
 
     Future<void> requireCurrent() async {
       void requireMounted() {
@@ -459,7 +492,9 @@ class LiveLLMClient
       String? currentKey;
       if (mode == AgentPipelineMode.directCloud) {
         final config = await LLMDirectCloudConfig.readFrom(_proxy._storage);
-        if (config != null && config.enabled && config.apiKey.isNotEmpty) {
+        if (config != null &&
+            config.enabled &&
+            (config.apiKey.isNotEmpty || _proxy.localEdition)) {
           currentKey =
               'direct-cloud|${LLMProxyService._fingerprint('${config.apiKey}\u0000${config.baseUrl}\u0000${config.model}')}';
         }

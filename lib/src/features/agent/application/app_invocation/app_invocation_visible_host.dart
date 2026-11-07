@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:maaso/src/offline/local_edition_policy.dart';
+import 'package:maaso/src/offline/local_surface_host.dart';
 
 import 'package:crypto/crypto.dart';
 import 'package:flutter/foundation.dart';
@@ -238,12 +240,13 @@ Future<WebViewController> _createIsolatedController() async {
       }
       parameters = AndroidWebViewControllerCreationParams(
         invocationProfileName:
-            'maaso_invocation_${const Uuid().v4().replaceAll('-', '')}',
+            '${kOpenMaasoLocalEdition ? 'maaso_offline' : 'maaso_invocation'}_${const Uuid().v4().replaceAll('-', '')}',
       );
     default:
       throw StateError('invocation_browser_isolation_unavailable');
   }
   final controller = WebViewController.fromPlatformCreationParams(parameters);
+  await configureLocalSurfaceController(controller);
   await controller.setJavaScriptMode(JavaScriptMode.unrestricted);
   await controller.platform.setOnPlatformPermissionRequest(
     (request) => request.deny(),
@@ -478,9 +481,13 @@ final class _WebInvocationBackend extends _InvocationBrowserBackend
     );
     guard();
     await controller.loadHtmlString(
-      AppInvocationWebDocument.build(
-        source: request.pinnedSource.surface!,
-        descriptor: request.descriptor,
+      localSurfaceDocument(
+        AppInvocationWebDocument.build(
+          source: request.pinnedSource.surface!,
+          descriptor: request.descriptor,
+        ),
+        const {},
+        enableStorage: false,
       ),
       baseUrl: _baseUrl,
     );

@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:maaso/src/offline/local_edition_policy.dart';
+import 'package:maaso/src/offline/local_surface_host.dart';
 import 'package:maaso/src/features/agent/application/surface/surface_bundle_document.dart';
 
 import 'package:flutter/foundation.dart'
@@ -52,6 +54,7 @@ class _SurfaceWebViewState extends State<SurfaceWebView>
   late final WebViewController _controller;
   late final bool _hostSupported;
   SurfaceRuntime? _runtime;
+  LocalSurfaceStorage? _localStorage;
   SurfaceWorkerHealthGate? _workerHealthGate;
   Worker? _documentWorker;
   Worker? _validationClaimWorker;
@@ -61,6 +64,7 @@ class _SurfaceWebViewState extends State<SurfaceWebView>
   bool _surfaceLifecycleChannelAdded = false;
   bool _webAppValidationChannelAdded = false;
   bool _bundleChannelAdded = false;
+  bool _localStorageChannelAdded = false;
   Future<void> _loadSerial = Future<void>.value();
   String? _loadedDocument;
   bool _workerSuppressed = false;
@@ -90,7 +94,7 @@ class _SurfaceWebViewState extends State<SurfaceWebView>
             : null);
     _hostSupported = _surfaceWebViewHostSupported;
     if (!_hostSupported) return;
-    _controller = widget.controller ?? WebViewController();
+    _controller = widget.controller ?? createLocalSurfaceController();
     // The global validation gate belongs to the appServices SurfaceRuntime.
     // A route/feed-injected runtime has exactly one owned host and must not
     // collide with global runtime session numbers or its visible-host lease.
@@ -128,6 +132,9 @@ class _SurfaceWebViewState extends State<SurfaceWebView>
     _workerHealthGate?.releaseVisibleHost(this);
     if (_hostSupported) {
       _runtime?.detach(_controller);
+      if (widget.controller == null) {
+        unawaited(disposeLocalSurfaceController(_controller));
+      }
     }
     super.dispose();
   }
@@ -300,6 +307,15 @@ class _SurfaceWebViewState extends State<SurfaceWebView>
   }
 
   Future<void> _configureController() async {
+    try {
+      await configureLocalSurfaceController(_controller);
+    } catch (_) {
+      _failVisibleWebApp(
+        SurfaceWorkerFatalReason.securityBoundaryFailed,
+        session: _runtime?.activeSession,
+      );
+      return;
+    }
     await _controller.setJavaScriptMode(JavaScriptMode.unrestricted);
     if (defaultTargetPlatform != TargetPlatform.macOS) {
       await _controller.setBackgroundColor(
@@ -370,6 +386,15 @@ class _SurfaceWebViewState extends State<SurfaceWebView>
   }
 
   NavigationDecision _handleNavigationRequest(NavigationRequest request) {
+    if (kOpenMaasoLocalEdition &&
+        request.isMainFrame &&
+        SurfaceWebAppNavigationMessage.tryParse(request.url) == null &&
+        !_isInternalWebAppDocumentUrl(request.url) &&
+        !(_webAppDocumentBaseUrl != null &&
+            Uri.tryParse(request.url)?.replace(fragment: '') ==
+                Uri.tryParse(_webAppDocumentBaseUrl!)?.replace(fragment: ''))) {
+      return NavigationDecision.prevent;
+    }
     if (_runtime?.activeProject.value?.rendering ==
         SurfaceRendering.projectBundle) {
       if (request.isMainFrame &&
@@ -639,13 +664,46 @@ class _SurfaceWebViewState extends State<SurfaceWebView>
   Future<void> _loadInternalDocument(String document, {String? baseUrl}) async {
     _loadingInternalDocument = true;
     try {
-      await _controller.loadHtmlString(document, baseUrl: baseUrl);
+      var rendered = document;
+      if (kOpenMaasoLocalEdition) {
+        final project = _runtime?.activeProject.value;
+        final storageEnabled =
+            project?.rendering != SurfaceRendering.projectBundle;
+        final projectId = storageEnabled ? project?.id : null;
+        final storage = projectId == null
+            ? null
+            : await LocalSurfaceStorage.open(projectId);
+        if (!mounted) return;
+        _localStorage = storage;
+        rendered = localSurfaceDocument(
+          document,
+          storage?.state ?? const {},
+          storageToken: storage?.nonce,
+          enableStorage: storageEnabled,
+        );
+      }
+      await _controller.loadHtmlString(rendered, baseUrl: baseUrl);
     } finally {
       _loadingInternalDocument = false;
     }
   }
 
   Future<void> _syncNativeChannels({required bool enable}) async {
+    final useLocalStorage =
+        kOpenMaasoLocalEdition &&
+        _runtime?.activeProject.value?.rendering !=
+            SurfaceRendering.projectBundle;
+    if (useLocalStorage && !_localStorageChannelAdded) {
+      await _controller.addJavaScriptChannel(
+        'MaasoOfflineStorage',
+        onMessageReceived: (message) => _localStorage?.receive(message.message),
+      );
+      _localStorageChannelAdded = true;
+    } else if (!useLocalStorage && _localStorageChannelAdded) {
+      await _controller.removeJavaScriptChannel('MaasoOfflineStorage');
+      _localStorageChannelAdded = false;
+      _localStorage = null;
+    }
     final presentation = _runtime?.activeProject.value?.bundlePresentation;
     if (presentation != null) {
       if (_surfaceLifecycleChannelAdded) {

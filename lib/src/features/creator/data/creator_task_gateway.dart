@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:http/http.dart' as http;
+import 'package:maaso/src/core/network/backend_client.dart';
 import 'package:maaso/src/core/foundation/app_framework.dart';
 import 'package:maaso/src/features/creator/domain/creator_image_task.dart';
 
@@ -65,7 +66,7 @@ class HttpCreatorTaskGateway extends AppService implements CreatorTaskGateway {
        _accessToken = accessToken,
        _isCurrent = isCurrent,
        _available = available,
-       _http = client ?? http.Client(),
+       _http = client ?? createMaasoBackendClient(),
        _ownsClient = client == null;
   final Uri Function() _baseUri;
   final String Function() _contextKey;

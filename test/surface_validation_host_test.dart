@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:maaso/src/offline/local_edition_policy.dart';
 
 import 'package:flutter/foundation.dart'
     show TargetPlatform, debugDefaultTargetPlatformOverride;
@@ -710,7 +711,13 @@ void main() {
       await runtime.show(_webAppProject());
       await tester.pump();
 
-      expect(_channels.keys, <String>['SurfaceValidationLifecycle']);
+      expect(
+        _channels.keys,
+        unorderedEquals(<String>[
+          if (kOpenMaasoLocalEdition) 'MaasoOfflineStorage',
+          'SurfaceValidationLifecycle',
+        ]),
+      );
       expect(
         find.byKey(SurfaceWebView.webAppFirstFrameCoverKey),
         findsOneWidget,

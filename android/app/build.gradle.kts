@@ -7,12 +7,8 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
-// Firebase Console configuration is injected per environment. Keeping the
-// plugin conditional lets source builds remain valid until google-services.json
-// is downloaded for the registered com.futurpals.maaso Android app.
-if (file("google-services.json").exists()) {
-    apply(plugin = "com.google.gms.google-services")
-}
+// The offline edition never applies Google Services, even if a local Firebase
+// configuration file happens to exist in a developer checkout.
 
 val releaseSigningEnvironment = mapOf(
     "ANDROID_UPLOAD_KEYSTORE_PATH" to System.getenv("ANDROID_UPLOAD_KEYSTORE_PATH"),
@@ -69,7 +65,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.futurpals.maaso"
+        applicationId = "org.openmaaso.app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = maxOf(flutter.minSdkVersion, 26)
@@ -126,7 +122,7 @@ flutter {
 dependencies {
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
     implementation("com.volcengine:VolcEngineRTC:3.60.103.1500")
-    if (file("../../unity/masso_avatar/Builds/Android/unityLibrary/build.gradle").exists()) {
+    if (providers.gradleProperty("openMaasoEmbedUnity").orNull != "false") {
         implementation(project(":unityLibrary"))
     }
 }

@@ -21,6 +21,8 @@ import 'package:maaso/src/features/applets/data/applet_presentation_state.dart';
 import 'package:maaso/src/features/applets/domain/applet_catalog_models.dart';
 import 'package:maaso/src/features/widgets_hub/application/widgets_hub_controller.dart';
 import 'package:sembast/sembast.dart';
+import 'package:maaso/src/features/applets/data/applet_catalog_service.dart';
+import 'package:maaso/src/offline/original_ui_local_catalog.dart';
 
 /// A static cover, including on the first visible feed frame. Reading a cover
 /// never creates a player, fetches game content, or executes game JavaScript.
@@ -95,6 +97,25 @@ class GameScreenshotSource {
     }
     final owner = appServices.maybeFind<DBService>();
     if (owner == null) return null;
+    if (shareUrl != null &&
+        appServices.maybeFind<AppletCatalogService>()?.localEdition == true &&
+        OriginalUiLocalCatalog.isLocalUrl(shareUrl)) {
+      final repository = OriginalUiLocalCatalog(
+        database: owner,
+        scopeKey: AppletLocalOwnership.currentScopeKey,
+      );
+      AgentWidget? local;
+      try {
+        local = await repository.findWidget(shareUrl.pathSegments.single);
+      } on StateError {
+        return null;
+      }
+      if (local == null ||
+          !identical(owner, appServices.maybeFind<DBService>())) {
+        return null;
+      }
+      return resolve(identity: identity, revision: revision, localItem: local);
+    }
     try {
       final database = owner.raw;
       final scope = AppletLocalOwnership.currentScopeKey();

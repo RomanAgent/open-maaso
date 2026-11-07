@@ -10,6 +10,8 @@ import 'package:maaso/src/core/services/auth_session_service.dart';
 import 'package:maaso/src/core/services/realtime_agent_config.dart';
 import 'package:maaso/src/core/services/secure_storage_service.dart';
 import 'package:maaso/src/features/auth/application/login_controller.dart';
+import 'package:maaso/src/offline/local_edition_policy.dart';
+import 'package:maaso/src/offline/local_test_auth_client.dart';
 import 'package:maaso/src/features/auth/presentation/login_page.dart';
 
 void main() {
@@ -137,6 +139,16 @@ void main() {
         ),
       );
       final controller = appServices.put(LoginController());
+      expect(
+        controller.email.text,
+        kOpenMaasoLocalEdition ? LocalTestAuthClient.username : '',
+      );
+      expect(
+        controller.password.text,
+        kOpenMaasoLocalEdition ? LocalTestAuthClient.password : '',
+      );
+      controller.email.clear();
+      controller.password.clear();
       tester.view.devicePixelRatio = 1;
       tester.view.physicalSize = const Size(393, 852);
       addTearDown(tester.view.resetDevicePixelRatio);

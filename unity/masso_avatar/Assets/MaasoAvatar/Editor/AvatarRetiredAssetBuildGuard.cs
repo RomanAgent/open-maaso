@@ -14,6 +14,7 @@ namespace Maaso.Avatar.Editor
     /// <summary>Checks actual player-pack contents, including incremental exports.</summary>
     public sealed class AvatarRetiredAssetBuildGuard : IPostprocessBuildWithReport
     {
+        private const string OpenSourceAvatarPath = "Assets/MaasoAvatar/Models/Default/OpenMaaso.vrm";
         private const string JoySourcePath = "Assets/MaasoAvatar/Models/Default/Joy.vrm";
         private const string MattSourceDirectory = "Assets/MaasoAvatar/Models/Matt/";
         private const string LegacyMaleMaterials = "Assets/MaasoAvatar/AvatarBundleSources/ModularAnime/Materials/Male/";
@@ -57,13 +58,14 @@ namespace Maaso.Avatar.Editor
             RequireAllowed(audit);
             Debug.Log("[MaasoAvatarAssetAudit] target=" + audit.target + " build=" + audit.buildGuid +
                 " sourcePaths=" + audit.sourcePathCount + " retired=" + audit.retiredSourceCount +
-                " joy=" + audit.retainedJoySourceFound + " pathListSha256=" + audit.sourcePathListSha256);
+                " openSourceAvatar=" + audit.retainedOpenSourceAvatarFound + " pathListSha256=" + audit.sourcePathListSha256);
         }
 
         internal static bool IsRetiredSourcePath(string sourcePath)
         {
             string path = Normalize(sourcePath);
-            return path.StartsWith(MattSourceDirectory, StringComparison.OrdinalIgnoreCase) ||
+            return string.Equals(path, JoySourcePath, StringComparison.OrdinalIgnoreCase) ||
+                path.StartsWith(MattSourceDirectory, StringComparison.OrdinalIgnoreCase) ||
                 path.StartsWith(LegacyMaleMaterials, StringComparison.OrdinalIgnoreCase) ||
                 RetiredSourceFiles.Contains(path);
         }
@@ -75,6 +77,7 @@ namespace Maaso.Avatar.Editor
                 .OrderBy(path => path, StringComparer.Ordinal).ToArray();
             string[] retired = paths.Where(IsRetiredSourcePath).ToArray();
             string[] joy = paths.Where(path => string.Equals(path, JoySourcePath, StringComparison.OrdinalIgnoreCase)).ToArray();
+            string[] openSource = paths.Where(path => string.Equals(path, OpenSourceAvatarPath, StringComparison.OrdinalIgnoreCase)).ToArray();
             string canonical = paths.Length == 0 ? string.Empty : string.Join("\n", paths) + "\n";
             string digest;
             using (var hash = SHA256.Create())
@@ -93,6 +96,8 @@ namespace Maaso.Avatar.Editor
                 retiredSourcePaths = retired,
                 retainedJoySourceFound = joy.Length > 0,
                 retainedJoyEvidencePaths = joy,
+                retainedOpenSourceAvatarFound = openSource.Length > 0,
+                retainedOpenSourceAvatarEvidencePaths = openSource,
             };
         }
 
@@ -102,9 +107,9 @@ namespace Maaso.Avatar.Editor
                 throw new BuildFailedException("Retired official Avatar assets entered the player pack: " +
                     string.Join(", ", audit.retiredSourcePaths.Take(8).ToArray()));
             // Empty or partial evidence cannot prove that a reused export is
-            // clean. Maaso player exports must still contain the retained Joy.
-            if (audit.sourcePathCount == 0 || !audit.retainedJoySourceFound)
-                throw new BuildFailedException("Avatar packed-asset report is incomplete: the retained Joy source was not found.");
+            // clean. Offline exports must include the reviewed redistributable VRM.
+            if (audit.sourcePathCount == 0 || !audit.retainedOpenSourceAvatarFound)
+                throw new BuildFailedException("Avatar packed-asset report is incomplete: the reviewed open-source Avatar was not found.");
         }
 
         private static string Normalize(string path)
@@ -118,7 +123,7 @@ namespace Maaso.Avatar.Editor
         [Serializable]
         public sealed class Audit
         {
-            public int schemaVersion = 1;
+            public int schemaVersion = 2;
             public string target;
             public string buildGuid;
             public int sourcePathCount;
@@ -126,6 +131,9 @@ namespace Maaso.Avatar.Editor
             public string sourcePathListSha256;
             public int retiredSourceCount;
             public string[] retiredSourcePaths;
+            public bool retainedOpenSourceAvatarFound;
+            public string[] retainedOpenSourceAvatarEvidencePaths;
+            // Legacy evidence fields remain readable; Joy is rejected above.
             public bool retainedJoySourceFound;
             public string[] retainedJoyEvidencePaths;
         }
