@@ -10,7 +10,7 @@ aliases keep the existing native bridge classes resolvable.
 ## Native configuration
 
 - iOS links a generated UnityFramework containing the reviewed free VRM,
-  original idle animation and primitive white scene. Build the Unity export
+  corrected Humanoid idle and original Coastal V4 room/login presentation. Build the Unity export
   below before compiling Flutter. The Firebase project file is not required.
   The existing native Unity bridge and AvatarRuntime contract are reused.
 - Android does not apply the Google Services plugin or auto-initialize Firebase.
@@ -62,9 +62,11 @@ ruby tool/unity/link_ios_unity_library.rb
 `UNITY_EDITOR` is the executable path to your installed Unity Editor. Package
 resolution may need the internet during development; the produced player loads
 its avatar and scene locally. The source VRM is reviewed and hash-pinned. The
-builder creates the controller, idle clip, floor and shared procedural entrance
-without commercial room or animation assets. The entrance uses the original
-login receiver, shared-door binding and camera transition. Player-pack validation requires the reviewed source and rejects
+builder retains the original room, shared entrance, camera, lighting and depth
+of field while binding the reviewed free character and its complete imported
+Humanoid pose. Room geometry and reviewed CC0 texture derivatives are bundled
+locally. The entrance uses the original login receiver and camera transition.
+Player-pack validation requires the reviewed source and rejects
 Joy and retired assets. Generated exports remain in the normal ignored
 `unity/masso_avatar/Builds/iOS` directory.
 

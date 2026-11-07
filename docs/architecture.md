@@ -50,9 +50,14 @@ The host application follows its shared Flutter design system. Generated games a
 
 UI uses `ActiveAvatarRuntime`, which delegates through `AvatarRuntime`. `UnityAvatarRuntime` implements the Unity integration. Native channels carry lifecycle and behavior contracts; TTS owns mouth movement.
 
-The original character and room content is excluded from this public release. Generated Unity players and native exports are also excluded. Supplying a compatible, legally redistributable scene and model is a separate integration task. The retained exporter references the original default model and scene; its presence is not a replacement-content setup recipe.
-
-The iOS host requires a generated Unity project. macOS Release and Profile builds require an exported Unity sidecar; Debug can continue without it only when `MAASO_REQUIRE_UNITY_SIDECAR` is not `1`. In that case the native avatar portal reports `sidecarUnavailable`. A present sidecar must pass its protocol fingerprint and packaging checks.
+The original paid characters and purchased motions remain excluded. The public
+scene retains the Maaso-authored Coastal V4 room with reviewed CC0 texture
+inputs, original Home/login artwork, camera, lighting and depth of field. The
+character is the reviewed Pixiv VRM with a complete imported Humanoid baseline.
+The original Unity runtime and login controller remain the presentation path.
+Generated Unity players/native exports remain build outputs outside Git.
+See [native packaging](offline-platforms.md) for the required local export and
+[asset policy](media/asset-policy.md) for source/provenance boundaries.
 
 ## Speech and local models
 

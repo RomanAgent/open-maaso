@@ -1,0 +1,666 @@
+{
+  "schemaVersion": 1,
+  "source": "Original Maaso Coastal V4 runtime room; unchanged resource bytes",
+  "fbxSha256": "e935d7d37436e74e32f58cd0e3e899a8da7096c290d0a01b9e065c43863ea8d5",
+  "upstreamTextureTerms": "CC0-1.0",
+  "upstreamTextureSourceMapsVerified": 23,
+  "roomMeshes": 96,
+  "assets": {
+    "assets/brand/home_room.png": {
+      "bytes": 1072136,
+      "sha256": "747211147fd0c0098e1dc0c0df9ccebf7dc5f6bd69b6d3e50961e56937ad2600"
+    },
+    "assets/brand/login_doorway.png": {
+      "bytes": 338178,
+      "sha256": "1eef57cfcb95723b214888f7928055d60d297038b419e4e22f216f1485f077d7"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_BedBedding.mat": {
+      "bytes": 1819,
+      "sha256": "753b6c3f18d5cf87265a68c481c505bd6fbb0437fc3e4fade661b5f346d147cc"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_BedBedding.mat.meta": {
+      "bytes": 185,
+      "sha256": "e2d8b9fc380e214c199644e8aeb58a30fbaeb51ba1270a6ef265365377ee0b80"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_BedFrame.mat": {
+      "bytes": 1817,
+      "sha256": "25404ac8bd869eea10e3402ccc13fe14aa64a0a9799b85cf5276fb62cf23e5b7"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_BedFrame.mat.meta": {
+      "bytes": 185,
+      "sha256": "93b57648c960fe782591cee7041cbae2458fda28a797ca4d41fded593dca90c4"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_BedMattress.mat": {
+      "bytes": 1820,
+      "sha256": "a6ccc484e439f5645cdbd78572a4bfd75dc3bc301836ada6a7b78c6e2853dfcb"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_BedMattress.mat.meta": {
+      "bytes": 185,
+      "sha256": "236f2cffb1f5087f8d33bcb6becd1b616ef89544a27844d2b48d2c967d2d5544"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_BedPillows.mat": {
+      "bytes": 1819,
+      "sha256": "fc9d38efc286c7d7edfd9af701517f88454b8b2db8ee4ec36fab099e6049a616"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_BedPillows.mat.meta": {
+      "bytes": 185,
+      "sha256": "450577e6d2a820a6eb1374377b37f9190f8038e447edd27f6dd38f8f6f6a482a"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_BedroomCeiling.mat": {
+      "bytes": 1823,
+      "sha256": "0e78bd086c363485f27bb9b169a3563aea12fc2effb57f4dc147edb362534811"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_BedroomCeiling.mat.meta": {
+      "bytes": 185,
+      "sha256": "ad4b5b02cb787966431f877294fbbdacd989d5ceaf05ac49b0a2d2c948dabd25"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_BedroomDetails.mat": {
+      "bytes": 1823,
+      "sha256": "fbc57543c68c0961e2806e3b205645a90459e2f4494a9e75e5a962e4527cf901"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_BedroomDetails.mat.meta": {
+      "bytes": 185,
+      "sha256": "7ba8b7d00a7b51ee4c583cd9d6e5c261d7fdde67bebf15ebd4297297e3d5ec15"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_BedroomFloor.mat": {
+      "bytes": 1821,
+      "sha256": "8352ee2039a77855f64709a7832979d5523fa943a33b146e76d3ae3f1b505ff0"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_BedroomFloor.mat.meta": {
+      "bytes": 185,
+      "sha256": "9eb592e79948aa9a9b9158069568af8dcbd62539823343043d43716d291b607f"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_BedroomTrim.mat": {
+      "bytes": 1820,
+      "sha256": "c5aca5bd8cbd37531974d232ced2807e2286aa4ed226dcdd335ec27126736010"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_BedroomTrim.mat.meta": {
+      "bytes": 185,
+      "sha256": "b43b86546ccb89ce8c75c6e91cf223745c2a77b408ce5f48d52df2422ed34865"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_BedroomWalls.mat": {
+      "bytes": 1821,
+      "sha256": "3115e29be2de8ec9482fb3bc462c8c814816f0830cf14f3d765ae8d1564fd769"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_BedroomWalls.mat.meta": {
+      "bytes": 185,
+      "sha256": "06876077c8c5c2fa116c10c58926cfff2fd5a5f5296e6cb1e3352fabd316c60a"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Bookshelf.mat": {
+      "bytes": 1818,
+      "sha256": "7fbce3d45f5e67e419dd6fa44a94fb3b9a850397cdbbe7a5489499775f926276"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Bookshelf.mat.meta": {
+      "bytes": 185,
+      "sha256": "4a44b00719a7f37cbe527c29f580023336bafc81b356c37c996fe5c408a143b0"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Ceiling.mat": {
+      "bytes": 1816,
+      "sha256": "acf0b9b6aa00ea29aeea84091ae43755ca83a8eb94c27c084e50a3e1de3fc24e"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Ceiling.mat.meta": {
+      "bytes": 185,
+      "sha256": "dd3aea63422ab46c309b9fded0592cbb19df8f46dc4a32c4e809e6229d5e1f7e"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_CoffeeTable.mat": {
+      "bytes": 1820,
+      "sha256": "63470fe3f28339872ba4caacf97a79e3f210da756386a6788d7e64523b1adb0b"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_CoffeeTable.mat.meta": {
+      "bytes": 185,
+      "sha256": "7d72c66696637fac4f24f6476f1dee38cdf445984030e856167675d1225e211b"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Drape.mat": {
+      "bytes": 1814,
+      "sha256": "23f5dc11810328a5c3c9b91bfbdd85a1c5038ccc9b2d04f3b956709b48c6d88f"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Drape.mat.meta": {
+      "bytes": 185,
+      "sha256": "46bba03e45da9083816ccc4bf1603ed14df908e3d1d23da3154db64a5a70f9bf"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_East_Wall.mat": {
+      "bytes": 1818,
+      "sha256": "95635999825b608dfbf28433691b43b36677e5acc531f0c7908280853759386e"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_East_Wall.mat.meta": {
+      "bytes": 185,
+      "sha256": "db911cc83e62274a82f9416547e860d5926d401c18d13da044b2fb382a060d75"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Floor.mat": {
+      "bytes": 1814,
+      "sha256": "6ca063357df966377bc88364611c6075dad2e8d5c0a1a529ffec5c485918126a"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Floor.mat.meta": {
+      "bytes": 185,
+      "sha256": "adc7ab1e167f3ee827b3ddadcfdab6aeea6014d674eda1719629b6d74b7a6dd8"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Lounge.mat": {
+      "bytes": 1815,
+      "sha256": "2d035a0284756a7c0215f9c06d7d351f5a2a8a25ce3ac8660c141c85bb309c47"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Lounge.mat.meta": {
+      "bytes": 185,
+      "sha256": "bcd76a7d7b0d061437b740062717d9fb854eceb5a9a8acbd62affa4707f32a00"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Ocean.mat": {
+      "bytes": 1814,
+      "sha256": "05b400b30348090b974877050e99d1086941802b09121fb300dc7369bdf5686a"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Ocean.mat.meta": {
+      "bytes": 185,
+      "sha256": "acdf241437116caea7bfe3afdc80e0f7db55f9ef32ab073bd4964caa5cc73b0c"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Olive.mat": {
+      "bytes": 1814,
+      "sha256": "9b847f4088cdeabb6e7af2b9eb0b0ce405ee09415ddce45f0b1798e6e2e8c51e"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Olive.mat.meta": {
+      "bytes": 185,
+      "sha256": "2c7cc3467b263254e55268f3df7be5fd9650269c085daefaa547c301cfb4cddd"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Rug.mat": {
+      "bytes": 1812,
+      "sha256": "50dfee07e6b11cbfe1a8b4163ec0dbfe54df254a2d8d21b7db319f1c11bd9cd7"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Rug.mat.meta": {
+      "bytes": 185,
+      "sha256": "7356e454355190516aa7b668f065d351b87c2d4d8bb5c53c9e7b1c57f2bbad5d"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Sheer.mat": {
+      "bytes": 1844,
+      "sha256": "6c70162165321b27779e9cd9af940abb747386b096b8ffe2456271630e3be72d"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Sheer.mat.meta": {
+      "bytes": 185,
+      "sha256": "02b16c4bf762fbc017a2f3634e548c8f5a86741add93bd2a6db2245a29d93c0a"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Sideboard.mat": {
+      "bytes": 1818,
+      "sha256": "abb2ba8a45f00a257497a0ca3aad60b59c0ca799518bc327398575fa09fe10c2"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Sideboard.mat.meta": {
+      "bytes": 185,
+      "sha256": "417d512036fa5356d87f58d0f6011c4e8a043a63d931f01972150a229b1ce8dc"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Sofa.mat": {
+      "bytes": 1813,
+      "sha256": "0cd524b034fdc484df65b589a985aa71fcc4843530a9ed7ae4a5870cd22c332c"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Sofa.mat.meta": {
+      "bytes": 185,
+      "sha256": "7dc485e04432e3749327721225950249a084211c4020c42171387a0885f34cc4"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_South_Wall.mat": {
+      "bytes": 1819,
+      "sha256": "9b2d054a0b8fb2b0474067db7a3107c21cd1d88f3bc2489498bbb8f5a50e9ab6"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_South_Wall.mat.meta": {
+      "bytes": 185,
+      "sha256": "fb448d89f5509b068d118f545fb8d29393703368a198405c23c96f274a3f2574"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Strelitzia.mat": {
+      "bytes": 1819,
+      "sha256": "af79c83e0a074f24cd3f290d6adefa9001d541ae8a64837092ae4e5cffcca4e8"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Strelitzia.mat.meta": {
+      "bytes": 185,
+      "sha256": "7e95e6763950044d4edaec81a303e6e0ccf42692043745a2feb92688cfa739d9"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Trim.mat": {
+      "bytes": 1813,
+      "sha256": "82543808da75341fdadfb9fab7abff0b19743b363323fbe519c7f4889ee040fd"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_Trim.mat.meta": {
+      "bytes": 185,
+      "sha256": "201a1e05e03691915fdce38148e080517174cceedf29b2039e7d48cf5087dba6"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_WorkChair.mat": {
+      "bytes": 1818,
+      "sha256": "f74cd1efe7944bbbf08d9f5b82e7ce11faead66e889a06db3247b0d96507ad32"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_WorkChair.mat.meta": {
+      "bytes": 185,
+      "sha256": "0c9d621bc954476e1382478f502795eb050d7dcbc55b3609eb3e780ac9965b2d"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_WorkDesk.mat": {
+      "bytes": 1817,
+      "sha256": "65378a8fce38ca2e609ef8438565726bd95c935f6332fae6d3aad4a0dc77d42b"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/Baked_WorkDesk.mat.meta": {
+      "bytes": 185,
+      "sha256": "a0fe62428e7b97888f01369c6f726773832d709ff7ad90ed0323dac567c61e5a"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/EntryCoirColorGrade.mat": {
+      "bytes": 1831,
+      "sha256": "855fb429736437e91f8f5f947682ada93141a3567a42c4361d979328fb6dc231"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/EntryCoirColorGrade.mat.meta": {
+      "bytes": 185,
+      "sha256": "aa6669399e0de5baeed10434ba7292b1ca2d092e1cb997a40d95ad41d950f28b"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/PBR_StaticGlass_CoastalV2_dark.mat": {
+      "bytes": 2422,
+      "sha256": "d538a25ecce76b4503df990b547ed24942bb4e1db1d8775c3f8b40ae424150b2"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/PBR_StaticGlass_CoastalV2_dark.mat.meta": {
+      "bytes": 185,
+      "sha256": "0e448b42b5475ea32052fd352983f35aca4da5341ae266225ed4b74c0f1ab8e3"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/PBR_StaticGlass_CoastalV2_glass.mat": {
+      "bytes": 2280,
+      "sha256": "ae2a10fdec5424c366a7fadac386aebd2cdf5b063037a01b9e3c9a9b8e0b5f06"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/PBR_StaticGlass_CoastalV2_glass.mat.meta": {
+      "bytes": 185,
+      "sha256": "8e99577f400ac4a975d8f33f2a4dac21069d93ba523bd93ef80ed83068ef48d0"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/PBR_V4_BedroomDoorSlide_V4_WhiteDoorPaint.mat": {
+      "bytes": 2256,
+      "sha256": "6c8b43dfad7780ec3395654a0727de367d9fcf57c6023cbe34d78620d020a5c8"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/PBR_V4_BedroomDoorSlide_V4_WhiteDoorPaint.mat.meta": {
+      "bytes": 185,
+      "sha256": "b7abb5eaff4bff47e991ba87956863d573a08770e9a16fbb07d2659b34894890"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/PBR_V4_EntryFrameRoot_V4_WhiteDoorPaint.mat": {
+      "bytes": 2254,
+      "sha256": "e0be96a95dbe6c9af6954afceba7d6bc6a03fbce4b02a89fdeceaeed9b61a3a6"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/PBR_V4_EntryFrameRoot_V4_WhiteDoorPaint.mat.meta": {
+      "bytes": 185,
+      "sha256": "70ddaa21e2d0e4849f755aa2fe54d7af523db800d486fe95d4f60afab0168477"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/PBR_V4_EntryHinge_CoastalV2_bronze.mat": {
+      "bytes": 2426,
+      "sha256": "c4d5b012102ec7ccf51aa8516185915c69a055a78522db36a44182b2836a17e3"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/PBR_V4_EntryHinge_CoastalV2_bronze.mat.meta": {
+      "bytes": 185,
+      "sha256": "636a11128b892618326d96f00ed92f7d43073999b5e1337ebf219175c2769399"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/PBR_V4_EntryHinge_V4_WhiteDoorPaint.mat": {
+      "bytes": 2250,
+      "sha256": "25cb839af59343700cc633132a9f40f8dffe8a61762b77a7d72e981e68c76d59"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Materials/PBR_V4_EntryHinge_V4_WhiteDoorPaint.mat.meta": {
+      "bytes": 185,
+      "sha256": "806999d593b8b9af2f1ab2dd9a4a707a969bcabe5e565245374d82d4d2bbd6c7"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/PersonalSpaceV4.fbx": {
+      "bytes": 74486588,
+      "sha256": "e935d7d37436e74e32f58cd0e3e899a8da7096c290d0a01b9e065c43863ea8d5"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/PersonalSpaceV4.fbx.meta": {
+      "bytes": 2985,
+      "sha256": "bb60cd1d34f0a8222331e3733fc4b23343e0870385cb58b56f2187b0a7d60da3"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_BedBedding.png": {
+      "bytes": 11645265,
+      "sha256": "432eece0087ea6179c018be12d1069ccc43c3a1566cf4ee6508b80f0ffff8352"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_BedBedding.png.meta": {
+      "bytes": 3710,
+      "sha256": "f3ea12e1f0d7ac89a257a8ea13857a39db86b01129500b9cb058e01ad3e14767"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_BedFrame.png": {
+      "bytes": 3295958,
+      "sha256": "df0209816f4ca6f630ec8f528b3de6da7798991e9970d7ab6c1a1a649bb6e706"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_BedFrame.png.meta": {
+      "bytes": 3710,
+      "sha256": "6552a4b72030af54ab067d3aee304f3b5d22b6a980efbaf6e211b2ab23562688"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_BedMattress.png": {
+      "bytes": 1596624,
+      "sha256": "8f4f4c1bb99a2f2f96331472c239edd6c4bdd22576f4d5937bf627d874d0e99f"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_BedMattress.png.meta": {
+      "bytes": 3710,
+      "sha256": "675d953d22ec1990a0ba7711389a71844a9a07b3a18d74ee383c584e481fc6ef"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_BedPillows.png": {
+      "bytes": 3474522,
+      "sha256": "8d4aebea4a57bb4263169ab0316d28fe06ba01271596530ceb8ab1a6e966338f"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_BedPillows.png.meta": {
+      "bytes": 3710,
+      "sha256": "053a66caa6a65f3491a2fdb39912668c556d2484965163b41712b1a5500ea73c"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_BedroomCeiling.png": {
+      "bytes": 2446321,
+      "sha256": "ca210c830a6279c011c195119c0346e5e0f44902c79eadc4f79903190932e1a0"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_BedroomCeiling.png.meta": {
+      "bytes": 3710,
+      "sha256": "fcc29fb6acd89f5f7825b5f88eacd0299dc2412e28389e61821359e3ed40777f"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_BedroomDetails.png": {
+      "bytes": 3567452,
+      "sha256": "4e03b4d1c585272e7f336e8116123f6db7c4f64b3b117949dd3a035ceaab3569"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_BedroomDetails.png.meta": {
+      "bytes": 3710,
+      "sha256": "d1ebd7e89e96f7f3fe213e999617f90c57d17be0e873efb733a96b5ea3e229c4"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_BedroomFloor.png": {
+      "bytes": 3581380,
+      "sha256": "1e01aa94f3501bc7c89466473a47c26997345e9e27897d7fb5cf44c642678ea1"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_BedroomFloor.png.meta": {
+      "bytes": 3710,
+      "sha256": "e403261534866271301aa3382fc69837e4f11cba42f13aff139cc4f88f8c9687"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_BedroomTrim.png": {
+      "bytes": 14203802,
+      "sha256": "a3aa5d6ee7151e055b23f875502eb43b5acc0311023f6bd4cf66d9a7e9069ed9"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_BedroomTrim.png.meta": {
+      "bytes": 3710,
+      "sha256": "6e07f39f48f48111f882b0beb5dd21315df8fe499d0f85f55aa949006f883c29"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_BedroomWalls.png": {
+      "bytes": 2877389,
+      "sha256": "708d1b18ee3d6c8715acbf1b694239e4b4a20dab33816139ae9d39f7c882debd"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_BedroomWalls.png.meta": {
+      "bytes": 3710,
+      "sha256": "7574b3f26dc263b44f7690265466b6ffcf0712d58b47f8ec061043711f65fe5f"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Bookshelf.png": {
+      "bytes": 3682761,
+      "sha256": "ecc068c06611d6e557e207a0ab8f1993275be44aa788a963f1b7dbbe43455dd6"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Bookshelf.png.meta": {
+      "bytes": 3710,
+      "sha256": "ac127cd1d78f36fff992b0bcd7942eb62575c0b16c22ad06947ff37c592518ac"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Ceiling.png": {
+      "bytes": 3429794,
+      "sha256": "5d654ad8d6687ae4950dc01eab3cbe885d03815f79e580f2b2e686f697982d71"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Ceiling.png.meta": {
+      "bytes": 3710,
+      "sha256": "d7f08b31f22606ba3f2e3a73a008bd4cdcda55aebea89356786b1b38a2663a5e"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_CoffeeTable.png": {
+      "bytes": 3977433,
+      "sha256": "9b36c440c9b7245fafb047cb0fa257a8f770d8c3911412efd73d7686dca46bf1"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_CoffeeTable.png.meta": {
+      "bytes": 3710,
+      "sha256": "f4de115a4f358d107acbaa47b3a743df81deeda812800ead2b90430adf657304"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Drape.png": {
+      "bytes": 4483341,
+      "sha256": "c384d0dc9a8fe8e2e27c9d6685f77e493e6dbf2d71e1facaf52c1ffb1702a64d"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Drape.png.meta": {
+      "bytes": 3710,
+      "sha256": "9f75f04cf514faa46986d3e5c78059ddaf456d336e15389060fe2ef45d5c3059"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_East_Wall.png": {
+      "bytes": 3429213,
+      "sha256": "cbeb95187a557f4aa7c77eac2bd8738dd2eb8617eb22cbefe1baa8ea85ae578f"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_East_Wall.png.meta": {
+      "bytes": 3710,
+      "sha256": "74fe8e019531ad935ffe1ee32d87c30c04914611ed70290f83b3032eb9a89f74"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Floor.png": {
+      "bytes": 11397341,
+      "sha256": "1a92a2b042b772c77c70a95130d0b0511dd471abe9118acd0aff5f6e3fa1d3b8"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Floor.png.meta": {
+      "bytes": 3710,
+      "sha256": "6bb79c4887c35749efb291ba9455974b7e2b00231c2e6ef55b4fab62d31ffea0"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Lounge.png": {
+      "bytes": 5227355,
+      "sha256": "3226f5aff07fbc6a54b15b59835bac70d8b7fc2844080e950126f79b5d866ef7"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Lounge.png.meta": {
+      "bytes": 3710,
+      "sha256": "7c23acf42aec5f715f35ded49e7155bb251ae2e9d064b60b12744ec2f743fa25"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Ocean.png": {
+      "bytes": 2240975,
+      "sha256": "962388adcac08838a30e18e885d49674c6ac5c179e374ebcec23ddfd62a0d223"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Ocean.png.meta": {
+      "bytes": 3710,
+      "sha256": "f8a8a9d6dbe054a899616647e499288872289b0d1436d79895599f04cd7d6dd9"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Olive.png": {
+      "bytes": 21107878,
+      "sha256": "a29bae12d0120b6aafd47338c2494033225005f97860a60cc05475e06939a51b"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Olive.png.meta": {
+      "bytes": 3710,
+      "sha256": "ce1336d1eda8fab0117d179df381d7b2c47da0968526443b0568e5c0cd1ab40b"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Rug.png": {
+      "bytes": 2694873,
+      "sha256": "1a073739ffe6a01af28836f074e831fb06faed98ec693dcde4b41f07d1a3614f"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Rug.png.meta": {
+      "bytes": 3710,
+      "sha256": "05fcace3addb4c2f69c5cfa52b05a8c1727cabc3c0ee7ea6348693d4da51a8c4"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Sheer.png": {
+      "bytes": 3994813,
+      "sha256": "3531c5dfe18e75461e4ee2258ff764974cd4f2f80ac8c137e938a506b31c7376"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Sheer.png.meta": {
+      "bytes": 3710,
+      "sha256": "09901b9702ac4a70438b104d63921e7a62c7db26f724ad81feeefd50c9bbdaaf"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Sideboard.png": {
+      "bytes": 3875285,
+      "sha256": "ce65aa87a1893274d3a5dcf3d9e573a9876c5c31d1ba2ae3e0dce9db4916ca13"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Sideboard.png.meta": {
+      "bytes": 3710,
+      "sha256": "103b81c1cd25a71bb27344d79f4012c7bb4b28c13142bc0c375c5bb38e80beab"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Sofa.png": {
+      "bytes": 3816884,
+      "sha256": "c46e08ba287438e2900888d478432cc254132f978a8a35ae38be3eb6f31baccc"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Sofa.png.meta": {
+      "bytes": 3710,
+      "sha256": "957d36f4bfe4a9ad701e5ff41b5b9409445a0685258dfe151b784d9ca88edce2"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_South_Wall.png": {
+      "bytes": 2579195,
+      "sha256": "c2de06171907e0f250ec36c8838400dbb9ca66b8b2aa3443c70dbcd03c0cb49b"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_South_Wall.png.meta": {
+      "bytes": 3710,
+      "sha256": "2201b060164dfabfb68efb579139e4fedfe85f5209e7ac02e8f7a583e2a9f2ab"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Strelitzia.png": {
+      "bytes": 4416042,
+      "sha256": "85ff3dde66adad02ee8b731d2d74f99a7a367880f0cd1d5706129e6a84c41857"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Strelitzia.png.meta": {
+      "bytes": 3710,
+      "sha256": "c48284a21b641817545ae29e55aec80d054216206da758b8814e2e63926649ba"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Trim.png": {
+      "bytes": 3831725,
+      "sha256": "6df46137d076352df43ffc4daddead3110bc8ad1e35fe7848ee1290f556f5343"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_Trim.png.meta": {
+      "bytes": 3710,
+      "sha256": "25d57789b02b74ac80aa8898b3d274b28bfead6ee3634c03e7aa54b4819dbed4"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_WorkChair.png": {
+      "bytes": 3057614,
+      "sha256": "331a567bd0d23e34b1a594007ba04011a04ae59aa21caceb3bd10176f02432ec"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_WorkChair.png.meta": {
+      "bytes": 3710,
+      "sha256": "c42d52cd694b3904499397e9e366e171bb7bde66d9954438bb69bb8db1d7f22e"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_WorkDesk.png": {
+      "bytes": 4348917,
+      "sha256": "a9ed86f00098ad3f1cb0107950f8f7ee22b2cf77cad92368c7cd752fb74f9ec6"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/Baked_WorkDesk.png.meta": {
+      "bytes": 3710,
+      "sha256": "954c0b9355fad0cf243758aa00d18c32a452f69729882b1e0b175eb5aecf6f04"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/PBR_StaticGlass_CoastalV2_dark_BaseColor.png": {
+      "bytes": 6604,
+      "sha256": "aba4696e3a293d460de083ce53f887eda542de039e856caf2ec6d38d9dca24e8"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/PBR_StaticGlass_CoastalV2_dark_BaseColor.png.meta": {
+      "bytes": 3709,
+      "sha256": "f85dba709f3e8f97f8df9699798c8d36b76677473ffbf7368a3b12ca08bc795f"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/PBR_StaticGlass_CoastalV2_dark_MetallicSmoothness.png": {
+      "bytes": 11431,
+      "sha256": "4cd94205b919709d7209488ab7f8be09d1b74988667191c9e9a6bf02620d7a7f"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/PBR_StaticGlass_CoastalV2_dark_MetallicSmoothness.png.meta": {
+      "bytes": 3709,
+      "sha256": "d5816ea7fafd6b3301022558e94adaede4d30e7999794f477ef01f2883d3dabd"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/PBR_StaticGlass_CoastalV2_dark_Normal.png": {
+      "bytes": 810550,
+      "sha256": "647623b9c2cb34b312e9577c9a2eda9c4d834aa94d9985d8d675289ae61c450a"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/PBR_StaticGlass_CoastalV2_dark_Normal.png.meta": {
+      "bytes": 3709,
+      "sha256": "33fa638d6eab59f05f49c271a3761c5905fc8b6df99b60810ccdf7d142d4e201"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/PBR_V4_EntryHinge_CoastalV2_bronze_BaseColor.png": {
+      "bytes": 209002,
+      "sha256": "ecc409438ded397cb1954a9ef76b143a724ec9cb337e329554cdb065448cf4b9"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/PBR_V4_EntryHinge_CoastalV2_bronze_BaseColor.png.meta": {
+      "bytes": 3709,
+      "sha256": "2a09647de0154ba6b17422d1e25cf12de893ac4de1c55b4dd7f3151dd483bf2e"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/PBR_V4_EntryHinge_CoastalV2_bronze_MetallicSmoothness.png": {
+      "bytes": 19680,
+      "sha256": "6715773e58e65986b4ecd9281e74b100aee620f9fa0c721185c6690ac968125e"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/PBR_V4_EntryHinge_CoastalV2_bronze_MetallicSmoothness.png.meta": {
+      "bytes": 3709,
+      "sha256": "0c920eb25295dada7d1fc5f81c2e4b49537b74a5c0609580448196dd17bcd683"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/PBR_V4_EntryHinge_CoastalV2_bronze_Normal.png": {
+      "bytes": 419707,
+      "sha256": "f8f73ee8276834a441b2d55fe1b80ed5f0cf8bc0b25ee215864114bd21c0a008"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/Textures/PBR_V4_EntryHinge_CoastalV2_bronze_Normal.png.meta": {
+      "bytes": 3709,
+      "sha256": "843782c14769ee86ef4dc63886a91a0bf9cf67cf861c9b60dc4a9c031011785d"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/UPSTREAM_TEXTURE_SOURCES.json": {
+      "bytes": 14235,
+      "sha256": "1ebff109421d1fc46baeede28835acfb7c395a8b2e1321dd9af44cb350a21f63"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/WalkableUnion.asset": {
+      "bytes": 3773,
+      "sha256": "8e2592f2db4244fa41ccbe9a2be5a0ef5c2f96e1629fedaded180fcd8d9c9e3a"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/WalkableUnion.asset.meta": {
+      "bytes": 185,
+      "sha256": "0890ed3ed0458a05560dd1ae68e3b391522eb67dbf5b65efcdc5b1c0dd8a033e"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/manifest.json": {
+      "bytes": 176633,
+      "sha256": "0cbe94c3c3e126ea4a62f0ea43219137f10dc19efe86a40e929c57a5af3e7b5c"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/manifest.json.meta": {
+      "bytes": 155,
+      "sha256": "87be49071371f578418e324fc4cb4f31699e2f83e7e80f0feb14f7c466905dfd"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/Resources/CoastalCloudDensity.asset": {
+      "bytes": 15729423,
+      "sha256": "e4bd36ad7c798d21f93f8fcb17853caab544ebf839827ecba50d5d1ba9a040dc"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/Resources/CoastalCloudDensity.asset.meta": {
+      "bytes": 189,
+      "sha256": "abe6e684cec3650f28abc7f2ac69a7e8387ea6c283ca88de0d6527a4b69ffc6b"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/Resources/CoastalCloudVolume.asset": {
+      "bytes": 3928,
+      "sha256": "eb23e9dc60bedd58f8b8803b1e5a30fc09fc01a732e708380c8783c722ad6080"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/Resources/CoastalCloudVolume.asset.meta": {
+      "bytes": 185,
+      "sha256": "2c4fbf94b7161f8b64cec818825eaaaf677de044e68f90b56eb4686054d871ee"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/Resources/CoastalCloudVolume.mat": {
+      "bytes": 1177,
+      "sha256": "9bc71ad7361a4f2c74edc58fe0fa6396ce2e4ed6615bf87799a7e2e341986be2"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/Resources/CoastalCloudVolume.mat.meta": {
+      "bytes": 185,
+      "sha256": "b4ef9b0a7c69030afc61c70cd66f035a77ee977273ca12867a4647daa63ad029"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/Resources/CoastalWindowBackdrop.asset": {
+      "bytes": 418268,
+      "sha256": "8b8b374a0905656461b77bdc3106f2f09e2a49922cd72da3b54f0548b04ca5d3"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/Resources/CoastalWindowBackdrop.asset.meta": {
+      "bytes": 185,
+      "sha256": "bd209fc2c116c2c23f3b1d4d53255cf42c6bead057cbf387261ea3e000cc5ad6"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/Resources/MaasoDeskWorkMesh.asset": {
+      "bytes": 3941723,
+      "sha256": "c1ee376bc418a5954f5738e82caa368dd15a8312f6ef5b70e942ec9eff043b1a"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/Resources/MaasoDeskWorkMesh.asset.meta": {
+      "bytes": 188,
+      "sha256": "7c8d695288152491dde23bd1740b2cf74094079313434776355210e28fc1fca9"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/Resources/MaasoDeskWorkMeshReceipt.json": {
+      "bytes": 200,
+      "sha256": "32dd791f2fa15f7362b835533de96d9bf1db1fa59e0a750ac753cb8b45c3ea39"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/Resources/MaasoDeskWorkMeshReceipt.json.meta": {
+      "bytes": 158,
+      "sha256": "9f06cc1bcb96ac114800245afb8078e3e181283b3597d12838cbb6054d4accde"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/Resources/Maaso_DaySky.mat": {
+      "bytes": 913,
+      "sha256": "18665cef060e875882d53d90e3d3144a4409dc9bfec8c7803e4abf64623c68c5"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/Resources/Maaso_DaySky.mat.meta": {
+      "bytes": 185,
+      "sha256": "9535ab06369e9beb1033635ca888837434073a66791a689ce96da9b102beb4c2"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/Resources/PersonalSpaceMap.prefab": {
+      "bytes": 316901,
+      "sha256": "9e83eddc279de984dc7100d199bbe4696571cdfb2aa4a3106bbf537f174479c2"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/Resources/PersonalSpaceMap.prefab.meta": {
+      "bytes": 151,
+      "sha256": "6f78d992e0e52eb3780926c0f51c92dd6fb48ba8d7f6772680c7ef77d9a64bd2"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/Resources/PersonalSpaceModel.prefab": {
+      "bytes": 295683,
+      "sha256": "f37c5ab8e5674d535522a849b3ec4821ebb2ce2cde6bcf6337b584deeed1a3f6"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/Resources/PersonalSpaceModel.prefab.meta": {
+      "bytes": 151,
+      "sha256": "e89754f4cd8b2ba398497d0589699f35202e7a1ce679f00aa460e86f347cc172"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/Resources/PersonalSpaceWhiteModel.mat": {
+      "bytes": 2226,
+      "sha256": "b34031f16d594d7d6d67d90e15b4d6303d148bb49a97004a165178de62dc8a46"
+    },
+    "unity/masso_avatar/Assets/MaasoWorld/Resources/PersonalSpaceWhiteModel.mat.meta": {
+      "bytes": 185,
+      "sha256": "9831db5253a3a3a11cb739e7d01837d1b84f8b15d090900014cd2aaf984aa285"
+    },
+    "unity/masso_avatar/ProjectSettings/TagManager.asset": {
+      "bytes": 454,
+      "sha256": "c7061fb93e1c7f35bea37c7fb6a68e1e12aa5c2e96c0dbbba4f319f958003090"
+    }
+  }
+}

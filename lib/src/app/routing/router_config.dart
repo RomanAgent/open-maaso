@@ -1,6 +1,7 @@
 import 'package:maaso/src/features/agent_space/presentation/agent_space_page.dart';
 import 'package:maaso/src/features/identity/presentation/profile_route_page.dart';
 import 'package:maaso/src/features/economy/presentation/membership_page.dart';
+import 'package:maaso/src/offline/local_edition_policy.dart';
 
 import 'package:maaso/src/features/privacy/presentation/privacy_page.dart';
 import 'package:maaso/src/features/account_deletion/presentation/account_deletion_page.dart';
@@ -138,6 +139,9 @@ GoRouter createAppRouter({
       _ => Listenable.merge(refreshSources),
     },
     redirect: (_, state) {
+      if (kOpenMaasoLocalEdition && state.uri.path == AppRoutes.membership) {
+        return AppRoutes.settings;
+      }
       // Retired account editors return to personal information and are no
       // longer advertised or Agent-navigable destinations.
       if (state.uri.path == '/wallet' || state.uri.path == AppRoutes.identity) {
@@ -198,6 +202,7 @@ GoRouter createAppRouter({
             (_) => const ProfileRoutePage(
               route: AppRouteCatalog.profile,
               membershipRoute: AppRouteCatalog.membership,
+              localEdition: kOpenMaasoLocalEdition,
             ),
           ),
           _route(

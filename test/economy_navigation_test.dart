@@ -12,6 +12,7 @@ import 'package:maaso/src/features/agent/application/capability/navigation_capab
 import 'package:maaso/src/features/agent/application/skills/app_control_skill.dart';
 import 'package:maaso/src/features/agent/application/skills/app_navigate_skill.dart';
 import 'package:maaso/src/features/identity/presentation/profile_route_page.dart';
+import 'package:maaso/src/offline/local_edition_policy.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +32,10 @@ void main() {
         reason: command,
       );
     }
-    expect(AppRouteCatalog.resolveCommand('/会员'), AppRouteCatalog.membership);
+    expect(
+      AppRouteCatalog.resolveCommand('/会员'),
+      kOpenMaasoLocalEdition ? null : AppRouteCatalog.membership,
+    );
     expect(
       AppRouteCatalog.destinations.map((destination) => destination.id),
       isNot(contains('wallet')),
@@ -66,7 +70,11 @@ void main() {
     ]) {
       final page = (schema['properties'] as Map)['page'] as Map;
       expect(page['enum'], isNot(contains('wallet')));
-      expect(page['enum'], containsAll(['profile', 'membership']));
+      expect(page['enum'], contains('profile'));
+      expect(
+        (page['enum'] as List).contains('membership'),
+        !kOpenMaasoLocalEdition,
+      );
     }
     for (final response in [
       navigate.methods['listPages']!([]),
@@ -75,7 +83,8 @@ void main() {
       final pages = (jsonDecode(response as String) as Map)['pages'] as List;
       final ids = pages.map((page) => (page as Map)['id']);
       expect(ids, isNot(contains('wallet')));
-      expect(ids, containsAll(['profile', 'membership']));
+      expect(ids, contains('profile'));
+      expect(ids.contains('membership'), !kOpenMaasoLocalEdition);
     }
   });
 

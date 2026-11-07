@@ -47,6 +47,8 @@ public sealed class AvatarRetiredAssetBuildGuardTests
         object first = Call("CreateAudit", new[] { shared, OpenSourceAvatar, OpenSourceAvatar }, "iOS", "build-guid");
         object second = Call("CreateAudit", new[] { OpenSourceAvatar, shared }, "iOS", "build-guid");
         Assert.That(Field<int>(first, "sourcePathCount"), Is.EqualTo(2));
+        Assert.That(Field<string[]>(first, "sourceAssetPaths"), Is.EqualTo(new[] { shared, OpenSourceAvatar }));
+        Assert.That(Field<string[]>(second, "sourceAssetPaths"), Is.EqualTo(Field<string[]>(first, "sourceAssetPaths")));
         Assert.That(Field<string>(first, "sourcePathListSha256"), Is.EqualTo(Field<string>(second, "sourcePathListSha256")));
         Assert.That(Field<string>(first, "sourcePathListSha256").Length, Is.EqualTo(64));
         Assert.That(Field<string>(first, "target"), Is.EqualTo("iOS"));

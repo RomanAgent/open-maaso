@@ -10,13 +10,15 @@ import generate_placeholder_assets as generator
 
 
 class GeneratedSceneAssetsTests(unittest.TestCase):
-    def test_regeneration_preserves_real_login_render_and_check_detects_tampering(self):
+    def test_regeneration_preserves_original_home_login_and_detects_tampering(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             brand = root / "assets/brand"
             brand.mkdir(parents=True)
             poster = brand / "login_doorway.png"
-            poster.write_bytes(b"reviewed procedural doorway render")
+            poster.write_bytes(b"original login doorway render")
+            home = brand / "home_room.png"
+            home.write_bytes(b"original coastal Home render")
             icon = root / "windows/runner/resources/app_icon.ico"
             icon.parent.mkdir(parents=True)
             icon.write_bytes(b"official brand icon")
@@ -25,6 +27,7 @@ class GeneratedSceneAssetsTests(unittest.TestCase):
             }))
             (brand / "generated-scene-assets.json").write_text(json.dumps({
                 "assets/brand/login_doorway.png": hashlib.sha256(poster.read_bytes()).hexdigest(),
+                "assets/brand/home_room.png": hashlib.sha256(home.read_bytes()).hexdigest(),
             }))
             outputs = (
                 ("assets/brand/home_room.png", 1, 1, "background"),
@@ -34,7 +37,8 @@ class GeneratedSceneAssetsTests(unittest.TestCase):
             with mock.patch.object(generator, "__file__", str(root / "tool/generator.py")), mock.patch.object(generator, "OUTPUTS", outputs):
                 with mock.patch("sys.argv", ["generator"]):
                     self.assertEqual(generator.main(), 0)
-                self.assertEqual(poster.read_bytes(), b"reviewed procedural doorway render")
+                self.assertEqual(poster.read_bytes(), b"original login doorway render")
+                self.assertEqual(home.read_bytes(), b"original coastal Home render")
                 self.assertEqual(icon.read_bytes(), b"official brand icon")
                 with mock.patch("sys.argv", ["generator", "--check"]):
                     self.assertEqual(generator.main(), 0)

@@ -115,8 +115,7 @@ namespace Maaso.Avatar.Editor
                     {
                         case "prepare":
                             Save("01-prepared.png");
-                            string root = Path.GetFullPath(Path.Combine(Application.dataPath, "../../.."));
-                            LoginDoorwayAssetBuilder.SaveFrame(camera, target, Path.Combine(root, "assets/brand/login_doorway.png"), poster: true);
+                            LoginDoorwayAssetBuilder.SaveFrame(camera, target, Path.Combine(evidence, "captured-login-poster.png"), poster: true);
                             Phase("open", 650); break;
                         case "open": Save("03-open.png"); Phase("enter", 1200); break;
                         case "enter": Save("05-entered.png"); Phase("frame", 300); break;
@@ -156,10 +155,11 @@ namespace Maaso.Avatar.Editor
             {
                 unityVersion = Application.unityVersion,
                 pngSha256 = Hash(File.ReadAllBytes(poster)),
+                homePosterSha256 = Hash(File.ReadAllBytes(Path.Combine(root, "assets/brand/home_room.png"))),
+                roomImport = AuditOriginalRoom(),
                 sceneDependencySha256 = Hash(Encoding.UTF8.GetBytes(string.Join("\n", AssetDatabase.GetDependencies(MaasoDefaultAvatarSceneBuilder.ScenePath, true).OrderBy(value => value, StringComparer.Ordinal)))),
                 bridgeReceipts = receipts.ToArray(),
             }, true) + "\n";
-            File.WriteAllText(Path.Combine(root, "assets/brand/login-doorway.provenance.json"), provenance);
             File.WriteAllText(Path.Combine(evidence, "bridge-receipts.json"), provenance);
             Debug.Log("[OpenMaasoDoorway] VERIFIED prepare/open650/enter1200/frame300 all acknowledged; same actor; closed shared door.");
             Stop(0);
@@ -168,6 +168,33 @@ namespace Maaso.Avatar.Editor
         private static string Hash(byte[] data)
         {
             using (var sha = SHA256.Create()) return BitConverter.ToString(sha.ComputeHash(data)).Replace("-", "").ToLowerInvariant();
+        }
+
+        public static RoomImportAudit AuditOriginalRoom()
+        {
+            const string path = "Assets/MaasoWorld/PersonalSpace/CoastalV4/PersonalSpaceV4.fbx";
+            var model = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            if (model == null) throw new InvalidOperationException("Original room FBX did not import.");
+            Object[] assets = AssetDatabase.LoadAllAssetsAtPath(path);
+            var result = new RoomImportAudit
+            {
+                source = path, sha256 = Hash(File.ReadAllBytes(path)),
+                meshNames = assets.OfType<Mesh>().Select(value => value.name).OrderBy(value => value, StringComparer.Ordinal).ToArray(),
+                skinnedMeshRendererCount = model.GetComponentsInChildren<SkinnedMeshRenderer>(true).Length,
+                animatorCount = model.GetComponentsInChildren<Animator>(true).Length,
+                humanoidAnimatorCount = model.GetComponentsInChildren<Animator>(true).Count(value => value.isHuman || value.avatar != null),
+                avatarAssetCount = assets.OfType<UnityEngine.Avatar>().Count(),
+                animationClipCount = assets.OfType<AnimationClip>().Count(),
+                transformNames = model.GetComponentsInChildren<Transform>(true).Select(value => value.name).OrderBy(value => value, StringComparer.Ordinal).ToArray(),
+            };
+            if (result.meshNames.Length != 96 || result.skinnedMeshRendererCount != 0 || result.humanoidAnimatorCount != 0 ||
+                result.avatarAssetCount != 0 || result.animationClipCount != 0)
+                throw new InvalidOperationException("Original room import contains an unexpected character or animation payload.");
+            string root = Path.GetFullPath(Path.Combine(Application.dataPath, "../../.."));
+            string audit = Path.GetFullPath(Path.Combine(root, "../open-maaso-audit/original-room-import-audit.json"));
+            Directory.CreateDirectory(Path.GetDirectoryName(audit));
+            File.WriteAllText(audit, JsonUtility.ToJson(result, true) + "\n");
+            return result;
         }
 
         private static void Stop(int code)
@@ -183,13 +210,21 @@ namespace Maaso.Avatar.Editor
         [Serializable] private sealed class Provenance
         {
             public int schemaVersion = 1;
-            public string owner = "Maaso project-owned primitive geometry; no licensed room/FBX/texture import";
-            public string builder = "unity/masso_avatar/Assets/MaasoAvatar/Editor/OpenMaasoLoginDoorwayBuilder.cs";
+            public string owner = "Original Maaso Coastal V4 room with project-authored geometry and verified CC0 texture sources";
+            public string builder = "Original PersonalSpaceMap.prefab and Coastal V4 runtime assets";
             public string scene = MaasoDefaultAvatarSceneBuilder.ScenePath;
             public string captureMethod = "Maaso.Avatar.Editor.OpenMaasoLoginDoorwayVerification.BeginCapture";
-            public string unityVersion, pngSha256, sceneDependencySha256;
+            public string unityVersion, pngSha256, homePosterSha256, sceneDependencySha256;
+            public RoomImportAudit roomImport;
             public string viewport = "Original prepare phase, upper 48%, 900x936 PNG";
             public string[] bridgeReceipts;
+        }
+
+        [Serializable] public sealed class RoomImportAudit
+        {
+            public string source, sha256;
+            public string[] meshNames, transformNames;
+            public int skinnedMeshRendererCount, animatorCount, humanoidAnimatorCount, avatarAssetCount, animationClipCount;
         }
     }
 }

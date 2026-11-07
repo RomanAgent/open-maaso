@@ -29,9 +29,9 @@ The backend is not included in this release. A local guest mode or self-hosted b
 
 ## Avatar boundary
 
-Unity is the current avatar backend. The release retains source such as C#, shaders and native bridge code, package references and project settings, while omitting models, textures, scenes, serialized art assets, animation clips and player exports. This is an integration source distribution, not a complete Unity content project.
+Unity is the current avatar backend. The release retains source such as C#, shaders and native bridge code, package references and project settings, with the reviewed free VRM, original Maaso-authored Coastal V4 room/CC0 texture derivatives, serialized scene and corrected local idle. Paid character/motion assets and generated player exports are excluded.
 
-Some scene-building and validation tools retain assumptions about the original bundled model and animation controller. They require adaptation and replacement content before building a new avatar player. Supplying an arbitrary VRM file alone does not satisfy those tools. No fallback WebView avatar renderer is supplied.
+The default scene builder binds the reviewed free VRM to the original room, entrance, camera and lighting. Build-time checksum and packed-source audits protect those resources. Arbitrary imported VRM rendering remains a separate integration boundary. No replacement WebView avatar renderer is supplied.
 
 ## Platform status
 

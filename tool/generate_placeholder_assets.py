@@ -181,9 +181,9 @@ def main() -> int:
     parser.add_argument("--check", action="store_true", help="Check every output matches the deterministic generated placeholder.")
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
-    # The login poster is a real render of the shipped procedural doorway.
-    # Regeneration must never replace that presentation asset with a placeholder.
-    expected = [(path, make_png(width, height, style)) for path, width, height, style in OUTPUTS if path in {'assets/brand/home_room.png', 'assets/model_store/agent.png'}]
+    # Original Home and login artwork are presentation resources. Regeneration
+    # must never replace either with a placeholder.
+    expected = [(path, make_png(width, height, style)) for path, width, height, style in OUTPUTS if path == 'assets/model_store/agent.png']
     manifest = root / 'assets/brand/official-launcher-assets.json'
     official = json.loads(manifest.read_text())
     scene_assets = json.loads((root / 'assets/brand/generated-scene-assets.json').read_text())

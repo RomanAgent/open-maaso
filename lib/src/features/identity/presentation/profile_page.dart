@@ -26,12 +26,14 @@ class ProfilePage extends StatefulWidget {
     this.membership,
     this.uiControl,
     this.tokenUsage,
+    this.localEdition = false,
   });
   final ProfileController controller;
   final String route, membershipRoute;
   final StorePurchaseService? membership;
   final AgentUiControlService? uiControl;
   final DailyTokenUsageService? tokenUsage;
+  final bool localEdition;
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
@@ -79,6 +81,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   bool get _membershipCurrent =>
+      !widget.localEdition &&
       widget.controller.active &&
       widget.membership?.isCurrent == true &&
       widget.membership!.boundContextKey ==
@@ -96,6 +99,7 @@ class _ProfilePageState extends State<ProfilePage> {
     if (oldWidget.controller != widget.controller ||
         oldWidget.route != widget.route ||
         oldWidget.uiControl != widget.uiControl ||
+        oldWidget.localEdition != widget.localEdition ||
         oldWidget.tokenUsage != widget.tokenUsage) {
       oldWidget.controller.setUserControl(false);
       _unmount();
@@ -259,87 +263,93 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
-              Material(
-                color: colors.primary,
-                borderRadius: BorderRadius.circular(24),
-                clipBehavior: Clip.antiAlias,
-                child: InkWell(
-                  key: const ValueKey('profile-membership-card'),
-                  onTap: active
-                      ? () {
-                          _takeOver();
-                          appNavigation.push(widget.membershipRoute);
-                        }
-                      : null,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 16,
-                    ),
-                    child: DefaultTextStyle(
-                      style:
-                          (Theme.of(context).textTheme.bodySmall ??
-                                  const TextStyle())
-                              .copyWith(
-                                color: colors.onPrimary,
-                                fontSize: 13,
-                                height: 20 / 13,
-                              ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Text(tr('Maaso membership', 'Maaso 会员')),
-                              ),
-                              Icon(
-                                Icons.north_east_rounded,
-                                color: colors.onPrimary,
-                                size: 20,
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 4),
-                          Wrap(
-                            spacing: 12,
-                            runSpacing: 4,
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            children: [
-                              Text(
-                                tierName,
-                                key: const ValueKey('profile-membership-tier'),
-                                style: TextStyle(
-                                  fontSize: 28,
-                                  height: 36 / 28,
-                                  fontWeight: FontWeight.w600,
+              if (!widget.localEdition) ...[
+                const SizedBox(height: 20),
+                Material(
+                  color: colors.primary,
+                  borderRadius: BorderRadius.circular(24),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    key: const ValueKey('profile-membership-card'),
+                    onTap: active
+                        ? () {
+                            _takeOver();
+                            appNavigation.push(widget.membershipRoute);
+                          }
+                        : null,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 16,
+                      ),
+                      child: DefaultTextStyle(
+                        style:
+                            (Theme.of(context).textTheme.bodySmall ??
+                                    const TextStyle())
+                                .copyWith(
                                   color: colors.onPrimary,
+                                  fontSize: 13,
+                                  height: 20 / 13,
                                 ),
-                              ),
-                              if (usage != null)
-                                Text(tr('Current plan', '当前方案')),
-                            ],
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            usage == null
-                                ? tr(
-                                    'View plans and membership status',
-                                    '查看方案与会员状态',
-                                  )
-                                : expired || tier == null
-                                ? 'Doubao-Seed-Evolving'
-                                : usage.modelName.isNotEmpty
-                                ? usage.modelName
-                                : tier.modelDisplayName,
-                          ),
-                        ],
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    tr('Maaso membership', 'Maaso 会员'),
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.north_east_rounded,
+                                  color: colors.onPrimary,
+                                  size: 20,
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 4),
+                            Wrap(
+                              spacing: 12,
+                              runSpacing: 4,
+                              crossAxisAlignment: WrapCrossAlignment.center,
+                              children: [
+                                Text(
+                                  tierName,
+                                  key: const ValueKey(
+                                    'profile-membership-tier',
+                                  ),
+                                  style: TextStyle(
+                                    fontSize: 28,
+                                    height: 36 / 28,
+                                    fontWeight: FontWeight.w600,
+                                    color: colors.onPrimary,
+                                  ),
+                                ),
+                                if (usage != null)
+                                  Text(tr('Current plan', '当前方案')),
+                              ],
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              usage == null
+                                  ? tr(
+                                      'View plans and membership status',
+                                      '查看方案与会员状态',
+                                    )
+                                  : expired || tier == null
+                                  ? 'Doubao-Seed-Evolving'
+                                  : usage.modelName.isNotEmpty
+                                  ? usage.modelName
+                                  : tier.modelDisplayName,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
+              ],
               const SizedBox(height: 16),
               DailyTokenUsageCard(
                 key: ObjectKey(_tokenUsage),

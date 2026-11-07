@@ -3,9 +3,10 @@
 The default entry is `lib/main.dart` → the original `MaasoApp` and original
 router. `MAASO_OFFLINE_EDITION=true` selects local service adapters within that
 same dependency graph. It does not mount a separate simplified application.
-The host theme, page layouts, navigation and controls are retained. The only
-intentional visible additions are model/API-key configuration in the existing
-Settings panel and the replacement free VRM character/cover.
+The host theme, page layouts, navigation and controls are retained. The visible edition changes are model/API-key configuration in the existing
+Settings panel, the replacement free VRM character/cover, and removal of
+membership cards and membership navigation. Original Coastal V4 Home and login
+resources are retained with reviewed source ownership and CC0 texture provenance.
 
 ## Account and storage
 
@@ -18,7 +19,7 @@ fences. A local account requires no remote device lease, discovery or handoff.
 The app identity is `org.openmaaso.app`, separate from commercial Maaso.
 The original `DBService` and account storage scope hold conversations, memory,
 widgets, tasks and skills. `LocalOriginalBackend` supplies original validated
-profile/privacy/membership DTO clients in process, using the same account DB.
+profile/privacy DTO clients in process, using the same account DB.
 The demonstration account has initial editable local user/Agent profiles.
 Signing out retains data; original account deletion performs local erasure
 through its existing explicit confirmation and scoped purge flow.
@@ -81,14 +82,18 @@ render. The native Unity export remains a separate build step.
 General workshop imports may be stored locally, but rendering arbitrary local
 VRM files still requires the existing renderer's local-import integration;
 do not claim that storage alone proves an imported model can be selected.
-Commercial characters, room art and purchased motions remain excluded.
+Commercial characters and purchased motions remain excluded. The included
+Coastal V4 room is Maaso-authored geometry using reviewed CC0 texture inputs;
+its runtime dependency hashes are recorded in `assets/brand/original-room-assets.json`.
 
 ## Explicit boundaries
 
 - Remote synchronization, shared execution leases, handoff, Firebase and push
   are not started by the local default.
-- Membership pages retain Free/unavailable-purchase states. There are no fake
-  paid subscriptions, store receipts, balances or earnings.
+- Membership cards, plan navigation and membership service registration are
+  absent from the local edition. Model dispatch depends on the enabled provider
+  configuration and its key, with a no-key loopback exception for local models.
+  Daily token statistics are measurements, not an admission quota.
 - Cloud image/video generation, remote visual perception, public moderation,
   public URLs and other routes without local contracts return unavailable.
   Their original pages are retained; backend elimination is not proof of full

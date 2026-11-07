@@ -12,8 +12,10 @@ class ProfileRoutePage extends StatefulWidget {
     super.key,
     required this.route,
     required this.membershipRoute,
+    this.localEdition = false,
   });
   final String route, membershipRoute;
+  final bool localEdition;
   @override
   State<ProfileRoutePage> createState() => _ProfileRoutePageState();
 }
@@ -43,7 +45,10 @@ class _ProfileRoutePageState extends State<ProfileRoutePage> {
         controller: controller,
         route: widget.route,
         membershipRoute: widget.membershipRoute,
-        membership: appServices.maybeFind<StorePurchaseService>(),
+        membership: widget.localEdition
+            ? null
+            : appServices.maybeFind<StorePurchaseService>(),
+        localEdition: widget.localEdition,
       );
     }
     final zh = Localizations.localeOf(context).languageCode == 'zh';

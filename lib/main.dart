@@ -2105,24 +2105,29 @@ Future<AccountRuntimeLease> _mountAccountRuntime({
         accessToken: publicAccountToken,
       ),
     );
-    final economyClient = EconomyHttpClient(
-      baseUri: () => publicAccountBaseUri,
-      accountId: publicAccountId,
-      accessToken: publicAccountToken,
-    );
-    putOwned(
-      EconomyService(gateway: economyClient, closeGateway: economyClient.close),
-    );
-    putOwned(
-      StorePurchaseService(
-        gateway: StorePaymentHttpClient(
-          baseUri: () => publicAccountBaseUri,
-          accountId: publicAccountId,
-          accessToken: publicAccountToken,
+    if (!kOpenMaasoLocalEdition) {
+      final economyClient = EconomyHttpClient(
+        baseUri: () => publicAccountBaseUri,
+        accountId: publicAccountId,
+        accessToken: publicAccountToken,
+      );
+      putOwned(
+        EconomyService(
+          gateway: economyClient,
+          closeGateway: economyClient.close,
         ),
-        native: PluginNativeStoreGateway.forCurrentPlatform(),
-      ),
-    );
+      );
+      putOwned(
+        StorePurchaseService(
+          gateway: StorePaymentHttpClient(
+            baseUri: () => publicAccountBaseUri,
+            accountId: publicAccountId,
+            accessToken: publicAccountToken,
+          ),
+          native: PluginNativeStoreGateway.forCurrentPlatform(),
+        ),
+      );
+    }
 
     putOwned(HapticBridgeService());
     putOwned(AlertOverlayService());

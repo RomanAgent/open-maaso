@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CoastalCloudVolume
+  m_Shader: {fileID: 4800000, guid: 8c0f035948f04aa0bc8ee3e3f1bcd870, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties:
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _DensityVolume:
+        m_Texture: {fileID: 11700000, guid: 9a8c1c0641e444c1ea43f7ab6223c2ef, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _CloudVariant: 0
+    - _DensityMultiplier: 1
+    - _Extinction: 1.8
+    - _StepCount: 48
+    m_Colors:
+    - _ShadowColor: {r: 0.46, g: 0.55, b: 0.66, a: 1}
+    - _SunColor: {r: 0.98, g: 0.96, b: 0.92, a: 1}
+    - _VolumeResolution: {r: 128, g: 96, b: 80, a: 2}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

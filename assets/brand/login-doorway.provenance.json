@@ -1,17 +1,13 @@
 {
-    "schemaVersion": 1,
-    "owner": "Maaso project-owned primitive geometry; no licensed room/FBX/texture import",
-    "builder": "unity/masso_avatar/Assets/MaasoAvatar/Editor/OpenMaasoLoginDoorwayBuilder.cs",
-    "scene": "Assets/MaasoAvatar/Scenes/Companion.unity",
-    "captureMethod": "Maaso.Avatar.Editor.OpenMaasoLoginDoorwayVerification.BeginCapture",
-    "unityVersion": "6000.5.2f1",
-    "pngSha256": "40d04fe0ccec4ca3eca58674bf20f284f7f3595631a0e6417798a2a2649eec43",
-    "sceneDependencySha256": "edc512c257dec3b792e383853812088509fd6ca04748b37a7f439b83b217ca07",
-    "viewport": "Original prepare phase, upper 48%, 900x936 PNG",
-    "bridgeReceipts": [
-        "{\"method\":\"transitionLoginDoorway\",\"requestId\":\"public-door-prepare\",\"transitionId\":\"public-doorway-capture\",\"phase\":\"prepare\",\"code\":\"\",\"ok\":true}",
-        "{\"method\":\"transitionLoginDoorway\",\"requestId\":\"public-door-open\",\"transitionId\":\"public-doorway-capture\",\"phase\":\"open\",\"code\":\"\",\"ok\":true}",
-        "{\"method\":\"transitionLoginDoorway\",\"requestId\":\"public-door-enter\",\"transitionId\":\"public-doorway-capture\",\"phase\":\"enter\",\"code\":\"\",\"ok\":true}",
-        "{\"method\":\"transitionLoginDoorway\",\"requestId\":\"public-door-frame\",\"transitionId\":\"public-doorway-capture\",\"phase\":\"frame\",\"code\":\"\",\"ok\":true}"
-    ]
+  "schemaVersion": 2,
+  "presentation": "Original Maaso Coastal V4 Home and shared login entrance",
+  "ownershipNotice": "original-room.PROVENANCE.md",
+  "roomAssetManifest": "original-room-assets.json",
+  "posterSha256": {
+    "assets/brand/home_room.png": "747211147fd0c0098e1dc0c0df9ccebf7dc5f6bd69b6d3e50961e56937ad2600",
+    "assets/brand/login_doorway.png": "1eef57cfcb95723b214888f7928055d60d297038b419e4e22f216f1485f077d7"
+  },
+  "replacementCharacter": "Pixiv VRM1_Constraint_Twist_Sample; see model license notice",
+  "cameraAndTransition": "Original Maaso receiver, shared-door binding and 650/1200/300 ms phases",
+  "verificationEvidence": "Actual render and bridge receipts are retained separately from source; no original poster is overwritten during probes."
 }

@@ -1,3 +1,5 @@
+import 'package:maaso/src/offline/local_edition_policy.dart';
+
 /// One user-facing navigation destination. Routing metadata that both the
 /// slash-command resolver and the agent navigation capabilities read.
 class AppDestination {
@@ -111,12 +113,13 @@ class AppRouteCatalog {
       title: 'Personal information',
       keywords: ['profile', 'personalprofile', '个人信息', '个人资料', '我的头像'],
     ),
-    AppDestination(
-      id: 'membership',
-      route: membership,
-      title: 'Maaso membership',
-      keywords: ['membership', 'subscription', '会员', '订阅'],
-    ),
+    if (!kOpenMaasoLocalEdition)
+      AppDestination(
+        id: 'membership',
+        route: membership,
+        title: 'Maaso membership',
+        keywords: ['membership', 'subscription', '会员', '订阅'],
+      ),
     AppDestination(
       id: 'home',
       route: home,

@@ -11,10 +11,12 @@ third_party/** whitespace=-blank-at-eol,-blank-at-eof
 # Unity serializes empty YAML values with a space. Preserve generated source assets.
 unity/masso_avatar/ProjectSettings/*.asset whitespace=-blank-at-eol
 unity/masso_avatar/Assets/**/*.unity whitespace=-blank-at-eol
+unity/masso_avatar/Assets/**/*.prefab whitespace=-blank-at-eol
 unity/masso_avatar/Assets/**/*.controller whitespace=-blank-at-eol
 unity/masso_avatar/Assets/**/*.anim whitespace=-blank-at-eol
 unity/masso_avatar/Assets/**/*.mat whitespace=-blank-at-eol
 unity/masso_avatar/Assets/**/*.asset whitespace=-blank-at-eol
 *.vrm binary
+*.fbx binary
 # Preserve the upstream font license verbatim, including its published spacing.
 assets/fonts/NotoSansSC/OFL.txt whitespace=-blank-at-eol

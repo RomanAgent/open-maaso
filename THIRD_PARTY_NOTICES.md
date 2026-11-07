@@ -45,10 +45,26 @@ The [Silero VAD upstream license](https://github.com/snakers4/silero-vad/blob/ma
 
 The embedded settings permit use by everyone, commercial use including corporations, redistribution, modification and redistribution of modifications. Antisocial or hateful usage is not permitted. Attribution is retained even though credit notation is marked unnecessary. The model is self-contained, with no external buffer or image URIs. Its exact SHA-256 is `12c2b97e95e700783a6a550dc0eee2d7880aeedccef9ae67bc4c5a2f0f2631a2`; provenance and the complete embedded settings are kept beside the file.
 
+## Original Coastal V4 room
+
+The included room geometry was authored for Maaso in Blender from design
+references. Its five PBR texture source groups are recorded in
+[the original texture provenance](docs/assets/coastal-texture-provenance.json).
+Poly Haven and ambientCG provide those texture inputs under CC0-1.0; their
+published terms permit redistribution of the asset files:
+[Poly Haven license](https://polyhaven.com/license),
+[ambientCG license](https://docs.ambientcg.com/license/).
+The baked runtime atlases and cloud/window resources are Maaso-authored
+derivatives/generated resources. Original character meshes are not part of
+this room's dependency closure. Exact reviewed asset paths and hashes are in
+[original-room-assets.json](assets/brand/original-room-assets.json).
+The root MIT license applies to Maaso-owned code and geometry; it does not
+replace the CC0 notices or the free VRM's separate license.
+
 ## Excluded content
 
-Production credentials, signing material, account data, large LLM/ASR/TTS weights, the original paid character models, purchased animations, original room assets and private operational records are excluded. The original commercial application's character art and Unity player exports are not licensed through this source release. The reviewed free avatar above is the explicit exception to the character-source exclusion. Names of third-party products identify integrations and do not imply endorsement.
+Production credentials, signing material, account data, large LLM/ASR/TTS weights, the original paid character models, purchased animations and private operational records are excluded. The original commercial application's character art and Unity player exports are not licensed through this source release. The reviewed free avatar above is the explicit exception to the character-source exclusion. Names of third-party products identify integrations and do not imply endorsement.
 
 ## Product screenshot media
 
-The README gallery contains rendered product screenshots, separately documented in [the capture notes and credits](docs/media/showcase/README.md). Their depicted character, room and game content is not relicensed by the root MIT license. These reference PNGs do not include or grant redistribution rights to the original 3D assets.
+The README gallery contains rendered product screenshots, separately documented in [the capture notes and credits](docs/media/showcase/README.md). Their depicted character, room and game content is not relicensed by the root MIT license. These reference PNGs do not grant rights to the excluded character assets. Room assets are covered by the reviewed notice above.

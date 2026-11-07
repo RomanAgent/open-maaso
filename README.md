@@ -12,7 +12,7 @@ Local login · On-device data · System speech · Offline games and applets
 
 ## Original interface, local operation
 
-**open-maaso keeps the original Maaso application, routes, page layouts and interactions.** Home, conversation, games, applets, Play together, Store, workshop, profile, memory and settings use their original pages. A free Pixiv VRM replaces the default character, and the original Settings page exposes model/API-key configuration.
+**open-maaso keeps the original Maaso application, routes, page layouts and interactions.** Home, conversation, games, applets, Play together, Store, workshop, profile, memory and settings use their original pages. The original Coastal V4 Home background and login presentation are retained. A free Pixiv VRM replaces the character, and the original Settings page exposes model/API-key configuration.
 
 Local login and storage need no Maaso backend. Local adapters supply the existing account, profile, work, catalog and skill services. Conversations and memory retain the original account-scoped Sembast persistence.
 
@@ -35,7 +35,7 @@ The original login fields are prefilled. This demonstration identity is not a de
 | Store and workshop | Original pages with local catalogs, prompt skills and work records |
 | Profile and memory | Existing profile, memory and account-scoped data services |
 | Hardware | Original BLE applet and shared device transport |
-| Membership | Original Free/unavailable-purchase state; no simulated payments |
+| Model access | Configured provider/key only; no membership card, plans or membership gate |
 
 Without an enabled model, the app provides local setup guidance. A large offline LLM is not bundled; optional model calls need a reachable configured endpoint. Cloud operations without a local implementation return an explicit unavailable result. See the [local migration boundaries](docs/offline-edition.md).
 

@@ -4,7 +4,7 @@ import 'package:maaso/src/core/services/daily_token_usage_service.dart';
 import 'package:maaso/src/core/widgets/ui/glass/maaso_frost_tokens.dart';
 import 'package:maaso/src/core/widgets/ui/secondary/app_secondary.dart';
 
-/// Compact, read-only local telemetry below the membership card.
+/// Read-only on-device usage telemetry; it does not grant or gate model calls.
 class DailyTokenUsageCard extends StatefulWidget {
   const DailyTokenUsageCard({
     super.key,

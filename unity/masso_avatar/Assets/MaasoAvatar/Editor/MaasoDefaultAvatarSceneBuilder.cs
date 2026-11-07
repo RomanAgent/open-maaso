@@ -62,7 +62,6 @@ namespace Maaso.Avatar.Editor
                 NewSceneSetup.EmptyScene,
                 NewSceneMode.Single);
             ConfigureRenderSettings();
-            CreateOfflineFloor();
 
             GameObject avatar = PrefabUtility.InstantiatePrefab(avatarAsset) as GameObject;
             if (avatar == null)
@@ -107,7 +106,30 @@ namespace Maaso.Avatar.Editor
             offlineReceiver.FindProperty("designedIdleStateName").stringValue = "Idle";
             offlineReceiver.ApplyModifiedPropertiesWithoutUndo();
 
-            OpenMaasoLoginDoorwayBuilder.Install();
+            GameObject mapAsset = AssetDatabase.LoadAssetAtPath<GameObject>(
+                "Assets/MaasoWorld/Resources/PersonalSpaceMap.prefab");
+            if (mapAsset == null)
+                throw new FileNotFoundException("The original reviewed Coastal V4 room is required.");
+            GameObject mapObject = PrefabUtility.InstantiatePrefab(mapAsset, scene) as GameObject;
+            if (mapObject == null)
+                throw new InvalidOperationException("The original Maaso room could not be instantiated.");
+            mapObject.name = Maaso.World.PersistentWorldMapController.ResourceName;
+            var map = mapObject.GetComponent<Maaso.World.PersistentWorldMapController>();
+            if (map == null || LoginDoorwayRig.Ensure(map) == null)
+                throw new InvalidOperationException("The original Maaso room lost its shared entry.");
+            framing.SetHomeViewReference(map.HomeCameraReference);
+            var originalFraming = new SerializedObject(framing);
+            originalFraming.FindProperty("framingPadding").floatValue = 1f;
+            originalFraming.FindProperty("topSafeViewport").floatValue = .15f;
+            originalFraming.FindProperty("bottomSafeViewport").floatValue = .2f;
+            originalFraming.ApplyModifiedPropertiesWithoutUndo();
+            var portrait = camera.gameObject.AddComponent<PortraitDepthOfField>();
+            var originalPortrait = new SerializedObject(portrait);
+            originalPortrait.FindProperty("subjectClearance").floatValue = .35f;
+            originalPortrait.FindProperty("backgroundTransition").floatValue = 2.2f;
+            originalPortrait.FindProperty("blurRadius").floatValue = 3.5f;
+            originalPortrait.ApplyModifiedPropertiesWithoutUndo();
+            camera.depthTextureMode |= DepthTextureMode.Depth;
 
             EditorSceneManager.SaveScene(scene, ScenePath);
             UpdateBuildSettings();
@@ -176,7 +198,11 @@ namespace Maaso.Avatar.Editor
             }
             var map = UnityEngine.Object.FindAnyObjectByType<Maaso.World.PersistentWorldMapController>();
             var doorway = LoginDoorwayRig.Ensure(map);
-            if (doorway == null || !doorway.IsSceneEntryBound || !doorway.ValidateEntryRoute())
+            if (map == null ||
+                PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(map.gameObject) !=
+                    "Assets/MaasoWorld/Resources/PersonalSpaceMap.prefab" ||
+                doorway == null || !doorway.IsSceneEntryBound || !doorway.ValidateEntryRoute() ||
+                camera.GetComponent<PortraitDepthOfField>() == null)
             {
                 throw new InvalidOperationException(
                     "Bundled VRM scene is missing its shared login entry.");
@@ -208,6 +234,28 @@ namespace Maaso.Avatar.Editor
                 HumanPose pose = new HumanPose();
                 using (var poseHandler = new HumanPoseHandler(animator.avatar, animator.transform))
                     poseHandler.GetHumanPose(ref pose);
+                // A Humanoid state's unanimated muscles use Unity's zero
+                // defaults, not this VRM's imported T-pose. Zero bends its
+                // elbows and knees and curls its fingers. Author the complete
+                // model-specific body baseline before lowering the arms.
+                clip.ClearCurves();
+                for (int muscleIndex = 0; muscleIndex < HumanTrait.MuscleCount; muscleIndex++)
+                {
+                    int boneIndex = HumanTrait.BoneFromMuscle(muscleIndex);
+                    if (boneIndex == (int)HumanBodyBones.LeftEye ||
+                        boneIndex == (int)HumanBodyBones.RightEye ||
+                        boneIndex == (int)HumanBodyBones.Jaw) continue;
+                    string muscle = HumanTrait.MuscleName[muscleIndex];
+                    float baseline = Mathf.Clamp(pose.muscles[muscleIndex], -1f, 1f);
+                    // The shoulder's two coupled axes need a neutral hanging
+                    // plane, not just a lowered imported T-pose. Otherwise
+                    // this model's wrists sit behind its hip/garment plane.
+                    if (muscle is "Left Arm Down-Up" or "Right Arm Down-Up") baseline = -.65f;
+                    if (muscle is "Left Arm Front-Back" or "Right Arm Front-Back") baseline = .15f;
+                    AnimationUtility.SetEditorCurve(clip,
+                        EditorCurveBinding.FloatCurve("", typeof(Animator), muscle),
+                        AnimationCurve.Constant(0f, 4f, baseline));
+                }
                 string[] axes = { "x", "y", "z" };
                 for (int axis = 0; axis < 3; axis++)
                     AnimationUtility.SetEditorCurve(clip,
@@ -218,18 +266,19 @@ namespace Maaso.Avatar.Editor
                     AnimationUtility.SetEditorCurve(clip,
                         EditorCurveBinding.FloatCurve("", typeof(Animator), "RootQ." + rotationAxes[axis]),
                         AnimationCurve.Constant(0f, 4f, pose.bodyRotation[axis]));
-                foreach (string muscle in new[] { "Left Arm Down-Up", "Right Arm Down-Up" })
-                    AnimationUtility.SetEditorCurve(clip,
-                        EditorCurveBinding.FloatCurve("", typeof(Animator), muscle),
-                        AnimationCurve.Constant(0f, 4f, -0.75f));
+                int chestIndex = Array.IndexOf(HumanTrait.MuscleName, "Chest Front-Back");
+                float chestBaseline = pose.muscles[chestIndex];
                 AnimationUtility.SetEditorCurve(clip,
                     EditorCurveBinding.FloatCurve("", typeof(Animator), "Chest Front-Back"),
-                    new AnimationCurve(new Keyframe(0f, 0f), new Keyframe(2f, 0.025f), new Keyframe(4f, 0f)));
+                    new AnimationCurve(new Keyframe(0f, chestBaseline),
+                        new Keyframe(2f, Mathf.Min(1f, chestBaseline + .025f)),
+                        new Keyframe(4f, chestBaseline)));
                 var settings = AnimationUtility.GetAnimationClipSettings(clip);
                 settings.loopTime = true;
                 AnimationUtility.SetAnimationClipSettings(clip, settings);
                 if (newClip) AssetDatabase.CreateAsset(clip, clipPath);
                 else EditorUtility.SetDirty(clip);
+                AssetDatabase.SaveAssetIfDirty(clip);
             }
             AnimatorController controller = AssetDatabase.LoadAssetAtPath<AnimatorController>(ControllerPath);
             if (controller == null)
@@ -242,24 +291,6 @@ namespace Maaso.Avatar.Editor
             return controller;
         }
 
-        private static void CreateOfflineFloor()
-        {
-            GameObject floor = GameObject.CreatePrimitive(PrimitiveType.Plane);
-            floor.name = "OfflineWhiteFloor";
-            floor.transform.position = new Vector3(0f, -0.015f, 0f);
-            floor.transform.localScale = Vector3.one * 2f;
-            EnsureAssetFolder("Assets/MaasoAvatar/Materials");
-            const string materialPath = "Assets/MaasoAvatar/Materials/OfflineWhiteFloor.mat";
-            Material material = AssetDatabase.LoadAssetAtPath<Material>(materialPath);
-            if (material == null)
-            {
-                material = new Material(Shader.Find("Standard"));
-                material.color = new Color(0.96f, 0.965f, 0.972f, 1f);
-                material.SetFloat("_Glossiness", 0f);
-                AssetDatabase.CreateAsset(material, materialPath);
-            }
-            floor.GetComponent<Renderer>().sharedMaterial = material;
-        }
 
         private static Camera CreateMainCamera()
         {
@@ -271,7 +302,7 @@ namespace Maaso.Avatar.Editor
             cameraObject.AddComponent<AudioListener>();
             Camera camera = cameraObject.AddComponent<Camera>();
             camera.clearFlags = CameraClearFlags.SolidColor;
-            camera.backgroundColor = Color.white;
+            camera.backgroundColor = new Color(1f, 0.9843137f, 0.9490196f, 1f);
             camera.fieldOfView = 37.5f;
             camera.nearClipPlane = 0.3f;
             camera.farClipPlane = 1000f;
@@ -289,8 +320,8 @@ namespace Maaso.Avatar.Editor
                 Quaternion.Euler(50f, -30f, 0f));
             Light light = lightObject.AddComponent<Light>();
             light.type = LightType.Directional;
-            light.color = Color.white;
-            light.intensity = 0.65f;
+            light.color = new Color(1f, 0.95686275f, 0.8392157f, 1f);
+            light.intensity = 1f;
             light.shadows = LightShadows.Soft;
             RenderSettings.sun = light;
             return light;
@@ -300,9 +331,9 @@ namespace Maaso.Avatar.Editor
         {
             RenderSettings.fog = false;
             RenderSettings.ambientMode = AmbientMode.Trilight;
-            RenderSettings.ambientSkyColor = new Color(0.20f, 0.20f, 0.20f);
-            RenderSettings.ambientEquatorColor = new Color(0.18f, 0.18f, 0.18f);
-            RenderSettings.ambientGroundColor = new Color(0.15f, 0.15f, 0.15f);
+            RenderSettings.ambientSkyColor = new Color(0.212f, 0.227f, 0.259f);
+            RenderSettings.ambientEquatorColor = new Color(0.114f, 0.125f, 0.133f);
+            RenderSettings.ambientGroundColor = new Color(0.047f, 0.043f, 0.035f);
             RenderSettings.ambientIntensity = 1f;
         }
 

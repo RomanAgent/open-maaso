@@ -1,0 +1,7364 @@
+{
+  "version": 4,
+  "schemaVersion": 4,
+  "roomSize": 8.0,
+  "roomHeight": 3.2,
+  "bedCount": 1,
+  "axes": "Blender X,Y,Z -> Unity -X,Z,-Y",
+  "mainRoomBoundsBlender": [
+    -4,
+    -4,
+    4,
+    4
+  ],
+  "bedroomBoundsBlender": [
+    -7.8,
+    -4,
+    -4.2,
+    -0.4
+  ],
+  "walkableRegions": [
+    {
+      "id": "main",
+      "boundsBlender": [
+        -4,
+        -4,
+        4,
+        4
+      ],
+      "boundsUnity": [
+        -4,
+        -4,
+        4,
+        4
+      ]
+    },
+    {
+      "id": "bedroom",
+      "boundsBlender": [
+        -7.8,
+        -4,
+        -4.2,
+        -0.4
+      ],
+      "boundsUnity": [
+        4.2,
+        0.4,
+        7.8,
+        4
+      ]
+    },
+    {
+      "id": "bedroom_portal",
+      "boundsBlender": [
+        -4.2,
+        -2.6,
+        -4,
+        -1.6
+      ],
+      "boundsUnity": [
+        4,
+        1.6,
+        4.2,
+        2.6
+      ]
+    }
+  ],
+  "walkableRegionRule": "union_then_dynamic_blockers",
+  "footprintBlender": [
+    [
+      -7.8,
+      -4
+    ],
+    [
+      4,
+      -4
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      -4,
+      4
+    ],
+    [
+      -4,
+      -0.4
+    ],
+    [
+      -7.8,
+      -0.4
+    ]
+  ],
+  "bedCollider": {
+    "boundsBlender": [
+      -7.650000095367432,
+      -2.9499998092651367,
+      0.0,
+      -5.450000286102295,
+      -1.2499998807907104,
+      1.149999976158142
+    ],
+    "boundsUnity": [
+      5.450000286102295,
+      0.0,
+      1.2499998807907104,
+      7.650000095367432,
+      1.149999976158142,
+      2.9499998092651367
+    ],
+    "footprintBlender": [
+      -7.65,
+      -2.95,
+      -5.45,
+      -1.25
+    ],
+    "footprintUnity": [
+      5.45,
+      1.25,
+      7.65,
+      2.95
+    ],
+    "kind": "conservative_solid_bed_box"
+  },
+  "bedInteraction": {
+    "lie_center": {
+      "positionBlender": [
+        -6.51,
+        -2.1,
+        0.65
+      ],
+      "positionUnity": [
+        6.51,
+        0.65,
+        2.1
+      ]
+    },
+    "lie_head_toward": {
+      "directionBlender": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "directionUnity": [
+        1.0,
+        0.0,
+        -0.0
+      ]
+    },
+    "sit_south_edge": {
+      "positionBlender": [
+        -6.3,
+        -2.89,
+        0.6
+      ],
+      "positionUnity": [
+        6.3,
+        0.6,
+        2.89
+      ]
+    },
+    "sit_south_faces": {
+      "directionBlender": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "directionUnity": [
+        -0.0,
+        0.0,
+        1.0
+      ]
+    },
+    "sit_up_near_head": {
+      "positionBlender": [
+        -7.08,
+        -2.1,
+        0.64
+      ],
+      "positionUnity": [
+        7.08,
+        0.64,
+        2.1
+      ]
+    },
+    "approach_south": {
+      "positionBlender": [
+        -6.3,
+        -3.28,
+        0.0
+      ],
+      "positionUnity": [
+        6.3,
+        0.0,
+        3.28
+      ]
+    },
+    "approach_foot": {
+      "positionBlender": [
+        -5.1,
+        -2.1,
+        0.0
+      ],
+      "positionUnity": [
+        5.1,
+        0.0,
+        2.1
+      ]
+    },
+    "footSouthCorner": {
+      "positionBlender": [
+        -5.1,
+        -3.28,
+        0
+      ],
+      "positionUnity": [
+        5.1,
+        0.0,
+        3.28
+      ],
+      "runtimeRouteCandidate": true
+    }
+  },
+  "bedSourceObjects": [
+    "V3_BedSideRail-1",
+    "V3_BedSlatLedger-1",
+    "V3_BedHeadPost-1",
+    "V3_BedSideRail1",
+    "V3_BedSlatLedger1",
+    "V3_BedHeadPost1",
+    "V3_BedFootRail",
+    "V3_BedHeadRail",
+    "V3_BedCentreBeam",
+    "V3_BedSlat00",
+    "V3_BedSlat01",
+    "V3_BedSlat02",
+    "V3_BedSlat03",
+    "V3_BedSlat04",
+    "V3_BedSlat05",
+    "V3_BedSlat06",
+    "V3_BedSlat07",
+    "V3_BedSlat08",
+    "V3_BedSlat09",
+    "V3_BedSlat10",
+    "V3_BedSlat11",
+    "V3_BedSlat12",
+    "V3_BedSlat13",
+    "V3_BedSlat14",
+    "V3_BedHeadboardPlank00",
+    "V3_BedHeadboardPlank01",
+    "V3_BedHeadboardPlank02",
+    "V3_BedHeadboardTopCap",
+    "V3_BedTaperedLeg_-1_-1",
+    "V3_BedTaperedLeg_-1_1",
+    "V3_BedTaperedLeg_1_-1",
+    "V3_BedTaperedLeg_1_1",
+    "V3_BedExposedJoineryDowels",
+    "V3_BedMattress",
+    "V3_BedMattressTopPiping",
+    "V3_BedMattressBottomPiping",
+    "V3_BedMattressDiamondStitches",
+    "V3_BedLinenDuvet",
+    "V3_BedDuvetBoundHem",
+    "V3_BedDuvetTurnback",
+    "V3_BedTurnbackStitchedHem",
+    "V3_BedSeaBlueThrow",
+    "V3_BedThrowSewnEdge",
+    "V3_BedThrowWovenFringe",
+    "V3_BedSoftPillow0",
+    "V3_BedPillow0Piping",
+    "V3_BedPillow0NeedleStitches",
+    "V3_BedSoftPillow1",
+    "V3_BedPillow1Piping",
+    "V3_BedPillow1NeedleStitches"
+  ],
+  "bedContactEvidence": [
+    {
+      "object": "V3_BedTaperedLeg_-1_-1",
+      "evaluated_min_z_m": 0.0,
+      "support_vertex_count": 16
+    },
+    {
+      "object": "V3_BedTaperedLeg_-1_1",
+      "evaluated_min_z_m": 0.0,
+      "support_vertex_count": 16
+    },
+    {
+      "object": "V3_BedTaperedLeg_1_-1",
+      "evaluated_min_z_m": 0.0,
+      "support_vertex_count": 16
+    },
+    {
+      "object": "V3_BedTaperedLeg_1_1",
+      "evaluated_min_z_m": 0.0,
+      "support_vertex_count": 16
+    }
+  ],
+  "bedContactReviewRequired": false,
+  "mattressTopMetres": 0.571,
+  "lockedOriginalObjects": [
+    {
+      "name": "V2_Canvas_Frame_Horizontal",
+      "matrixBlender": [
+        1.0,
+        0.0,
+        0.0,
+        -3.95,
+        0.0,
+        1.0,
+        0.0,
+        0.75,
+        0.0,
+        0.0,
+        1.0,
+        1.057,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_bronze"
+      ]
+    },
+    {
+      "name": "V2_Canvas_Frame_Horizontal.001",
+      "matrixBlender": [
+        1.0,
+        0.0,
+        0.0,
+        -3.95,
+        0.0,
+        1.0,
+        0.0,
+        0.75,
+        0.0,
+        0.0,
+        1.0,
+        2.543,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_bronze"
+      ]
+    },
+    {
+      "name": "V2_Canvas_Frame_Vertical",
+      "matrixBlender": [
+        1.0,
+        0.0,
+        0.0,
+        -3.95,
+        0.0,
+        1.0,
+        0.0,
+        -0.34,
+        0.0,
+        0.0,
+        1.0,
+        1.8,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_bronze"
+      ]
+    },
+    {
+      "name": "V2_Canvas_Frame_Vertical.001",
+      "matrixBlender": [
+        1.0,
+        0.0,
+        0.0,
+        -3.95,
+        0.0,
+        1.0,
+        0.0,
+        1.84,
+        0.0,
+        0.0,
+        1.0,
+        1.8,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_bronze"
+      ]
+    },
+    {
+      "name": "V2_Concealed_Curtain_Track",
+      "matrixBlender": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        3.8299999,
+        0.0,
+        0.0,
+        1.0,
+        3.1199999,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_ceiling"
+      ]
+    },
+    {
+      "name": "V2_Linen_Drape_East",
+      "matrixBlender": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_curtain"
+      ]
+    },
+    {
+      "name": "V2_Linen_Drape_West",
+      "matrixBlender": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_curtain"
+      ]
+    },
+    {
+      "name": "V2_Sheer_Curtain_East",
+      "matrixBlender": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_sheer"
+      ]
+    },
+    {
+      "name": "V2_Sheer_Curtain_West",
+      "matrixBlender": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_sheer"
+      ]
+    },
+    {
+      "name": "V2_Sideboard_Canvas",
+      "matrixBlender": [
+        1.0,
+        0.0,
+        0.0,
+        -3.9749999,
+        0.0,
+        1.0,
+        0.0,
+        0.75,
+        0.0,
+        0.0,
+        1.0,
+        1.8,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_AbstractCanvas"
+      ]
+    },
+    {
+      "name": "V2_SideboardBookLowerCover-1",
+      "matrixBlender": [
+        -0.0499793,
+        0.9987503,
+        0.0,
+        -3.6300001,
+        -0.9987503,
+        -0.0499793,
+        0.0,
+        1.6799999,
+        0.0,
+        0.0,
+        1.0,
+        0.6825,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_book"
+      ]
+    },
+    {
+      "name": "V2_SideboardBookLowerCover1",
+      "matrixBlender": [
+        -0.0499793,
+        0.9987503,
+        0.0,
+        -3.6300001,
+        -0.9987503,
+        -0.0499793,
+        0.0,
+        1.6799999,
+        0.0,
+        0.0,
+        1.0,
+        0.7275,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_book"
+      ]
+    },
+    {
+      "name": "V2_SideboardBookLowerPages",
+      "matrixBlender": [
+        -0.0499793,
+        0.9987503,
+        0.0,
+        -3.6300001,
+        -0.9987503,
+        -0.0499793,
+        0.0,
+        1.6799999,
+        0.0,
+        0.0,
+        1.0,
+        0.705,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_paper"
+      ]
+    },
+    {
+      "name": "V2_SideboardBookLowerSpine",
+      "matrixBlender": [
+        -0.0499793,
+        0.9987503,
+        0.0,
+        -3.7518475,
+        -0.9987503,
+        -0.0499793,
+        0.0,
+        1.6860975,
+        0.0,
+        0.0,
+        1.0,
+        0.705,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_book"
+      ]
+    },
+    {
+      "name": "V2_SideboardBookUpperCover-1",
+      "matrixBlender": [
+        0.0699426,
+        0.997551,
+        0.0,
+        -3.635,
+        -0.997551,
+        0.0699426,
+        0.0,
+        1.64,
+        0.0,
+        0.0,
+        1.0,
+        0.732,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen_sage"
+      ]
+    },
+    {
+      "name": "V2_SideboardBookUpperCover1",
+      "matrixBlender": [
+        0.0699426,
+        0.997551,
+        0.0,
+        -3.635,
+        -0.997551,
+        0.0699426,
+        0.0,
+        1.64,
+        0.0,
+        0.0,
+        1.0,
+        0.77,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen_sage"
+      ]
+    },
+    {
+      "name": "V2_SideboardBookUpperPages",
+      "matrixBlender": [
+        0.0699426,
+        0.997551,
+        0.0,
+        -3.635,
+        -0.997551,
+        0.0699426,
+        0.0,
+        1.64,
+        0.0,
+        0.0,
+        1.0,
+        0.751,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_paper"
+      ]
+    },
+    {
+      "name": "V2_SideboardBookUpperSpine",
+      "matrixBlender": [
+        0.0699426,
+        0.997551,
+        0.0,
+        -3.7467258,
+        -0.997551,
+        0.0699426,
+        0.0,
+        1.6321664,
+        0.0,
+        0.0,
+        1.0,
+        0.751,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen_sage"
+      ]
+    },
+    {
+      "name": "V2_SideboardCabinetCarcass",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.6500001,
+        -1.0,
+        1e-07,
+        0.0,
+        0.75,
+        0.0,
+        0.0,
+        1.0,
+        0.409,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_oak"
+      ]
+    },
+    {
+      "name": "V2_SideboardContinuousOakTop",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.6500001,
+        -1.0,
+        1e-07,
+        0.0,
+        0.75,
+        0.0,
+        0.0,
+        1.0,
+        0.664,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_oak"
+      ]
+    },
+    {
+      "name": "V2_SideboardDoorShadowReveal",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.3830001,
+        -1.0,
+        1e-07,
+        0.0,
+        0.75,
+        0.0,
+        0.0,
+        1.0,
+        0.409,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_bronze"
+      ]
+    },
+    {
+      "name": "V2_SideboardFingerPull0",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.3500001,
+        -1.0,
+        1e-07,
+        0.0,
+        1.6305,
+        0.0,
+        0.0,
+        1.0,
+        0.55,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_bronze"
+      ]
+    },
+    {
+      "name": "V2_SideboardFingerPull1",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.3500001,
+        -1.0,
+        1e-07,
+        0.0,
+        0.8415,
+        0.0,
+        0.0,
+        1.0,
+        0.55,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_bronze"
+      ]
+    },
+    {
+      "name": "V2_SideboardFingerPull2",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.3500001,
+        -1.0,
+        1e-07,
+        0.0,
+        0.0525,
+        0.0,
+        0.0,
+        1.0,
+        0.55,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_bronze"
+      ]
+    },
+    {
+      "name": "V2_SideboardFingerPull3",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.3500001,
+        -1.0,
+        1e-07,
+        0.0,
+        -0.7365,
+        0.0,
+        0.0,
+        1.0,
+        0.55,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_bronze"
+      ]
+    },
+    {
+      "name": "V2_SideboardFlushDoor0",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.368,
+        -1.0,
+        1e-07,
+        0.0,
+        1.9335001,
+        0.0,
+        0.0,
+        1.0,
+        0.409,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_oak"
+      ]
+    },
+    {
+      "name": "V2_SideboardFlushDoor1",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.368,
+        -1.0,
+        1e-07,
+        0.0,
+        1.1445,
+        0.0,
+        0.0,
+        1.0,
+        0.409,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_oak"
+      ]
+    },
+    {
+      "name": "V2_SideboardFlushDoor2",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.368,
+        -1.0,
+        1e-07,
+        0.0,
+        0.3555,
+        0.0,
+        0.0,
+        1.0,
+        0.409,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_oak"
+      ]
+    },
+    {
+      "name": "V2_SideboardFlushDoor3",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.368,
+        -1.0,
+        1e-07,
+        0.0,
+        -0.4335001,
+        0.0,
+        0.0,
+        1.0,
+        0.409,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_oak"
+      ]
+    },
+    {
+      "name": "V2_SideboardInteriorHerbCeramicPlanter",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.6800001,
+        -1.0,
+        1e-07,
+        0.0,
+        -0.13,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_ceramic_white"
+      ]
+    },
+    {
+      "name": "V2_SideboardInteriorHerbFineTwig",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.6800001,
+        -1.0,
+        1e-07,
+        0.0,
+        -0.13,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardInteriorHerbFineTwig.001",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.6800001,
+        -1.0,
+        1e-07,
+        0.0,
+        -0.13,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardInteriorHerbFineTwig.002",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.6800001,
+        -1.0,
+        1e-07,
+        0.0,
+        -0.13,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardInteriorHerbFineTwig.003",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.6800001,
+        -1.0,
+        1e-07,
+        0.0,
+        -0.13,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardInteriorHerbFineTwig.004",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.6800001,
+        -1.0,
+        1e-07,
+        0.0,
+        -0.13,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardInteriorHerbFineTwig.005",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.6800001,
+        -1.0,
+        1e-07,
+        0.0,
+        -0.13,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardInteriorHerbFineTwig.006",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.6800001,
+        -1.0,
+        1e-07,
+        0.0,
+        -0.13,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardInteriorHerbFineTwig.007",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.6800001,
+        -1.0,
+        1e-07,
+        0.0,
+        -0.13,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardInteriorHerbFineTwig.008",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.6800001,
+        -1.0,
+        1e-07,
+        0.0,
+        -0.13,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardInteriorHerbFineTwig.009",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.6800001,
+        -1.0,
+        1e-07,
+        0.0,
+        -0.13,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardInteriorHerbFineTwig.010",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.6800001,
+        -1.0,
+        1e-07,
+        0.0,
+        -0.13,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardInteriorHerbFineTwig.011",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.6800001,
+        -1.0,
+        1e-07,
+        0.0,
+        -0.13,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardInteriorHerbPlanterSoil",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.6800001,
+        -1.0,
+        1e-07,
+        0.0,
+        -0.13,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_soil"
+      ]
+    },
+    {
+      "name": "V2_SideboardInteriorHerbSlenderLeafCanopy",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.6800001,
+        -1.0,
+        1e-07,
+        0.0,
+        -0.13,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_leaf_dark"
+      ]
+    },
+    {
+      "name": "V2_SideboardRecessedOakFoot",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.835,
+        -1.0,
+        1e-07,
+        0.0,
+        2.1500001,
+        0.0,
+        0.0,
+        1.0,
+        0.083,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_oak"
+      ]
+    },
+    {
+      "name": "V2_SideboardRecessedOakFoot.001",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.4649999,
+        -1.0,
+        1e-07,
+        0.0,
+        2.1499999,
+        0.0,
+        0.0,
+        1.0,
+        0.083,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_oak"
+      ]
+    },
+    {
+      "name": "V2_SideboardRecessedOakFoot.002",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.8350003,
+        -1.0,
+        1e-07,
+        0.0,
+        -0.65,
+        0.0,
+        0.0,
+        1.0,
+        0.083,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_oak"
+      ]
+    },
+    {
+      "name": "V2_SideboardRecessedOakFoot.003",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.4650002,
+        -1.0,
+        1e-07,
+        0.0,
+        -0.65,
+        0.0,
+        0.0,
+        1.0,
+        0.083,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_oak"
+      ]
+    },
+    {
+      "name": "V2_SideboardSmallDish",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.5600002,
+        -1.0,
+        1e-07,
+        0.0,
+        0.53,
+        0.0,
+        0.0,
+        1.0,
+        0.681,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_ceramic"
+      ]
+    },
+    {
+      "name": "V2_SideboardWindowHerbCeramicPlanter",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.665,
+        -1.0,
+        1e-07,
+        0.0,
+        2.02,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_ceramic_white"
+      ]
+    },
+    {
+      "name": "V2_SideboardWindowHerbFineTwig",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.665,
+        -1.0,
+        1e-07,
+        0.0,
+        2.02,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardWindowHerbFineTwig.001",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.665,
+        -1.0,
+        1e-07,
+        0.0,
+        2.02,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardWindowHerbFineTwig.002",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.665,
+        -1.0,
+        1e-07,
+        0.0,
+        2.02,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardWindowHerbFineTwig.003",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.665,
+        -1.0,
+        1e-07,
+        0.0,
+        2.02,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardWindowHerbFineTwig.004",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.665,
+        -1.0,
+        1e-07,
+        0.0,
+        2.02,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardWindowHerbFineTwig.005",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.665,
+        -1.0,
+        1e-07,
+        0.0,
+        2.02,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardWindowHerbFineTwig.006",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.665,
+        -1.0,
+        1e-07,
+        0.0,
+        2.02,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardWindowHerbFineTwig.007",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.665,
+        -1.0,
+        1e-07,
+        0.0,
+        2.02,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardWindowHerbFineTwig.008",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.665,
+        -1.0,
+        1e-07,
+        0.0,
+        2.02,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardWindowHerbFineTwig.009",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.665,
+        -1.0,
+        1e-07,
+        0.0,
+        2.02,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardWindowHerbFineTwig.010",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.665,
+        -1.0,
+        1e-07,
+        0.0,
+        2.02,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardWindowHerbFineTwig.011",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.665,
+        -1.0,
+        1e-07,
+        0.0,
+        2.02,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_stem"
+      ]
+    },
+    {
+      "name": "V2_SideboardWindowHerbPlanterSoil",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.665,
+        -1.0,
+        1e-07,
+        0.0,
+        2.02,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_soil"
+      ]
+    },
+    {
+      "name": "V2_SideboardWindowHerbSlenderLeafCanopy",
+      "matrixBlender": [
+        1e-07,
+        1.0,
+        0.0,
+        -3.665,
+        -1.0,
+        1e-07,
+        0.0,
+        2.02,
+        0.0,
+        0.0,
+        1.0,
+        0.68,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_leaf_dark"
+      ]
+    },
+    {
+      "name": "V2_SofaArm0",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.898,
+        1.0,
+        2e-07,
+        0.0,
+        0.125,
+        0.0,
+        0.0,
+        1.0,
+        0.564,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaArm1",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.8980002,
+        1.0,
+        2e-07,
+        0.0,
+        2.875,
+        0.0,
+        0.0,
+        1.0,
+        0.564,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaArmTopSeam0",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.898,
+        1.0,
+        2e-07,
+        0.0,
+        0.125,
+        0.0,
+        0.0,
+        1.0,
+        0.818,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaArmTopSeam1",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.8980002,
+        1.0,
+        2e-07,
+        0.0,
+        2.875,
+        0.0,
+        0.0,
+        1.0,
+        0.818,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaBackCushion0",
+      "matrixBlender": [
+        1e-07,
+        -0.9876884,
+        0.1564345,
+        3.177,
+        1.0,
+        1e-07,
+        -0.0,
+        0.656,
+        -0.0,
+        0.1564345,
+        0.9876884,
+        0.777,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaBackCushion1",
+      "matrixBlender": [
+        1e-07,
+        -0.9876884,
+        0.1564345,
+        3.177,
+        1.0,
+        1e-07,
+        -0.0,
+        1.5,
+        -0.0,
+        0.1564345,
+        0.9876884,
+        0.777,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaBackCushion2",
+      "matrixBlender": [
+        1e-07,
+        -0.9876884,
+        0.1564345,
+        3.1770003,
+        1.0,
+        1e-07,
+        -0.0,
+        2.3439999,
+        -0.0,
+        0.1564345,
+        0.9876884,
+        0.777,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaBackTailoredWelt0",
+      "matrixBlender": [
+        2e-07,
+        0.1564344,
+        0.9876884,
+        3.0740001,
+        1.0,
+        -1e-07,
+        -2e-07,
+        0.656,
+        1e-07,
+        0.9876884,
+        -0.1564344,
+        0.777,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaBackTailoredWelt1",
+      "matrixBlender": [
+        2e-07,
+        0.1564344,
+        0.9876884,
+        3.0740001,
+        1.0,
+        -1e-07,
+        -2e-07,
+        1.5,
+        1e-07,
+        0.9876884,
+        -0.1564344,
+        0.777,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaBackTailoredWelt2",
+      "matrixBlender": [
+        2e-07,
+        0.1564344,
+        0.9876884,
+        3.0740001,
+        1.0,
+        -1e-07,
+        -2e-07,
+        2.3439999,
+        1e-07,
+        0.9876884,
+        -0.1564344,
+        0.777,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaContinuousBackFrame",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        3.302,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.62,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaLooseLayeredPillow0",
+      "matrixBlender": [
+        0.1667435,
+        -0.9699984,
+        0.1769174,
+        3.0,
+        0.9713774,
+        0.1308173,
+        -0.1982748,
+        0.52,
+        0.1691824,
+        0.2049146,
+        0.9640474,
+        0.804,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen_sage"
+      ]
+    },
+    {
+      "name": "V2_SofaLooseLayeredPillow1",
+      "matrixBlender": [
+        0.0549283,
+        -0.9762115,
+        0.2097476,
+        3.0,
+        0.9976892,
+        0.0620727,
+        0.0276269,
+        1.53,
+        -0.0399893,
+        0.2077454,
+        0.9773652,
+        0.804,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaLooseLayeredPillow2",
+      "matrixBlender": [
+        -0.1183679,
+        -0.9748328,
+        0.1889179,
+        3.0000002,
+        0.9816605,
+        -0.0862496,
+        0.1700109,
+        2.51,
+        -0.1494381,
+        0.2055771,
+        0.967164,
+        0.804,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen_sage"
+      ]
+    },
+    {
+      "name": "V2_SofaOakFoot",
+      "matrixBlender": [
+        -3e-07,
+        1.0,
+        0.0,
+        3.22,
+        -1.0,
+        -3e-07,
+        0.0,
+        0.27,
+        0.0,
+        0.0,
+        1.0,
+        0.135,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_oak"
+      ]
+    },
+    {
+      "name": "V2_SofaOakFoot.001",
+      "matrixBlender": [
+        -3e-07,
+        1.0,
+        0.0,
+        2.5799999,
+        -1.0,
+        -3e-07,
+        0.0,
+        0.27,
+        0.0,
+        0.0,
+        1.0,
+        0.135,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_oak"
+      ]
+    },
+    {
+      "name": "V2_SofaOakFoot.002",
+      "matrixBlender": [
+        -3e-07,
+        1.0,
+        0.0,
+        3.2200003,
+        -1.0,
+        -3e-07,
+        0.0,
+        2.73,
+        0.0,
+        0.0,
+        1.0,
+        0.135,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_oak"
+      ]
+    },
+    {
+      "name": "V2_SofaOakFoot.003",
+      "matrixBlender": [
+        -3e-07,
+        1.0,
+        0.0,
+        2.5800002,
+        -1.0,
+        -3e-07,
+        0.0,
+        2.73,
+        0.0,
+        0.0,
+        1.0,
+        0.135,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_oak"
+      ]
+    },
+    {
+      "name": "V2_SofaSeatCushion0",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.8280001,
+        1.0,
+        2e-07,
+        0.0,
+        0.656,
+        0.0,
+        0.0,
+        1.0,
+        0.494,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaSeatCushion1",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.8280001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.494,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaSeatCushion2",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.8280001,
+        1.0,
+        2e-07,
+        0.0,
+        2.3440001,
+        0.0,
+        0.0,
+        1.0,
+        0.494,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaSeatTailoredWelt0",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.8280001,
+        1.0,
+        2e-07,
+        0.0,
+        0.656,
+        0.0,
+        0.0,
+        1.0,
+        0.532,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaSeatTailoredWelt1",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.8280001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.532,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaSeatTailoredWelt2",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.8280001,
+        1.0,
+        2e-07,
+        0.0,
+        2.3440001,
+        0.0,
+        0.0,
+        1.0,
+        0.532,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaUpholsteredFoundation",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.29,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrow",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowBoundHem",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.001",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.002",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.003",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.004",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.005",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.006",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.007",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.008",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.009",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.010",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.011",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.012",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.013",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.014",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.015",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.016",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.017",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.018",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.019",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.020",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.021",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.022",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.023",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.024",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.025",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.026",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.027",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.028",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.029",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.030",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.031",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.032",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.033",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.034",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.035",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.036",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.037",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.038",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.039",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.040",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.041",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.042",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.043",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.044",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.045",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.046",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.047",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_SofaWarmLinenArmThrowTwistedFringe.048",
+      "matrixBlender": [
+        2e-07,
+        -1.0,
+        0.0,
+        2.9000001,
+        1.0,
+        2e-07,
+        0.0,
+        1.5,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_linen"
+      ]
+    },
+    {
+      "name": "V2_Window_Glass",
+      "matrixBlender": [
+        1.0,
+        0.0,
+        0.0,
+        -2.615,
+        0.0,
+        1.0,
+        0.0,
+        4.0,
+        0.0,
+        0.0,
+        1.0,
+        1.5700001,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_glass"
+      ]
+    },
+    {
+      "name": "V2_Window_Glass.001",
+      "matrixBlender": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        4.0,
+        0.0,
+        0.0,
+        1.0,
+        1.5700001,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_glass"
+      ]
+    },
+    {
+      "name": "V2_Window_Glass.002",
+      "matrixBlender": [
+        1.0,
+        0.0,
+        0.0,
+        2.615,
+        0.0,
+        1.0,
+        0.0,
+        4.0,
+        0.0,
+        0.0,
+        1.0,
+        1.5700001,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_glass"
+      ]
+    },
+    {
+      "name": "V2_Window_Horizontal_Profile",
+      "matrixBlender": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        3.98,
+        0.0,
+        0.0,
+        1.0,
+        0.036,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_bronze"
+      ]
+    },
+    {
+      "name": "V2_Window_Horizontal_Profile.001",
+      "matrixBlender": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        3.98,
+        0.0,
+        0.0,
+        1.0,
+        3.115,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_bronze"
+      ]
+    },
+    {
+      "name": "V2_Window_Stone_Sill",
+      "matrixBlender": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        3.9300001,
+        0.0,
+        0.0,
+        1.0,
+        0.018,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_travertine"
+      ]
+    },
+    {
+      "name": "V2_Window_Vertical_Profile",
+      "matrixBlender": [
+        1.0,
+        0.0,
+        0.0,
+        -3.95,
+        0.0,
+        1.0,
+        0.0,
+        3.98,
+        0.0,
+        0.0,
+        1.0,
+        1.575,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_bronze"
+      ]
+    },
+    {
+      "name": "V2_Window_Vertical_Profile.001",
+      "matrixBlender": [
+        1.0,
+        0.0,
+        0.0,
+        -1.28,
+        0.0,
+        1.0,
+        0.0,
+        3.98,
+        0.0,
+        0.0,
+        1.0,
+        1.575,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_bronze"
+      ]
+    },
+    {
+      "name": "V2_Window_Vertical_Profile.002",
+      "matrixBlender": [
+        1.0,
+        0.0,
+        0.0,
+        1.28,
+        0.0,
+        1.0,
+        0.0,
+        3.98,
+        0.0,
+        0.0,
+        1.0,
+        1.575,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_bronze"
+      ]
+    },
+    {
+      "name": "V2_Window_Vertical_Profile.003",
+      "matrixBlender": [
+        1.0,
+        0.0,
+        0.0,
+        3.95,
+        0.0,
+        1.0,
+        0.0,
+        3.98,
+        0.0,
+        0.0,
+        1.0,
+        1.575,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "materials": [
+        "CoastalV2_bronze"
+      ]
+    }
+  ],
+  "anchors": [
+    {
+      "name": "V4_HomeAvatar",
+      "positionBlender": [
+        0.35,
+        -0.85,
+        0
+      ],
+      "positionUnity": [
+        -0.35,
+        0.0,
+        0.85
+      ]
+    },
+    {
+      "name": "V4_HomeCamera",
+      "positionBlender": [
+        0.35,
+        -3.1,
+        1.4
+      ],
+      "positionUnity": [
+        -0.35,
+        1.4,
+        3.1
+      ]
+    },
+    {
+      "name": "V4_EntryExteriorCamera",
+      "positionBlender": [
+        -2.5,
+        -5.8,
+        1.2
+      ],
+      "positionUnity": [
+        2.5,
+        1.2,
+        5.8
+      ]
+    },
+    {
+      "name": "V4_EntryThresholdCamera",
+      "positionBlender": [
+        -2.5,
+        -3.85,
+        1.35
+      ],
+      "positionUnity": [
+        2.5,
+        1.35,
+        3.85
+      ]
+    },
+    {
+      "name": "V4_EntryHallCamera",
+      "positionBlender": [
+        -1.45,
+        -2.5,
+        1.35
+      ],
+      "positionUnity": [
+        1.45,
+        1.35,
+        2.5
+      ]
+    },
+    {
+      "name": "V4_EntryArrivalCamera",
+      "positionBlender": [
+        0.35,
+        -3.1,
+        1.4
+      ],
+      "positionUnity": [
+        -0.35,
+        1.4,
+        3.1
+      ]
+    },
+    {
+      "name": "V4_EntryLookTarget",
+      "positionBlender": [
+        -2.5,
+        -4.035,
+        0.25
+      ],
+      "positionUnity": [
+        2.5,
+        0.25,
+        4.035
+      ]
+    },
+    {
+      "name": "V4_LobbyLookTarget",
+      "positionBlender": [
+        0.35,
+        -0.85,
+        1.2
+      ],
+      "positionUnity": [
+        -0.35,
+        1.2,
+        0.85
+      ]
+    },
+    {
+      "name": "V4_BedroomDoorApproach",
+      "positionBlender": [
+        -3.25,
+        -2.1,
+        0
+      ],
+      "positionUnity": [
+        3.25,
+        0.0,
+        2.1
+      ]
+    },
+    {
+      "name": "V4_BedroomDoorInside",
+      "positionBlender": [
+        -4.75,
+        -2.1,
+        0
+      ],
+      "positionUnity": [
+        4.75,
+        0.0,
+        2.1
+      ]
+    },
+    {
+      "name": "V4_BedApproach",
+      "positionBlender": [
+        -5.1,
+        -2.1,
+        0
+      ],
+      "positionUnity": [
+        5.1,
+        0.0,
+        2.1
+      ]
+    }
+  ],
+  "doors": [
+    {
+      "id": "entry",
+      "rootNode": "V4_EntryHinge",
+      "leafNode": "V4_EntryLeaf",
+      "frameRootNode": "V4_EntryFrameRoot",
+      "kind": "hinge",
+      "sharedBy": [
+        "home",
+        "login"
+      ],
+      "closedPositionUnity": [
+        2.985,
+        0.0,
+        4.035
+      ],
+      "openPositionUnity": [
+        2.985,
+        0.0,
+        4.035
+      ],
+      "closedRotationEulerUnity": [
+        0,
+        0,
+        0
+      ],
+      "openRotationEulerUnity": [
+        0,
+        -100,
+        0
+      ],
+      "openingBoundsBlender": [
+        -3.01,
+        -4.2,
+        0,
+        -1.99,
+        -3.95,
+        2.37
+      ],
+      "closedLeafBoundsBlender": [
+        -2.985,
+        -4.065,
+        0,
+        -2.015,
+        -4.005,
+        2.35
+      ],
+      "closedLeafBoundsUnity": [
+        2.015,
+        0,
+        4.005,
+        2.985,
+        2.35,
+        4.065
+      ],
+      "sourceOpenAngleBlenderDegrees": 100,
+      "initialState": "closed"
+    },
+    {
+      "id": "bedroom",
+      "rootNode": "V4_BedroomDoorSlide",
+      "leafNode": "V4_BedroomDoorLeaf",
+      "kind": "slide",
+      "closedPositionUnity": [
+        4.12,
+        0.0,
+        2.1
+      ],
+      "openPositionUnity": [
+        4.12,
+        0.0,
+        1.06
+      ],
+      "closedRotationEulerUnity": [
+        0,
+        0,
+        0
+      ],
+      "openRotationEulerUnity": [
+        0,
+        0,
+        0
+      ],
+      "openingBoundsBlender": [
+        -4.2,
+        -2.6,
+        0,
+        -4,
+        -1.6,
+        2.3
+      ],
+      "closedLeafBoundsBlender": [
+        -4.141,
+        -2.62,
+        0,
+        -4.099,
+        -1.58,
+        2.29
+      ],
+      "closedLeafBoundsUnity": [
+        4.099,
+        0,
+        1.58,
+        4.141,
+        2.29,
+        2.62
+      ],
+      "sourceAuthoredLeafOffsetBlender": [
+        0,
+        1.04,
+        0
+      ],
+      "initialState": "closed"
+    }
+  ],
+  "sourceSha256": "a18e70d228ca51155bae0a4ea6a492ac691a76af00c5b08a9bcad119b1e065d0",
+  "layoutSha256": "55b86e901602ec87690baf04d130cee076d9a6cf55f65dbdc1482803d6e851ef",
+  "bedSha256": "6608fcd1b4fa9b7004fbe2cf139d4b14fe03e3a7428bcea892d0827742b84818",
+  "bedReportMeasured": true,
+  "status": "ready_for_unity",
+  "materials": [
+    {
+      "name": "Baked_Floor",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_Floor.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_East_Wall",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_East_Wall.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_South_Wall",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_South_Wall.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_Ceiling",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_Ceiling.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_Trim",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_Trim.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "PBR_V4_EntryHinge_V4_WhiteDoorPaint",
+      "shading": "pbr",
+      "baseColor": [
+        0.9800000190734863,
+        0.9800000190734863,
+        0.9800000190734863,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6800000071525574,
+      "opacity": 1.0,
+      "doubleSided": false,
+      "transmission": 0.0,
+      "ior": 1.5,
+      "sharedSourceMaterial": "V4_WhiteDoorPaint",
+      "renderingApproximation": "",
+      "sourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "recipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2"
+    },
+    {
+      "name": "PBR_V4_EntryFrameRoot_V4_WhiteDoorPaint",
+      "shading": "pbr",
+      "baseColor": [
+        0.9800000190734863,
+        0.9800000190734863,
+        0.9800000190734863,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6800000071525574,
+      "opacity": 1.0,
+      "doubleSided": false,
+      "transmission": 0.0,
+      "ior": 1.5,
+      "sharedSourceMaterial": "V4_WhiteDoorPaint",
+      "renderingApproximation": "",
+      "sourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "recipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2"
+    },
+    {
+      "name": "PBR_V4_EntryHinge_CoastalV2_bronze",
+      "shading": "pbr",
+      "baseColor": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "baseColorTexture": "Textures/PBR_V4_EntryHinge_CoastalV2_bronze_BaseColor.png",
+      "normalTexture": "Textures/PBR_V4_EntryHinge_CoastalV2_bronze_Normal.png",
+      "metallicSmoothnessTexture": "Textures/PBR_V4_EntryHinge_CoastalV2_bronze_MetallicSmoothness.png",
+      "metallic": 0,
+      "roughness": 0.4,
+      "opacity": 1,
+      "doubleSided": false,
+      "transmission": 0.0,
+      "ior": 1.5,
+      "renderingApproximation": "",
+      "sourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "recipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2"
+    },
+    {
+      "name": "PBR_StaticGlass_CoastalV2_glass",
+      "shading": "pbr",
+      "baseColor": [
+        0.9300000071525574,
+        0.9700000286102295,
+        1.0,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.003000000026077032,
+      "opacity": 0.035,
+      "doubleSided": false,
+      "transmission": 1.0,
+      "ior": 1.4600000381469727,
+      "sharedSourceMaterial": "CoastalV2_glass",
+      "renderingApproximation": "Standard thin transparent glass lacks physical refraction",
+      "sourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "recipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2"
+    },
+    {
+      "name": "Baked_Sheer",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_Sheer.png",
+      "opacity": 0.38,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_Drape",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_Drape.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_Sideboard",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_Sideboard.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_Rug",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_Rug.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_Sofa",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_Sofa.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_Lounge",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_Lounge.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_CoffeeTable",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_CoffeeTable.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_WorkDesk",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_WorkDesk.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "PBR_StaticGlass_CoastalV2_dark",
+      "shading": "pbr",
+      "baseColor": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "baseColorTexture": "Textures/PBR_StaticGlass_CoastalV2_dark_BaseColor.png",
+      "normalTexture": "Textures/PBR_StaticGlass_CoastalV2_dark_Normal.png",
+      "metallicSmoothnessTexture": "Textures/PBR_StaticGlass_CoastalV2_dark_MetallicSmoothness.png",
+      "metallic": 0,
+      "roughness": 0.4,
+      "opacity": 1,
+      "doubleSided": false,
+      "transmission": 0.0,
+      "ior": 1.5,
+      "renderingApproximation": "",
+      "sourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "recipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2"
+    },
+    {
+      "name": "Baked_WorkChair",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_WorkChair.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_Bookshelf",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_Bookshelf.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_Olive",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_Olive.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_Strelitzia",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_Strelitzia.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_Ocean",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_Ocean.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_BedroomTrim",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_BedroomTrim.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_BedroomWalls",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_BedroomWalls.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_BedroomCeiling",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_BedroomCeiling.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_BedroomFloor",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_BedroomFloor.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "PBR_V4_BedroomDoorSlide_V4_WhiteDoorPaint",
+      "shading": "pbr",
+      "baseColor": [
+        0.9800000190734863,
+        0.9800000190734863,
+        0.9800000190734863,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6800000071525574,
+      "opacity": 1.0,
+      "doubleSided": false,
+      "transmission": 0.0,
+      "ior": 1.5,
+      "sharedSourceMaterial": "V4_WhiteDoorPaint",
+      "renderingApproximation": "",
+      "sourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "recipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2"
+    },
+    {
+      "name": "Baked_BedFrame",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_BedFrame.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_BedMattress",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_BedMattress.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_BedBedding",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_BedBedding.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_BedPillows",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_BedPillows.png",
+      "opacity": 1,
+      "doubleSided": false
+    },
+    {
+      "name": "Baked_BedroomDetails",
+      "shading": "display_baked",
+      "texture": "Textures/Baked_BedroomDetails.png",
+      "opacity": 1,
+      "doubleSided": false
+    }
+  ],
+  "meshes": [
+    {
+      "name": "V4_Floor_Baked",
+      "material": "Baked_Floor",
+      "triangles": 39492,
+      "sourceObjectNames": [
+        "V2_Floor_Substrate",
+        "V2_Oak_Plank_00_-400",
+        "V2_Oak_Plank_00_-220",
+        "V2_Oak_Plank_00_-40",
+        "V2_Oak_Plank_00_140",
+        "V2_Oak_Plank_00_320",
+        "V2_Oak_Plank_01_-445",
+        "V2_Oak_Plank_01_-265",
+        "V2_Oak_Plank_01_-85",
+        "V2_Oak_Plank_01_095",
+        "V2_Oak_Plank_01_275",
+        "V2_Oak_Plank_02_-490",
+        "V2_Oak_Plank_02_-310",
+        "V2_Oak_Plank_02_-130",
+        "V2_Oak_Plank_02_050",
+        "V2_Oak_Plank_02_230",
+        "V2_Oak_Plank_03_-535",
+        "V2_Oak_Plank_03_-355",
+        "V2_Oak_Plank_03_-175",
+        "V2_Oak_Plank_03_005",
+        "V2_Oak_Plank_03_185",
+        "V2_Oak_Plank_03_365",
+        "V2_Oak_Plank_04_-400",
+        "V2_Oak_Plank_04_-220",
+        "V2_Oak_Plank_04_-40",
+        "V2_Oak_Plank_04_140",
+        "V2_Oak_Plank_04_320",
+        "V2_Oak_Plank_05_-445",
+        "V2_Oak_Plank_05_-265",
+        "V2_Oak_Plank_05_-85",
+        "V2_Oak_Plank_05_095",
+        "V2_Oak_Plank_05_275",
+        "V2_Oak_Plank_06_-490",
+        "V2_Oak_Plank_06_-310",
+        "V2_Oak_Plank_06_-130",
+        "V2_Oak_Plank_06_050",
+        "V2_Oak_Plank_06_230",
+        "V2_Oak_Plank_07_-535",
+        "V2_Oak_Plank_07_-355",
+        "V2_Oak_Plank_07_-175",
+        "V2_Oak_Plank_07_005",
+        "V2_Oak_Plank_07_185",
+        "V2_Oak_Plank_07_365",
+        "V2_Oak_Plank_08_-400",
+        "V2_Oak_Plank_08_-220",
+        "V2_Oak_Plank_08_-40",
+        "V2_Oak_Plank_08_140",
+        "V2_Oak_Plank_08_320",
+        "V2_Oak_Plank_09_-445",
+        "V2_Oak_Plank_09_-265",
+        "V2_Oak_Plank_09_-85",
+        "V2_Oak_Plank_09_095",
+        "V2_Oak_Plank_09_275",
+        "V2_Oak_Plank_10_-490",
+        "V2_Oak_Plank_10_-310",
+        "V2_Oak_Plank_10_-130",
+        "V2_Oak_Plank_10_050",
+        "V2_Oak_Plank_10_230",
+        "V2_Oak_Plank_11_-535",
+        "V2_Oak_Plank_11_-355",
+        "V2_Oak_Plank_11_-175",
+        "V2_Oak_Plank_11_005",
+        "V2_Oak_Plank_11_185",
+        "V2_Oak_Plank_11_365",
+        "V2_Oak_Plank_12_-400",
+        "V2_Oak_Plank_12_-220",
+        "V2_Oak_Plank_12_-40",
+        "V2_Oak_Plank_12_140",
+        "V2_Oak_Plank_12_320",
+        "V2_Oak_Plank_13_-445",
+        "V2_Oak_Plank_13_-265",
+        "V2_Oak_Plank_13_-85",
+        "V2_Oak_Plank_13_095",
+        "V2_Oak_Plank_13_275",
+        "V2_Oak_Plank_14_-490",
+        "V2_Oak_Plank_14_-310",
+        "V2_Oak_Plank_14_-130",
+        "V2_Oak_Plank_14_050",
+        "V2_Oak_Plank_14_230",
+        "V2_Oak_Plank_15_-535",
+        "V2_Oak_Plank_15_-355",
+        "V2_Oak_Plank_15_-175",
+        "V2_Oak_Plank_15_005",
+        "V2_Oak_Plank_15_185",
+        "V2_Oak_Plank_15_365",
+        "V2_Oak_Plank_16_-400",
+        "V2_Oak_Plank_16_-220",
+        "V2_Oak_Plank_16_-40",
+        "V2_Oak_Plank_16_140",
+        "V2_Oak_Plank_16_320",
+        "V2_Oak_Plank_17_-445",
+        "V2_Oak_Plank_17_-265",
+        "V2_Oak_Plank_17_-85",
+        "V2_Oak_Plank_17_095",
+        "V2_Oak_Plank_17_275",
+        "V2_Oak_Plank_18_-490",
+        "V2_Oak_Plank_18_-310",
+        "V2_Oak_Plank_18_-130",
+        "V2_Oak_Plank_18_050",
+        "V2_Oak_Plank_18_230",
+        "V2_Oak_Plank_19_-535",
+        "V2_Oak_Plank_19_-355",
+        "V2_Oak_Plank_19_-175",
+        "V2_Oak_Plank_19_005",
+        "V2_Oak_Plank_19_185",
+        "V2_Oak_Plank_19_365",
+        "V2_Oak_Plank_20_-400",
+        "V2_Oak_Plank_20_-220",
+        "V2_Oak_Plank_20_-40",
+        "V2_Oak_Plank_20_140",
+        "V2_Oak_Plank_20_320",
+        "V2_Oak_Plank_21_-445",
+        "V2_Oak_Plank_21_-265",
+        "V2_Oak_Plank_21_-85",
+        "V2_Oak_Plank_21_095",
+        "V2_Oak_Plank_21_275",
+        "V2_Oak_Plank_22_-490",
+        "V2_Oak_Plank_22_-310",
+        "V2_Oak_Plank_22_-130",
+        "V2_Oak_Plank_22_050",
+        "V2_Oak_Plank_22_230",
+        "V2_Oak_Plank_23_-535",
+        "V2_Oak_Plank_23_-355",
+        "V2_Oak_Plank_23_-175",
+        "V2_Oak_Plank_23_005",
+        "V2_Oak_Plank_23_185",
+        "V2_Oak_Plank_23_365",
+        "V2_Oak_Plank_24_-400",
+        "V2_Oak_Plank_24_-220",
+        "V2_Oak_Plank_24_-40",
+        "V2_Oak_Plank_24_140",
+        "V2_Oak_Plank_24_320",
+        "V2_Oak_Plank_25_-445",
+        "V2_Oak_Plank_25_-265",
+        "V2_Oak_Plank_25_-85",
+        "V2_Oak_Plank_25_095",
+        "V2_Oak_Plank_25_275",
+        "V2_Oak_Plank_26_-490",
+        "V2_Oak_Plank_26_-310",
+        "V2_Oak_Plank_26_-130",
+        "V2_Oak_Plank_26_050",
+        "V2_Oak_Plank_26_230",
+        "V2_Oak_Plank_27_-535",
+        "V2_Oak_Plank_27_-355",
+        "V2_Oak_Plank_27_-175",
+        "V2_Oak_Plank_27_005",
+        "V2_Oak_Plank_27_185",
+        "V2_Oak_Plank_27_365",
+        "V2_Oak_Plank_28_-400",
+        "V2_Oak_Plank_28_-220",
+        "V2_Oak_Plank_28_-40",
+        "V2_Oak_Plank_28_140",
+        "V2_Oak_Plank_28_320",
+        "V2_Oak_Plank_29_-445",
+        "V2_Oak_Plank_29_-265",
+        "V2_Oak_Plank_29_-85",
+        "V2_Oak_Plank_29_095",
+        "V2_Oak_Plank_29_275",
+        "V2_Oak_Plank_30_-490",
+        "V2_Oak_Plank_30_-310",
+        "V2_Oak_Plank_30_-130",
+        "V2_Oak_Plank_30_050",
+        "V2_Oak_Plank_30_230",
+        "V2_Oak_Plank_31_-535",
+        "V2_Oak_Plank_31_-355",
+        "V2_Oak_Plank_31_-175",
+        "V2_Oak_Plank_31_005",
+        "V2_Oak_Plank_31_185",
+        "V2_Oak_Plank_31_365",
+        "V2_Oak_Plank_32_-400",
+        "V2_Oak_Plank_32_-220",
+        "V2_Oak_Plank_32_-40",
+        "V2_Oak_Plank_32_140",
+        "V2_Oak_Plank_32_320",
+        "V2_Oak_Plank_33_-445",
+        "V2_Oak_Plank_33_-265",
+        "V2_Oak_Plank_33_-85",
+        "V2_Oak_Plank_33_095",
+        "V2_Oak_Plank_33_275",
+        "V2_Oak_Plank_34_-490",
+        "V2_Oak_Plank_34_-310",
+        "V2_Oak_Plank_34_-130",
+        "V2_Oak_Plank_34_050",
+        "V2_Oak_Plank_34_230",
+        "V2_Oak_Plank_35_-535",
+        "V2_Oak_Plank_35_-355",
+        "V2_Oak_Plank_35_-175",
+        "V2_Oak_Plank_35_005",
+        "V2_Oak_Plank_35_185",
+        "V2_Oak_Plank_35_365",
+        "V2_Oak_Plank_36_-400",
+        "V2_Oak_Plank_36_-220",
+        "V2_Oak_Plank_36_-40",
+        "V2_Oak_Plank_36_140",
+        "V2_Oak_Plank_36_320",
+        "V2_Oak_Plank_37_-445",
+        "V2_Oak_Plank_37_-265",
+        "V2_Oak_Plank_37_-85",
+        "V2_Oak_Plank_37_095",
+        "V2_Oak_Plank_37_275",
+        "V2_Oak_Plank_38_-490",
+        "V2_Oak_Plank_38_-310",
+        "V2_Oak_Plank_38_-130",
+        "V2_Oak_Plank_38_050",
+        "V2_Oak_Plank_38_230",
+        "V2_Oak_Plank_39_-535",
+        "V2_Oak_Plank_39_-355",
+        "V2_Oak_Plank_39_-175",
+        "V2_Oak_Plank_39_005",
+        "V2_Oak_Plank_39_185",
+        "V2_Oak_Plank_39_365"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_East_Wall",
+      "material": "Baked_East_Wall",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V2_East_Wall"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_South_Wall_West",
+      "material": "Baked_South_Wall",
+      "triangles": 12,
+      "sourceObjectNames": [
+        "V2_South_Wall_West"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_South_Wall_East",
+      "material": "Baked_South_Wall",
+      "triangles": 12,
+      "sourceObjectNames": [
+        "V2_South_Wall_East"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_South_Door_Lintel",
+      "material": "Baked_South_Wall",
+      "triangles": 12,
+      "sourceObjectNames": [
+        "V2_South_Door_Lintel"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_South_FacadeInterior",
+      "material": "Baked_South_Wall",
+      "triangles": 6,
+      "sourceObjectNames": [
+        "V2_South_FacadeInterior"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": true
+    },
+    {
+      "name": "V2_South_FacadeExterior",
+      "material": "Baked_South_Wall",
+      "triangles": 6,
+      "sourceObjectNames": [
+        "V2_South_FacadeExterior"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": true
+    },
+    {
+      "name": "V2_Ceiling",
+      "material": "Baked_Ceiling",
+      "triangles": 12,
+      "sourceObjectNames": [
+        "V2_Ceiling"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_Oak_Skirting_Side.001",
+      "material": "Baked_Trim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V2_Oak_Skirting_Side.001"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_Oak_Skirting_Back_Left",
+      "material": "Baked_Trim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V2_Oak_Skirting_Back_Left"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_Oak_Skirting_Back_Right",
+      "material": "Baked_Trim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V2_Oak_Skirting_Back_Right"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_Window_Horizontal_Profile",
+      "material": "Baked_Trim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V2_Window_Horizontal_Profile"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_Window_Horizontal_Profile.001",
+      "material": "Baked_Trim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V2_Window_Horizontal_Profile.001"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_Window_Vertical_Profile",
+      "material": "Baked_Trim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V2_Window_Vertical_Profile"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_Window_Vertical_Profile.001",
+      "material": "Baked_Trim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V2_Window_Vertical_Profile.001"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_Window_Vertical_Profile.002",
+      "material": "Baked_Trim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V2_Window_Vertical_Profile.002"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_Window_Vertical_Profile.003",
+      "material": "Baked_Trim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V2_Window_Vertical_Profile.003"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_Window_Stone_Sill",
+      "material": "Baked_Trim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V2_Window_Stone_Sill"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_Concealed_Curtain_Track",
+      "material": "Baked_Trim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V2_Concealed_Curtain_Track"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_V4_BedsideSouthLampBase",
+      "material": "Baked_Trim",
+      "triangles": 576,
+      "sourceObjectNames": [
+        "V2_V4_BedsideSouthLampBase"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_V4_BedsideSouthShade",
+      "material": "Baked_Trim",
+      "triangles": 384,
+      "sourceObjectNames": [
+        "V2_V4_BedsideSouthShade"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_V4_BedsideNorthLampBase",
+      "material": "Baked_Trim",
+      "triangles": 576,
+      "sourceObjectNames": [
+        "V2_V4_BedsideNorthLampBase"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_V4_BedsideNorthShade",
+      "material": "Baked_Trim",
+      "triangles": 384,
+      "sourceObjectNames": [
+        "V2_V4_BedsideNorthShade"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_EntryLeaf",
+      "material": "PBR_V4_EntryHinge_V4_WhiteDoorPaint",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_EntryLeaf"
+      ],
+      "movableRoot": "V4_EntryHinge",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_EntryUpperPanelExteriorLeft",
+      "material": "PBR_V4_EntryHinge_V4_WhiteDoorPaint",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_EntryUpperPanelExteriorLeft"
+      ],
+      "movableRoot": "V4_EntryHinge",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_EntryUpperPanelExteriorRight",
+      "material": "PBR_V4_EntryHinge_V4_WhiteDoorPaint",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_EntryUpperPanelExteriorRight"
+      ],
+      "movableRoot": "V4_EntryHinge",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_EntryUpperPanelInteriorLeft",
+      "material": "PBR_V4_EntryHinge_V4_WhiteDoorPaint",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_EntryUpperPanelInteriorLeft"
+      ],
+      "movableRoot": "V4_EntryHinge",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_EntryUpperPanelInteriorRight",
+      "material": "PBR_V4_EntryHinge_V4_WhiteDoorPaint",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_EntryUpperPanelInteriorRight"
+      ],
+      "movableRoot": "V4_EntryHinge",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_EntryLowerPanelExteriorLeft",
+      "material": "PBR_V4_EntryHinge_V4_WhiteDoorPaint",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_EntryLowerPanelExteriorLeft"
+      ],
+      "movableRoot": "V4_EntryHinge",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_EntryLowerPanelExteriorRight",
+      "material": "PBR_V4_EntryHinge_V4_WhiteDoorPaint",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_EntryLowerPanelExteriorRight"
+      ],
+      "movableRoot": "V4_EntryHinge",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_EntryLowerPanelInteriorLeft",
+      "material": "PBR_V4_EntryHinge_V4_WhiteDoorPaint",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_EntryLowerPanelInteriorLeft"
+      ],
+      "movableRoot": "V4_EntryHinge",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_EntryLowerPanelInteriorRight",
+      "material": "PBR_V4_EntryHinge_V4_WhiteDoorPaint",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_EntryLowerPanelInteriorRight"
+      ],
+      "movableRoot": "V4_EntryHinge",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_EntryFrame",
+      "material": "PBR_V4_EntryFrameRoot_V4_WhiteDoorPaint",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_EntryFrame"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_EntryFrame.001",
+      "material": "PBR_V4_EntryFrameRoot_V4_WhiteDoorPaint",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_EntryFrame.001"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_EntryFrame_Top",
+      "material": "PBR_V4_EntryFrameRoot_V4_WhiteDoorPaint",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_EntryFrame_Top"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_EntryInsideHandle",
+      "material": "PBR_V4_EntryHinge_CoastalV2_bronze",
+      "triangles": 80,
+      "sourceObjectNames": [
+        "V4_EntryInsideHandle"
+      ],
+      "movableRoot": "V4_EntryHinge",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_EntryOutsideHandle",
+      "material": "PBR_V4_EntryHinge_CoastalV2_bronze",
+      "triangles": 80,
+      "sourceObjectNames": [
+        "V4_EntryOutsideHandle"
+      ],
+      "movableRoot": "V4_EntryHinge",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_Window_Glass",
+      "material": "PBR_StaticGlass_CoastalV2_glass",
+      "triangles": 12,
+      "sourceObjectNames": [
+        "V2_Window_Glass"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_Window_Glass.001",
+      "material": "PBR_StaticGlass_CoastalV2_glass",
+      "triangles": 12,
+      "sourceObjectNames": [
+        "V2_Window_Glass.001"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_Window_Glass.002",
+      "material": "PBR_StaticGlass_CoastalV2_glass",
+      "triangles": 12,
+      "sourceObjectNames": [
+        "V2_Window_Glass.002"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_BedroomGardenGlazing",
+      "material": "PBR_StaticGlass_CoastalV2_glass",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_BedroomGardenGlazing"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_Sheer_Curtain_West",
+      "material": "Baked_Sheer",
+      "triangles": 26096,
+      "sourceObjectNames": [
+        "V2_Sheer_Curtain_West"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_Sheer_Curtain_East",
+      "material": "Baked_Sheer",
+      "triangles": 26096,
+      "sourceObjectNames": [
+        "V2_Sheer_Curtain_East"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_Linen_Drape_West",
+      "material": "Baked_Drape",
+      "triangles": 9896,
+      "sourceObjectNames": [
+        "V2_Linen_Drape_West"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_Linen_Drape_East",
+      "material": "Baked_Drape",
+      "triangles": 9896,
+      "sourceObjectNames": [
+        "V2_Linen_Drape_East"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_Sideboard_Baked",
+      "material": "Baked_Sideboard",
+      "triangles": 27232,
+      "sourceObjectNames": [
+        "V2_Sideboard_Canvas",
+        "V2_Canvas_Frame_Horizontal",
+        "V2_Canvas_Frame_Horizontal.001",
+        "V2_Canvas_Frame_Vertical",
+        "V2_Canvas_Frame_Vertical.001",
+        "V2_SideboardRecessedOakFoot",
+        "V2_SideboardRecessedOakFoot.001",
+        "V2_SideboardRecessedOakFoot.002",
+        "V2_SideboardRecessedOakFoot.003",
+        "V2_SideboardCabinetCarcass",
+        "V2_SideboardContinuousOakTop",
+        "V2_SideboardDoorShadowReveal",
+        "V2_SideboardFlushDoor0",
+        "V2_SideboardFingerPull0",
+        "V2_SideboardFlushDoor1",
+        "V2_SideboardFingerPull1",
+        "V2_SideboardFlushDoor2",
+        "V2_SideboardFingerPull2",
+        "V2_SideboardFlushDoor3",
+        "V2_SideboardFingerPull3",
+        "V2_SideboardBookLowerPages",
+        "V2_SideboardBookLowerCover-1",
+        "V2_SideboardBookLowerCover1",
+        "V2_SideboardBookLowerSpine",
+        "V2_SideboardBookUpperPages",
+        "V2_SideboardBookUpperCover-1",
+        "V2_SideboardBookUpperCover1",
+        "V2_SideboardBookUpperSpine",
+        "V2_SideboardWindowHerbCeramicPlanter",
+        "V2_SideboardWindowHerbPlanterSoil",
+        "V2_SideboardWindowHerbFineTwig",
+        "V2_SideboardWindowHerbFineTwig.001",
+        "V2_SideboardWindowHerbFineTwig.002",
+        "V2_SideboardWindowHerbFineTwig.003",
+        "V2_SideboardWindowHerbFineTwig.004",
+        "V2_SideboardWindowHerbFineTwig.005",
+        "V2_SideboardWindowHerbFineTwig.006",
+        "V2_SideboardWindowHerbFineTwig.007",
+        "V2_SideboardWindowHerbFineTwig.008",
+        "V2_SideboardWindowHerbFineTwig.009",
+        "V2_SideboardWindowHerbFineTwig.010",
+        "V2_SideboardWindowHerbFineTwig.011",
+        "V2_SideboardWindowHerbSlenderLeafCanopy",
+        "V2_SideboardInteriorHerbCeramicPlanter",
+        "V2_SideboardInteriorHerbPlanterSoil",
+        "V2_SideboardInteriorHerbFineTwig",
+        "V2_SideboardInteriorHerbFineTwig.001",
+        "V2_SideboardInteriorHerbFineTwig.002",
+        "V2_SideboardInteriorHerbFineTwig.003",
+        "V2_SideboardInteriorHerbFineTwig.004",
+        "V2_SideboardInteriorHerbFineTwig.005",
+        "V2_SideboardInteriorHerbFineTwig.006",
+        "V2_SideboardInteriorHerbFineTwig.007",
+        "V2_SideboardInteriorHerbFineTwig.008",
+        "V2_SideboardInteriorHerbFineTwig.009",
+        "V2_SideboardInteriorHerbFineTwig.010",
+        "V2_SideboardInteriorHerbFineTwig.011",
+        "V2_SideboardInteriorHerbSlenderLeafCanopy",
+        "V2_SideboardSmallDish"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_Rug_Baked",
+      "material": "Baked_Rug",
+      "triangles": 5432,
+      "sourceObjectNames": [
+        "V2_NaturalWovenJuteRug",
+        "V2_JuteRugBoundStitch",
+        "V2_JuteRugBoundStitch.001",
+        "V2_JuteRugFringe",
+        "V2_JuteRugFringe.001",
+        "V2_JuteRugFringe.002",
+        "V2_JuteRugFringe.003",
+        "V2_JuteRugFringe.004",
+        "V2_JuteRugFringe.005",
+        "V2_JuteRugFringe.006",
+        "V2_JuteRugFringe.007",
+        "V2_JuteRugFringe.008",
+        "V2_JuteRugFringe.009",
+        "V2_JuteRugFringe.010",
+        "V2_JuteRugFringe.011",
+        "V2_JuteRugFringe.012",
+        "V2_JuteRugFringe.013",
+        "V2_JuteRugFringe.014",
+        "V2_JuteRugFringe.015",
+        "V2_JuteRugFringe.016",
+        "V2_JuteRugFringe.017",
+        "V2_JuteRugFringe.018",
+        "V2_JuteRugFringe.019",
+        "V2_JuteRugFringe.020",
+        "V2_JuteRugFringe.021",
+        "V2_JuteRugFringe.022",
+        "V2_JuteRugFringe.023",
+        "V2_JuteRugFringe.024",
+        "V2_JuteRugFringe.025",
+        "V2_JuteRugFringe.026",
+        "V2_JuteRugFringe.027",
+        "V2_JuteRugFringe.028",
+        "V2_JuteRugFringe.029",
+        "V2_JuteRugFringe.030",
+        "V2_JuteRugFringe.031",
+        "V2_JuteRugFringe.032",
+        "V2_JuteRugFringe.033",
+        "V2_JuteRugFringe.034",
+        "V2_JuteRugFringe.035",
+        "V2_JuteRugFringe.036",
+        "V2_JuteRugFringe.037",
+        "V2_JuteRugFringe.038",
+        "V2_JuteRugFringe.039",
+        "V2_JuteRugFringe.040",
+        "V2_JuteRugFringe.041",
+        "V2_JuteRugFringe.042",
+        "V2_JuteRugFringe.043",
+        "V2_JuteRugFringe.044",
+        "V2_JuteRugFringe.045",
+        "V2_JuteRugFringe.046",
+        "V2_JuteRugFringe.047",
+        "V2_JuteRugFringe.048",
+        "V2_JuteRugFringe.049",
+        "V2_JuteRugFringe.050",
+        "V2_JuteRugFringe.051",
+        "V2_JuteRugFringe.052",
+        "V2_JuteRugFringe.053",
+        "V2_JuteRugFringe.054",
+        "V2_JuteRugFringe.055",
+        "V2_JuteRugFringe.056",
+        "V2_JuteRugFringe.057",
+        "V2_JuteRugFringe.058",
+        "V2_JuteRugFringe.059",
+        "V2_JuteRugFringe.060",
+        "V2_JuteRugFringe.061",
+        "V2_JuteRugFringe.062",
+        "V2_JuteRugFringe.063",
+        "V2_JuteRugFringe.064",
+        "V2_JuteRugFringe.065",
+        "V2_JuteRugFringe.066",
+        "V2_JuteRugFringe.067",
+        "V2_JuteRugFringe.068",
+        "V2_JuteRugFringe.069",
+        "V2_JuteRugFringe.070",
+        "V2_JuteRugFringe.071",
+        "V2_JuteRugFringe.072",
+        "V2_JuteRugFringe.073",
+        "V2_JuteRugFringe.074",
+        "V2_JuteRugFringe.075",
+        "V2_JuteRugFringe.076",
+        "V2_JuteRugFringe.077",
+        "V2_JuteRugFringe.078",
+        "V2_JuteRugFringe.079",
+        "V2_JuteRugFringe.080",
+        "V2_JuteRugFringe.081",
+        "V2_JuteRugFringe.082",
+        "V2_JuteRugFringe.083",
+        "V2_JuteRugFringe.084",
+        "V2_JuteRugFringe.085",
+        "V2_JuteRugFringe.086",
+        "V2_JuteRugFringe.087",
+        "V2_JuteRugFringe.088",
+        "V2_JuteRugFringe.089",
+        "V2_JuteRugFringe.090",
+        "V2_JuteRugFringe.091",
+        "V2_JuteRugFringe.092",
+        "V2_JuteRugFringe.093",
+        "V2_JuteRugFringe.094",
+        "V2_JuteRugFringe.095",
+        "V2_JuteRugFringe.096",
+        "V2_JuteRugFringe.097",
+        "V2_JuteRugFringe.098",
+        "V2_JuteRugFringe.099",
+        "V2_JuteRugFringe.100",
+        "V2_JuteRugFringe.101",
+        "V2_JuteRugFringe.102",
+        "V2_JuteRugFringe.103",
+        "V2_JuteRugFringe.104",
+        "V2_JuteRugFringe.105",
+        "V2_JuteRugFringe.106",
+        "V2_JuteRugFringe.107",
+        "V2_JuteRugFringe.108",
+        "V2_JuteRugFringe.109",
+        "V2_JuteRugFringe.110",
+        "V2_JuteRugFringe.111",
+        "V2_JuteRugFringe.112",
+        "V2_JuteRugFringe.113",
+        "V2_JuteRugFringe.114",
+        "V2_JuteRugFringe.115",
+        "V2_JuteRugFringe.116",
+        "V2_JuteRugFringe.117",
+        "V2_JuteRugFringe.118",
+        "V2_JuteRugFringe.119",
+        "V2_JuteRugFringe.120",
+        "V2_JuteRugFringe.121",
+        "V2_JuteRugFringe.122",
+        "V2_JuteRugFringe.123",
+        "V2_JuteRugFringe.124",
+        "V2_JuteRugFringe.125",
+        "V2_JuteRugFringe.126",
+        "V2_JuteRugFringe.127",
+        "V2_JuteRugFringe.128",
+        "V2_JuteRugFringe.129",
+        "V2_JuteRugFringe.130",
+        "V2_JuteRugFringe.131",
+        "V2_JuteRugFringe.132",
+        "V2_JuteRugFringe.133",
+        "V2_JuteRugFringe.134",
+        "V2_JuteRugFringe.135",
+        "V2_JuteRugFringe.136",
+        "V2_JuteRugFringe.137",
+        "V2_JuteRugFringe.138",
+        "V2_JuteRugFringe.139",
+        "V2_JuteRugFringe.140",
+        "V2_JuteRugFringe.141",
+        "V2_JuteRugFringe.142",
+        "V2_JuteRugFringe.143",
+        "V2_JuteRugFringe.144",
+        "V2_JuteRugFringe.145",
+        "V2_JuteRugFringe.146",
+        "V2_JuteRugFringe.147",
+        "V2_JuteRugFringe.148",
+        "V2_JuteRugFringe.149"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_Sofa_Baked",
+      "material": "Baked_Sofa",
+      "triangles": 83914,
+      "sourceObjectNames": [
+        "V2_SofaOakFoot",
+        "V2_SofaOakFoot.001",
+        "V2_SofaOakFoot.002",
+        "V2_SofaOakFoot.003",
+        "V2_SofaUpholsteredFoundation",
+        "V2_SofaContinuousBackFrame",
+        "V2_SofaArm0",
+        "V2_SofaArmTopSeam0",
+        "V2_SofaArm1",
+        "V2_SofaArmTopSeam1",
+        "V2_SofaSeatCushion0",
+        "V2_SofaSeatTailoredWelt0",
+        "V2_SofaBackCushion0",
+        "V2_SofaBackTailoredWelt0",
+        "V2_SofaSeatCushion1",
+        "V2_SofaSeatTailoredWelt1",
+        "V2_SofaBackCushion1",
+        "V2_SofaBackTailoredWelt1",
+        "V2_SofaSeatCushion2",
+        "V2_SofaSeatTailoredWelt2",
+        "V2_SofaBackCushion2",
+        "V2_SofaBackTailoredWelt2",
+        "V2_SofaLooseLayeredPillow0",
+        "V2_SofaLooseLayeredPillow1",
+        "V2_SofaLooseLayeredPillow2",
+        "V2_SofaWarmLinenArmThrow",
+        "V2_SofaWarmLinenArmThrowBoundHem",
+        "V2_SofaWarmLinenArmThrowTwistedFringe",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.001",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.002",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.003",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.004",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.005",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.006",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.007",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.008",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.009",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.010",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.011",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.012",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.013",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.014",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.015",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.016",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.017",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.018",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.019",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.020",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.021",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.022",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.023",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.024",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.025",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.026",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.027",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.028",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.029",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.030",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.031",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.032",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.033",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.034",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.035",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.036",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.037",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.038",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.039",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.040",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.041",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.042",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.043",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.044",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.045",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.046",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.047",
+        "V2_SofaWarmLinenArmThrowTwistedFringe.048"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_Lounge_Baked",
+      "material": "Baked_Lounge",
+      "triangles": 43664,
+      "sourceObjectNames": [
+        "V2_LoungeFrontSplayedLeg",
+        "V2_LoungeRearSplayedLeg",
+        "V2_LoungeCurvedSolidOakArm",
+        "V2_LoungeSeatSideRail",
+        "V2_LoungeFrontSplayedLeg.001",
+        "V2_LoungeRearSplayedLeg.001",
+        "V2_LoungeCurvedSolidOakArm.001",
+        "V2_LoungeSeatSideRail.001",
+        "V2_LoungeSeatCrossRail",
+        "V2_LoungeSeatCrossRail.001",
+        "V2_LoungeBentOakBackShell",
+        "V2_LoungeLooseSeat",
+        "V2_LoungeSeatPipedSeam",
+        "V2_LoungeUpholsteredBackInset",
+        "V2_LoungeSageLumbarPillow",
+        "V2_LoungeWarmLinenThrow",
+        "V2_LoungeWarmLinenThrowBoundHem",
+        "V2_LoungeWarmLinenThrowTwistedFringe",
+        "V2_LoungeWarmLinenThrowTwistedFringe.001",
+        "V2_LoungeWarmLinenThrowTwistedFringe.002",
+        "V2_LoungeWarmLinenThrowTwistedFringe.003",
+        "V2_LoungeWarmLinenThrowTwistedFringe.004",
+        "V2_LoungeWarmLinenThrowTwistedFringe.005",
+        "V2_LoungeWarmLinenThrowTwistedFringe.006",
+        "V2_LoungeWarmLinenThrowTwistedFringe.007",
+        "V2_LoungeWarmLinenThrowTwistedFringe.008",
+        "V2_LoungeWarmLinenThrowTwistedFringe.009",
+        "V2_LoungeWarmLinenThrowTwistedFringe.010",
+        "V2_LoungeWarmLinenThrowTwistedFringe.011",
+        "V2_LoungeWarmLinenThrowTwistedFringe.012",
+        "V2_LoungeWarmLinenThrowTwistedFringe.013",
+        "V2_LoungeWarmLinenThrowTwistedFringe.014",
+        "V2_LoungeWarmLinenThrowTwistedFringe.015",
+        "V2_LoungeWarmLinenThrowTwistedFringe.016",
+        "V2_LoungeWarmLinenThrowTwistedFringe.017",
+        "V2_LoungeWarmLinenThrowTwistedFringe.018",
+        "V2_LoungeWarmLinenThrowTwistedFringe.019",
+        "V2_LoungeWarmLinenThrowTwistedFringe.020",
+        "V2_LoungeWarmLinenThrowTwistedFringe.021",
+        "V2_LoungeWarmLinenThrowTwistedFringe.022",
+        "V2_LoungeWarmLinenThrowTwistedFringe.023",
+        "V2_LoungeWarmLinenThrowTwistedFringe.024",
+        "V2_LoungeWarmLinenThrowTwistedFringe.025",
+        "V2_LoungeWarmLinenThrowTwistedFringe.026",
+        "V2_LoungeWarmLinenThrowTwistedFringe.027",
+        "V2_LoungeWarmLinenThrowTwistedFringe.028",
+        "V2_LoungeWarmLinenThrowTwistedFringe.029",
+        "V2_LoungeWarmLinenThrowTwistedFringe.030",
+        "V2_LoungeWarmLinenThrowTwistedFringe.031",
+        "V2_LoungeWarmLinenThrowTwistedFringe.032",
+        "V2_LoungeWarmLinenThrowTwistedFringe.033",
+        "V2_LoungeWarmLinenThrowTwistedFringe.034",
+        "V2_LoungeWarmLinenThrowTwistedFringe.035",
+        "V2_LoungeWarmLinenThrowTwistedFringe.036",
+        "V2_LoungeWarmLinenThrowTwistedFringe.037",
+        "V2_LoungeWarmLinenThrowTwistedFringe.038",
+        "V2_LoungeWarmLinenThrowTwistedFringe.039",
+        "V2_LoungeWarmLinenThrowTwistedFringe.040",
+        "V2_LoungeWarmLinenThrowTwistedFringe.041",
+        "V2_LoungeWarmLinenThrowTwistedFringe.042",
+        "V2_LoungeWarmLinenThrowTwistedFringe.043",
+        "V2_LoungeWarmLinenThrowTwistedFringe.044",
+        "V2_LoungeWarmLinenThrowTwistedFringe.045",
+        "V2_LoungeWarmLinenThrowTwistedFringe.046",
+        "V2_LoungeWarmLinenThrowTwistedFringe.047",
+        "V2_LoungeWarmLinenThrowTwistedFringe.048",
+        "V2_ReadingTravertineCylinderTable",
+        "V2_ReadingTableTeaCup",
+        "V2_ReadingTableTeaSaucer",
+        "V2_ReadingTeaCupHandle"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_CoffeeTable_Baked",
+      "material": "Baked_CoffeeTable",
+      "triangles": 16856,
+      "sourceObjectNames": [
+        "V2_EllipticalTravertineCoffeeTableTop",
+        "V2_CoffeeTableStonePier0",
+        "V2_CoffeeTableStonePier1",
+        "V2_CoffeeTableArchitectureBookPages",
+        "V2_CoffeeTableArchitectureBookCover-1",
+        "V2_CoffeeTableArchitectureBookCover1",
+        "V2_CoffeeTableArchitectureBookSpine",
+        "V2_CoffeeTableHandThrownBowl",
+        "V2_CoffeeTableStonewareFlowerVase",
+        "V2_CoffeeTableCutStem",
+        "V2_CoffeeTableLeafPetiole",
+        "V2_CoffeeTableLeafPetiole.001",
+        "V2_CoffeeTableLeafPetiole.002",
+        "V2_CoffeeTableLeafPetiole.003",
+        "V2_CoffeeTableLeafPetiole.004",
+        "V2_CoffeeTableLeafPetiole.005",
+        "V2_CoffeeTableLeafPetiole.006",
+        "V2_CoffeeTableLeafPetiole.007",
+        "V2_CoffeeTableLeafPetiole.008",
+        "V2_CoffeeTableLeafPetiole.009",
+        "V2_CoffeeTableCutStem.001",
+        "V2_CoffeeTableLeafPetiole.010",
+        "V2_CoffeeTableLeafPetiole.011",
+        "V2_CoffeeTableLeafPetiole.012",
+        "V2_CoffeeTableLeafPetiole.013",
+        "V2_CoffeeTableLeafPetiole.014",
+        "V2_CoffeeTableLeafPetiole.015",
+        "V2_CoffeeTableLeafPetiole.016",
+        "V2_CoffeeTableLeafPetiole.017",
+        "V2_CoffeeTableLeafPetiole.018",
+        "V2_CoffeeTableLeafPetiole.019",
+        "V2_CoffeeTableCutStem.002",
+        "V2_CoffeeTableLeafPetiole.020",
+        "V2_CoffeeTableLeafPetiole.021",
+        "V2_CoffeeTableLeafPetiole.022",
+        "V2_CoffeeTableLeafPetiole.023",
+        "V2_CoffeeTableLeafPetiole.024",
+        "V2_CoffeeTableLeafPetiole.025",
+        "V2_CoffeeTableLeafPetiole.026",
+        "V2_CoffeeTableLeafPetiole.027",
+        "V2_CoffeeTableLeafPetiole.028",
+        "V2_CoffeeTableLeafPetiole.029",
+        "V2_CoffeeTableCutStem.003",
+        "V2_CoffeeTableLeafPetiole.030",
+        "V2_CoffeeTableLeafPetiole.031",
+        "V2_CoffeeTableLeafPetiole.032",
+        "V2_CoffeeTableLeafPetiole.033",
+        "V2_CoffeeTableLeafPetiole.034",
+        "V2_CoffeeTableLeafPetiole.035",
+        "V2_CoffeeTableLeafPetiole.036",
+        "V2_CoffeeTableLeafPetiole.037",
+        "V2_CoffeeTableLeafPetiole.038",
+        "V2_CoffeeTableLeafPetiole.039",
+        "V2_CoffeeTableCutStem.004",
+        "V2_CoffeeTableLeafPetiole.040",
+        "V2_CoffeeTableLeafPetiole.041",
+        "V2_CoffeeTableLeafPetiole.042",
+        "V2_CoffeeTableLeafPetiole.043",
+        "V2_CoffeeTableLeafPetiole.044",
+        "V2_CoffeeTableLeafPetiole.045",
+        "V2_CoffeeTableLeafPetiole.046",
+        "V2_CoffeeTableLeafPetiole.047",
+        "V2_CoffeeTableLeafPetiole.048",
+        "V2_CoffeeTableLeafPetiole.049",
+        "V2_CoffeeTableCutStem.005",
+        "V2_CoffeeTableLeafPetiole.050",
+        "V2_CoffeeTableLeafPetiole.051",
+        "V2_CoffeeTableLeafPetiole.052",
+        "V2_CoffeeTableLeafPetiole.053",
+        "V2_CoffeeTableLeafPetiole.054",
+        "V2_CoffeeTableLeafPetiole.055",
+        "V2_CoffeeTableLeafPetiole.056",
+        "V2_CoffeeTableLeafPetiole.057",
+        "V2_CoffeeTableLeafPetiole.058",
+        "V2_CoffeeTableLeafPetiole.059",
+        "V2_CoffeeTableFineOliveLeaves"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_WorkDesk_Baked",
+      "material": "Baked_WorkDesk",
+      "triangles": 27162,
+      "sourceObjectNames": [
+        "V2_WorkDeskSolidOakTop",
+        "V2_WorkDeskTaperedOakLeg",
+        "V2_WorkDeskTaperedOakLeg.001",
+        "V2_WorkDeskTaperedOakLeg.002",
+        "V2_WorkDeskTaperedOakLeg.003",
+        "V2_WorkDeskRearApron",
+        "V2_WorkDeskSlimDrawer",
+        "V2_WorkDeskDrawerFront",
+        "V2_WorkDeskDrawerRecessPull",
+        "V2_LaptopAluminiumBase",
+        "V2_LaptopTrackpad",
+        "V2_LaptopKeyboardKey",
+        "V2_LaptopKeyboardKey.001",
+        "V2_LaptopKeyboardKey.002",
+        "V2_LaptopKeyboardKey.003",
+        "V2_LaptopKeyboardKey.004",
+        "V2_LaptopKeyboardKey.005",
+        "V2_LaptopKeyboardKey.006",
+        "V2_LaptopKeyboardKey.007",
+        "V2_LaptopKeyboardKey.008",
+        "V2_LaptopKeyboardKey.009",
+        "V2_LaptopKeyboardKey.010",
+        "V2_LaptopKeyboardKey.011",
+        "V2_LaptopKeyboardKey.012",
+        "V2_LaptopKeyboardKey.013",
+        "V2_LaptopKeyboardKey.014",
+        "V2_LaptopKeyboardKey.015",
+        "V2_LaptopKeyboardKey.016",
+        "V2_LaptopKeyboardKey.017",
+        "V2_LaptopKeyboardKey.018",
+        "V2_LaptopKeyboardKey.019",
+        "V2_LaptopKeyboardKey.020",
+        "V2_LaptopKeyboardKey.021",
+        "V2_LaptopKeyboardKey.022",
+        "V2_LaptopKeyboardKey.023",
+        "V2_LaptopKeyboardKey.024",
+        "V2_LaptopKeyboardKey.025",
+        "V2_LaptopKeyboardKey.026",
+        "V2_LaptopKeyboardKey.027",
+        "V2_LaptopKeyboardKey.028",
+        "V2_LaptopKeyboardKey.029",
+        "V2_LaptopKeyboardKey.030",
+        "V2_LaptopKeyboardKey.031",
+        "V2_LaptopKeyboardKey.032",
+        "V2_LaptopKeyboardKey.033",
+        "V2_LaptopKeyboardKey.034",
+        "V2_LaptopKeyboardKey.035",
+        "V2_LaptopKeyboardKey.036",
+        "V2_LaptopKeyboardKey.037",
+        "V2_LaptopKeyboardKey.038",
+        "V2_LaptopKeyboardKey.039",
+        "V2_LaptopKeyboardKey.040",
+        "V2_LaptopKeyboardKey.041",
+        "V2_LaptopKeyboardKey.042",
+        "V2_LaptopKeyboardKey.043",
+        "V2_LaptopKeyboardKey.044",
+        "V2_LaptopKeyboardKey.045",
+        "V2_LaptopKeyboardKey.046",
+        "V2_LaptopKeyboardKey.047",
+        "V2_LaptopKeyboardKey.048",
+        "V2_LaptopKeyboardKey.049",
+        "V2_LaptopKeyboardKey.050",
+        "V2_LaptopKeyboardKey.051",
+        "V2_LaptopKeyboardKey.052",
+        "V2_LaptopKeyboardKey.053",
+        "V2_LaptopKeyboardKey.054",
+        "V2_LaptopKeyboardKey.055",
+        "V2_LaptopKeyboardKey.056",
+        "V2_LaptopKeyboardKey.057",
+        "V2_LaptopKeyboardKey.058",
+        "V2_LaptopKeyboardKey.059",
+        "V2_LaptopKeyboardKey.060",
+        "V2_LaptopKeyboardKey.061",
+        "V2_LaptopKeyboardKey.062",
+        "V2_LaptopKeyboardKey.063",
+        "V2_LaptopKeyboardKey.064",
+        "V2_LaptopThinDisplayLid",
+        "V2_DeskClosedNotebookPages",
+        "V2_DeskClosedNotebookCover-1",
+        "V2_DeskClosedNotebookCover1",
+        "V2_DeskClosedNotebookSpine",
+        "V2_DeskBronzePen",
+        "V2_DeskCeramicCup",
+        "V2_DeskCupHandmadeHandle",
+        "V2_DeskLampRoundedCeramicBase",
+        "V2_DeskLampShortBronzeNeck",
+        "V2_DeskLampWovenLinenShade",
+        "V2_DeskLampShadeBoundRim",
+        "V2_DeskLampShadeBoundRim.001",
+        "V2_DeskLampWarmInternalDiffuser",
+        "V2_WorkAreaBeigeArtPaper",
+        "V2_WorkAreaOakFrameVertical",
+        "V2_WorkAreaOakFrameHorizontal",
+        "V2_WorkAreaOakFrameVertical.001",
+        "V2_WorkAreaOakFrameHorizontal.001",
+        "V2_WorkAreaAbstractContour",
+        "V2_WorkAreaAbstractContour.001",
+        "V2_WorkAreaAbstractContour.002",
+        "V2_WorkAreaAbstractContour.003",
+        "V2_WorkAreaFineLandscapeLine",
+        "V2_WorkAreaFineLandscapeLine.001",
+        "V2_WorkAreaFineLandscapeLine.002"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_LaptopInactiveGlassDisplay",
+      "material": "PBR_StaticGlass_CoastalV2_dark",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V2_LaptopInactiveGlassDisplay"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_WorkChair_Baked",
+      "material": "Baked_WorkChair",
+      "triangles": 13272,
+      "sourceObjectNames": [
+        "V2_WorkChairFrontOakLeg",
+        "V2_WorkChairRearOakLeg",
+        "V2_WorkChairOakSeatRail",
+        "V2_WorkChairFrontOakLeg.001",
+        "V2_WorkChairRearOakLeg.001",
+        "V2_WorkChairOakSeatRail.001",
+        "V2_WorkChairBeigeUpholsteredSeat",
+        "V2_WorkChairSeatSeam",
+        "V2_WorkChairFullyUpholsteredCurvedBack",
+        "V2_WorkChairSoftBackInset"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_Bookshelf_Baked",
+      "material": "Baked_Bookshelf",
+      "triangles": 29680,
+      "sourceObjectNames": [
+        "V2_BookshelfFullHeightOakSide",
+        "V2_BookshelfFullHeightOakSide.001",
+        "V2_BookshelfThinRecessedBack",
+        "V2_BookshelfOpenShelf0",
+        "V2_BookshelfOpenShelf1",
+        "V2_BookshelfOpenShelf2",
+        "V2_BookshelfOpenShelf3",
+        "V2_BookshelfOpenShelf4",
+        "V2_BookshelfBookPages",
+        "V2_BookshelfBookCover",
+        "V2_BookshelfBookCover.001",
+        "V2_BookshelfBookSpine",
+        "V2_BookshelfBookSpineBand",
+        "V2_BookshelfBookSpineBand.001",
+        "V2_BookshelfBookPages.001",
+        "V2_BookshelfBookCover.002",
+        "V2_BookshelfBookCover.003",
+        "V2_BookshelfBookSpine.001",
+        "V2_BookshelfBookSpineBand.002",
+        "V2_BookshelfBookSpineBand.003",
+        "V2_BookshelfBookPages.002",
+        "V2_BookshelfBookCover.004",
+        "V2_BookshelfBookCover.005",
+        "V2_BookshelfBookSpine.002",
+        "V2_BookshelfBookSpineBand.004",
+        "V2_BookshelfBookSpineBand.005",
+        "V2_BookshelfBookPages.003",
+        "V2_BookshelfBookCover.006",
+        "V2_BookshelfBookCover.007",
+        "V2_BookshelfBookSpine.003",
+        "V2_BookshelfBookSpineBand.006",
+        "V2_BookshelfBookSpineBand.007",
+        "V2_BookshelfBookPages.004",
+        "V2_BookshelfBookCover.008",
+        "V2_BookshelfBookCover.009",
+        "V2_BookshelfBookSpine.004",
+        "V2_BookshelfBookSpineBand.008",
+        "V2_BookshelfBookSpineBand.009",
+        "V2_BookshelfBookPages.005",
+        "V2_BookshelfBookCover.010",
+        "V2_BookshelfBookCover.011",
+        "V2_BookshelfBookSpine.005",
+        "V2_BookshelfBookSpineBand.010",
+        "V2_BookshelfBookSpineBand.011",
+        "V2_BookshelfBookPages.006",
+        "V2_BookshelfBookCover.012",
+        "V2_BookshelfBookCover.013",
+        "V2_BookshelfBookSpine.006",
+        "V2_BookshelfBookSpineBand.012",
+        "V2_BookshelfBookSpineBand.013",
+        "V2_BookshelfBookPages.007",
+        "V2_BookshelfBookCover.014",
+        "V2_BookshelfBookCover.015",
+        "V2_BookshelfBookSpine.007",
+        "V2_BookshelfBookSpineBand.014",
+        "V2_BookshelfBookSpineBand.015",
+        "V2_BookshelfBookPages.008",
+        "V2_BookshelfBookCover.016",
+        "V2_BookshelfBookCover.017",
+        "V2_BookshelfBookSpine.008",
+        "V2_BookshelfBookSpineBand.016",
+        "V2_BookshelfBookSpineBand.017",
+        "V2_BookshelfBookPages.009",
+        "V2_BookshelfBookCover.018",
+        "V2_BookshelfBookCover.019",
+        "V2_BookshelfBookSpine.009",
+        "V2_BookshelfBookSpineBand.018",
+        "V2_BookshelfBookSpineBand.019",
+        "V2_BookshelfBookPages.010",
+        "V2_BookshelfBookCover.020",
+        "V2_BookshelfBookCover.021",
+        "V2_BookshelfBookSpine.010",
+        "V2_BookshelfBookSpineBand.020",
+        "V2_BookshelfBookSpineBand.021",
+        "V2_BookshelfBookPages.011",
+        "V2_BookshelfBookCover.022",
+        "V2_BookshelfBookCover.023",
+        "V2_BookshelfBookSpine.011",
+        "V2_BookshelfBookSpineBand.022",
+        "V2_BookshelfBookSpineBand.023",
+        "V2_BookshelfBookPages.012",
+        "V2_BookshelfBookCover.024",
+        "V2_BookshelfBookCover.025",
+        "V2_BookshelfBookSpine.012",
+        "V2_BookshelfBookSpineBand.024",
+        "V2_BookshelfBookSpineBand.025",
+        "V2_BookshelfBookPages.013",
+        "V2_BookshelfBookCover.026",
+        "V2_BookshelfBookCover.027",
+        "V2_BookshelfBookSpine.013",
+        "V2_BookshelfBookSpineBand.026",
+        "V2_BookshelfBookSpineBand.027",
+        "V2_BookshelfBookPages.014",
+        "V2_BookshelfBookCover.028",
+        "V2_BookshelfBookCover.029",
+        "V2_BookshelfBookSpine.014",
+        "V2_BookshelfBookSpineBand.028",
+        "V2_BookshelfBookSpineBand.029",
+        "V2_BookshelfBookPages.015",
+        "V2_BookshelfBookCover.030",
+        "V2_BookshelfBookCover.031",
+        "V2_BookshelfBookSpine.015",
+        "V2_BookshelfBookSpineBand.030",
+        "V2_BookshelfBookSpineBand.031",
+        "V2_BookshelfBookPages.016",
+        "V2_BookshelfBookCover.032",
+        "V2_BookshelfBookCover.033",
+        "V2_BookshelfBookSpine.016",
+        "V2_BookshelfBookSpineBand.032",
+        "V2_BookshelfBookSpineBand.033",
+        "V2_BookshelfBookPages.017",
+        "V2_BookshelfBookCover.034",
+        "V2_BookshelfBookCover.035",
+        "V2_BookshelfBookSpine.017",
+        "V2_BookshelfBookSpineBand.034",
+        "V2_BookshelfBookSpineBand.035",
+        "V2_BookshelfBookPages.018",
+        "V2_BookshelfBookCover.036",
+        "V2_BookshelfBookCover.037",
+        "V2_BookshelfBookSpine.018",
+        "V2_BookshelfBookSpineBand.036",
+        "V2_BookshelfBookSpineBand.037",
+        "V2_BookshelfBookPages.019",
+        "V2_BookshelfBookCover.038",
+        "V2_BookshelfBookCover.039",
+        "V2_BookshelfBookSpine.019",
+        "V2_BookshelfBookSpineBand.038",
+        "V2_BookshelfBookSpineBand.039",
+        "V2_BookshelfBookPages.020",
+        "V2_BookshelfBookCover.040",
+        "V2_BookshelfBookCover.041",
+        "V2_BookshelfBookSpine.020",
+        "V2_BookshelfBookSpineBand.040",
+        "V2_BookshelfBookSpineBand.041",
+        "V2_BookshelfBookPages.021",
+        "V2_BookshelfBookCover.042",
+        "V2_BookshelfBookCover.043",
+        "V2_BookshelfBookSpine.021",
+        "V2_BookshelfBookSpineBand.042",
+        "V2_BookshelfBookSpineBand.043",
+        "V2_BookshelfBookPages.022",
+        "V2_BookshelfBookCover.044",
+        "V2_BookshelfBookCover.045",
+        "V2_BookshelfBookSpine.022",
+        "V2_BookshelfBookSpineBand.044",
+        "V2_BookshelfBookSpineBand.045",
+        "V2_BookshelfBookPages.023",
+        "V2_BookshelfBookCover.046",
+        "V2_BookshelfBookCover.047",
+        "V2_BookshelfBookSpine.023",
+        "V2_BookshelfBookSpineBand.046",
+        "V2_BookshelfBookSpineBand.047",
+        "V2_BookshelfBookPages.024",
+        "V2_BookshelfBookCover.048",
+        "V2_BookshelfBookCover.049",
+        "V2_BookshelfBookSpine.024",
+        "V2_BookshelfBookSpineBand.048",
+        "V2_BookshelfBookSpineBand.049",
+        "V2_BookshelfBookPages.025",
+        "V2_BookshelfBookCover.050",
+        "V2_BookshelfBookCover.051",
+        "V2_BookshelfBookSpine.025",
+        "V2_BookshelfBookSpineBand.050",
+        "V2_BookshelfBookSpineBand.051",
+        "V2_BookshelfHorizontalBookPages",
+        "V2_BookshelfHorizontalBookCover-1",
+        "V2_BookshelfHorizontalBookCover1",
+        "V2_BookshelfHorizontalBookSpine",
+        "V2_BookshelfHorizontalBookUpperPages",
+        "V2_BookshelfHorizontalBookUpperCover-1",
+        "V2_BookshelfHorizontalBookUpperCover1",
+        "V2_BookshelfHorizontalBookUpperSpine",
+        "V2_BookshelfCeramicBudVase",
+        "V2_BookshelfStonewareBowl",
+        "V2_BookshelfUpperCeramicVessel",
+        "V2_BookshelfMiddleStackLowerPages",
+        "V2_BookshelfMiddleStackLowerCover-1",
+        "V2_BookshelfMiddleStackLowerCover1",
+        "V2_BookshelfMiddleStackLowerSpine",
+        "V2_BookshelfMiddleStackUpperPages",
+        "V2_BookshelfMiddleStackUpperCover-1",
+        "V2_BookshelfMiddleStackUpperCover1",
+        "V2_BookshelfMiddleStackUpperSpine",
+        "V2_BookshelfUpperStackLowerPages",
+        "V2_BookshelfUpperStackLowerCover-1",
+        "V2_BookshelfUpperStackLowerCover1",
+        "V2_BookshelfUpperStackLowerSpine",
+        "V2_BookshelfUpperStackUpperPages",
+        "V2_BookshelfUpperStackUpperCover-1",
+        "V2_BookshelfUpperStackUpperCover1",
+        "V2_BookshelfUpperStackUpperSpine",
+        "V2_BookshelfSmallIvoryPitcher",
+        "V2_BookshelfIvoryFootedDish"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_Olive_Baked",
+      "material": "Baked_Olive",
+      "triangles": 481660,
+      "sourceObjectNames": [
+        "V2_Olive_Pot",
+        "V2_Olive_Soil",
+        "V2_Olive_Trunk",
+        "V2_Olive_Branch_00",
+        "V2_Olive_Twig_00_0",
+        "V2_Olive_Twig_00_1",
+        "V2_Olive_Twig_00_2",
+        "V2_Olive_Twig_00_3",
+        "V2_Olive_Twig_00_4",
+        "V2_Olive_Twig_00_5",
+        "V2_Olive_Twig_00_6",
+        "V2_Olive_Branch_01",
+        "V2_Olive_Twig_01_0",
+        "V2_Olive_Twig_01_1",
+        "V2_Olive_Twig_01_2",
+        "V2_Olive_Twig_01_3",
+        "V2_Olive_Twig_01_4",
+        "V2_Olive_Twig_01_5",
+        "V2_Olive_Twig_01_6",
+        "V2_Olive_Branch_02",
+        "V2_Olive_Twig_02_0",
+        "V2_Olive_Twig_02_1",
+        "V2_Olive_Twig_02_2",
+        "V2_Olive_Twig_02_3",
+        "V2_Olive_Twig_02_4",
+        "V2_Olive_Twig_02_5",
+        "V2_Olive_Twig_02_6",
+        "V2_Olive_Branch_03",
+        "V2_Olive_Twig_03_0",
+        "V2_Olive_Twig_03_1",
+        "V2_Olive_Twig_03_2",
+        "V2_Olive_Twig_03_3",
+        "V2_Olive_Twig_03_4",
+        "V2_Olive_Twig_03_5",
+        "V2_Olive_Twig_03_6",
+        "V2_Olive_Branch_04",
+        "V2_Olive_Twig_04_0",
+        "V2_Olive_Twig_04_1",
+        "V2_Olive_Twig_04_2",
+        "V2_Olive_Twig_04_3",
+        "V2_Olive_Twig_04_4",
+        "V2_Olive_Twig_04_5",
+        "V2_Olive_Twig_04_6",
+        "V2_Olive_Branch_05",
+        "V2_Olive_Twig_05_0",
+        "V2_Olive_Twig_05_1",
+        "V2_Olive_Twig_05_2",
+        "V2_Olive_Twig_05_3",
+        "V2_Olive_Twig_05_4",
+        "V2_Olive_Twig_05_5",
+        "V2_Olive_Twig_05_6",
+        "V2_Olive_Branch_06",
+        "V2_Olive_Twig_06_0",
+        "V2_Olive_Twig_06_1",
+        "V2_Olive_Twig_06_2",
+        "V2_Olive_Twig_06_3",
+        "V2_Olive_Twig_06_4",
+        "V2_Olive_Twig_06_5",
+        "V2_Olive_Twig_06_6",
+        "V2_Olive_Branch_07",
+        "V2_Olive_Twig_07_0",
+        "V2_Olive_Twig_07_1",
+        "V2_Olive_Twig_07_2",
+        "V2_Olive_Twig_07_3",
+        "V2_Olive_Twig_07_4",
+        "V2_Olive_Twig_07_5",
+        "V2_Olive_Twig_07_6",
+        "V2_Olive_Branch_08",
+        "V2_Olive_Twig_08_0",
+        "V2_Olive_Twig_08_1",
+        "V2_Olive_Twig_08_2",
+        "V2_Olive_Twig_08_3",
+        "V2_Olive_Twig_08_4",
+        "V2_Olive_Twig_08_5",
+        "V2_Olive_Twig_08_6",
+        "V2_Olive_Branch_09",
+        "V2_Olive_Twig_09_0",
+        "V2_Olive_Twig_09_1",
+        "V2_Olive_Twig_09_2",
+        "V2_Olive_Twig_09_3",
+        "V2_Olive_Twig_09_4",
+        "V2_Olive_Twig_09_5",
+        "V2_Olive_Twig_09_6",
+        "V2_Olive_Branch_10",
+        "V2_Olive_Twig_10_0",
+        "V2_Olive_Twig_10_1",
+        "V2_Olive_Twig_10_2",
+        "V2_Olive_Twig_10_3",
+        "V2_Olive_Twig_10_4",
+        "V2_Olive_Twig_10_5",
+        "V2_Olive_Twig_10_6",
+        "V2_Olive_Branch_11",
+        "V2_Olive_Twig_11_0",
+        "V2_Olive_Twig_11_1",
+        "V2_Olive_Twig_11_2",
+        "V2_Olive_Twig_11_3",
+        "V2_Olive_Twig_11_4",
+        "V2_Olive_Twig_11_5",
+        "V2_Olive_Twig_11_6",
+        "V2_Olive_Branch_12",
+        "V2_Olive_Twig_12_0",
+        "V2_Olive_Twig_12_1",
+        "V2_Olive_Twig_12_2",
+        "V2_Olive_Twig_12_3",
+        "V2_Olive_Twig_12_4",
+        "V2_Olive_Twig_12_5",
+        "V2_Olive_Twig_12_6",
+        "V2_Olive_Branch_13",
+        "V2_Olive_Twig_13_0",
+        "V2_Olive_Twig_13_1",
+        "V2_Olive_Twig_13_2",
+        "V2_Olive_Twig_13_3",
+        "V2_Olive_Twig_13_4",
+        "V2_Olive_Twig_13_5",
+        "V2_Olive_Twig_13_6",
+        "V2_Olive_Branch_14",
+        "V2_Olive_Twig_14_0",
+        "V2_Olive_Twig_14_1",
+        "V2_Olive_Twig_14_2",
+        "V2_Olive_Twig_14_3",
+        "V2_Olive_Twig_14_4",
+        "V2_Olive_Twig_14_5",
+        "V2_Olive_Twig_14_6",
+        "V2_Olive_Branch_15",
+        "V2_Olive_Twig_15_0",
+        "V2_Olive_Twig_15_1",
+        "V2_Olive_Twig_15_2",
+        "V2_Olive_Twig_15_3",
+        "V2_Olive_Twig_15_4",
+        "V2_Olive_Twig_15_5",
+        "V2_Olive_Twig_15_6",
+        "V2_Olive_Branch_16",
+        "V2_Olive_Twig_16_0",
+        "V2_Olive_Twig_16_1",
+        "V2_Olive_Twig_16_2",
+        "V2_Olive_Twig_16_3",
+        "V2_Olive_Twig_16_4",
+        "V2_Olive_Twig_16_5",
+        "V2_Olive_Twig_16_6",
+        "V2_Olive_Branch_17",
+        "V2_Olive_Twig_17_0",
+        "V2_Olive_Twig_17_1",
+        "V2_Olive_Twig_17_2",
+        "V2_Olive_Twig_17_3",
+        "V2_Olive_Twig_17_4",
+        "V2_Olive_Twig_17_5",
+        "V2_Olive_Twig_17_6",
+        "V2_Olive_Branch_18",
+        "V2_Olive_Twig_18_0",
+        "V2_Olive_Twig_18_1",
+        "V2_Olive_Twig_18_2",
+        "V2_Olive_Twig_18_3",
+        "V2_Olive_Twig_18_4",
+        "V2_Olive_Twig_18_5",
+        "V2_Olive_Twig_18_6",
+        "V2_Olive_Branch_19",
+        "V2_Olive_Twig_19_0",
+        "V2_Olive_Twig_19_1",
+        "V2_Olive_Twig_19_2",
+        "V2_Olive_Twig_19_3",
+        "V2_Olive_Twig_19_4",
+        "V2_Olive_Twig_19_5",
+        "V2_Olive_Twig_19_6",
+        "V2_Olive_Branch_20",
+        "V2_Olive_Twig_20_0",
+        "V2_Olive_Twig_20_1",
+        "V2_Olive_Twig_20_2",
+        "V2_Olive_Twig_20_3",
+        "V2_Olive_Twig_20_4",
+        "V2_Olive_Twig_20_5",
+        "V2_Olive_Twig_20_6",
+        "V2_Olive_Branch_21",
+        "V2_Olive_Twig_21_0",
+        "V2_Olive_Twig_21_1",
+        "V2_Olive_Twig_21_2",
+        "V2_Olive_Twig_21_3",
+        "V2_Olive_Twig_21_4",
+        "V2_Olive_Twig_21_5",
+        "V2_Olive_Twig_21_6",
+        "V2_Olive_Branch_22",
+        "V2_Olive_Twig_22_0",
+        "V2_Olive_Twig_22_1",
+        "V2_Olive_Twig_22_2",
+        "V2_Olive_Twig_22_3",
+        "V2_Olive_Twig_22_4",
+        "V2_Olive_Twig_22_5",
+        "V2_Olive_Twig_22_6",
+        "V2_Olive_Branch_23",
+        "V2_Olive_Twig_23_0",
+        "V2_Olive_Twig_23_1",
+        "V2_Olive_Twig_23_2",
+        "V2_Olive_Twig_23_3",
+        "V2_Olive_Twig_23_4",
+        "V2_Olive_Twig_23_5",
+        "V2_Olive_Twig_23_6",
+        "V2_Olive_Branch_24",
+        "V2_Olive_Twig_24_0",
+        "V2_Olive_Twig_24_1",
+        "V2_Olive_Twig_24_2",
+        "V2_Olive_Twig_24_3",
+        "V2_Olive_Twig_24_4",
+        "V2_Olive_Twig_24_5",
+        "V2_Olive_Twig_24_6",
+        "V2_Olive_Branch_25",
+        "V2_Olive_Twig_25_0",
+        "V2_Olive_Twig_25_1",
+        "V2_Olive_Twig_25_2",
+        "V2_Olive_Twig_25_3",
+        "V2_Olive_Twig_25_4",
+        "V2_Olive_Twig_25_5",
+        "V2_Olive_Twig_25_6",
+        "V2_Olive_Branch_26",
+        "V2_Olive_Twig_26_0",
+        "V2_Olive_Twig_26_1",
+        "V2_Olive_Twig_26_2",
+        "V2_Olive_Twig_26_3",
+        "V2_Olive_Twig_26_4",
+        "V2_Olive_Twig_26_5",
+        "V2_Olive_Twig_26_6",
+        "V2_Olive_Branch_27",
+        "V2_Olive_Twig_27_0",
+        "V2_Olive_Twig_27_1",
+        "V2_Olive_Twig_27_2",
+        "V2_Olive_Twig_27_3",
+        "V2_Olive_Twig_27_4",
+        "V2_Olive_Twig_27_5",
+        "V2_Olive_Twig_27_6",
+        "V2_Olive_Branch_28",
+        "V2_Olive_Twig_28_0",
+        "V2_Olive_Twig_28_1",
+        "V2_Olive_Twig_28_2",
+        "V2_Olive_Twig_28_3",
+        "V2_Olive_Twig_28_4",
+        "V2_Olive_Twig_28_5",
+        "V2_Olive_Twig_28_6",
+        "V2_Olive_Branch_29",
+        "V2_Olive_Twig_29_0",
+        "V2_Olive_Twig_29_1",
+        "V2_Olive_Twig_29_2",
+        "V2_Olive_Twig_29_3",
+        "V2_Olive_Twig_29_4",
+        "V2_Olive_Twig_29_5",
+        "V2_Olive_Twig_29_6",
+        "V2_Olive_Branch_30",
+        "V2_Olive_Twig_30_0",
+        "V2_Olive_Twig_30_1",
+        "V2_Olive_Twig_30_2",
+        "V2_Olive_Twig_30_3",
+        "V2_Olive_Twig_30_4",
+        "V2_Olive_Twig_30_5",
+        "V2_Olive_Twig_30_6",
+        "V2_Olive_Branch_31",
+        "V2_Olive_Twig_31_0",
+        "V2_Olive_Twig_31_1",
+        "V2_Olive_Twig_31_2",
+        "V2_Olive_Twig_31_3",
+        "V2_Olive_Twig_31_4",
+        "V2_Olive_Twig_31_5",
+        "V2_Olive_Twig_31_6",
+        "V2_Olive_Branch_32",
+        "V2_Olive_Twig_32_0",
+        "V2_Olive_Twig_32_1",
+        "V2_Olive_Twig_32_2",
+        "V2_Olive_Twig_32_3",
+        "V2_Olive_Twig_32_4",
+        "V2_Olive_Twig_32_5",
+        "V2_Olive_Twig_32_6",
+        "V2_Olive_Branch_33",
+        "V2_Olive_Twig_33_0",
+        "V2_Olive_Twig_33_1",
+        "V2_Olive_Twig_33_2",
+        "V2_Olive_Twig_33_3",
+        "V2_Olive_Twig_33_4",
+        "V2_Olive_Twig_33_5",
+        "V2_Olive_Twig_33_6",
+        "V2_Olive_Branch_34",
+        "V2_Olive_Twig_34_0",
+        "V2_Olive_Twig_34_1",
+        "V2_Olive_Twig_34_2",
+        "V2_Olive_Twig_34_3",
+        "V2_Olive_Twig_34_4",
+        "V2_Olive_Twig_34_5",
+        "V2_Olive_Twig_34_6",
+        "V2_Olive_Branch_35",
+        "V2_Olive_Twig_35_0",
+        "V2_Olive_Twig_35_1",
+        "V2_Olive_Twig_35_2",
+        "V2_Olive_Twig_35_3",
+        "V2_Olive_Twig_35_4",
+        "V2_Olive_Twig_35_5",
+        "V2_Olive_Twig_35_6",
+        "V2_Olive_Branch_36",
+        "V2_Olive_Twig_36_0",
+        "V2_Olive_Twig_36_1",
+        "V2_Olive_Twig_36_2",
+        "V2_Olive_Twig_36_3",
+        "V2_Olive_Twig_36_4",
+        "V2_Olive_Twig_36_5",
+        "V2_Olive_Twig_36_6",
+        "V2_Olive_Branch_37",
+        "V2_Olive_Twig_37_0",
+        "V2_Olive_Twig_37_1",
+        "V2_Olive_Twig_37_2",
+        "V2_Olive_Twig_37_3",
+        "V2_Olive_Twig_37_4",
+        "V2_Olive_Twig_37_5",
+        "V2_Olive_Twig_37_6",
+        "V2_Olive_Branch_38",
+        "V2_Olive_Twig_38_0",
+        "V2_Olive_Twig_38_1",
+        "V2_Olive_Twig_38_2",
+        "V2_Olive_Twig_38_3",
+        "V2_Olive_Twig_38_4",
+        "V2_Olive_Twig_38_5",
+        "V2_Olive_Twig_38_6",
+        "V2_Olive_Branch_39",
+        "V2_Olive_Twig_39_0",
+        "V2_Olive_Twig_39_1",
+        "V2_Olive_Twig_39_2",
+        "V2_Olive_Twig_39_3",
+        "V2_Olive_Twig_39_4",
+        "V2_Olive_Twig_39_5",
+        "V2_Olive_Twig_39_6",
+        "V2_Olive_Branch_40",
+        "V2_Olive_Twig_40_0",
+        "V2_Olive_Twig_40_1",
+        "V2_Olive_Twig_40_2",
+        "V2_Olive_Twig_40_3",
+        "V2_Olive_Twig_40_4",
+        "V2_Olive_Twig_40_5",
+        "V2_Olive_Twig_40_6",
+        "V2_Olive_Branch_41",
+        "V2_Olive_Twig_41_0",
+        "V2_Olive_Twig_41_1",
+        "V2_Olive_Twig_41_2",
+        "V2_Olive_Twig_41_3",
+        "V2_Olive_Twig_41_4",
+        "V2_Olive_Twig_41_5",
+        "V2_Olive_Twig_41_6",
+        "V2_Olive_Branch_42",
+        "V2_Olive_Twig_42_0",
+        "V2_Olive_Twig_42_1",
+        "V2_Olive_Twig_42_2",
+        "V2_Olive_Twig_42_3",
+        "V2_Olive_Twig_42_4",
+        "V2_Olive_Twig_42_5",
+        "V2_Olive_Twig_42_6",
+        "V2_Olive_Branch_43",
+        "V2_Olive_Twig_43_0",
+        "V2_Olive_Twig_43_1",
+        "V2_Olive_Twig_43_2",
+        "V2_Olive_Twig_43_3",
+        "V2_Olive_Twig_43_4",
+        "V2_Olive_Twig_43_5",
+        "V2_Olive_Twig_43_6",
+        "V2_Olive_Branch_44",
+        "V2_Olive_Twig_44_0",
+        "V2_Olive_Twig_44_1",
+        "V2_Olive_Twig_44_2",
+        "V2_Olive_Twig_44_3",
+        "V2_Olive_Twig_44_4",
+        "V2_Olive_Twig_44_5",
+        "V2_Olive_Twig_44_6",
+        "V2_Olive_Branch_45",
+        "V2_Olive_Twig_45_0",
+        "V2_Olive_Twig_45_1",
+        "V2_Olive_Twig_45_2",
+        "V2_Olive_Twig_45_3",
+        "V2_Olive_Twig_45_4",
+        "V2_Olive_Twig_45_5",
+        "V2_Olive_Twig_45_6",
+        "V2_Olive_Branch_46",
+        "V2_Olive_Twig_46_0",
+        "V2_Olive_Twig_46_1",
+        "V2_Olive_Twig_46_2",
+        "V2_Olive_Twig_46_3",
+        "V2_Olive_Twig_46_4",
+        "V2_Olive_Twig_46_5",
+        "V2_Olive_Twig_46_6",
+        "V2_Olive_Branch_47",
+        "V2_Olive_Twig_47_0",
+        "V2_Olive_Twig_47_1",
+        "V2_Olive_Twig_47_2",
+        "V2_Olive_Twig_47_3",
+        "V2_Olive_Twig_47_4",
+        "V2_Olive_Twig_47_5",
+        "V2_Olive_Twig_47_6",
+        "V2_Olive_Leaves_Sunlit",
+        "V2_Olive_Leaves_Deep"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_Strelitzia_Baked",
+      "material": "Baked_Strelitzia",
+      "triangles": 13332,
+      "sourceObjectNames": [
+        "V2_Strelitzia_Pot",
+        "V2_Strelitzia_Soil",
+        "V2_Strelitzia_Petiole_00",
+        "V2_Strelitzia_Petiole_01",
+        "V2_Strelitzia_Petiole_02",
+        "V2_Strelitzia_Petiole_03",
+        "V2_Strelitzia_Petiole_04",
+        "V2_Strelitzia_Petiole_05",
+        "V2_Strelitzia_Petiole_06",
+        "V2_Strelitzia_Petiole_07",
+        "V2_Strelitzia_Petiole_08",
+        "V2_Strelitzia_Petiole_09",
+        "V2_Strelitzia_Petiole_10",
+        "V2_Strelitzia_Petiole_11",
+        "V2_Strelitzia_Petiole_12",
+        "V2_Strelitzia_Petiole_13",
+        "V2_Strelitzia_Petiole_14",
+        "V2_Strelitzia_Petiole_15",
+        "V2_Strelitzia_Petiole_16",
+        "V2_Strelitzia_Broad_Laminae",
+        "V2_Strelitzia_Broad_Laminae_Dark"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V2_Distant_Ocean",
+      "material": "Baked_Ocean",
+      "triangles": 2,
+      "sourceObjectNames": [
+        "V2_Distant_Ocean"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_EntryRevealLeft",
+      "material": "Baked_BedroomTrim",
+      "triangles": 108,
+      "sourceObjectNames": [
+        "V4_EntryRevealLeft"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": true
+    },
+    {
+      "name": "V4_EntryRevealRight",
+      "material": "Baked_BedroomTrim",
+      "triangles": 108,
+      "sourceObjectNames": [
+        "V4_EntryRevealRight"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": true
+    },
+    {
+      "name": "V4_EntryRevealTop",
+      "material": "Baked_BedroomTrim",
+      "triangles": 108,
+      "sourceObjectNames": [
+        "V4_EntryRevealTop"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": true
+    },
+    {
+      "name": "V4_OriginalWestSkirting",
+      "material": "Baked_BedroomTrim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_OriginalWestSkirting"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_OriginalWestSkirting.001",
+      "material": "Baked_BedroomTrim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_OriginalWestSkirting.001"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_BedroomWindowJamb",
+      "material": "Baked_BedroomTrim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_BedroomWindowJamb"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_BedroomWindowJamb.001",
+      "material": "Baked_BedroomTrim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_BedroomWindowJamb.001"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_BedroomWindowRail",
+      "material": "Baked_BedroomTrim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_BedroomWindowRail"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_BedroomWindowRail.001",
+      "material": "Baked_BedroomTrim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_BedroomWindowRail.001"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_BedroomWindowSill",
+      "material": "Baked_BedroomTrim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_BedroomWindowSill"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_BedroomDoorJamb",
+      "material": "Baked_BedroomTrim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_BedroomDoorJamb"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_BedroomDoorJamb.001",
+      "material": "Baked_BedroomTrim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_BedroomDoorJamb.001"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_BedroomDoorHeadTrim",
+      "material": "Baked_BedroomTrim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_BedroomDoorHeadTrim"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_EntryLanding",
+      "material": "Baked_BedroomTrim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_EntryLanding"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": true
+    },
+    {
+      "name": "V4_EntryThreshold",
+      "material": "Baked_BedroomTrim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_EntryThreshold"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": true
+    },
+    {
+      "name": "V4_EntryWelcomeMat",
+      "material": "Baked_BedroomTrim",
+      "triangles": 140,
+      "sourceObjectNames": [
+        "V4_EntryWelcomeMat"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": true
+    },
+    {
+      "name": "V4_EntryMatInset",
+      "material": "Baked_BedroomTrim",
+      "triangles": 140,
+      "sourceObjectNames": [
+        "V4_EntryMatInset"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": true
+    },
+    {
+      "name": "V4_EntryMatTufts",
+      "material": "Baked_BedroomTrim",
+      "triangles": 1500,
+      "sourceObjectNames": [
+        "V4_EntryMatTufts"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": true
+    },
+    {
+      "name": "V4_EntryWelcomeText",
+      "material": "Baked_BedroomTrim",
+      "triangles": 47592,
+      "sourceObjectNames": [
+        "V4_EntryWelcomeText"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": true
+    },
+    {
+      "name": "V4_EntryMatFringe",
+      "material": "Baked_BedroomTrim",
+      "triangles": 1800,
+      "sourceObjectNames": [
+        "V4_EntryMatFringe"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": true
+    },
+    {
+      "name": "V4_BedroomExteriorGround",
+      "material": "Baked_BedroomTrim",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_BedroomExteriorGround"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": true,
+      "excludeFromFloorPlan": true
+    },
+    {
+      "name": "V4_OriginalWestWall_North",
+      "material": "Baked_BedroomWalls",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_OriginalWestWall_North"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_OriginalWestWall_South",
+      "material": "Baked_BedroomWalls",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_OriginalWestWall_South"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_BedroomPortalLintel",
+      "material": "Baked_BedroomWalls",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_BedroomPortalLintel"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_BedroomWestWall",
+      "material": "Baked_BedroomWalls",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_BedroomWestWall"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_BedroomSouthWall",
+      "material": "Baked_BedroomWalls",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_BedroomSouthWall"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_BedroomNorthPierWest",
+      "material": "Baked_BedroomWalls",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_BedroomNorthPierWest"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_BedroomNorthPierEast",
+      "material": "Baked_BedroomWalls",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_BedroomNorthPierEast"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_BedroomWindowLintel",
+      "material": "Baked_BedroomWalls",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_BedroomWindowLintel"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_OriginalWestWallContinuousMain",
+      "material": "Baked_BedroomWalls",
+      "triangles": 6,
+      "sourceObjectNames": [
+        "V4_OriginalWestWallContinuousMain"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": true
+    },
+    {
+      "name": "V4_OriginalWestWallContinuousBedroom",
+      "material": "Baked_BedroomWalls",
+      "triangles": 6,
+      "sourceObjectNames": [
+        "V4_OriginalWestWallContinuousBedroom"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": true
+    },
+    {
+      "name": "V4_BedroomCeiling",
+      "material": "Baked_BedroomCeiling",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_BedroomCeiling"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_BedroomFloor_Baked",
+      "material": "Baked_BedroomFloor",
+      "triangles": 10340,
+      "sourceObjectNames": [
+        "V4_BedroomFloorSubstrate",
+        "V4_BedroomOakPlank",
+        "V4_BedroomOakPlank.001",
+        "V4_BedroomOakPlank.002",
+        "V4_BedroomOakPlank.003",
+        "V4_BedroomOakPlank.004",
+        "V4_BedroomOakPlank.005",
+        "V4_BedroomOakPlank.006",
+        "V4_BedroomOakPlank.007",
+        "V4_BedroomOakPlank.008",
+        "V4_BedroomOakPlank.009",
+        "V4_BedroomOakPlank.010",
+        "V4_BedroomOakPlank.011",
+        "V4_BedroomOakPlank.012",
+        "V4_BedroomOakPlank.013",
+        "V4_BedroomOakPlank.014",
+        "V4_BedroomOakPlank.015",
+        "V4_BedroomOakPlank.016",
+        "V4_BedroomOakPlank.017",
+        "V4_BedroomOakPlank.018",
+        "V4_BedroomOakPlank.019",
+        "V4_BedroomOakPlank.020",
+        "V4_BedroomOakPlank.021",
+        "V4_BedroomOakPlank.022",
+        "V4_BedroomOakPlank.023",
+        "V4_BedroomOakPlank.024",
+        "V4_BedroomOakPlank.025",
+        "V4_BedroomOakPlank.026",
+        "V4_BedroomOakPlank.027",
+        "V4_BedroomOakPlank.028",
+        "V4_BedroomOakPlank.029",
+        "V4_BedroomOakPlank.030",
+        "V4_BedroomOakPlank.031",
+        "V4_BedroomOakPlank.032",
+        "V4_BedroomOakPlank.033",
+        "V4_BedroomOakPlank.034",
+        "V4_BedroomOakPlank.035",
+        "V4_BedroomOakPlank.036",
+        "V4_BedroomOakPlank.037",
+        "V4_BedroomOakPlank.038",
+        "V4_BedroomOakPlank.039",
+        "V4_BedroomOakPlank.040",
+        "V4_BedroomOakPlank.041",
+        "V4_BedroomOakPlank.042",
+        "V4_BedroomOakPlank.043",
+        "V4_BedroomOakPlank.044",
+        "V4_BedroomOakPlank.045",
+        "V4_BedroomOakPlank.046",
+        "V4_BedroomOakPlank.047",
+        "V4_BedroomOakPlank.048",
+        "V4_BedroomOakPlank.049",
+        "V4_BedroomOakPlank.050",
+        "V4_BedroomOakPlank.051",
+        "V4_BedroomOakPlank.052",
+        "V4_BedroomOakPlank.053"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_BedroomDoorLeaf",
+      "material": "PBR_V4_BedroomDoorSlide_V4_WhiteDoorPaint",
+      "triangles": 188,
+      "sourceObjectNames": [
+        "V4_BedroomDoorLeaf"
+      ],
+      "movableRoot": "V4_BedroomDoorSlide",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_BedFrame_Baked",
+      "material": "Baked_BedFrame",
+      "triangles": 8880,
+      "sourceObjectNames": [
+        "V3_BedSideRail-1",
+        "V3_BedSlatLedger-1",
+        "V3_BedHeadPost-1",
+        "V3_BedSideRail1",
+        "V3_BedSlatLedger1",
+        "V3_BedHeadPost1",
+        "V3_BedFootRail",
+        "V3_BedHeadRail",
+        "V3_BedCentreBeam",
+        "V3_BedSlat00",
+        "V3_BedSlat01",
+        "V3_BedSlat02",
+        "V3_BedSlat03",
+        "V3_BedSlat04",
+        "V3_BedSlat05",
+        "V3_BedSlat06",
+        "V3_BedSlat07",
+        "V3_BedSlat08",
+        "V3_BedSlat09",
+        "V3_BedSlat10",
+        "V3_BedSlat11",
+        "V3_BedSlat12",
+        "V3_BedSlat13",
+        "V3_BedSlat14",
+        "V3_BedHeadboardPlank00",
+        "V3_BedHeadboardPlank01",
+        "V3_BedHeadboardPlank02",
+        "V3_BedHeadboardTopCap",
+        "V3_BedTaperedLeg_-1_-1",
+        "V3_BedTaperedLeg_-1_1",
+        "V3_BedTaperedLeg_1_-1",
+        "V3_BedTaperedLeg_1_1",
+        "V3_BedExposedJoineryDowels"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_BedMattress_Baked",
+      "material": "Baked_BedMattress",
+      "triangles": 15696,
+      "sourceObjectNames": [
+        "V3_BedMattress",
+        "V3_BedMattressTopPiping",
+        "V3_BedMattressBottomPiping",
+        "V3_BedMattressDiamondStitches"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_BedBedding_Baked",
+      "material": "Baked_BedBedding",
+      "triangles": 104352,
+      "sourceObjectNames": [
+        "V3_BedLinenDuvet",
+        "V3_BedDuvetBoundHem",
+        "V3_BedDuvetTurnback",
+        "V3_BedTurnbackStitchedHem",
+        "V3_BedSeaBlueThrow",
+        "V3_BedThrowSewnEdge",
+        "V3_BedThrowWovenFringe"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_BedPillows_Baked",
+      "material": "Baked_BedPillows",
+      "triangles": 26880,
+      "sourceObjectNames": [
+        "V3_BedSoftPillow0",
+        "V3_BedPillow0Piping",
+        "V3_BedPillow0NeedleStitches",
+        "V3_BedSoftPillow1",
+        "V3_BedPillow1Piping",
+        "V3_BedPillow1NeedleStitches"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    },
+    {
+      "name": "V4_BedroomDetails_Baked",
+      "material": "Baked_BedroomDetails",
+      "triangles": 2400,
+      "sourceObjectNames": [
+        "V4_BedsideSouthTable",
+        "V4_BedsideSouthTable.001",
+        "V4_BedsideNorthTable",
+        "V4_BedsideNorthTable.001"
+      ],
+      "movableRoot": "",
+      "environmentBackdrop": false,
+      "excludeFromFloorPlan": false
+    }
+  ],
+  "fbxSha256": "e935d7d37436e74e32f58cd0e3e899a8da7096c290d0a01b9e065c43863ea8d5",
+  "triangleCount": 1085126,
+  "recipeSha256": "ff8db727a26d4786adacd06c945b5508d7cf920f6b07a483757c406149fde8a9",
+  "colorTransformVerified": true,
+  "visualQARequired": true,
+  "artifactHashes": {
+    "Textures/Baked_BedBedding.png": "432eece0087ea6179c018be12d1069ccc43c3a1566cf4ee6508b80f0ffff8352",
+    "Textures/Baked_BedFrame.png": "df0209816f4ca6f630ec8f528b3de6da7798991e9970d7ab6c1a1a649bb6e706",
+    "Textures/Baked_BedMattress.png": "8f4f4c1bb99a2f2f96331472c239edd6c4bdd22576f4d5937bf627d874d0e99f",
+    "Textures/Baked_BedPillows.png": "8d4aebea4a57bb4263169ab0316d28fe06ba01271596530ceb8ab1a6e966338f",
+    "Textures/Baked_BedroomCeiling.png": "ca210c830a6279c011c195119c0346e5e0f44902c79eadc4f79903190932e1a0",
+    "Textures/Baked_BedroomDetails.png": "4e03b4d1c585272e7f336e8116123f6db7c4f64b3b117949dd3a035ceaab3569",
+    "Textures/Baked_BedroomFloor.png": "1e01aa94f3501bc7c89466473a47c26997345e9e27897d7fb5cf44c642678ea1",
+    "Textures/Baked_BedroomTrim.png": "a3aa5d6ee7151e055b23f875502eb43b5acc0311023f6bd4cf66d9a7e9069ed9",
+    "Textures/Baked_BedroomWalls.png": "708d1b18ee3d6c8715acbf1b694239e4b4a20dab33816139ae9d39f7c882debd",
+    "Textures/Baked_Bookshelf.png": "ecc068c06611d6e557e207a0ab8f1993275be44aa788a963f1b7dbbe43455dd6",
+    "Textures/Baked_Ceiling.png": "5d654ad8d6687ae4950dc01eab3cbe885d03815f79e580f2b2e686f697982d71",
+    "Textures/Baked_CoffeeTable.png": "9b36c440c9b7245fafb047cb0fa257a8f770d8c3911412efd73d7686dca46bf1",
+    "Textures/Baked_Drape.png": "c384d0dc9a8fe8e2e27c9d6685f77e493e6dbf2d71e1facaf52c1ffb1702a64d",
+    "Textures/Baked_East_Wall.png": "cbeb95187a557f4aa7c77eac2bd8738dd2eb8617eb22cbefe1baa8ea85ae578f",
+    "Textures/Baked_Floor.png": "1a92a2b042b772c77c70a95130d0b0511dd471abe9118acd0aff5f6e3fa1d3b8",
+    "Textures/Baked_Lounge.png": "3226f5aff07fbc6a54b15b59835bac70d8b7fc2844080e950126f79b5d866ef7",
+    "Textures/Baked_Ocean.png": "962388adcac08838a30e18e885d49674c6ac5c179e374ebcec23ddfd62a0d223",
+    "Textures/Baked_Olive.png": "a29bae12d0120b6aafd47338c2494033225005f97860a60cc05475e06939a51b",
+    "Textures/Baked_Rug.png": "1a073739ffe6a01af28836f074e831fb06faed98ec693dcde4b41f07d1a3614f",
+    "Textures/Baked_Sheer.png": "3531c5dfe18e75461e4ee2258ff764974cd4f2f80ac8c137e938a506b31c7376",
+    "Textures/Baked_Sideboard.png": "ce65aa87a1893274d3a5dcf3d9e573a9876c5c31d1ba2ae3e0dce9db4916ca13",
+    "Textures/Baked_Sofa.png": "c46e08ba287438e2900888d478432cc254132f978a8a35ae38be3eb6f31baccc",
+    "Textures/Baked_South_Wall.png": "c2de06171907e0f250ec36c8838400dbb9ca66b8b2aa3443c70dbcd03c0cb49b",
+    "Textures/Baked_Strelitzia.png": "85ff3dde66adad02ee8b731d2d74f99a7a367880f0cd1d5706129e6a84c41857",
+    "Textures/Baked_Trim.png": "6df46137d076352df43ffc4daddead3110bc8ad1e35fe7848ee1290f556f5343",
+    "Textures/Baked_WorkChair.png": "331a567bd0d23e34b1a594007ba04011a04ae59aa21caceb3bd10176f02432ec",
+    "Textures/Baked_WorkDesk.png": "a9ed86f00098ad3f1cb0107950f8f7ee22b2cf77cad92368c7cd752fb74f9ec6",
+    "Textures/PBR_StaticGlass_CoastalV2_dark_BaseColor.png": "aba4696e3a293d460de083ce53f887eda542de039e856caf2ec6d38d9dca24e8",
+    "Textures/PBR_StaticGlass_CoastalV2_dark_Metallic.png": "1c3def636fbc50cab22b6f4430b55e3034329abce6f396060dfaecdefb69254a",
+    "Textures/PBR_StaticGlass_CoastalV2_dark_MetallicSmoothness.png": "4cd94205b919709d7209488ab7f8be09d1b74988667191c9e9a6bf02620d7a7f",
+    "Textures/PBR_StaticGlass_CoastalV2_dark_Normal.png": "647623b9c2cb34b312e9577c9a2eda9c4d834aa94d9985d8d675289ae61c450a",
+    "Textures/PBR_StaticGlass_CoastalV2_dark_Roughness.png": "12cda51b1cc5964aabce66b94f504d9e9d052e190620f261b096ceea756fbced",
+    "Textures/PBR_V4_EntryHinge_CoastalV2_bronze_BaseColor.png": "ecc409438ded397cb1954a9ef76b143a724ec9cb337e329554cdb065448cf4b9",
+    "Textures/PBR_V4_EntryHinge_CoastalV2_bronze_Metallic.png": "05606ae027f45d8c42a9040c3422a595f2ceebe1edac2ea41828c77b97b49c2b",
+    "Textures/PBR_V4_EntryHinge_CoastalV2_bronze_MetallicSmoothness.png": "6715773e58e65986b4ecd9281e74b100aee620f9fa0c721185c6690ac968125e",
+    "Textures/PBR_V4_EntryHinge_CoastalV2_bronze_Normal.png": "f8f73ee8276834a441b2d55fe1b80ed5f0cf8bc0b25ee215864114bd21c0a008",
+    "Textures/PBR_V4_EntryHinge_CoastalV2_bronze_Roughness.png": "ce4333dbde358c95a7bf74a8c174a3e1eb3c00838414c532c518bd2c1ecc7995"
+  },
+  "atlasLineage": {
+    "Baked_Floor": {
+      "bakeSourceSha256": "a18e70d228ca51155bae0a4ea6a492ac691a76af00c5b08a9bcad119b1e065d0",
+      "bakeRecipeSha256": "ff8db727a26d4786adacd06c945b5508d7cf920f6b07a483757c406149fde8a9",
+      "sourceManifestSha256": "",
+      "reused": false,
+      "textureHashes": {
+        "Textures/Baked_Floor.png": "1a92a2b042b772c77c70a95130d0b0511dd471abe9118acd0aff5f6e3fa1d3b8"
+      },
+      "meshDigestSha256": "8c252c1e5fccf0dfb1ab891d8be561951b2b9548d594d14ad7ec3c823b8d1c82"
+    },
+    "Baked_East_Wall": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_East_Wall.png": "cbeb95187a557f4aa7c77eac2bd8738dd2eb8617eb22cbefe1baa8ea85ae578f"
+      },
+      "meshDigestSha256": "b23933185cc1bd56dbac69652e64e6e3c7adaea1817b4178fb94f57fb99bd57b"
+    },
+    "Baked_South_Wall": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_South_Wall.png": "c2de06171907e0f250ec36c8838400dbb9ca66b8b2aa3443c70dbcd03c0cb49b"
+      },
+      "meshDigestSha256": "4f9e45356492aae59a487df4141dd07287fa29a30674863814d8e6d9fb7d26fa"
+    },
+    "Baked_Ceiling": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_Ceiling.png": "5d654ad8d6687ae4950dc01eab3cbe885d03815f79e580f2b2e686f697982d71"
+      },
+      "meshDigestSha256": "8cec2dc484c1da0f3b6173c8ff991478baf807d241ab836b1e13cc9489e92626"
+    },
+    "Baked_Trim": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_Trim.png": "6df46137d076352df43ffc4daddead3110bc8ad1e35fe7848ee1290f556f5343"
+      },
+      "meshDigestSha256": "770643d38619fb998183eadbc5e697950d1044cfdc90d477ae5b1affd4125f43"
+    },
+    "PBR_V4_EntryHinge_V4_WhiteDoorPaint": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {},
+      "meshDigestSha256": "d73cea01723e0f2b375d598dc92f09f12db668426d0cfecf7de7e3d2b49a129b"
+    },
+    "PBR_V4_EntryFrameRoot_V4_WhiteDoorPaint": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {},
+      "meshDigestSha256": "2a567d613a9fc07bbd64ab679956ef0968e89581ebe484114db404c78c90c251"
+    },
+    "PBR_V4_EntryHinge_CoastalV2_bronze": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/PBR_V4_EntryHinge_CoastalV2_bronze_BaseColor.png": "ecc409438ded397cb1954a9ef76b143a724ec9cb337e329554cdb065448cf4b9",
+        "Textures/PBR_V4_EntryHinge_CoastalV2_bronze_Normal.png": "f8f73ee8276834a441b2d55fe1b80ed5f0cf8bc0b25ee215864114bd21c0a008",
+        "Textures/PBR_V4_EntryHinge_CoastalV2_bronze_MetallicSmoothness.png": "6715773e58e65986b4ecd9281e74b100aee620f9fa0c721185c6690ac968125e"
+      },
+      "meshDigestSha256": "f75ff4ceb83ddc273aca271ac41f8f91fb58e6183bcfa97c04de339e63944056"
+    },
+    "PBR_StaticGlass_CoastalV2_glass": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {},
+      "meshDigestSha256": "79ee7c666dedfc85dea95ad7a3ae247701282883e098bb86962fded44c65f516"
+    },
+    "Baked_Sheer": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_Sheer.png": "3531c5dfe18e75461e4ee2258ff764974cd4f2f80ac8c137e938a506b31c7376"
+      },
+      "meshDigestSha256": "a0aa70198d2650eaa8384328ea2138ff03f3f7ef5d58c0c0932c47f70498d7e1"
+    },
+    "Baked_Drape": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_Drape.png": "c384d0dc9a8fe8e2e27c9d6685f77e493e6dbf2d71e1facaf52c1ffb1702a64d"
+      },
+      "meshDigestSha256": "a99d27cbedd72c9224975c8a645d875eac8994c019b759172b5ebfc38ebfb826"
+    },
+    "Baked_Sideboard": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_Sideboard.png": "ce65aa87a1893274d3a5dcf3d9e573a9876c5c31d1ba2ae3e0dce9db4916ca13"
+      },
+      "meshDigestSha256": "134c1273cf4b176ac1755e88f97192f8eff1d62b88653d2ccf9543c16d72b0d1"
+    },
+    "Baked_Rug": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_Rug.png": "1a073739ffe6a01af28836f074e831fb06faed98ec693dcde4b41f07d1a3614f"
+      },
+      "meshDigestSha256": "6c871080582daf47014ca28c28f1066e32182681c98120284e7bc4abd13901f7"
+    },
+    "Baked_Sofa": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_Sofa.png": "c46e08ba287438e2900888d478432cc254132f978a8a35ae38be3eb6f31baccc"
+      },
+      "meshDigestSha256": "646a2a1b981ed3c22e747a2f4de47214f295d4664d4d798e41d0507afdf0c96f"
+    },
+    "Baked_Lounge": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_Lounge.png": "3226f5aff07fbc6a54b15b59835bac70d8b7fc2844080e950126f79b5d866ef7"
+      },
+      "meshDigestSha256": "d2c13c70a8b4539dc27882ed6137bad63d6800ee53e4abef4a83ccc078370a88"
+    },
+    "Baked_CoffeeTable": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_CoffeeTable.png": "9b36c440c9b7245fafb047cb0fa257a8f770d8c3911412efd73d7686dca46bf1"
+      },
+      "meshDigestSha256": "b2905b51a27c07aee554323c13db32373e212f70b2fcb4593d4d8bd5a3a8005c"
+    },
+    "Baked_WorkDesk": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_WorkDesk.png": "a9ed86f00098ad3f1cb0107950f8f7ee22b2cf77cad92368c7cd752fb74f9ec6"
+      },
+      "meshDigestSha256": "f621e7afc6c40057f523f588870a53a294860f753c8fca61901db0b12b9ad48c"
+    },
+    "PBR_StaticGlass_CoastalV2_dark": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/PBR_StaticGlass_CoastalV2_dark_BaseColor.png": "aba4696e3a293d460de083ce53f887eda542de039e856caf2ec6d38d9dca24e8",
+        "Textures/PBR_StaticGlass_CoastalV2_dark_Normal.png": "647623b9c2cb34b312e9577c9a2eda9c4d834aa94d9985d8d675289ae61c450a",
+        "Textures/PBR_StaticGlass_CoastalV2_dark_MetallicSmoothness.png": "4cd94205b919709d7209488ab7f8be09d1b74988667191c9e9a6bf02620d7a7f"
+      },
+      "meshDigestSha256": "b99863aa56ce7cf720df5e071a5888f85459f6d26cbddc4a4a15c215171b869b"
+    },
+    "Baked_WorkChair": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_WorkChair.png": "331a567bd0d23e34b1a594007ba04011a04ae59aa21caceb3bd10176f02432ec"
+      },
+      "meshDigestSha256": "da10c9ba39dd29ec1f29166aab6120046b092ca20d0d4ba90084c689959efeaf"
+    },
+    "Baked_Bookshelf": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_Bookshelf.png": "ecc068c06611d6e557e207a0ab8f1993275be44aa788a963f1b7dbbe43455dd6"
+      },
+      "meshDigestSha256": "beaf952e6ac0d78ba47b43058dd2ebc92ad3a5664e8a2c0fad94c948b2caaf74"
+    },
+    "Baked_Olive": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_Olive.png": "a29bae12d0120b6aafd47338c2494033225005f97860a60cc05475e06939a51b"
+      },
+      "meshDigestSha256": "f5141abc791d9fc331bbb01717bf5fe7cccebb39b47632f720a23da5acffd738"
+    },
+    "Baked_Strelitzia": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_Strelitzia.png": "85ff3dde66adad02ee8b731d2d74f99a7a367880f0cd1d5706129e6a84c41857"
+      },
+      "meshDigestSha256": "515b03289091197e944b350c57a695e82de21d220f0a61f0e69256fbabff9798"
+    },
+    "Baked_Ocean": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_Ocean.png": "962388adcac08838a30e18e885d49674c6ac5c179e374ebcec23ddfd62a0d223"
+      },
+      "meshDigestSha256": "5d88a338bf6bdca6c7e05d8dbd011978c5d162552c92b9219a972e441739fba0"
+    },
+    "Baked_BedroomTrim": {
+      "bakeSourceSha256": "a18e70d228ca51155bae0a4ea6a492ac691a76af00c5b08a9bcad119b1e065d0",
+      "bakeRecipeSha256": "ff8db727a26d4786adacd06c945b5508d7cf920f6b07a483757c406149fde8a9",
+      "sourceManifestSha256": "",
+      "reused": false,
+      "textureHashes": {
+        "Textures/Baked_BedroomTrim.png": "a3aa5d6ee7151e055b23f875502eb43b5acc0311023f6bd4cf66d9a7e9069ed9"
+      },
+      "meshDigestSha256": "6ea6775a353f89ca77642b95c19ccfc1046cdb853b94f23f3e994210bca8678f"
+    },
+    "Baked_BedroomWalls": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_BedroomWalls.png": "708d1b18ee3d6c8715acbf1b694239e4b4a20dab33816139ae9d39f7c882debd"
+      },
+      "meshDigestSha256": "f7f64edfc0df83b1098640fe6b4ef814531b27a58f7a702f80243737bdf06b6d"
+    },
+    "Baked_BedroomCeiling": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_BedroomCeiling.png": "ca210c830a6279c011c195119c0346e5e0f44902c79eadc4f79903190932e1a0"
+      },
+      "meshDigestSha256": "aa03787c68e0b4fcc2d8fadcb2c4394e3c56add67c8b67b418270c4abf9bd6c4"
+    },
+    "Baked_BedroomFloor": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_BedroomFloor.png": "1e01aa94f3501bc7c89466473a47c26997345e9e27897d7fb5cf44c642678ea1"
+      },
+      "meshDigestSha256": "8391775de380bfe539c99b90c18d54e090b69cba546c31a8b85d940e78a9df1f"
+    },
+    "PBR_V4_BedroomDoorSlide_V4_WhiteDoorPaint": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {},
+      "meshDigestSha256": "973a2db5189692483a8651062dc9ac5d796f2a12c38a14395b99d12438eafa6d"
+    },
+    "Baked_BedFrame": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_BedFrame.png": "df0209816f4ca6f630ec8f528b3de6da7798991e9970d7ab6c1a1a649bb6e706"
+      },
+      "meshDigestSha256": "25ac78bd106cdeceacb087bc24600360182a8a4a46306a65b1ffcb40ba8a8e05"
+    },
+    "Baked_BedMattress": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_BedMattress.png": "8f4f4c1bb99a2f2f96331472c239edd6c4bdd22576f4d5937bf627d874d0e99f"
+      },
+      "meshDigestSha256": "aff7ec03d26bba9a3bd0c11735eb724230a5f9a0fdf2dbf8a18d9119205138a9"
+    },
+    "Baked_BedBedding": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_BedBedding.png": "432eece0087ea6179c018be12d1069ccc43c3a1566cf4ee6508b80f0ffff8352"
+      },
+      "meshDigestSha256": "8a1b04c5a741587448347d1e2a77a23c6c4c563e3e3acfb62bdfc46d583aad7f"
+    },
+    "Baked_BedPillows": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_BedPillows.png": "8d4aebea4a57bb4263169ab0316d28fe06ba01271596530ceb8ab1a6e966338f"
+      },
+      "meshDigestSha256": "f555ae3b977e7c08103ac2177bdc97abe7edb024023a7b721f54a12a9c0d0884"
+    },
+    "Baked_BedroomDetails": {
+      "bakeSourceSha256": "9fadf0b94ddb4e981a9bb9d952bae742b68dac6f8cbcbf0bc313d7794e8df296",
+      "bakeRecipeSha256": "74e4db2e25aed0cf0aa95acc5f9651ae600f0df438fbac8ea5999db73783e5f2",
+      "sourceManifestSha256": "34e4314351a497311a9fe7a11a2e7bfcba6496831cc7926ae74bf4e9bb27302e",
+      "reused": true,
+      "textureHashes": {
+        "Textures/Baked_BedroomDetails.png": "4e03b4d1c585272e7f336e8116123f6db7c4f64b3b117949dd3a035ceaab3569"
+      },
+      "meshDigestSha256": "db55423704f18b43d6ce6e9743116cd684d72a303ac28d9ed38f71f84c8d0113"
+    }
+  }
+}

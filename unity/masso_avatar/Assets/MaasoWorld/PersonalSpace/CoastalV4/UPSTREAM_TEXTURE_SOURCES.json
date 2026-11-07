@@ -1,0 +1,302 @@
+{
+  "version": 1,
+  "created_utc": "2026-09-09T08:30:07.640745+00:00",
+  "purpose": "Offline Blender 5 physically based coastal-room palette",
+  "assets": [
+    {
+      "id": "rough_linen",
+      "source": "Poly Haven",
+      "name": "Rough Linen",
+      "url": "https://polyhaven.com/a/rough_linen",
+      "metadata_url": "https://api.polyhaven.com/files/rough_linen",
+      "authors": {
+        "colormass": "Photography",
+        "Rico Cilliers": "Processing"
+      },
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_dimensions_mm": [
+        270.7081392676629,
+        271.29998803138733
+      ],
+      "technique": "Photographic source / scan PBR texture",
+      "maps": [
+        {
+          "file": "polyhaven/rough_linen/rough_linen_diff_2k.jpg",
+          "role": "Diffuse",
+          "resolution": "2k",
+          "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rough_linen/rough_linen_diff_2k.jpg",
+          "bytes": 3607181,
+          "source_md5": "1287d4d1183c511e4adc55b8d006d763",
+          "sha256": "e71016e08dfebea1dd4e8a2a675e3b617a889a782af782f1abb795906f4db1b4"
+        },
+        {
+          "file": "polyhaven/rough_linen/rough_linen_rough_2k.jpg",
+          "role": "Rough",
+          "resolution": "2k",
+          "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rough_linen/rough_linen_rough_2k.jpg",
+          "bytes": 4655974,
+          "source_md5": "fb70674c782d6bead54c8baaae2b77db",
+          "sha256": "48400d48fa203882bf5d984d5beb2f95edb1550309924601c018f2c4f3f80731"
+        },
+        {
+          "file": "polyhaven/rough_linen/rough_linen_nor_gl_2k.png",
+          "role": "nor_gl",
+          "resolution": "2k",
+          "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/rough_linen/rough_linen_nor_gl_2k.png",
+          "bytes": 22196908,
+          "source_md5": "c790b11f591f898dbec1d75733159fb3",
+          "sha256": "1de2d1e782a54340b9a047a78382c1a0218cc1933bdffb331d6ed5fa2164e932"
+        },
+        {
+          "file": "polyhaven/rough_linen/rough_linen_disp_2k.png",
+          "role": "Displacement",
+          "resolution": "2k",
+          "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/rough_linen/rough_linen_disp_2k.png",
+          "bytes": 7711416,
+          "source_md5": "b4d0a842264f27328c232134f7a0d6e3",
+          "sha256": "f50d326854357cfcce3b8af26169502d7065282f787439e0b63a7fed23444a55"
+        }
+      ]
+    },
+    {
+      "id": "oak_veneer_01",
+      "source": "Poly Haven",
+      "name": "Oak Veneer 01",
+      "url": "https://polyhaven.com/a/oak_veneer_01",
+      "metadata_url": "https://api.polyhaven.com/files/oak_veneer_01",
+      "authors": {
+        "Jenelle van Heerden": "All"
+      },
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_dimensions_mm": [
+        1830.0000429153442,
+        1830.0000429153442
+      ],
+      "technique": "Photographic source / scan PBR texture",
+      "maps": [
+        {
+          "file": "polyhaven/oak_veneer_01/oak_veneer_01_diff_2k.jpg",
+          "role": "Diffuse",
+          "resolution": "2k",
+          "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/oak_veneer_01/oak_veneer_01_diff_2k.jpg",
+          "bytes": 2831117,
+          "source_md5": "0ad13b8daf8dc00318a437f56e54c484",
+          "sha256": "0718c2e1a209afe6138ccb41d70e1a18cd825d1e73db33ad7cf80806fa9ce5a4"
+        },
+        {
+          "file": "polyhaven/oak_veneer_01/oak_veneer_01_rough_2k.jpg",
+          "role": "Rough",
+          "resolution": "2k",
+          "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/oak_veneer_01/oak_veneer_01_rough_2k.jpg",
+          "bytes": 3968436,
+          "source_md5": "cacab0148320161ceced18ae909e3ada",
+          "sha256": "5c81718ee172299c44e0754fadbe652758b6feed05a8fd88be6efff5aa70ca1e"
+        },
+        {
+          "file": "polyhaven/oak_veneer_01/oak_veneer_01_nor_gl_2k.png",
+          "role": "nor_gl",
+          "resolution": "2k",
+          "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/oak_veneer_01/oak_veneer_01_nor_gl_2k.png",
+          "bytes": 20978522,
+          "source_md5": "c67eef8573d4beb46519c89200b79a1e",
+          "sha256": "c26f922a75022c11243f351d348d1b5615e713f3787c76657fdb06047879b960"
+        },
+        {
+          "file": "polyhaven/oak_veneer_01/oak_veneer_01_disp_2k.png",
+          "role": "Displacement",
+          "resolution": "2k",
+          "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/oak_veneer_01/oak_veneer_01_disp_2k.png",
+          "bytes": 1429785,
+          "source_md5": "2a4e7feb025f230d5e18354df01cdaa7",
+          "sha256": "49ebd2370bd364a0f83cc83a7188202fa8f9792d21c29827073d85c8e6d65a07"
+        }
+      ]
+    },
+    {
+      "id": "white_plaster_02",
+      "source": "Poly Haven",
+      "name": "White Plaster 02",
+      "url": "https://polyhaven.com/a/white_plaster_02",
+      "metadata_url": "https://api.polyhaven.com/files/white_plaster_02",
+      "authors": {
+        "Rob Tuytel": "All"
+      },
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_dimensions_mm": [
+        1000,
+        1000
+      ],
+      "technique": "Photographic source / scan PBR texture",
+      "maps": [
+        {
+          "file": "polyhaven/white_plaster_02/white_plaster_02_diff_1k.jpg",
+          "role": "Diffuse",
+          "resolution": "1k",
+          "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/white_plaster_02/white_plaster_02_diff_1k.jpg",
+          "bytes": 527219,
+          "source_md5": "7b10c2686bcfd76d1f309a20fd06b57e",
+          "sha256": "a1ebbe091bd1ae93d2abd5de8d69f9003a8d0ee6532bcf9a87c2492c97051f23"
+        },
+        {
+          "file": "polyhaven/white_plaster_02/white_plaster_02_rough_1k.jpg",
+          "role": "Rough",
+          "resolution": "1k",
+          "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/white_plaster_02/white_plaster_02_rough_1k.jpg",
+          "bytes": 295900,
+          "source_md5": "8b28f263360b8c4ddbdc4f7c650c4eeb",
+          "sha256": "4ff1fe957cd161b07f721fe6c28a9459c8c2e8ec65627a26c16e483a07c80d85"
+        },
+        {
+          "file": "polyhaven/white_plaster_02/white_plaster_02_nor_gl_1k.png",
+          "role": "nor_gl",
+          "resolution": "1k",
+          "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/white_plaster_02/white_plaster_02_nor_gl_1k.png",
+          "bytes": 6075625,
+          "source_md5": "576d036eb85d0887c7613f8d3f5e13df",
+          "sha256": "36ac2eec35a5678eda0c1ccfd81f6ab8a2e2fed0ca3e77d6e1d44e372e130450"
+        },
+        {
+          "file": "polyhaven/white_plaster_02/white_plaster_02_disp_1k.png",
+          "role": "Displacement",
+          "resolution": "1k",
+          "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/white_plaster_02/white_plaster_02_disp_1k.png",
+          "bytes": 2142823,
+          "source_md5": "e3f8b9b4b78ab512f6bf94eb32f6a6a8",
+          "sha256": "86c8d78e9e529bb9db53a3ed7d6ad2aec8db362fe85e7a3602ec9fd7b6e20661"
+        }
+      ]
+    },
+    {
+      "id": "hessian_380",
+      "source": "Poly Haven",
+      "name": "Hessian 380",
+      "url": "https://polyhaven.com/a/hessian_380",
+      "metadata_url": "https://api.polyhaven.com/files/hessian_380",
+      "authors": {
+        "colormass": "Photography",
+        "Rico Cilliers": "Processing"
+      },
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_dimensions_mm": [
+        273.86577004511844,
+        273.79998564720154
+      ],
+      "technique": "Photographic source / scan PBR texture",
+      "maps": [
+        {
+          "file": "polyhaven/hessian_380/hessian_380_diff_1k.jpg",
+          "role": "Diffuse",
+          "resolution": "1k",
+          "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/hessian_380/hessian_380_diff_1k.jpg",
+          "bytes": 944914,
+          "source_md5": "46f362631d102c66cac0979ecc3bb2a7",
+          "sha256": "5727302df3a9c845e6320ff186ac13fc7d0f1ffcd6fda71667e808e09379fe6f"
+        },
+        {
+          "file": "polyhaven/hessian_380/hessian_380_rough_1k.jpg",
+          "role": "Rough",
+          "resolution": "1k",
+          "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/hessian_380/hessian_380_rough_1k.jpg",
+          "bytes": 956823,
+          "source_md5": "463d8d9b48fe04a8004b30451948ecc3",
+          "sha256": "a828755c5ddc9af0697eeed46427c5145df1dea5f1e2839f643156a285282fed"
+        },
+        {
+          "file": "polyhaven/hessian_380/hessian_380_nor_gl_1k.png",
+          "role": "nor_gl",
+          "resolution": "1k",
+          "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/hessian_380/hessian_380_nor_gl_1k.png",
+          "bytes": 5718543,
+          "source_md5": "f90d04e6c5f54305bd99ed7608104b20",
+          "sha256": "c7d36fe0e0beeebcbbb6b8a55e62b73cef56c890e683bb295fcf9e3495aaf3a3"
+        },
+        {
+          "file": "polyhaven/hessian_380/hessian_380_disp_1k.png",
+          "role": "Displacement",
+          "resolution": "1k",
+          "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/hessian_380/hessian_380_disp_1k.png",
+          "bytes": 1975057,
+          "source_md5": "b70c8874f8e36b79e6f4271db1097dae",
+          "sha256": "7131ee3d7547ec3a2e472d2c2d56431562bfff9fef99be2b7ad422f3a405d00b"
+        }
+      ]
+    },
+    {
+      "id": "Travertine009",
+      "source": "ambientCG",
+      "url": "https://ambientcg.com/a/Travertine009",
+      "authors": {
+        "Lennart Demes": "All"
+      },
+      "license": "CC0-1.0",
+      "license_url": "https://docs.ambientcg.com/license/",
+      "technique": "Procedural PBR material from ambientCG; not a photographic scan",
+      "source_repeat_m": [
+        1.2,
+        1.2
+      ],
+      "download_url": "https://ambientcg.com/get?file=Travertine009_1K-JPG.zip",
+      "cdn_url": "https://acg-download.struffelproductions.com/file/ambientCG-Web/download/Travertine009_pNQneZJD/Travertine009_1K-JPG.zip",
+      "archive_sha256": "09fa1ce1cd590e87ed4053864ebaf0186718fba6373559a8458eb4fa6146fdb7",
+      "maps": [
+        {
+          "file": "ambientcg/Travertine009/Travertine009.png",
+          "bytes": 233214,
+          "sha256": "ff77ed26c5cf61b4ec381af0c202f99f1e2628bd09a0e9e82b58bc41bfede557"
+        },
+        {
+          "file": "ambientcg/Travertine009/Travertine009_1K-JPG_AmbientOcclusion.jpg",
+          "bytes": 37077,
+          "sha256": "6333a47aa0ee5007da41f095aad67536658a68cdd88a3d21e7dd4469fdb6389b"
+        },
+        {
+          "file": "ambientcg/Travertine009/Travertine009_1K-JPG_Color.jpg",
+          "bytes": 922573,
+          "sha256": "6561c87d92aef321aef4095fbcc5518cec4d711e642be6beaa90d13829e6cd2b"
+        },
+        {
+          "file": "ambientcg/Travertine009/Travertine009_1K-JPG_Displacement.jpg",
+          "bytes": 18358,
+          "sha256": "b5cea447474af23e9b77ea685afa68e56d8aff976987fd10cc9e52ef2d656342"
+        },
+        {
+          "file": "ambientcg/Travertine009/Travertine009_1K-JPG_NormalDX.jpg",
+          "bytes": 332192,
+          "sha256": "f7247a45332f28629192c2b39ba8f8427d2ed2cc15f1cdb2d95bc9b094b38409"
+        },
+        {
+          "file": "ambientcg/Travertine009/Travertine009_1K-JPG_NormalGL.jpg",
+          "bytes": 332407,
+          "sha256": "635256a78537253a2d2bc5fef5fcda6e4e03349b960c57f15cf721b7cf5ba098"
+        },
+        {
+          "file": "ambientcg/Travertine009/Travertine009_1K-JPG_Roughness.jpg",
+          "bytes": 298778,
+          "sha256": "f4094c2149e257f4b6e17e5c5da70101fcbffaf0ce4016ab5d6aac7e45112e37"
+        }
+      ]
+    }
+  ],
+  "material_notes": {
+    "wall_ceiling": "White plaster scan; restrained warm mineral tint and 0.10–0.25 mm bump distance.",
+    "oak": "UV input in metres; 1.83 m scan repeat; grain and tangent normal rotate together to U. Quiet object-random variation and measured roughness. Reference-match revision: oak HSV saturation/value 0.90/1.12, oak_edge 0.92/1.04, preserving original honey chroma instead of the earlier gray-washed 0.65/1.28 floor tint.",
+    "linen": "Rough blue linen scan recolored nondestructively to warm oatmeal; original albedo retained. Source repeat 0.271 m; sofa/sage repeat 0.46 m. Sofa/sage recolor input range 0.20–0.56 preserves highlight yarn variation (about 43% of source linear luminance samples exceeded previous 0.42 upper limit). Curtains retain previous finer weave and tint range.",
+    "rug": "Hessian 380 scan, original repeat 0.274 m. Full-room reference-match repeat 1.35 m gives about 8 mm jute bundles (source yarn period approximately 6 pixels of 1024); previous 0.47 m repeat made the weave subpixel in the wide camera. Rug edge repeat 0.90 m. Color input range 0.14–0.43 increases measured weave contrast by about 33%; height Bump distance 0.0038 m, strength 0.5. All original maps retained.",
+    "sheer": "Thin surface diffuse/translucent/transparent mixture; keeps shadow rays enabled and filters light.",
+    "travertine": "AmbientCG Travertine009 original PBR maps, warm honed tint in shader. Source is procedural, disclosed explicitly.",
+    "box_mapping": "Object metres, apply scale. BOX uses derivatives of original scanned height; archived tangent-space OpenGL normals are used by UV oak, not incorrectly applied to BOX coordinates.",
+    "minor_materials": "Bronze, glazed ceramic, soil, leaf, books and emission are authored procedural shaders; no downloaded raster source.",
+    "external_media": "No private tokens, paid assets, or remote runtime dependencies. Existing coastal_seaview.png not copied or altered by this module."
+  },
+  "generated_backplate": {
+    "file": "coastal_backplate.png",
+    "source": "AI image generation using the user-provided coastal-room reference",
+    "prompt": "../backplate-prompt.txt",
+    "sha256": "189434128908fe557fc71423e8eb65d8d730ad759e4284f8d813fa42caf51d70",
+    "note": "Not a real location photograph or a 3D landscape scan."
+  }
+}

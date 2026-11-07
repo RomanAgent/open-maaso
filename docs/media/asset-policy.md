@@ -5,15 +5,16 @@ with its original black ring/star geometry and transparent logo background.
 `assets/brand/official-launcher-assets.json` records the reviewed paths and
 SHA-256 hashes. These brand assets contain no character or room artwork.
 
-Only two legacy fallback files remain generated placeholders:
-`assets/brand/home_room.png` and `assets/model_store/agent.png`.
-Their compatibility filenames are retained; they are not model covers.
-`assets/brand/login_doorway.png` is a real render of the project-owned
-procedural doorway used by the original login transition. Its source and
-capture provenance are recorded in
-[login-doorway.PROVENANCE.md](../../assets/brand/login-doorway.PROVENANCE.md).
-The active free-VRM cover is `assets/brand/offline_avatar_preview.png`, a real
-full-body Unity render showing the head, hands and feet.
+The original `assets/brand/home_room.png` and `login_doorway.png` are retained
+byte-for-byte from Maaso. The runtime uses the original Coastal V4 room and
+shared entry resources, rather than a generic floor or replacement doorway.
+The room geometry is Maaso-authored; its PBR inputs have recorded CC0-1.0
+provenance. See [the room asset notice](../../assets/brand/original-room.PROVENANCE.md)
+and [texture provenance](../assets/coastal-texture-provenance.json).
+
+Only `assets/model_store/agent.png` remains a generated legacy fallback icon.
+The active free-VRM cover is a verified full-body render, with its own model
+license notice.
 
 ## Check the assets
 
@@ -21,7 +22,7 @@ full-body Unity render showing the head, hands and feet.
 python3 tool/generate_placeholder_assets.py --check
 ```
 
-The standard-library generator recreates only the two legacy placeholders.
+The standard-library generator recreates only the legacy model-store fallback.
 `--check` verifies the official launcher/splash manifest and the reviewed
 `generated-scene-assets.json` hashes. Regeneration preserves the real login
 poster, official icons, model cover and free model. Scene renders require
@@ -31,10 +32,10 @@ The README hero follows Maaso White Frost v2: a pure-white canvas, neutral text,
 
 ## Product screenshots
 
-`showcase/` contains unedited native iPhone screenshots captured from the installed Maaso app on November 1, 2026. They are reference product media, separate from the generated placeholder set and its regeneration script. The screenshots depict separately licensed character and room content; those 3D sources are not included or relicensed by the repository's MIT license. Capture provenance, observed screen states and asset credits are recorded in [showcase/README.md](showcase/README.md).
+`showcase/` contains unedited native iPhone screenshots captured from the installed Maaso app on November 1, 2026. They are reference product media, separate from the generated placeholder set and its regeneration script. The screenshots depict separately licensed characters. Those character sources are not included or relicensed by the repository's MIT license. The reviewed room geometry and CC0 texture derivatives are documented separately. Capture provenance, observed screen states and asset credits are recorded in [showcase/README.md](showcase/README.md).
 
 ## Adding real content
 
 Supply artwork and models with documented rights to use and redistribute. Preserve attribution and any third-party terms. Character model covers must be actual full-body renders showing the complete head, hands, and feet; do not present an abstract placeholder or a cropped diagnostic as a model cover.
 
-Original licensed characters, room assets, and generated Unity players are intentionally outside this public release. The MIT license for project-owned source does not grant rights to those excluded materials or to independently obtained third-party content. See [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md).
+Original paid characters, purchased motions and generated Unity players remain outside this public source release. The reviewed Maaso room and CC0 texture derivatives are included. The MIT license for project-owned source does not grant rights to those excluded materials or to independently obtained third-party content. See [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md).

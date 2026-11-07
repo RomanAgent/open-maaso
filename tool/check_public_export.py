@@ -22,6 +22,10 @@ LICENSED_MODELS = {
         "9e2449e1087496d8d4caba907f23e0bd3f78d91fa552479bb9c23ac09cbb1fd6",
     "unity/masso_avatar/Assets/MaasoAvatar/Models/Default/OpenMaaso.vrm":
         "12c2b97e95e700783a6a550dc0eee2d7880aeedccef9ae67bc4c5a2f0f2631a2",
+    # Maaso-authored Coastal V4 geometry; reviewed CC0 texture provenance is
+    # recorded in assets/brand/original-room-assets.json and the third-party notice.
+    "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/PersonalSpaceV4.fbx":
+        "e935d7d37436e74e32f58cd0e3e899a8da7096c290d0a01b9e065c43863ea8d5",
 }
 MODEL_SUFFIXES = {
     ".vrm", ".fbx", ".blend", ".blend1", ".glb", ".gltf", ".gguf",

@@ -91,6 +91,7 @@ namespace Maaso.Avatar.Editor
                 target = target,
                 buildGuid = buildGuid,
                 sourcePathCount = paths.Length,
+                sourceAssetPaths = paths,
                 sourcePathListSha256 = digest,
                 retiredSourceCount = retired.Length,
                 retiredSourcePaths = retired,
@@ -127,6 +128,9 @@ namespace Maaso.Avatar.Editor
             public string target;
             public string buildGuid;
             public int sourcePathCount;
+            // Optional private build receipt evidence. This list is never
+            // logged or packaged into the player by the guard.
+            public string[] sourceAssetPaths;
             public string sourcePathListCanonicalization = "ordinal-sorted-distinct-project-paths-utf8-lf-v1";
             public string sourcePathListSha256;
             public int retiredSourceCount;

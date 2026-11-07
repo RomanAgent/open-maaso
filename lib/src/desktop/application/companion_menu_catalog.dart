@@ -1,4 +1,5 @@
 import 'package:maaso/src/app/routing/app_route_catalog.dart';
+import 'package:maaso/src/offline/local_edition_policy.dart';
 
 enum CompanionMenuGroup {
   conversation('companion.menu.group.conversation'),
@@ -85,11 +86,12 @@ class CompanionMenuCatalog {
       CompanionMenuIcon.avatar,
       'profile.title',
     ),
-    'membership': _MenuPresentation(
-      CompanionMenuGroup.system,
-      CompanionMenuIcon.store,
-      'membership.title',
-    ),
+    if (!kOpenMaasoLocalEdition)
+      'membership': _MenuPresentation(
+        CompanionMenuGroup.system,
+        CompanionMenuIcon.store,
+        'membership.title',
+      ),
     'onboarding': _MenuPresentation(
       CompanionMenuGroup.system,
       CompanionMenuIcon.avatar,

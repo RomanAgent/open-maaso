@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:maaso/src/app/routing/router_config.dart';
 import 'package:maaso/src/features/relationship/presentation/relationship_hub_page.dart';
+import 'package:maaso/src/offline/local_edition_policy.dart';
 
 void main() {
   test(
@@ -198,7 +199,10 @@ void main() {
     expect(AppRoutes.resolveCommand('/小程序'), AppRoutes.widgetsHub);
     expect(AppRoutes.resolveCommand('/qr'), isNull);
     expect(AppRoutes.resolveCommand('/个人信息'), AppRoutes.profile);
-    expect(AppRoutes.resolveCommand('/会员'), AppRoutes.membership);
+    expect(
+      AppRoutes.resolveCommand('/会员'),
+      kOpenMaasoLocalEdition ? null : AppRoutes.membership,
+    );
     expect(AppRoutes.resolveCommand('/钱包'), isNull);
     expect(AppRoutes.resolveCommand('/chat'), AppRoutes.u2aChat);
     expect(AppRoutes.resolveCommand('/onboarding'), AppRoutes.onboarding);

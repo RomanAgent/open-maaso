@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1373AFC97814F6DD3D945C88 /* UnityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1584E8085E7DFF328A2AC37 /* UnityFramework.framework */; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		17A700022027071700000002 /* LiveRtcAudioBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 17A700042027071700000004 /* LiveRtcAudioBridge.mm */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		4C5BFD091754CD68DDB866D0 /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CE0CC95FDFBF1797FEDAB7B /* Pods_RunnerTests.framework */; };
-		582E83FDB29880FF1DF5C3BE /* UnityFramework.framework in Embed Unity Frameworks */ = {isa = PBXBuildFile; fileRef = EE45076E4534B36C01AED3DA /* UnityFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		700AD42E8DA48C3BC41CEBB1 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFBBA3D8C585150C15E10211 /* Pods_Runner.framework */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		7884E8682EC3CC0700C636F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7884E8672EC3CC0400C636F2 /* SceneDelegate.swift */; };
@@ -25,7 +25,7 @@
 		A49020260914000200000001 /* MaasoFrostedInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49020260914000200000002 /* MaasoFrostedInput.swift */; };
 		A49020261021000100000001 /* MaasoHomeTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49020261021000100000002 /* MaasoHomeTextEditor.swift */; };
 		AA1400730000000000000001 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA1400730000000000000002 /* InfoPlist.strings */; };
-		C95D05A332928A1D28E3AA01 /* UnityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE45076E4534B36C01AED3DA /* UnityFramework.framework */; };
+		B50638DF691B59EDE933D8F3 /* UnityFramework.framework in Embed Unity Frameworks */ = {isa = PBXBuildFile; fileRef = B1584E8085E7DFF328A2AC37 /* UnityFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,13 +35,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 1D6058910D05DD3D006BFB54;
 			remoteInfo = Subproject;
-		};
-		09FCE104FC71232954ED04BE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03EE27DCA070291BEAD810EA /* Unity-iPhone.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 9D25AB9C213FB47800354C27;
-			remoteInfo = UnityFramework;
 		};
 		331C8085294A63A400263BE5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -57,6 +50,13 @@
 			remoteGlobalIDString = 5623C57317FDCB0800090B9E;
 			remoteInfo = Subproject;
 		};
+		C5BA6E44B7F24100C473B27B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03EE27DCA070291BEAD810EA /* Unity-iPhone.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9D25AB9D213FB47800354C27;
+			remoteInfo = UnityFramework;
+		};
 		D00C864CA45299E97A7D40AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 03EE27DCA070291BEAD810EA /* Unity-iPhone.xcodeproj */;
@@ -64,11 +64,11 @@
 			remoteGlobalIDString = 7F4E05A02717216D00A2CBE4;
 			remoteInfo = Subproject;
 		};
-		F9794A649A82DC9CC61FFB5D /* PBXContainerItemProxy */ = {
+		D6DFDA110F3B3189D418CB57 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 03EE27DCA070291BEAD810EA /* Unity-iPhone.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9D25AB9D213FB47800354C27;
+			proxyType = 1;
+			remoteGlobalIDString = 9D25AB9C213FB47800354C27;
 			remoteInfo = UnityFramework;
 		};
 /* End PBXContainerItemProxy section */
@@ -80,7 +80,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				582E83FDB29880FF1DF5C3BE /* UnityFramework.framework in Embed Unity Frameworks */,
+				B50638DF691B59EDE933D8F3 /* UnityFramework.framework in Embed Unity Frameworks */,
 			);
 			name = "Embed Unity Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,7 +148,7 @@
 			files = (
 				78A318202AECB46A00862997 /* FlutterGeneratedPluginSwiftPackage in Frameworks */,
 				700AD42E8DA48C3BC41CEBB1 /* Pods_Runner.framework in Frameworks */,
-				C95D05A332928A1D28E3AA01 /* UnityFramework.framework in Frameworks */,
+				1373AFC97814F6DD3D945C88 /* UnityFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,7 +189,7 @@
 		8DD7652E88C64B75A413A8CE /* Unity Products */ = {
 			isa = PBXGroup;
 			children = (
-				EE45076E4534B36C01AED3DA /* UnityFramework.framework */,
+				B1584E8085E7DFF328A2AC37 /* UnityFramework.framework */,
 			);
 			name = "Unity Products";
 			sourceTree = "<group>";
@@ -293,7 +293,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				1D5351D6051D39C18C7734D4 /* PBXTargetDependency */,
+				E7039E7DAFF23E37CF1AB1FD /* PBXTargetDependency */,
 			);
 			name = Runner;
 			packageProductDependencies = (
@@ -374,11 +374,11 @@
 			remoteRef = 713BA3A10492992CDEA9BB16 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EE45076E4534B36C01AED3DA /* UnityFramework.framework */ = {
+		B1584E8085E7DFF328A2AC37 /* UnityFramework.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = UnityFramework.framework;
-			remoteRef = F9794A649A82DC9CC61FFB5D /* PBXContainerItemProxy */;
+			remoteRef = C5BA6E44B7F24100C473B27B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -530,15 +530,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1D5351D6051D39C18C7734D4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = UnityFramework;
-			targetProxy = 09FCE104FC71232954ED04BE /* PBXContainerItemProxy */;
-		};
 		331C8086294A63A400263BE5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 97C146ED1CF9000F007C117D /* Runner */;
 			targetProxy = 331C8085294A63A400263BE5 /* PBXContainerItemProxy */;
+		};
+		E7039E7DAFF23E37CF1AB1FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = UnityFramework;
+			targetProxy = D6DFDA110F3B3189D418CB57 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

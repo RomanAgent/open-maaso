@@ -14,6 +14,26 @@ from check_public_export import (
 
 
 class PublicExportTests(unittest.TestCase):
+    def test_original_room_assets_have_reviewed_ownership_and_exact_hashes(self):
+        root = Path(__file__).resolve().parents[1]
+        manifest = json.loads((root / "assets/brand/original-room-assets.json").read_text())
+        self.assertEqual(manifest["schemaVersion"], 1)
+        self.assertEqual(manifest["room"], "Original Maaso Coastal V4")
+        self.assertIn("Maaso-authored", manifest["geometry"])
+        self.assertEqual({entry["license"] for entry in manifest["licenseSources"]}, {"CC0-1.0"})
+        self.assertEqual(len({entry["path"] for entry in manifest["assets"]}), len(manifest["assets"]))
+        for entry in manifest["assets"]:
+            path = entry["path"]
+            self.assertTrue(path.startswith("unity/masso_avatar/Assets/"))
+            self.assertNotIn("..", Path(path).parts)
+            data = (root / path).read_bytes()
+            self.assertEqual(len(data), entry["bytes"], path)
+            self.assertEqual(hashlib.sha256(data).hexdigest(), entry["sha256"], path)
+            self.assertIsNone(forbidden_path(path), path)
+        model = "unity/masso_avatar/Assets/MaasoWorld/PersonalSpace/CoastalV4/PersonalSpaceV4.fbx"
+        self.assertEqual(content_findings(model, b"unreviewed replacement"), [(model, 0, "licensed-model-checksum")])
+        self.assertIsNotNone(forbidden_path("assets/unreviewed-room.fbx"))
+
     def test_official_avatar_has_exact_reviewed_bytes_and_redistribution_metadata(self):
         name = "unity/masso_avatar/Assets/MaasoAvatar/Models/Default/OpenMaaso.vrm"
         root = Path(__file__).resolve().parents[1]
