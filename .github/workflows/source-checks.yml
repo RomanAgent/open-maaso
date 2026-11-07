@@ -15,6 +15,7 @@ jobs:
       - name: Check source publication boundaries
         run: |
           python3 -m unittest discover -s tool -p test_check_public_export.py
+          python3 -m unittest discover -s tool -p test_generated_scene_assets.py
           python3 tool/check_public_export.py
           python3 tool/generate_placeholder_assets.py --check
           git diff --check

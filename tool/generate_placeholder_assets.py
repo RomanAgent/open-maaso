@@ -181,9 +181,12 @@ def main() -> int:
     parser.add_argument("--check", action="store_true", help="Check every output matches the deterministic generated placeholder.")
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
-    expected = [(path, make_png(width, height, style)) for path, width, height, style in OUTPUTS if path in {'assets/brand/home_room.png', 'assets/brand/login_doorway.png', 'assets/model_store/agent.png'}]
+    # The login poster is a real render of the shipped procedural doorway.
+    # Regeneration must never replace that presentation asset with a placeholder.
+    expected = [(path, make_png(width, height, style)) for path, width, height, style in OUTPUTS if path in {'assets/brand/home_room.png', 'assets/model_store/agent.png'}]
     manifest = root / 'assets/brand/official-launcher-assets.json'
     official = json.loads(manifest.read_text())
+    scene_assets = json.loads((root / 'assets/brand/generated-scene-assets.json').read_text())
     if 'windows/runner/resources/app_icon.ico' not in official:
         expected.append(("windows/runner/resources/app_icon.ico", make_ico()))
     failures = []
@@ -196,13 +199,13 @@ def main() -> int:
             output.parent.mkdir(parents=True, exist_ok=True)
             output.write_bytes(payload)
     if args.check:
-        for path, digest in official.items():
+        for path, digest in {**official, **scene_assets}.items():
             asset = root / path
             if not asset.is_file() or hashlib.sha256(asset.read_bytes()).hexdigest() != digest:
                 failures.append(path)
     if failures:
         for path in failures:
-            print("Placeholder differs or is missing:", path)
+            print("Asset differs or is missing:", path)
         return 1
     print(("Verified" if args.check else "Generated"), len(expected), "original placeholder assets.")
     return 0

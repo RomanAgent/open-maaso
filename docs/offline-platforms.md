@@ -47,6 +47,11 @@ reporting are disabled. No cloud project ID or developer team is embedded.
 
 Use Unity 6000.5.2f1 with iOS Build Support. From this repository root:
 
+The installed Xcode also needs its Metal compiler component. Verify
+`xcrun metal --version`; if Xcode reports that the component is missing,
+install it with `xcodebuild -downloadComponent MetalToolchain` before shader
+rendering/export. This is a developer-tool setup step.
+
 ```sh
 "$UNITY_EDITOR" -batchmode -nographics -quit \
   -projectPath "$PWD/unity/masso_avatar" \
@@ -57,8 +62,9 @@ ruby tool/unity/link_ios_unity_library.rb
 `UNITY_EDITOR` is the executable path to your installed Unity Editor. Package
 resolution may need the internet during development; the produced player loads
 its avatar and scene locally. The source VRM is reviewed and hash-pinned. The
-builder creates the controller, idle clip and floor without commercial room or
-animation assets. Player-pack validation requires the reviewed source and rejects
+builder creates the controller, idle clip, floor and shared procedural entrance
+without commercial room or animation assets. The entrance uses the original
+login receiver, shared-door binding and camera transition. Player-pack validation requires the reviewed source and rejects
 Joy and retired assets. Generated exports remain in the normal ignored
 `unity/masso_avatar/Builds/iOS` directory.
 

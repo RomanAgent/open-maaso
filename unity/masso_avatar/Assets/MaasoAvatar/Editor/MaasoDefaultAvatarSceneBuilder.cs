@@ -107,6 +107,8 @@ namespace Maaso.Avatar.Editor
             offlineReceiver.FindProperty("designedIdleStateName").stringValue = "Idle";
             offlineReceiver.ApplyModifiedPropertiesWithoutUndo();
 
+            OpenMaasoLoginDoorwayBuilder.Install();
+
             EditorSceneManager.SaveScene(scene, ScenePath);
             UpdateBuildSettings();
             AssetDatabase.SaveAssets();
@@ -171,6 +173,13 @@ namespace Maaso.Avatar.Editor
             {
                 throw new InvalidOperationException(
                     "Bundled VRM is not explicitly bound to the command receiver.");
+            }
+            var map = UnityEngine.Object.FindAnyObjectByType<Maaso.World.PersistentWorldMapController>();
+            var doorway = LoginDoorwayRig.Ensure(map);
+            if (doorway == null || !doorway.IsSceneEntryBound || !doorway.ValidateEntryRoute())
+            {
+                throw new InvalidOperationException(
+                    "Bundled VRM scene is missing its shared login entry.");
             }
         }
 

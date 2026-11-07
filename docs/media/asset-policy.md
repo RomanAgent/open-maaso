@@ -5,10 +5,13 @@ with its original black ring/star geometry and transparent logo background.
 `assets/brand/official-launcher-assets.json` records the reviewed paths and
 SHA-256 hashes. These brand assets contain no character or room artwork.
 
-Only three legacy fallback files are generated placeholders:
-`assets/brand/home_room.png`, `assets/brand/login_doorway.png` and
-`assets/model_store/agent.png`. Their compatibility filenames are retained;
-they do not depict a room, doorway or character and are not model covers.
+Only two legacy fallback files remain generated placeholders:
+`assets/brand/home_room.png` and `assets/model_store/agent.png`.
+Their compatibility filenames are retained; they are not model covers.
+`assets/brand/login_doorway.png` is a real render of the project-owned
+procedural doorway used by the original login transition. Its source and
+capture provenance are recorded in
+[login-doorway.PROVENANCE.md](../../assets/brand/login-doorway.PROVENANCE.md).
 The active free-VRM cover is `assets/brand/offline_avatar_preview.png`, a real
 full-body Unity render showing the head, hands and feet.
 
@@ -18,10 +21,11 @@ full-body Unity render showing the head, hands and feet.
 python3 tool/generate_placeholder_assets.py --check
 ```
 
-The standard-library generator recreates only the three legacy placeholders.
-`--check` also verifies the official launcher/splash manifest. It does not
-regenerate or overwrite official icon artwork, the actual model cover, or the
-free model. Custom brand changes require updating the reviewed manifest.
+The standard-library generator recreates only the two legacy placeholders.
+`--check` verifies the official launcher/splash manifest and the reviewed
+`generated-scene-assets.json` hashes. Regeneration preserves the real login
+poster, official icons, model cover and free model. Scene renders require
+their documented Unity capture; they must not be replaced with placeholders.
 
 The README hero follows Maaso White Frost v2: a pure-white canvas, neutral text, a borderless muted capsule, and small reference-blue accents. It uses the official Maaso logo from `assets/brand/masso_monochrome_logo.svg` with a transparent background at the project owner's request. The original circle and star geometry are preserved; the white background rectangle and invisible filter are removed. The black ring and four-point star replace the temporary open-maaso lettermark. The hero composition remains an illustration, not an application screenshot or evidence of a completed avatar/native rendering experience. The native launcher/splash set uses the same official mark.
 
