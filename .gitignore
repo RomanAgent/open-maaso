@@ -26,6 +26,7 @@ config/local*.json
 build/
 coverage/
 **/.gradle/
+**/.kotlin/
 **/local.properties
 **/Pods/
 **/.symlinks/
