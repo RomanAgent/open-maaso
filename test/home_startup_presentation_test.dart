@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:maaso/src/app/app_agent_shell.dart';
 import 'package:maaso/src/core/foundation/app_framework.dart';
+import 'package:maaso/src/core/platform/app_platform_capabilities.dart';
 import 'package:maaso/src/core/models/account_device_lease.dart';
 import 'package:maaso/src/core/models/account_device_handoff.dart';
 import 'package:maaso/src/core/models/account_runtime_authority_policy.dart';
@@ -58,6 +59,11 @@ void main() {
   setUp(() async {
     await appServices.reset();
     appServices.testMode = true;
+    // These tests exercise the iOS Unity host. Theme's platform override does
+    // not change dart:io host capabilities on a Linux CI worker.
+    appServices.put(
+      const AppPlatformCapabilities.forPlatform(AppHostPlatform.ios),
+    );
     uiControl = AgentUiControlCoordinator();
     SharedPreferences.setMockInitialValues({});
     presentation = await appServices
@@ -180,6 +186,13 @@ void main() {
       '${platform.name} Home leaves the independent pet renderer visible',
       (tester) async {
         debugDefaultTargetPlatformOverride = platform;
+        appServices.put(
+          AppPlatformCapabilities.forPlatform(
+            platform == TargetPlatform.macOS
+                ? AppHostPlatform.macos
+                : AppHostPlatform.windows,
+          ),
+        );
         lifecycle.publish(local: true);
         final renderer = installRenderer();
         await renderer.setLocalAvatarVisible(true);
@@ -2095,6 +2108,9 @@ void main() {
     tester,
   ) async {
     debugDefaultTargetPlatformOverride = TargetPlatform.macOS;
+    appServices.put(
+      const AppPlatformCapabilities.forPlatform(AppHostPlatform.macos),
+    );
     await mountHome(tester);
     expect(avatarWindow, findsNothing);
     expect(tester.getSize(find.byType(HomeChatHistory)), const Size(393, 852));
