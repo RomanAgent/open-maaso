@@ -426,6 +426,8 @@ const Map<String, String> zhCH = {
   'settings.desktop_companion_snap': '拖放时吸附',
   'settings.section_model': '模型 · BYOK',
   'settings.section_model_subtitle': '使用你自己的 Key，支持任意 OpenAI 兼容 API',
+  'settings.api_only_model_subtitle': '使用本机保存的厂商、API Key、接口地址与模型配置。',
+  'settings.api_only_key_note': 'Key 加密保存在本机，仅发送给你配置的模型 API。保存设置不会发起模型请求。',
   'settings.cloud_brain_on': '云端大脑已开启 · 云端回复拥有最高优先级',
   'settings.cloud_brain_off': '云端大脑已关闭 · 只使用本地模型兜底',
   'settings.api_key': 'API Key',

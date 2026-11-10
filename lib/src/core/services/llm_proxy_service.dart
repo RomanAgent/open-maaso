@@ -104,7 +104,7 @@ class LLMProxyService extends AppService {
           if (!_canResolveClient(generation) || key == null) {
             throw const PrivacyException('PRIVACY_CONTEXT_CHANGED');
           }
-          final config = await LLMDirectCloudConfig.readFrom(_storage);
+          final config = await _readDirectConfig();
           if (!_canResolveClient(generation) ||
               config == null ||
               !config.enabled ||
@@ -171,8 +171,15 @@ class LLMProxyService extends AppService {
       ? appServices.find<MaasoAgentModeService>().pipelineMode.value
       : AgentPipelineMode.defaultMode;
 
-  Future<LLMClient?> _ensureDirectCloudClient(int generation) async {
+  Future<LLMDirectCloudConfig?> _readDirectConfig() async {
     final config = await LLMDirectCloudConfig.readFrom(_storage);
+    return config != null && localEdition
+        ? apiOnlyModelConfiguration(config)
+        : config;
+  }
+
+  Future<LLMClient?> _ensureDirectCloudClient(int generation) async {
+    final config = await _readDirectConfig();
     if (config == null || !config.enabled || !_canResolveClient(generation)) {
       return null;
     }
@@ -491,7 +498,7 @@ class LiveLLMClient
       requireMounted();
       String? currentKey;
       if (mode == AgentPipelineMode.directCloud) {
-        final config = await LLMDirectCloudConfig.readFrom(_proxy._storage);
+        final config = await _proxy._readDirectConfig();
         if (config != null &&
             config.enabled &&
             (config.apiKey.isNotEmpty || _proxy.localEdition)) {

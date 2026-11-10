@@ -26,6 +26,7 @@
 		A49020261021000100000001 /* MaasoHomeTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49020261021000100000002 /* MaasoHomeTextEditor.swift */; };
 		AA1400730000000000000001 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA1400730000000000000002 /* InfoPlist.strings */; };
 		B50638DF691B59EDE933D8F3 /* UnityFramework.framework in Embed Unity Frameworks */ = {isa = PBXBuildFile; fileRef = B1584E8085E7DFF328A2AC37 /* UnityFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F64092B679798BA6C9BD6FC1 /* LocalSystemTtsBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7525F97609FC7911441542 /* LocalSystemTtsBridge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		331C807B294A618700263BE5 /* RunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerTests.swift; sourceTree = "<group>"; };
 		331C8081294A63A400263BE5 /* RunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
+		4C7525F97609FC7911441542 /* LocalSystemTtsBridge.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LocalSystemTtsBridge.swift; sourceTree = "<group>"; };
 		5C179A4EDDE1C458EA544BE1 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				A49020260914000200000002 /* MaasoFrostedInput.swift */,
 				A49020261021000100000002 /* MaasoHomeTextEditor.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
+				4C7525F97609FC7911441542 /* LocalSystemTtsBridge.swift */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				A49020260914000100000001 /* UnityAvatarLifecycle.swift in Sources */,
 				A49020260914000200000001 /* MaasoFrostedInput.swift in Sources */,
 				A49020261021000100000001 /* MaasoHomeTextEditor.swift in Sources */,
+				F64092B679798BA6C9BD6FC1 /* LocalSystemTtsBridge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

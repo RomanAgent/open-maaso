@@ -829,10 +829,10 @@ void main() {
           initialCatalog: const [
             ...AvatarConfigService.builtInCatalog,
             AvatarOption(
-              id: 'matt',
-              name: 'Matt',
+              id: 'fixture_second',
+              name: 'Second fixture',
               backend: AvatarBackendKind.unity,
-              modelUrl: 'unity://masso/avatar_matt',
+              modelUrl: 'unity://masso/fixture_second',
             ),
           ],
           persistSelection: (_, _) async => true,
@@ -844,7 +844,7 @@ void main() {
       await finishEntry(tester, renderer);
       final before = renderer.visibility.length;
       renderer.instantPresence = true;
-      await selection.select('matt');
+      await selection.select('fixture_second');
       // Native can hide, load and report readiness between Flutter frames.
       // Home still must reveal this model with its own current acknowledgement.
       expect(renderer.visibility.last, isFalse);
@@ -875,10 +875,10 @@ void main() {
           initialCatalog: const [
             ...AvatarConfigService.builtInCatalog,
             AvatarOption(
-              id: 'matt',
-              name: 'Matt',
+              id: 'fixture_second',
+              name: 'Second fixture',
               backend: AvatarBackendKind.unity,
-              modelUrl: 'unity://masso/avatar_matt',
+              modelUrl: 'unity://masso/fixture_second',
             ),
           ],
           persistSelection: (_, _) async => true,
@@ -892,7 +892,7 @@ void main() {
       final initialCommands = renderer.commands.length;
 
       renderer.blockedModelLoad = Completer<void>();
-      final selectMatt = selection.select('matt');
+      final selectMatt = selection.select('fixture_second');
       await flushPresentation(tester);
       expect(renderer.visibility.last, isFalse);
       expect(find.byType(UnityAvatarView), findsOneWidget);
@@ -918,7 +918,7 @@ void main() {
       expect(renderer.visibility.last, isTrue);
       expect(renderer.commands.last.phase, AvatarPresencePhase.restore);
 
-      // A native renderer reset can reload the same Matt model. Its selected
+      // A native renderer reset can reload the same selected model. Its selected
       // ID is unchanged, but the model epoch needs a fresh preparation/restore.
       final mattGeneration = selection.selectionDisplayGeneration.value;
       final beforeReset = renderer.commands.length;
@@ -1002,10 +1002,10 @@ void main() {
           initialCatalog: const [
             ...AvatarConfigService.builtInCatalog,
             AvatarOption(
-              id: 'matt',
-              name: 'Matt',
+              id: 'fixture_second',
+              name: 'Second fixture',
               backend: AvatarBackendKind.unity,
-              modelUrl: 'unity://masso/avatar_matt',
+              modelUrl: 'unity://masso/fixture_second',
             ),
           ],
           persistSelection: (_, _) async => true,
@@ -1026,7 +1026,7 @@ void main() {
         ),
       );
       await tester.pump(const Duration(milliseconds: 500));
-      await selection.select('matt');
+      await selection.select('fixture_second');
       await flushPresentation(tester);
       expect(renderer.commands, hasLength(initialCommands));
 
@@ -1048,7 +1048,7 @@ void main() {
   );
 
   testWidgets(
-    'same Matt in a new renderer restores after Home remount even when both epochs are zero',
+    'same selected model in a new renderer restores after Home remount even when both epochs are zero',
     (tester) async {
       lifecycle.publish(local: true);
       final firstRenderer = installRenderer();
@@ -1057,17 +1057,17 @@ void main() {
           initialCatalog: const [
             ...AvatarConfigService.builtInCatalog,
             AvatarOption(
-              id: 'matt',
-              name: 'Matt',
+              id: 'fixture_second',
+              name: 'Second fixture',
               backend: AvatarBackendKind.unity,
-              modelUrl: 'unity://masso/avatar_matt',
+              modelUrl: 'unity://masso/fixture_second',
             ),
           ],
           persistSelection: (_, _) async => true,
         ),
       );
       await selection.applyInitial();
-      await selection.select('matt');
+      await selection.select('fixture_second');
       final mattGeneration = selection.selectionDisplayGeneration.value;
       await mountHome(tester);
       await flushPresentation(tester);

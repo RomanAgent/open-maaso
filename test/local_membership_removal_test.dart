@@ -19,6 +19,7 @@ import 'package:maaso/src/features/economy/application/economy_service.dart';
 import 'package:maaso/src/features/economy/application/store_purchase_service.dart';
 import 'package:maaso/src/features/economy/domain/store_payment_models.dart';
 import 'package:maaso/src/features/identity/presentation/profile_page.dart';
+import 'package:maaso/src/features/privacy/domain/privacy_models.dart';
 import 'package:maaso/src/offline/local_edition_policy.dart';
 import 'package:sembast/sembast_memory.dart';
 
@@ -201,7 +202,8 @@ void main() {
         apiKey: 'fixture-key',
         baseUrl: 'https://api.openai.com/v1',
         model: 'fixture',
-        enabled: true,
+        // Old saved Cloud-off state cannot block the API-only edition.
+        enabled: false,
       );
       await storage.write(LLMDirectCloudConfig.storageKey, config.encode());
       final client = await proxy.ensureClient();
@@ -214,13 +216,17 @@ void main() {
       await storage.write(
         LLMDirectCloudConfig.storageKey,
         const LLMDirectCloudConfig(
-          apiKey: 'fixture-key',
+          apiKey: '',
           baseUrl: 'https://api.openai.com/v1',
           model: 'fixture',
-          enabled: false,
+          enabled: true,
         ).encode(),
       );
       expect(await proxy.ensureClient(), isNull);
+      await expectLater(
+        client.chat([Message.user('after key removal')]),
+        throwsA(isA<PrivacyException>()),
+      );
       expect(requests, 1);
     },
   );

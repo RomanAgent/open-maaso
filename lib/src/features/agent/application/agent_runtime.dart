@@ -3470,10 +3470,14 @@ class AgentRuntime {
     // Cloud-first online turns skip local semantic routing entirely. When the
     // cloud path is blocked, run the reflex sweep for the local fallback path.
     RoutingDecision? localRouting;
-    if (cloudBlockReason == null || isNotificationInteraction) {
+    if (_usesLocalEdition ||
+        cloudBlockReason == null ||
+        isNotificationInteraction) {
       TurnTrace.event(
         'router.local_brain.skip',
-        details: isNotificationInteraction
+        details: _usesLocalEdition
+            ? 'api_only=true'
+            : isNotificationInteraction
             ? 'notification_interaction=true'
             : 'cloud_first=true',
       );
@@ -3774,7 +3778,8 @@ class AgentRuntime {
     // Seamless hand-off: if the cloud is unavailable and the user opted into the
     // local model but it isn't up yet (it gets unloaded while the cloud is the
     // active brain), bring it up and WAIT here instead of failing the turn.
-    if (cloudBlockReason != null &&
+    if (!_usesLocalEdition &&
+        cloudBlockReason != null &&
         !localAnswerAvailable &&
         appServices.isRegistered<LocalLLMService>()) {
       final svc = appServices.find<LocalLLMService>();
@@ -7557,6 +7562,7 @@ One-message example: {"actions":[{"type":"reply.utterance","text":"可以呀。"
     required ConversationStyleSnapshot conversationStyle,
     RoutingDecision? routing,
   }) async {
+    if (_usesLocalEdition) return null;
     if (!appServices.isRegistered<LocalBrainService>()) return null;
     TurnTrace.event('fallback_reason', details: 'local_after_$reason');
     final brain = appServices.find<LocalBrainService>();
@@ -7653,13 +7659,15 @@ One-message example: {"actions":[{"type":"reply.utterance","text":"可以呀。"
   }
 
   bool _localAnswerBrainAvailable() {
+    if (_usesLocalEdition) return false;
     if (_pipelineMode != AgentPipelineMode.localFull) return false;
     if (!appServices.isRegistered<LocalLLMBackend>()) return false;
     return appServices.find<LocalLLMBackend>().isReady;
   }
 
-  AgentPipelineMode get _pipelineMode =>
-      appServices.isRegistered<MaasoAgentModeService>()
+  AgentPipelineMode get _pipelineMode => _usesLocalEdition
+      ? AgentPipelineMode.directCloud
+      : appServices.isRegistered<MaasoAgentModeService>()
       ? appServices.find<MaasoAgentModeService>().pipelineMode.value
       : AgentPipelineMode.defaultMode;
 
@@ -7711,6 +7719,7 @@ One-message example: {"actions":[{"type":"reply.utterance","text":"可以呀。"
         !appServices.find<ConnectivityService>().isOnline.value) {
       return 'offline';
     }
+    if (_usesLocalEdition) return null;
     if (_pipelineMode == AgentPipelineMode.proxyDefault ||
         _pipelineMode == AgentPipelineMode.volcRealtimeAudio) {
       return null;

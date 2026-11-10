@@ -46,6 +46,12 @@ void main() {
       await Future<void>.delayed(Duration.zero);
 
       expect(_lightingPayloads(calls).last, 'night');
+
+      theme.setSystemBrightnessForTest(Brightness.dark);
+      theme.setMode(ThemeModePreference.light);
+      await Future<void>.delayed(Duration.zero);
+      expect(theme.brightness.value, Brightness.light);
+      expect(_lightingPayloads(calls).last, 'day');
     },
   );
 }

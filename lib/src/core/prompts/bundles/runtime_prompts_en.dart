@@ -559,9 +559,9 @@ Treat this as guided Applet production with FreeformSurface: establish a concise
   'runtime.fallback.local_empty':
       'I blanked for a second. Please say that again.',
   'runtime.fallback.local_edition_unconfigured':
-      'Local features are ready. To chat with AI or generate works, configure and enable a model API key in Settings, or enter a local Ollama endpoint.',
+      'Add your model provider API key, endpoint and model in Settings to chat or generate works. A configured local API endpoint can also be used.',
   'runtime.fallback.local_edition_offline':
-      'The model service is unavailable. Your local works and data are still available. Try again when connected, or configure a local model endpoint in Settings.',
+      'I cannot reach your configured model API. Check the connection, endpoint, model and key in Settings. Your saved works and data remain available.',
   'runtime.fallback.no_brain':
       'I cannot reach a cloud model, and my local model is not ready yet. Add a cloud key or enable the local model in Settings.',
 };

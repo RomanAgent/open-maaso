@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:maaso/src/core/foundation/app_framework.dart';
 import 'package:maaso/src/core/services/sherpa_neural_tts.dart';
+import 'package:maaso/src/core/services/system_tts_engine.dart';
 import 'package:maaso/src/features/agent/application/maaso_tts_plugin.dart';
 import 'package:maaso/src/features/agent/application/sherpa_tts_engine.dart';
 import 'package:maaso/src/features/agent/application/speech/speech_playback_lease.dart';
@@ -31,7 +32,7 @@ void main() {
   TTSEngine? previousEngine;
 
   MaasoTtsTurn open(
-    _Engine? engine,
+    TTSEngine? engine,
     String id, {
     String text = 'First. Second.',
     Duration startTimeout = const Duration(seconds: 30),
@@ -82,6 +83,100 @@ void main() {
     TTSEngineRegistry.current = previousEngine;
     AgentConfig().clearApiKey('TTS_VOICE_STYLE');
   });
+
+  test(
+    'installed phone TTS reaches typed playback and mouth clock in Chinese and English',
+    () async {
+      final native = <MethodCall>[];
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(const MethodChannel('maaso/system_tts'), (
+            call,
+          ) async {
+            native.add(call);
+            return call.method == 'isAvailable' ? true : _wav();
+          });
+      addTearDown(
+        () => TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+            .setMockMethodCallHandler(
+              const MethodChannel('maaso/system_tts'),
+              null,
+            ),
+      );
+      final clocks = <SpeechPlaybackClock>[];
+      final sub = EventBus().on<SpeechPlaybackClockEvent>().listen(
+        (e) => clocks.add(e.clock),
+      );
+      addTearDown(sub.cancel);
+      for (final entry in [
+        ('zh', '你好，测试手机本地语音。'),
+        ('en', 'Testing the installed phone voice.'),
+      ]) {
+        final turn = open(
+          SystemTtsEngine(),
+          'system-${entry.$1}',
+          text: entry.$2,
+        );
+        final utterance = turn.speak(
+          utteranceId: 'system-${entry.$1}:0',
+          text: entry.$2,
+        );
+        expect(await utterance.started, isTrue);
+        expect((native.last.arguments as Map)['language'], entry.$1);
+        await _until(
+          () => clocks.any(
+            (clock) => clock.turnId == turn.turnId && clock.envelope.isNotEmpty,
+          ),
+        );
+        player.complete();
+        expect(await utterance.terminal, SpeechTerminal.completed);
+        await turn.drained;
+      }
+      expect(systemCalls.where((c) => c == 'speak'), isEmpty);
+      expect(native.where((c) => c.method == 'synthesize'), hasLength(2));
+    },
+  );
+
+  test(
+    'new turn cancels native phone synthesis before any stale playback',
+    () async {
+      final pending = Completer<Uint8List>();
+      var synthesizing = false, cancelled = false;
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(const MethodChannel('maaso/system_tts'), (
+            call,
+          ) async {
+            if (call.method == 'isAvailable') return true;
+            if (call.method == 'synthesize') {
+              synthesizing = true;
+              return pending.future;
+            }
+            cancelled = true;
+            pending.completeError(
+              PlatformException(code: 'system_tts_cancelled'),
+            );
+            return true;
+          });
+      addTearDown(
+        () => TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+            .setMockMethodCallHandler(
+              const MethodChannel('maaso/system_tts'),
+              null,
+            ),
+      );
+      final turn = open(SystemTtsEngine(), 'cancel-system', text: '旧回复不应播放。');
+      final utterance = turn.speak(
+        utteranceId: 'cancel-system:0',
+        text: '旧回复不应播放。',
+      );
+      await _until(() => synthesizing);
+      await MaasoTtsPlugin.prepareForNewTurn();
+      expect(cancelled, isTrue);
+      expect(await utterance.started, isFalse);
+      expect(await utterance.terminal, SpeechTerminal.cancelled);
+      await turn.drained;
+      expect(player.sourceCalls, 0);
+    },
+  );
 
   test(
     'WAV clock starts after native playback and preserves pause cursor',

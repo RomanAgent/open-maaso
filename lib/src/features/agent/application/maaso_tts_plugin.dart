@@ -34,6 +34,7 @@ import 'package:maaso/src/features/agent/application/speech/speech_utterance_han
 import 'package:path_provider/path_provider.dart';
 import 'package:maaso/src/features/privacy/domain/privacy_models.dart';
 import 'package:maaso/src/core/services/local_system_voice.dart';
+import 'package:maaso/src/core/services/system_tts_engine.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final _wavPlaybackClocks = Expando<SpeechPlaybackClockEmitter>();
@@ -175,7 +176,10 @@ class MaasoTtsPlugin {
         : 'en';
     final registered = TTSEngineRegistry.current;
     final engine =
-        registered != null && (!hasChinese || registered is MaasoProxyTtsEngine)
+        registered != null &&
+            (!hasChinese ||
+                registered is MaasoProxyTtsEngine ||
+                registered is SystemTtsEngine)
         ? registered
         : null;
     final avatarVoice = appServices
@@ -542,6 +546,13 @@ class MaasoTtsPlugin {
     // stalled platform cannot keep an old utterance's gestures running.
     _wavPlaybackClocks[playerAtStop]?.stop();
     final typedOwner = _activeTypedUtterance;
+    final systemEngines = <SystemTtsEngine>{
+      if (TTSEngineRegistry.current is SystemTtsEngine)
+        TTSEngineRegistry.current! as SystemTtsEngine,
+      for (final entry in _typedUtterances)
+        if (entry._turn._voice.engine is SystemTtsEngine)
+          entry._turn._voice.engine! as SystemTtsEngine,
+    };
     final typedStop = typedOwner == null ? null : Completer<void>();
     if (typedStop != null) typedOwner!._observeStop(typedStop.future);
     _speakGeneration++;
@@ -579,6 +590,8 @@ class MaasoTtsPlugin {
     }
 
     await Future.wait<void>([
+      for (final engine in systemEngines)
+        stopOutput(engine.cancelSynthesis, 'local synthesis'),
       stopOutput(playerAtStop.stop, 'platform'),
       if (fallback != null)
         stopOutput(() async {
@@ -746,7 +759,10 @@ class MaasoTtsPlugin {
     final hasKorean = RegExp(r'[가-힯]').hasMatch(text);
 
     final engine = TTSEngineRegistry.current;
-    if (engine != null && (!hasChinese || engine is MaasoProxyTtsEngine)) {
+    if (engine != null &&
+        (!hasChinese ||
+            engine is MaasoProxyTtsEngine ||
+            engine is SystemTtsEngine)) {
       final lang = hasJapanese
           ? 'ja'
           : hasKorean

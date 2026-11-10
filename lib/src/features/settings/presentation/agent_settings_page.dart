@@ -1311,8 +1311,10 @@ class _AdvancedFeaturesPage extends StatelessWidget {
               const _AdvancedPreparingBanner(),
               const SizedBox(height: 16),
             ],
-            const _RealtimeExperimentSection(),
-            const SizedBox(height: 16),
+            if (!controller.localEdition) ...[
+              const _RealtimeExperimentSection(),
+              const SizedBox(height: 16),
+            ],
             const _VoiceProsodySection(),
             const SizedBox(height: 16),
             const _DesktopLocalAsrSection(),
@@ -1320,12 +1322,14 @@ class _AdvancedFeaturesPage extends StatelessWidget {
             if (showModeScopedSections) ...[
               const _ModelConfigSection(),
               const SizedBox(height: 16),
-              const _LocalVoicePresetSection(),
-              const SizedBox(height: 16),
-              const _VoiceSection(),
-              const SizedBox(height: 16),
-              const _OnDeviceBrainSection(),
-              const SizedBox(height: 16),
+              if (!controller.localEdition) ...[
+                const _LocalVoicePresetSection(),
+                const SizedBox(height: 16),
+                const _VoiceSection(),
+                const SizedBox(height: 16),
+                const _OnDeviceBrainSection(),
+                const SizedBox(height: 16),
+              ],
             ],
           ],
         );
@@ -1903,34 +1907,40 @@ class _ModelConfigSection extends StatelessWidget {
     final glass = MaasoGlassTheme.of(context);
     return _Section(
       title: 'settings.section_model'.tr,
-      subtitle: 'settings.section_model_subtitle'.tr,
+      subtitle:
+          (controller.localEdition
+                  ? 'settings.api_only_model_subtitle'
+                  : 'settings.section_model_subtitle')
+              .tr,
       child: Column(
         children: [
-          AppReactiveBuilder(
-            () => Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    controller.cloudEnabled.value
-                        ? 'settings.cloud_brain_on'.tr
-                        : 'settings.cloud_brain_off'.tr,
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: glass.foregroundPrimary,
+          if (!controller.localEdition) ...[
+            AppReactiveBuilder(
+              () => Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      controller.cloudEnabled.value
+                          ? 'settings.cloud_brain_on'.tr
+                          : 'settings.cloud_brain_off'.tr,
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: glass.foregroundPrimary,
+                      ),
                     ),
                   ),
-                ),
-                AppGlassToggle(
-                  value: controller.cloudEnabled.value,
-                  semanticLabel: controller.cloudEnabled.value
-                      ? 'settings.cloud_brain_on'.tr
-                      : 'settings.cloud_brain_off'.tr,
-                  onChanged: controller.setCloudEnabled,
-                ),
-              ],
+                  AppGlassToggle(
+                    value: controller.cloudEnabled.value,
+                    semanticLabel: controller.cloudEnabled.value
+                        ? 'settings.cloud_brain_on'.tr
+                        : 'settings.cloud_brain_off'.tr,
+                    onChanged: controller.setCloudEnabled,
+                  ),
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 12),
+            const SizedBox(height: 12),
+          ],
           AppReactiveBuilder(() {
             final names = [
               for (final p in controller.providers) p.name,
@@ -2046,11 +2056,16 @@ class _ModelConfigSection extends StatelessWidget {
               ),
             );
           }),
-          const SizedBox(height: 10),
-          const _CloudHealthRow(),
+          if (!controller.localEdition) ...[
+            const SizedBox(height: 10),
+            const _CloudHealthRow(),
+          ],
           const SizedBox(height: 10),
           Text(
-            'settings.local_key_note'.tr,
+            (controller.localEdition
+                    ? 'settings.api_only_key_note'
+                    : 'settings.local_key_note')
+                .tr,
             style: TextStyle(fontSize: 11, color: glass.foregroundSecondary),
           ),
         ],

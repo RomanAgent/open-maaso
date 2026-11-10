@@ -25,6 +25,42 @@ OfflineProviderConfig directVendorConfig(LLMDirectCloudConfig config) {
   );
 }
 
+/// API-only editions derive availability from the saved endpoint/model/key.
+/// The legacy enabled bit is deliberately ignored; validation makes no request.
+LLMDirectCloudConfig apiOnlyModelConfiguration(
+  LLMDirectCloudConfig config, {
+  bool allowKeylessLoopback = true,
+}) {
+  final key = config.apiKey.trim();
+  final url = config.baseUrl.trim();
+  final model = config.model.trim();
+  var usable = false;
+  try {
+    final endpoint = directVendorConfig(
+      LLMDirectCloudConfig(
+        apiKey: key,
+        baseUrl: url,
+        model: model,
+        enabled: true,
+      ),
+    ).endpoint;
+    usable =
+        key.length <= 8192 &&
+        !RegExp(r'[\x00-\x20\x7f]').hasMatch(key) &&
+        (key.isNotEmpty ||
+            (allowKeylessLoopback &&
+                OfflineProviderConfig.isLoopback(endpoint)));
+  } on OfflineModelException {
+    // Incomplete settings remain editable, but can never admit inference.
+  }
+  return LLMDirectCloudConfig(
+    apiKey: key,
+    baseUrl: url,
+    model: model,
+    enabled: usable,
+  );
+}
+
 /// Native Anthropic/Gemini transport behind the original Agent LLM boundary.
 /// OpenAI-compatible providers continue using the existing streaming provider.
 /// Responses grant no action authority; the existing runtime validates JSON.

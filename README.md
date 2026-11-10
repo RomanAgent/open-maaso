@@ -30,20 +30,22 @@ The original login fields are prefilled. This demonstration identity is not a de
 | Home and conversation | Original pages, HomeController and serialized AgentRuntime turns |
 | Character | Free Pixiv VRM through the existing UnityAvatarRuntime |
 | Model configuration | Original Settings panel, 12 providers and secure key storage |
-| Voice | Installed system TTS; no cloud TTS or automatic model downloads |
+| Voice | Installed phone voices generate local PCM audio; existing playback queue and avatar mouth timing |
 | Games and applets | Original feeds, creation entry, player and companion controls; local works |
 | Store and workshop | Original pages with local catalogs, prompt skills and work records |
 | Profile and memory | Existing profile, memory and account-scoped data services |
 | Hardware | Original BLE applet and shared device transport |
 | Model access | Configured provider/key only; no membership card, plans or membership gate |
 
-Without an enabled model, the app provides local setup guidance. A large offline LLM is not bundled; optional model calls need a reachable configured endpoint. Cloud operations without a local implementation return an explicit unavailable result. See the [local migration boundaries](docs/offline-edition.md).
+Model requests use only the endpoint, model and key saved on this device. An incomplete configuration shows setup guidance; a provider error does not fall back to a Maaso proxy or bundled local LLM. Remote model requests need connectivity. Cloud operations without a local implementation return an explicit unavailable result. See the [local migration boundaries](docs/offline-edition.md).
 
 ## Bring your own model
 
-In **Settings → Model**, select OpenAI, Anthropic Claude, Google Gemini, DeepSeek, Qwen, Doubao, Kimi/Moonshot, Zhipu GLM, SiliconFlow, Groq, Ollama or a custom OpenAI-compatible endpoint. Review the endpoint and model, enter your key and enable calls. Saving does not run an automatic health probe.
+In **Settings → Model**, select OpenAI, Anthropic Claude, Google Gemini, DeepSeek, Qwen, Doubao, Kimi/Moonshot, Zhipu GLM, SiliconFlow, Groq, Ollama or a custom OpenAI-compatible endpoint. Review the endpoint and model, enter your key and save. A valid saved configuration is used automatically. There is no Cloud off switch or local-LLM fallback, and saving does not run an automatic health probe.
 
-Keys stay in platform secure storage, outside chat, works and Git. Remote endpoints require HTTPS; loopback HTTP supports a model service on the same device. On a phone, `127.0.0.1` means that phone. Model availability depends on your provider account.
+Keys are stored in account-scoped platform secure storage, outside chat, works and Git, and sent only to your selected model endpoint. Remote endpoints require HTTPS; an explicitly configured loopback service can use HTTP without a key. On a phone, `127.0.0.1` means that phone. Model availability depends on your provider account.
+
+The conversation path is **speech recognition or text → your configured model API → local phone TTS → speech and avatar mouth movement**. Installed voices synthesize PCM/WAV locally, then use the existing utterance queue, playback, pause/resume and cancellation fences. No cloud TTS or automatic voice download is used. Text input remains available if speech recognition or an installed voice is unavailable; the app's sound setting controls spoken playback.
 
 ## Quick start
 
@@ -85,7 +87,7 @@ These real iPhone screenshots show the earlier Maaso reference app, including it
 
 ## Validation and next acceptance gates
 
-Local persistence, provider protocol boundaries, credential separation, speech selection and runtime cancellation have focused automated tests. A test command above is not a claim that every native target or paid model account has been exercised.
+Local persistence, API-only configuration, credential separation, account/theme rebinding, local speech and runtime cancellation have focused automated tests. The bundled character includes a project-authored `standard_walk` cycle: its previous absence caused Home entry to fail with `walk_unavailable` and Agent Space travel to slide. Receiver/Play Mode checks cover the corrected entry, rendered completion and cancellation; see [walking provenance and checks](docs/avatar/free-vrm-walk.md). These checks are not phone acceptance footage.
 
 Remaining acceptance includes a clean native build with the bundled Unity scene, a signed mobile Release install and debugger-free cold launch, actual device TTS and notification delivery, compatible BLE hardware, live provider compatibility with user-owned keys, and native player network/state checks. Full legacy feature parity is not claimed. The [offline edition document](docs/offline-edition.md) tracks these boundaries; the older [verification record](docs/verification.md) describes the initial source export.
 

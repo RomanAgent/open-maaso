@@ -87,6 +87,7 @@ private data class PendingStreamingAudioWrite(
 class MainActivity : FlutterActivity() {
     private var speechRecognizer: SpeechRecognizer? = null
     private var nativeAsrChannel: MethodChannel? = null
+    private var systemTtsBridge: LocalSystemTtsBridge? = null
     private var appIconChannel: MethodChannel? = null
     private var shareChannel: MethodChannel? = null
     private var gameSnapshotPlugin: GameSnapshotPlugin? = null
@@ -142,6 +143,8 @@ class MainActivity : FlutterActivity() {
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
+        systemTtsBridge?.close()
+        systemTtsBridge = LocalSystemTtsBridge(applicationContext, flutterEngine.dartExecutor.binaryMessenger)
         HomeTextEditorPlugin.register(flutterEngine)
         gameSnapshotPlugin?.dispose()
         gameSnapshotPlugin = GameSnapshotPlugin(this, flutterEngine)
@@ -1198,6 +1201,8 @@ class MainActivity : FlutterActivity() {
     }
 
     override fun onDestroy() {
+        systemTtsBridge?.close()
+        systemTtsBridge = null
         gameSnapshotPlugin?.dispose()
         gameSnapshotPlugin = null
         locationBridge?.dispose()

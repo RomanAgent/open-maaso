@@ -364,6 +364,7 @@ class AgentSettingsController extends AppController {
 
   /// Toggle the cloud brain on/off and persist right away.
   void setCloudEnabled(bool v) {
+    if (localEdition) return;
     cloudEnabled.value = v;
     _startCloudSave();
   }
@@ -417,8 +418,11 @@ class AgentSettingsController extends AppController {
         baseUrl.text,
         model.text,
         session: _llmSession,
-        enabled: cloudEnabled.value,
+        enabled: localEdition ? null : cloudEnabled.value,
       );
+      if (localEdition && _llm.isAccountSessionActive(_llmSession)) {
+        cloudEnabled.value = _llm.cloudUsable;
+      }
     } on StateError {
       // Route disposal can race the synchronous account fence. A stale page
       // has nothing left to persist and must not surface an unhandled Future.

@@ -491,8 +491,8 @@ END_MAASO_CONVERSATION_BOUNDARIES_JSON
   'runtime.fallback.hosted_rate_limit': '请求过于频繁，请稍后再试。',
   'runtime.fallback.local_empty': '我刚才走神了一下，请再说一遍。',
   'runtime.fallback.local_edition_unconfigured':
-      '本地功能已就绪。需要智能对话或生成作品时，请在设置里配置并启用模型 API Key；也可填写本机 Ollama 地址。',
+      '请在设置里填写模型厂商 API Key、接口地址和模型，即可对话或生成作品；也可配置本机模型 API 端点。',
   'runtime.fallback.local_edition_offline':
-      '当前无法连接模型服务。本地作品和数据仍可使用；联网后重试，或在设置中使用本机模型服务。',
+      '当前无法连接你配置的模型 API，请检查网络、接口地址、模型和 Key。已保存的作品与数据仍可使用。',
   'runtime.fallback.no_brain': '暂时无法连接云端模型，本地模型也还没有准备好。请在设置中添加云端密钥或启用本地模型。',
 };

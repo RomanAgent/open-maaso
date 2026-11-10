@@ -34,18 +34,29 @@ The original Settings panel supports OpenAI, Anthropic Claude, Google Gemini,
 DeepSeek, Qwen, Doubao, Kimi, Zhipu GLM, SiliconFlow, Groq, Ollama and Custom.
 OpenAI-compatible providers retain the original streaming/tool client;
 Anthropic and Gemini use protocol adapters. Saved endpoint/model examples are
-editable. Model calls are disabled until the user enables a configuration.
-Saving does not run automatic cloud-health probes. No Maaso inference proxy or
-RTC token is needed. HTTPS is required for remote endpoints; loopback HTTP is
-supported. `127.0.0.1` on a phone refers to that phone.
+editable. `apiOnlyModelConfiguration` derives readiness from a valid saved
+endpoint, model and key; there is no Cloud off switch. A legacy saved disabled
+bit cannot suppress a valid configuration, and incomplete settings cannot
+admit a model request. Saving does not run automatic cloud-health probes.
+The configured API is the only inference service: no Maaso inference proxy,
+RTC token or local-LLM fallback is used. HTTPS is required for remote endpoints;
+explicit loopback HTTP services can omit the key. `127.0.0.1` on a phone refers
+to that phone. Keys are transmitted only to the selected endpoint for requests.
 
-A freeform offline LLM is not bundled. No-key turns explain how to configure a
-model. A remote provider needs connectivity; a loopback model can run without
-an internet route when such a service exists on the device.
+A freeform offline LLM is not bundled. Missing-configuration turns explain
+how to configure a model; a provider failure is reported rather than changing
+inference services. A remote provider needs connectivity; an explicitly
+configured loopback model can run without an internet route when such a
+service exists on the device.
 
-`AgentPipelineRuntimeService(localEdition:true)` selects installed system TTS.
-The existing queue, generation, stop and avatar speech boundaries remain in
-use. No cloud TTS or automatic voice-model download is selected. Bundled VAD
+The conversation path is user speech recognition or text → configured model
+API → local phone TTS. `AgentPipelineRuntimeService(localEdition:true)` selects
+`SystemTtsEngine`: iOS installed voices and Android non-network voices synthesize
+PCM/WAV through a request-scoped native bridge. The resulting audio enters
+`MaasoTtsPlugin`'s existing utterance queue, player and mouth timing; generation,
+stop, cancellation and pause/resume boundaries remain in use. The app's sound
+preference still controls spoken playback. No cloud TTS or automatic voice-model
+download is selected. Missing voices leave text available. Bundled VAD
 preparation fails closed if its asset cannot be copied; it cannot silently
 fall back to a download. Installed voices and physical playback still need
 acceptance on each target device.
@@ -79,6 +90,18 @@ It is not an MIT/CC0 model. Source hashes and redistribution metadata are
 checked by the public-export script. The cover is an actual full-body Unity
 render. The native Unity export remains a separate build step.
 
+The bundled controller includes a project-authored Humanoid `standard_walk`
+cycle; [its authoring and tests](avatar/free-vrm-walk.md) are documented
+separately. Home presence entry and Agent Space already request that exact
+state. The previous Idle-only controller caused entry to fail with
+`walk_unavailable`, producing the visible Retry state, and prevented a walking
+pose during room travel. The supplied cycle fixes that missing dependency;
+native presence/locomotion retain ownership of translation with root motion
+disabled. No entry watchdog or rendered-frame readiness gate was bypassed.
+Receiver Play Mode probes reproduce the old missing-state failure and cover
+corrected cold entry, rendered completion, re-entry and mid-entry cancellation.
+These are Editor results, not phone acceptance receipts.
+
 General workshop imports may be stored locally, but rendering arbitrary local
 VRM files still requires the existing renderer's local-import integration;
 do not claim that storage alone proves an imported model can be selected.
@@ -91,8 +114,8 @@ its runtime dependency hashes are recorded in `assets/brand/original-room-assets
 - Remote synchronization, shared execution leases, handoff, Firebase and push
   are not started by the local default.
 - Membership cards, plan navigation and membership service registration are
-  absent from the local edition. Model dispatch depends on the enabled provider
-  configuration and its key, with a no-key loopback exception for local models.
+  absent from the local edition. Model dispatch depends only on the saved
+  provider configuration and its key, with an explicit no-key loopback exception.
   Daily token statistics are measurements, not an admission quota.
 - Cloud image/video generation, remote visual perception, public moderation,
   public URLs and other routes without local contracts return unavailable.
@@ -106,8 +129,14 @@ its runtime dependency hashes are recorded in `assets/brand/original-room-assets
 Relevant boundaries include `local_test_auth_client_test.dart`,
 `local_original_backend_test.dart`, `local_skill_marketplace_test.dart`,
 `original_ui_local_catalog_test.dart`, `local_edition_model_integration_test.dart`
-and `local_bundled_speech_model_test.dart`, plus original login/settings,
-routing, protocol, Surface, avatar and voice regressions.
+and `local_bundled_speech_model_test.dart`, plus the `api_only_*` configuration,
+settings and runtime tests. `app_theme_account_rebind_test.dart` and
+`avatar_world_theme_service_test.dart` cover account/theme propagation;
+`system_tts_engine_test.dart`, utterance/pause/playback/VAD tests cover the
+local speech boundary. Home entrance/startup and presence-transition tests
+retain failure-code, selection-generation, rendered-frame and cancellation
+fences. The focused source workflow runs these alongside the existing
+login/settings, routing, protocol and Surface regressions.
 
 A successful unit test or native build does not prove physical-device cold
 launch, audible TTS, BLE transfer, background notification delivery or a live

@@ -15,6 +15,7 @@ import 'package:maaso/src/core/services/maaso_agent_mode_service.dart';
 import 'package:maaso/src/core/services/persistence/account_storage_scope_service.dart';
 import 'package:maaso/src/core/services/secure_storage_service.dart';
 import 'package:maaso/src/core/services/sherpa_neural_tts.dart';
+import 'package:maaso/src/core/services/system_tts_engine.dart';
 import 'package:maaso/src/features/agent/data/bridge/tts_engine.dart';
 import 'package:maaso/src/features/agent/data/llm/llm_client.dart';
 import 'package:maaso/src/features/agent/data/llm/llm_response_integrity.dart';
@@ -54,8 +55,7 @@ void main() {
         AppHostPlatform.ios,
       ),
     ).init();
-    expect(TTSEngineRegistry.current, isNotNull);
-    expect(await TTSEngineRegistry.current!.warmUp(), isFalse);
+    expect(TTSEngineRegistry.current, isA<SystemTtsEngine>());
     expect(appServices.isRegistered<SherpaNeuralTts>(), isFalse);
     expect(appServices.isRegistered<LocalLLMService>(), isFalse);
     expect(appServices.isRegistered<CloudLLMHealthService>(), isFalse);

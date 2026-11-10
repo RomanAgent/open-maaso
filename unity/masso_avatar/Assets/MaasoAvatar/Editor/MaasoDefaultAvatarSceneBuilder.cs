@@ -288,6 +288,8 @@ namespace Maaso.Avatar.Editor
                 idle.motion = clip;
                 controller.layers[0].stateMachine.defaultState = idle;
             }
+            OpenMaasoWalkClipBuilder.Ensure(controller, clip, animator);
+            AssetDatabase.SaveAssetIfDirty(controller);
             return controller;
         }
 

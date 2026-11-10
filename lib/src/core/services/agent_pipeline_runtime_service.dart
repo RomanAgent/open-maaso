@@ -18,6 +18,7 @@ import 'package:maaso/src/core/services/secure_storage_service.dart';
 import 'package:maaso/src/core/services/sherpa_model_download_service.dart';
 import 'package:maaso/src/core/services/sherpa_neural_tts.dart';
 import 'package:maaso/src/core/services/sherpa_bindings.dart';
+import 'package:maaso/src/core/services/system_tts_engine.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:maaso/src/core/services/cloud_voice_privacy_gate.dart';
 import 'package:maaso/src/features/privacy/domain/privacy_models.dart';
@@ -44,6 +45,7 @@ class AgentPipelineRuntimeService extends AppService {
 
   final bool localEdition;
   final AppPlatformCapabilities _platformCapabilities;
+  SystemTtsEngine? _systemTts;
   int _generation = 0;
   bool _fenced = false;
   bool _retiring = false;
@@ -176,6 +178,7 @@ class AgentPipelineRuntimeService extends AppService {
   }
 
   Future<void> _drainOnce() async {
+    await _systemTts?.cancelSynthesis();
     while (_operations.isNotEmpty) {
       final pending = _operations.toList(growable: false);
       await Future.wait<void>(pending, eagerError: false);
@@ -310,7 +313,7 @@ class AgentPipelineRuntimeService extends AppService {
     _AgentPipelineOperationReceipt receipt,
   ) async {
     if (!_isAdmitted(receipt)) return null;
-    if (localEdition) return _SystemFallbackTtsEngine();
+    if (localEdition) return _systemTts ??= SystemTtsEngine();
     mode = mode.effectiveFor(_platformCapabilities);
     switch (mode) {
       case AgentPipelineMode.localFull:

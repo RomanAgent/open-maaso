@@ -45,4 +45,11 @@ jobs:
       - name: Check runtime and configuration boundaries
         run: |
           flutter test test/local_membership_removal_test.dart test/android_optional_r8_policy_test.dart test/offline_*_test.dart test/local_test_auth_client_test.dart test/local_original_backend_test.dart test/local_skill_marketplace_test.dart test/original_ui_local_catalog_test.dart test/local_edition_model_integration_test.dart test/local_surface_host_test.dart test/local_bundled_speech_model_test.dart test/settings_white_frost_page_test.dart test/app_environment_service_test.dart test/open_source_environment_test.dart test/realtime_agent_config_test.dart test/agent_action_protocol_test.dart test/turn_policy_test.dart test/turn_policy_wiring_test.dart test/router_destinations_test.dart test/navigation_capabilities_test.dart test/app_navigate_skill_test.dart test/account_runtime_bootstrap_contract_test.dart
+          flutter test test/api_only_model_configuration_test.dart test/api_only_agent_runtime_test.dart \
+            test/api_only_settings_page_test.dart test/api_only_settings_save_test.dart \
+            test/app_theme_account_rebind_test.dart test/avatar_world_theme_service_test.dart \
+            test/system_tts_engine_test.dart test/maaso_tts_utterance_test.dart \
+            test/maaso_tts_pause_resume_test.dart test/mic_playback_gate_test.dart \
+            test/voice_asr_vad_segment_test.dart test/home_avatar_entrance_coordinator_test.dart \
+            test/home_startup_presentation_test.dart test/avatar_presence_transition_test.dart
           flutter analyze lib/src/offline lib/main.dart test/offline_*_test.dart lib/src/core/services/app_environment_service.dart test/open_source_environment_test.dart

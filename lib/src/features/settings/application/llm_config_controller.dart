@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:maaso/src/core/foundation/app_framework.dart';
 import 'package:maaso/src/core/services/cloud_llm_health_service.dart';
+import 'package:maaso/src/core/services/direct_vendor_llm_client.dart';
 import 'package:maaso/src/core/services/llm_direct_cloud_config.dart';
 import 'package:maaso/src/core/services/local_llm_service.dart';
 import 'package:maaso/src/core/services/persistence/account_storage_scope_service.dart';
@@ -118,7 +119,7 @@ class LLMConfigController extends AppController {
     );
     _activeSession = session;
     _resetReactiveConfig();
-    return _loadFuture = _activate(session);
+    return _loadFuture = _track(_activate(session));
   }
 
   /// Returns the receipt that a route must retain for every later save.
@@ -163,14 +164,23 @@ class LLMConfigController extends AppController {
     );
 
     _requireActive(session);
-    final snapshot = _LLMConfigSnapshot(
-      apiKey: key ?? '',
-      baseUrl: url ?? LLMDefaults.baseUrl,
-      model: configuredModel ?? LLMDefaults.model,
-      cloudEnabled: enabled ?? false,
+    final snapshot = _normalizeLocalSnapshot(
+      _LLMConfigSnapshot(
+        apiKey: key ?? '',
+        baseUrl: url ?? LLMDefaults.baseUrl,
+        model: configuredModel ?? LLMDefaults.model,
+        cloudEnabled: enabled ?? false,
+      ),
+      allowKeylessLoopback: url != null && configuredModel != null,
     );
     _applySnapshot(snapshot);
-    await _writeCompatibilityProjectionStrict(snapshot);
+    if (localEdition) {
+      // Migrate saved Cloud-off configurations into API-key readiness, and
+      // durably retain that derived state for every existing compatibility reader.
+      await _persistSnapshot(session, snapshot);
+    } else {
+      await _writeCompatibilityProjectionStrict(snapshot);
+    }
     _requireActive(session);
     _refreshCloudHealth(session, snapshot);
   }
@@ -202,6 +212,7 @@ class LLMConfigController extends AppController {
   /// the route, so teardown waits for it and stale pages cannot target B.
   Future<void> recheckCloudHealth({required LLMConfigAccountSession session}) {
     _requireActive(session);
+    if (localEdition) return Future<void>.value();
     final health = appServices.maybeFind<CloudLLMHealthService>();
     if (health == null) return Future<void>.value();
     final healthSession = _ensureHealthBinding(session, health);
@@ -221,11 +232,13 @@ class LLMConfigController extends AppController {
     bool? enabled,
   }) {
     _requireActive(session);
-    final snapshot = _LLMConfigSnapshot(
-      apiKey: key,
-      baseUrl: url,
-      model: configuredModel,
-      cloudEnabled: enabled ?? cloudEnabled.value,
+    final snapshot = _normalizeLocalSnapshot(
+      _LLMConfigSnapshot(
+        apiKey: key,
+        baseUrl: url,
+        model: configuredModel,
+        cloudEnabled: enabled ?? cloudEnabled.value,
+      ),
     );
     _applySnapshot(snapshot);
 
@@ -243,6 +256,13 @@ class LLMConfigController extends AppController {
     LLMConfigAccountSession session,
     _LLMConfigSnapshot snapshot,
   ) async {
+    if (localEdition && _isActive(session)) {
+      // Stop direct readers before any partial local save (including key
+      // removal) can publish a new configuration. Retirement drains this work.
+      if (!await _storage.delete(LLMDirectCloudConfig.storageKey)) {
+        throw StateError('Failed to invalidate the model configuration.');
+      }
+    }
     await _writeRequired(
       _scopedKey(session, GlobalConstant.keyLlmApiKey),
       snapshot.apiKey,
@@ -433,6 +453,28 @@ class LLMConfigController extends AppController {
       baseUrl: baseUrl.value,
       model: model.value,
       cloudEnabled: cloudEnabled.value,
+    );
+  }
+
+  _LLMConfigSnapshot _normalizeLocalSnapshot(
+    _LLMConfigSnapshot snapshot, {
+    bool allowKeylessLoopback = true,
+  }) {
+    if (!localEdition) return snapshot;
+    final config = apiOnlyModelConfiguration(
+      LLMDirectCloudConfig(
+        apiKey: snapshot.apiKey,
+        baseUrl: snapshot.baseUrl,
+        model: snapshot.model,
+        enabled: snapshot.cloudEnabled,
+      ),
+      allowKeylessLoopback: allowKeylessLoopback,
+    );
+    return _LLMConfigSnapshot(
+      apiKey: config.apiKey,
+      baseUrl: config.baseUrl,
+      model: config.model,
+      cloudEnabled: config.enabled,
     );
   }
 

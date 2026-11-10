@@ -16,6 +16,10 @@ class MaasoApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // The registry provider returns one stable mutable registry. Observe its
+    // revision too, so an account mount/replacement rebinds this root to the
+    // current ThemeService instead of retaining the retired account's signals.
+    ref.watch(appServiceGraphRevisionProvider);
     ref.watch(appServicesProvider);
     final uiControl = appServices.maybeFind<AgentUiControlService>();
     appAgentTakeoverBackButtonDispatcher.bind(uiControl?.coordinator);

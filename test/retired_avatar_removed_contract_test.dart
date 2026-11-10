@@ -23,7 +23,8 @@ void main() {
     ];
     final filesToScan = <File>[
       File('pubspec.yaml'),
-      File('docs/architecture/current.md'),
+      File('docs/architecture.md'),
+      File('docs/offline-edition.md'),
       ...Directory('lib')
           .listSync(recursive: true)
           .whereType<File>()

@@ -34,6 +34,8 @@ coverage/
 **/Flutter/Generated.xcconfig
 **/Flutter/flutter_export_environment.sh
 **/xcuserdata/
+# Xcode's project prefetch lock is not the effective Flutter workspace graph.
+/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
 **/DerivedData/
 **/vendor/bundle/
 **/unityLibrary/build/

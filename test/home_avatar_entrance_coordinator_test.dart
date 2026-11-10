@@ -632,6 +632,27 @@ void main() {
     },
   );
   test(
+    'missing native walk is an enter failure, not a readiness timeout',
+    () async {
+      final f = _Fixture();
+      addTearDown(f.coordinator.dispose);
+      f.coordinator.begin();
+      await f.flush();
+      f.renderer.complete(0);
+      await f.flush();
+      expect(f.renderer.commands[1].phase, AvatarPresencePhase.enter);
+      f.renderer.fail(1, 'walk_unavailable');
+      await f.flush();
+      expect(f.coordinator.phase.value, HomeAvatarEntrancePhase.failed);
+      expect(f.coordinator.failureCode, 'walk_unavailable');
+      expect(f.coordinator.failureStage, 'enter');
+      expect(f.coordinator.visible, isFalse);
+      final dispatched = f.renderer.commands.length;
+      await f.coordinator.reconcile();
+      expect(f.renderer.commands, hasLength(dispatched));
+    },
+  );
+  test(
     'adopting a completed return shows Home without native prepare or restore',
     () async {
       var available = true;

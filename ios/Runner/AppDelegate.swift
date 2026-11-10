@@ -582,6 +582,7 @@ private final class MaasoUnityPassthroughView: UIView {
 @main
 @objc class AppDelegate: FlutterAppDelegate, FlutterImplicitEngineDelegate {
   private var nativeAsrPlugin: NativeAsrPlugin?
+  private var systemTtsPlugin: LocalSystemTtsBridge?
   private var appIconPlugin: AppIconPlugin?
   private var sharePlugin: MaasoSharePlugin?
   private var gameSnapshotPlugin: MaasoGameSnapshotPlugin?
@@ -642,6 +643,12 @@ private final class MaasoUnityPassthroughView: UIView {
     nativeAsrPlugin = NativeAsrPlugin(
       channel: FlutterMethodChannel(
         name: "maaso/native_asr",
+        binaryMessenger: registrar.messenger()
+      )
+    )
+    systemTtsPlugin = LocalSystemTtsBridge(
+      channel: FlutterMethodChannel(
+        name: "maaso/system_tts",
         binaryMessenger: registrar.messenger()
       )
     )

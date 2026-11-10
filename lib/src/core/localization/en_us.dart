@@ -519,6 +519,10 @@ const Map<String, String> enUS = {
   'settings.section_model': 'Model · BYOK',
   'settings.section_model_subtitle':
       'Bring your own key, any OpenAI-compatible API',
+  'settings.api_only_model_subtitle':
+      'Use the provider, API key, endpoint and model saved on this device.',
+  'settings.api_only_key_note':
+      'Your key is encrypted on this device and sent only to your configured model API. Saving settings does not send a model request.',
   'settings.cloud_brain_on':
       'Cloud brain enabled — cloud replies have highest priority',
   'settings.cloud_brain_off':
